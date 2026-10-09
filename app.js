@@ -1,0 +1,1357 @@
+(() => {
+  const data = window.WATCHLIST;
+  if (!data || !Array.isArray(data.stocks)) {
+    document.body.innerHTML =
+      '<p style="padding:2rem;font-family:sans-serif;color:#f18998">Missing window.WATCHLIST — run rebuild_quotes.py</p>';
+    return;
+  }
+
+  const market = window.MARKET || null;
+  const gate = window.GATE_SUMMARY || null;
+  const booksAlign = window.BOOKS_ALIGN || null;
+  const additivePacks = window.ADDITIVE_PACKS || null;
+  const packScreenerUrls = window.PACK_SCREENER_URLS || null;
+
+  function screenerUrlForPack(packId) {
+    if (!packId) return null;
+    // Prefer additive publicUrl from ADDITIVE_PACKS, then pack-screener-urls.js (registry/summary)
+    if (additivePacks && Array.isArray(additivePacks.packs)) {
+      const hit = additivePacks.packs.find((p) => p.id === packId);
+      if (hit && hit.publicUrl) return hit.publicUrl;
+    }
+    if (packScreenerUrls) {
+      const a = packScreenerUrls.additive && packScreenerUrls.additive[packId];
+      if (a && a.url) return a.url;
+      const v = packScreenerUrls.v21 && packScreenerUrls.v21[packId];
+      if (v && v.url) return v.url;
+    }
+    return null;
+  }
+
+  function makeFinvizLink(url, label) {
+    const a = document.createElement("a");
+    a.className = "finviz-screener-link";
+    a.href = url;
+    a.target = "_blank";
+    a.rel = "noopener noreferrer";
+    a.title = label || "Open this pack on Finviz (public screener)";
+    a.textContent = "Open on Finviz ↗";
+    a.addEventListener("click", (e) => e.stopPropagation());
+    return a;
+  }
+
+  function wrapChipWithScreener(btn, packId, packName) {
+    const url = screenerUrlForPack(packId);
+    if (!url) return btn;
+    const wrap = document.createElement("span");
+    wrap.className = "pack-chip-group";
+    wrap.appendChild(btn);
+    wrap.appendChild(makeFinvizLink(url, `${packName || packId} on Finviz`));
+    return wrap;
+  }
+
+  // Merge book-alignment labels onto stocks (UI-side; never removes stocks or touches quotes/TTF/TSM)
+  const BOOK_META = (booksAlign && booksAlign.books) || {};
+  data.stocks.forEach((s) => {
+    const hit = booksAlign && booksAlign.tickers ? booksAlign.tickers[s.ticker] : null;
+    s.books = hit && Array.isArray(hit.books) ? hit.books : [];
+    s.booksAlign = !!(hit && hit.booksAlign && s.books.length);
+  });
+
+  // Overlay additive Finviz packs (UI-side; never removes stocks / wipe v2.1 / TTF / TSM)
+  const ADDITIVE_META = {};
+  const ADDITIVE_IDS = new Set();
+  ((additivePacks && additivePacks.packs) || []).forEach((p) => {
+    ADDITIVE_META[p.id] = p;
+    ADDITIVE_IDS.add(p.id);
+  });
+  const additiveTickerMap = (additivePacks && additivePacks.tickers) || {};
+  const boardBeforeAdditive = data.stocks.length;
+  data.stocks.forEach((s) => {
+    const hit = additiveTickerMap[s.ticker];
+    const addIds = hit && Array.isArray(hit.packIds) ? hit.packIds : [];
+    s.additivePackIds = addIds.slice();
+    if (!addIds.length) return;
+    if (!Array.isArray(s.packIds)) s.packIds = [];
+    if (!Array.isArray(s.packs)) s.packs = [];
+    addIds.forEach((id) => {
+      if (!s.packIds.includes(id)) s.packIds.push(id);
+      const meta = ADDITIVE_META[id];
+      const nm = meta ? meta.name : id;
+      if (!s.packs.includes(nm)) s.packs.push(nm);
+    });
+    s.packCount = s.packIds.length;
+    if ((!s.name || s.name === "—") && hit && hit.name) s.name = hit.name;
+  });
+  // Append additive-only tickers missing from the board (minimal rows; null quotes OK)
+  Object.keys(additiveTickerMap).forEach((ticker) => {
+    if (data.stocks.some((s) => s.ticker === ticker)) return;
+    const hit = additiveTickerMap[ticker];
+    const addIds = (hit && hit.packIds) || [];
+    const packNames = addIds.map((id) => (ADDITIVE_META[id] && ADDITIVE_META[id].name) || id);
+    let name = (hit && hit.name) || null;
+    if (!name) {
+      for (const id of addIds) {
+        const cn = ADDITIVE_META[id] && ADDITIVE_META[id].companyNames;
+        if (cn && cn[ticker]) { name = cn[ticker]; break; }
+      }
+    }
+    data.stocks.push({
+      ticker,
+      name: name || null,
+      price: null,
+      changePct: null,
+      change: null,
+      volume: null,
+      marketCap: null,
+      packs: packNames,
+      packIds: addIds.slice(),
+      packCount: addIds.length,
+      additivePackIds: addIds.slice(),
+      sources: [],
+      hasTtf: false,
+      hasTsm: false,
+      books: [],
+      booksAlign: false,
+      additiveOnly: true,
+    });
+  });
+  if (additivePacks) {
+    data.uniqueCount = data.stocks.length;
+    data.additiveAdded = data.stocks.length - boardBeforeAdditive;
+  }
+
+  const SHORT = {
+    "Lynch Fast Grower GARP": "Lynch GARP",
+    "Stalwart Quality": "Stalwart",
+    "Micro Insider Compounders": "Micro Insider",
+    "Mid Momentum Pullback": "Mid Momentum",
+    "Cyclical Quality": "Cyclical",
+    "Hidden Gem Low-Inst": "Hidden Gem",
+  };
+
+  const state = {
+    view: "watchlist", // watchlist | gate | market
+    search: "",
+    packIds: new Set(),
+    changeFilter: "all",
+    minPct: null,
+    maxPct: null,
+    sort: "changePct-desc",
+    sourceFilter: "all",
+    marketSection: "all",
+    gateStatus: "all",
+    highlightTicker: null,
+    bookAlign: false,
+    chartTicker: null,
+    chartRange: "1mo",
+  };
+
+  const byTicker = new Map(data.stocks.map((s) => [s.ticker, s]));
+
+  const $ = (sel) => document.querySelector(sel);
+  const body = $("#table-body");
+  const empty = $("#empty-state");
+  const resultCount = $("#result-count");
+
+  function fmtTime(iso) {
+    if (!iso) return "—";
+    try {
+      const d = new Date(iso);
+      if (Number.isNaN(d.getTime())) return iso;
+      return d.toLocaleString("en-US", {
+        timeZone: "America/Chicago",
+        month: "short",
+        day: "numeric",
+        hour: "numeric",
+        minute: "2-digit",
+        hour12: true,
+      }) + " CT";
+    } catch {
+      return iso;
+    }
+  }
+
+  function fmtPrice(v) {
+    if (v == null || Number.isNaN(v)) return "—";
+    const n = Number(v);
+    if (n >= 1000) return n.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    if (n >= 1) return n.toFixed(2);
+    return n.toFixed(4);
+  }
+
+  function fmtPct(v) {
+    if (v == null || Number.isNaN(v)) return "—";
+    const n = Number(v);
+    const sign = n > 0 ? "+" : "";
+    return sign + n.toFixed(2) + "%";
+  }
+
+  function chgClass(v) {
+    if (v == null || Number.isNaN(v)) return "na";
+    if (Math.abs(v) < 0.005) return "flat";
+    return v > 0 ? "up" : "down";
+  }
+
+  function escapeHtml(str) {
+    return String(str)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;");
+  }
+  function escapeAttr(str) {
+    return escapeHtml(str).replace(/'/g, "&#39;");
+  }
+
+
+  // —— Chart detail drawer (Yahoo OHLC via /api/chart) ——
+  const chartDrawer = $("#chart-drawer");
+  const chartPriceEl = $("#chart-price-el");
+  const chartVolumeEl = $("#chart-volume-el");
+  const chartStatus = $("#chart-status");
+  const chartMeta = $("#chart-meta");
+  let chartPriceApi = null;
+  let chartVolumeApi = null;
+  let chartCandleSeries = null;
+  let chartAreaSeries = null;
+  let chartVolSeries = null;
+  let chartAbort = null;
+  let chartResizeObs = null;
+
+  function fmtMoneyChg(v) {
+    if (v == null || Number.isNaN(v)) return "—";
+    const n = Number(v);
+    const sign = n > 0 ? "+" : "";
+    return sign + fmtPrice(Math.abs(n) >= 1 ? n : n);
+  }
+
+  function destroyCharts() {
+    if (chartResizeObs) {
+      try { chartResizeObs.disconnect(); } catch (_) {}
+      chartResizeObs = null;
+    }
+    if (chartPriceApi) {
+      try { chartPriceApi.remove(); } catch (_) {}
+    }
+    if (chartVolumeApi) {
+      try { chartVolumeApi.remove(); } catch (_) {}
+    }
+    chartPriceApi = null;
+    chartVolumeApi = null;
+    chartCandleSeries = null;
+    chartAreaSeries = null;
+    chartVolSeries = null;
+    if (chartPriceEl) chartPriceEl.innerHTML = "";
+    if (chartVolumeEl) chartVolumeEl.innerHTML = "";
+  }
+
+  function setChartStatus(msg, kind) {
+    if (!chartStatus) return;
+    if (!msg) {
+      chartStatus.hidden = true;
+      chartStatus.textContent = "";
+      chartStatus.className = "chart-status";
+      return;
+    }
+    chartStatus.hidden = false;
+    chartStatus.textContent = msg;
+    chartStatus.className = "chart-status" + (kind ? " is-" + kind : "");
+  }
+
+  function chartTheme() {
+    return {
+      layout: {
+        background: { type: "solid", color: "transparent" },
+        textColor: "#8c9bab",
+        fontFamily: "Inter, ui-sans-serif, system-ui, sans-serif",
+      },
+      grid: {
+        vertLines: { color: "rgba(36, 48, 62, 0.55)" },
+        horzLines: { color: "rgba(36, 48, 62, 0.55)" },
+      },
+      rightPriceScale: { borderColor: "#24303e" },
+      timeScale: { borderColor: "#24303e", timeVisible: true, secondsVisible: false },
+      crosshair: {
+        vertLine: { color: "rgba(61, 214, 189, 0.45)", labelBackgroundColor: "#10151d" },
+        horzLine: { color: "rgba(61, 214, 189, 0.45)", labelBackgroundColor: "#10151d" },
+      },
+    };
+  }
+
+  function ensureCharts() {
+    if (!chartPriceEl || !chartVolumeEl) return false;
+    if (typeof LightweightCharts === "undefined") return false;
+    if (chartPriceApi && chartVolumeApi) return true;
+    destroyCharts();
+    const w = chartPriceEl.clientWidth || 480;
+    chartPriceApi = LightweightCharts.createChart(chartPriceEl, {
+      ...chartTheme(),
+      width: w,
+      height: Math.max(220, chartPriceEl.clientHeight || 260),
+    });
+    chartVolumeApi = LightweightCharts.createChart(chartVolumeEl, {
+      ...chartTheme(),
+      width: w,
+      height: Math.max(72, chartVolumeEl.clientHeight || 88),
+      timeScale: { borderColor: "#24303e", timeVisible: true, secondsVisible: false, visible: true },
+    });
+    // Prefer candles; area as alternate if needed
+    chartCandleSeries = chartPriceApi.addCandlestickSeries({
+      upColor: "#6bcf8e",
+      downColor: "#f18998",
+      borderUpColor: "#6bcf8e",
+      borderDownColor: "#f18998",
+      wickUpColor: "#6bcf8e",
+      wickDownColor: "#f18998",
+    });
+    chartVolSeries = chartVolumeApi.addHistogramSeries({
+      priceFormat: { type: "volume" },
+      priceScaleId: "",
+    });
+    chartVolumeApi.priceScale("").applyOptions({
+      scaleMargins: { top: 0.15, bottom: 0 },
+    });
+    chartPriceApi.timeScale().subscribeVisibleLogicalRangeChange((range) => {
+      if (range && chartVolumeApi) {
+        chartVolumeApi.timeScale().setVisibleLogicalRange(range);
+      }
+    });
+    chartVolumeApi.timeScale().subscribeVisibleLogicalRangeChange((range) => {
+      if (range && chartPriceApi) {
+        chartPriceApi.timeScale().setVisibleLogicalRange(range);
+      }
+    });
+    if (typeof ResizeObserver !== "undefined") {
+      chartResizeObs = new ResizeObserver(() => {
+        if (!chartPriceApi || !chartPriceEl) return;
+        const nw = chartPriceEl.clientWidth || w;
+        chartPriceApi.applyOptions({ width: nw, height: Math.max(220, chartPriceEl.clientHeight || 260) });
+        chartVolumeApi.applyOptions({ width: nw, height: Math.max(72, chartVolumeEl.clientHeight || 88) });
+      });
+      chartResizeObs.observe(chartPriceEl);
+    }
+    return true;
+  }
+
+  function paintFallbackSvg(payload) {
+    destroyCharts();
+    if (!chartPriceEl || !payload || !payload.bars || !payload.bars.length) return;
+    const bars = payload.bars;
+    const prices = bars.map((b) => b.c);
+    const min = Math.min(...prices);
+    const max = Math.max(...prices);
+    const pad = (max - min) * 0.08 || 1;
+    const lo = min - pad;
+    const hi = max + pad;
+    const W = 560;
+    const H = 240;
+    const pts = bars.map((b, i) => {
+      const x = (i / Math.max(1, bars.length - 1)) * (W - 16) + 8;
+      const y = H - 12 - ((b.c - lo) / (hi - lo)) * (H - 24);
+      return `${x.toFixed(1)},${y.toFixed(1)}`;
+    }).join(" ");
+    const last = bars[bars.length - 1].c;
+    const first = bars[0].c;
+    const stroke = last >= first ? "#6bcf8e" : "#f18998";
+    chartPriceEl.innerHTML = `<svg viewBox="0 0 ${W} ${H}" width="100%" height="100%" preserveAspectRatio="none" aria-hidden="true">
+      <polyline fill="none" stroke="${stroke}" stroke-width="2" points="${pts}"/>
+    </svg>`;
+    if (chartVolumeEl) {
+      const vols = bars.map((b) => b.v || 0);
+      const vmax = Math.max(...vols, 1);
+      const barsHtml = bars.map((b, i) => {
+        const x = (i / Math.max(1, bars.length - 1)) * (W - 16) + 8;
+        const h = ((b.v || 0) / vmax) * 60;
+        const up = i === 0 || b.c >= bars[i - 1].c;
+        return `<rect x="${(x - 1).toFixed(1)}" y="${(70 - h).toFixed(1)}" width="2" height="${h.toFixed(1)}" fill="${up ? "rgba(107,207,142,0.55)" : "rgba(241,137,152,0.55)"}"/>`;
+      }).join("");
+      chartVolumeEl.innerHTML = `<svg viewBox="0 0 ${W} 70" width="100%" height="100%" preserveAspectRatio="none">${barsHtml}</svg>`;
+    }
+  }
+
+  function applyChartQuote(payload, boardRow) {
+    const tickerEl = $("#chart-ticker");
+    const nameEl = $("#chart-name");
+    const lastEl = $("#chart-last");
+    const chgEl = $("#chart-change");
+    const pctEl = $("#chart-change-pct");
+    // Prefer board company name; API may only echo the ticker when .info is skipped
+    const apiName = payload && payload.name && payload.name !== payload.ticker ? payload.name : null;
+    const name = (boardRow && boardRow.name) || apiName || (payload && payload.name) || "—";
+    const last = payload && payload.regularMarketPrice != null
+      ? payload.regularMarketPrice
+      : (boardRow && boardRow.price);
+    const change = payload && payload.change != null
+      ? payload.change
+      : (boardRow && boardRow.change);
+    const pct = payload && payload.changePct != null
+      ? payload.changePct
+      : (boardRow && boardRow.changePct);
+    if (tickerEl) tickerEl.textContent = (payload && payload.ticker) || (boardRow && boardRow.ticker) || "—";
+    if (nameEl) nameEl.textContent = name || "—";
+    if (lastEl) lastEl.textContent = fmtPrice(last);
+    const cls = chgClass(pct);
+    if (chgEl) {
+      chgEl.className = "chg " + cls;
+      if (change == null || Number.isNaN(Number(change))) chgEl.textContent = "—";
+      else {
+        const n = Number(change);
+        chgEl.textContent = (n > 0 ? "+" : "") + fmtPrice(n);
+      }
+    }
+    if (pctEl) {
+      pctEl.className = "chg " + cls;
+      pctEl.textContent = fmtPct(pct);
+    }
+  }
+
+  function renderChartMeta(boardRow) {
+    if (!chartMeta) return;
+    if (!boardRow) {
+      chartMeta.innerHTML = "";
+      return;
+    }
+    let html = "";
+    const ttfSrc = (boardRow.sources || []).find((x) => x.id === "ttf");
+    const tsmSrc = (boardRow.sources || []).find((x) => x.id === "tsm");
+    if (ttfSrc) html += `<span class="source-badge source-ttf" title="Trading Fraternity">TTF</span>`;
+    if (tsmSrc) html += `<span class="source-badge source-tsm" title="Stock Market Live">TSM</span>`;
+    for (const b of boardRow.books || []) {
+      const meta = BOOK_META[b.id] || {};
+      html += `<span class="book-badge book-${escapeAttr(b.id)}">${escapeHtml(meta.label || b.id)}</span>`;
+    }
+    if (boardRow.booksAlign) {
+      html += `<span class="book-badge book-align">ALIGN</span>`;
+    }
+    const v21Names = (boardRow.packs || []).filter((n) => {
+      return !Object.values(ADDITIVE_META).some((m) => m.name === n);
+    });
+    html += v21Names
+      .map((n) => `<span class="pack-pill" title="${escapeAttr(n)}">${escapeHtml(SHORT[n] || n)}</span>`)
+      .join("");
+    html += (boardRow.additivePackIds || [])
+      .map((id) => {
+        const meta = ADDITIVE_META[id] || {};
+        const name = meta.name || id;
+        const short = meta.short || SHORT[name] || name;
+        return `<span class="pack-pill additive-pill" title="${escapeAttr(name)}">${escapeHtml(short)}</span>`;
+      })
+      .join("");
+    chartMeta.innerHTML = html || `<span style="color:var(--dim);font-size:0.75rem">No pack / source badges</span>`;
+  }
+
+  function barTime(b, intraday) {
+    if (intraday) return b.t;
+    // Daily: business-day string avoids UTC off-by-one from exchange tz midnights
+    const d = new Date(b.t * 1000);
+    const y = d.getUTCFullYear();
+    const m = String(d.getUTCMonth() + 1).padStart(2, "0");
+    const day = String(d.getUTCDate()).padStart(2, "0");
+    return `${y}-${m}-${day}`;
+  }
+
+  function paintChartBars(payload) {
+    const bars = (payload && payload.bars) || [];
+    if (!bars.length) {
+      setChartStatus("quote unavailable", "error");
+      return;
+    }
+    if (!ensureCharts()) {
+      paintFallbackSvg(payload);
+      setChartStatus(null);
+      return;
+    }
+    const interval = (payload && payload.interval) || "1d";
+    const intraday = /m$|h$/i.test(interval) && interval !== "1d";
+    // Show clock on intraday ranges
+    try {
+      chartPriceApi.applyOptions({ timeScale: { timeVisible: intraday, secondsVisible: false } });
+      chartVolumeApi.applyOptions({ timeScale: { timeVisible: intraday, secondsVisible: false } });
+    } catch (_) {}
+    const candles = bars.map((b) => ({
+      time: barTime(b, intraday),
+      open: b.o,
+      high: b.h,
+      low: b.l,
+      close: b.c,
+    }));
+    const vols = bars.map((b, i) => {
+      const up = i === 0 || b.c >= bars[i - 1].c;
+      return {
+        time: barTime(b, intraday),
+        value: b.v || 0,
+        color: up ? "rgba(107, 207, 142, 0.55)" : "rgba(241, 137, 152, 0.55)",
+      };
+    });
+    chartCandleSeries.setData(candles);
+    chartVolSeries.setData(vols);
+    chartPriceApi.timeScale().fitContent();
+    chartVolumeApi.timeScale().fitContent();
+    setChartStatus(null);
+  }
+
+  async function loadChartData(ticker, range) {
+    const t = String(ticker || "").toUpperCase();
+    const r = range || state.chartRange || "1mo";
+    state.chartTicker = t;
+    state.chartRange = r;
+    document.querySelectorAll("#chart-ranges .chart-range-chip").forEach((b) => {
+      b.classList.toggle("is-on", b.dataset.range === r);
+    });
+    const boardRow = byTicker.get(t) || null;
+    applyChartQuote(null, boardRow);
+    renderChartMeta(boardRow);
+    setChartStatus("Loading quote…", "loading");
+    if (chartAbort) {
+      try { chartAbort.abort(); } catch (_) {}
+    }
+    chartAbort = typeof AbortController !== "undefined" ? new AbortController() : null;
+    try {
+      const sig = chartAbort ? chartAbort.signal : undefined;
+      const url = `/api/chart?ticker=${encodeURIComponent(t)}&range=${encodeURIComponent(r)}`;
+      let payload = null;
+      // Live API (local serve.py) first; static host (GitHub Pages) falls back to pre-baked charts/<T>_<range>.json
+      if (!window.__NO_CHART_API) {
+        try {
+          const res = await fetch(url, { signal: sig });
+          if ((res.headers.get("content-type") || "").indexOf("json") !== -1) payload = await res.json();
+          else window.__NO_CHART_API = true;
+        } catch (e) {
+          if (e && e.name === "AbortError") throw e;
+          window.__NO_CHART_API = true;
+        }
+      }
+      if (!payload) {
+        try {
+          const sres = await fetch(`charts/${encodeURIComponent(t)}_${encodeURIComponent(r)}.json`, { signal: sig, cache: "no-cache" });
+          payload = sres.ok ? await sres.json() : { error: "quote unavailable", detail: "no static chart" };
+        } catch (e) {
+          if (e && e.name === "AbortError") throw e;
+          payload = { error: "quote unavailable", detail: "invalid JSON" };
+        }
+      }
+      if (!payload || payload.error || !payload.bars || !payload.bars.length) {
+        applyChartQuote(payload, boardRow);
+        destroyCharts();
+        setChartStatus("quote unavailable", "error");
+        return;
+      }
+      applyChartQuote(payload, boardRow);
+      paintChartBars(payload);
+    } catch (err) {
+      if (err && err.name === "AbortError") return;
+      applyChartQuote(null, boardRow);
+      destroyCharts();
+      setChartStatus("quote unavailable", "error");
+    }
+  }
+
+  function openChart(ticker, range) {
+    const t = String(ticker || "").toUpperCase();
+    if (!t) return;
+    if (!chartDrawer) return;
+    chartDrawer.hidden = false;
+    chartDrawer.setAttribute("aria-hidden", "false");
+    document.body.classList.add("chart-open");
+    const r = range || state.chartRange || "1mo";
+    // Update deep-link without reload
+    try {
+      const u = new URL(location.href);
+      u.searchParams.set("ticker", t);
+      history.replaceState(null, "", u.pathname + u.search + u.hash);
+    } catch (_) {}
+    loadChartData(t, r);
+  }
+
+  function closeChart() {
+    if (!chartDrawer || chartDrawer.hidden) return;
+    chartDrawer.hidden = true;
+    chartDrawer.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("chart-open");
+    state.chartTicker = null;
+    if (chartAbort) {
+      try { chartAbort.abort(); } catch (_) {}
+      chartAbort = null;
+    }
+    destroyCharts();
+    setChartStatus(null);
+    try {
+      const u = new URL(location.href);
+      u.searchParams.delete("ticker");
+      const q = u.searchParams.toString();
+      history.replaceState(null, "", u.pathname + (q ? "?" + q : "") + u.hash);
+    } catch (_) {}
+  }
+
+  if (chartDrawer) {
+    chartDrawer.querySelectorAll("[data-chart-close]").forEach((el) => {
+      el.addEventListener("click", (e) => {
+        e.preventDefault();
+        closeChart();
+      });
+    });
+  }
+  const chartRanges = $("#chart-ranges");
+  if (chartRanges) {
+    chartRanges.querySelectorAll(".chart-range-chip").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        if (!state.chartTicker) return;
+        loadChartData(state.chartTicker, btn.dataset.range);
+      });
+    });
+  }
+
+
+  // Metrics
+  const overlaps = data.stocks.filter((s) => (s.packCount || 0) >= 2).length;
+  $("#metric-unique").textContent = String(data.uniqueCount ?? data.stocks.length);
+  // Unique-ticker metric note (6 packs + additive)
+  const uniqueMetric = $("#metric-unique") && $("#metric-unique").closest(".metric");
+  if (uniqueMetric) {
+    const note = uniqueMetric.querySelector(".metric-note");
+    if (note && additivePacks) {
+      const added = data.additiveAdded || 0;
+      note.textContent = added
+        ? `6 packs + additive (+${added})`
+        : "6 packs + additive";
+    }
+  }
+  $("#metric-quoted").textContent = String(data.quotedCount ?? "—");
+  $("#metric-overlaps").textContent = String(overlaps);
+  $("#updated-at").textContent = fmtTime(data.updatedAt);
+  $("#captured-at").textContent = fmtTime(data.capturedAt);
+  const ttfEl = $("#metric-ttf");
+  if (ttfEl) ttfEl.textContent = String(data.ttfCount ?? data.stocks.filter((s) => s.hasTtf).length);
+  const tsmEl = $("#metric-tsm");
+  if (tsmEl) tsmEl.textContent = String(data.tsmCount ?? data.stocks.filter((s) => s.hasTsm).length);
+
+  // Pack chips (v2.1 six) + Finviz screener links
+  const packChips = $("#pack-chips");
+  (data.packs || []).forEach((p) => {
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "chip pack-chip";
+    btn.dataset.packId = p.id;
+    btn.innerHTML = `${SHORT[p.name] || p.name}<b>${p.count}</b>`;
+    btn.title = p.name;
+    btn.addEventListener("click", () => {
+      if (state.packIds.has(p.id)) state.packIds.delete(p.id);
+      else state.packIds.add(p.id);
+      btn.classList.toggle("is-on", state.packIds.has(p.id));
+      render();
+    });
+    packChips.appendChild(wrapChipWithScreener(btn, p.id, p.name));
+  });
+
+  // Additive pack chips (teal/green; same OR filter via state.packIds) + Finviz links
+  const additiveChips = $("#additive-pack-chips");
+  if (additiveChips && additivePacks && Array.isArray(additivePacks.packs)) {
+    additivePacks.packs.forEach((p) => {
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "chip pack-chip additive-pack-chip";
+      btn.dataset.packId = p.id;
+      const label = p.short || SHORT[p.name] || p.name;
+      btn.innerHTML = `${label}<b>${p.count}</b>`;
+      btn.title = `${p.name}${p.filterHighlight ? " — " + p.filterHighlight : ""} (additive; research only)`;
+      btn.addEventListener("click", () => {
+        if (state.packIds.has(p.id)) state.packIds.delete(p.id);
+        else state.packIds.add(p.id);
+        btn.classList.toggle("is-on", state.packIds.has(p.id));
+        render();
+      });
+      additiveChips.appendChild(wrapChipWithScreener(btn, p.id, p.name));
+    });
+  } else if (additiveChips && !additivePacks) {
+    additiveChips.hidden = true;
+    const wrap = $("#additive-pack-wrap");
+    if (wrap) wrap.hidden = true;
+  }
+
+  // Screeners row — obvious Finviz links for all packs (additive + v2.1)
+  (function renderScreenerLinksRow() {
+    const row = $("#screener-links");
+    const wrap = $("#screener-links-row");
+    if (!row) return;
+    row.innerHTML = "";
+    const items = [];
+    (data.packs || []).forEach((p) => {
+      const url = screenerUrlForPack(p.id);
+      if (url) items.push({ id: p.id, name: SHORT[p.name] || p.name, full: p.name, url, kind: "v21" });
+    });
+    ((additivePacks && additivePacks.packs) || []).forEach((p) => {
+      const url = screenerUrlForPack(p.id);
+      if (url) items.push({ id: p.id, name: p.short || p.name, full: p.name, url, kind: "additive" });
+    });
+    if (!items.length) {
+      if (wrap) wrap.hidden = true;
+      return;
+    }
+    items.forEach((it) => {
+      const a = document.createElement("a");
+      a.className = "screener-link-pill" + (it.kind === "additive" ? " is-additive" : "");
+      a.href = it.url;
+      a.target = "_blank";
+      a.rel = "noopener noreferrer";
+      a.title = `${it.full} — open public Finviz screener`;
+      a.textContent = `${it.name} ↗`;
+      row.appendChild(a);
+    });
+  })();
+
+  const sourceChips = $("#source-chips");
+  if (sourceChips) {
+    sourceChips.querySelectorAll(".chip[data-source]").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        sourceChips.querySelectorAll(".chip[data-source]").forEach((b) => b.classList.remove("is-on"));
+        btn.classList.add("is-on");
+        state.sourceFilter = btn.dataset.source;
+        render();
+      });
+    });
+  }
+
+  // Book align chip (independent toggle, UI filter only)
+  const bookChip = $("#book-align-chip");
+  if (bookChip) {
+    if (!booksAlign) bookChip.hidden = true;
+    bookChip.addEventListener("click", () => {
+      state.bookAlign = !state.bookAlign;
+      bookChip.classList.toggle("is-on", state.bookAlign);
+      render();
+    });
+  }
+
+  // Book metric + legend
+  (function renderBooksOverview() {
+    const el = $("#metric-books");
+    const note = $("#metric-books-note");
+    const legend = $("#books-legend");
+    if (!booksAlign) {
+      const m = document.querySelector(".metric-books");
+      if (m) m.hidden = true;
+      return;
+    }
+    const counts = { lynch: 0, chan: 0, mayer100: 0 };
+    let alignN = 0;
+    data.stocks.forEach((s) => {
+      if (s.booksAlign) alignN += 1;
+      s.books.forEach((b) => { if (b.id in counts) counts[b.id] += 1; });
+    });
+    if (el) el.textContent = String(alignN);
+    if (note) note.textContent = `Lynch ${counts.lynch} · Chan ${counts.chan} · 100× ${counts.mayer100}`;
+    if (legend) {
+      const scored = Object.entries(BOOK_META)
+        .map(([id, b]) => `<span class="book-badge book-${escapeAttr(id)}" title="${escapeAttr(b.title + " — " + b.rule + " · " + b.basis)}">${escapeHtml(b.label)}<b>${counts[id] ?? 0}</b></span>`)
+        .join("");
+      const proc = (booksAlign.processBooks || [])
+        .map((b) => `<span class="book-proc" title="${escapeAttr(b.title + " — not ticker-scored: " + b.reason)}">${escapeHtml(b.id)}</span>`)
+        .join("");
+      legend.innerHTML = `
+        <div class="books-legend-row">
+          <span class="books-legend-label">Book pills</span>
+          ${scored}
+          <span class="book-badge book-align" title="booksAlign = ≥1 of Lynch / Chan / 100×">ALIGN<b>${alignN}</b></span>
+          <span class="books-legend-hint">Finviz-pack proxies · hover for rule</span>
+        </div>
+        <div class="books-legend-row">
+          <span class="books-legend-label">Process books</span>
+          ${proc}
+          <span class="books-legend-hint">not ticker-scored yet (need IV/Greeks, VAP/POC, chart, AH, ML, or scuttlebutt data)</span>
+        </div>`;
+      legend.hidden = false;
+    }
+  })();
+
+  function passes(s) {
+    const q = state.search.trim().toLowerCase();
+    if (q) {
+      const hay = `${s.ticker || ""} ${s.name || ""}`.toLowerCase();
+      if (!hay.includes(q)) return false;
+    }
+    if (state.packIds.size) {
+      const ids = s.packIds || [];
+      let hit = false;
+      for (const id of state.packIds) {
+        if (ids.includes(id)) { hit = true; break; }
+      }
+      if (!hit) return false;
+    }
+    if (state.sourceFilter === "ttf" && !s.hasTtf) return false;
+    if (state.sourceFilter === "tsm" && !s.hasTsm) return false;
+    if (state.sourceFilter === "finviz" && !(s.packIds && s.packIds.length)) return false;
+    if (state.bookAlign && !s.booksAlign) return false;
+    const pct = s.changePct;
+    if (state.changeFilter === "gainers" && !(pct != null && pct > 0)) return false;
+    if (state.changeFilter === "losers" && !(pct != null && pct < 0)) return false;
+    if (state.changeFilter === "flat" && !(pct != null && Math.abs(pct) <= 0.5)) return false;
+    if (state.minPct != null && !(pct != null && pct >= state.minPct)) return false;
+    if (state.maxPct != null && !(pct != null && pct <= state.maxPct)) return false;
+    return true;
+  }
+
+  function sortRows(rows) {
+    const [key, dir] = state.sort.split("-");
+    const mult = dir === "asc" ? 1 : -1;
+    return rows.slice().sort((a, b) => {
+      let av = a[key];
+      let bv = b[key];
+      if (key === "ticker") {
+        av = (av || "").toUpperCase();
+        bv = (bv || "").toUpperCase();
+        return av < bv ? -mult : av > bv ? mult : 0;
+      }
+      const aNull = av == null || Number.isNaN(av);
+      const bNull = bv == null || Number.isNaN(bv);
+      if (aNull && bNull) return 0;
+      if (aNull) return 1;
+      if (bNull) return -1;
+      if (av === bv) return (a.ticker || "").localeCompare(b.ticker || "");
+      return av < bv ? -mult : mult;
+    });
+  }
+
+  function render() {
+    const filtered = sortRows(data.stocks.filter(passes));
+    resultCount.textContent = `${filtered.length} shown · ${data.stocks.length} total`;
+    body.innerHTML = "";
+    if (!filtered.length) {
+      empty.hidden = false;
+      return;
+    }
+    empty.hidden = true;
+    const frag = document.createDocumentFragment();
+    for (const s of filtered) {
+      const tr = document.createElement("tr");
+      tr.dataset.ticker = s.ticker;
+      if ((s.packCount || 0) >= 2) tr.classList.add("is-overlap");
+      if (state.highlightTicker && s.ticker === state.highlightTicker) {
+        tr.classList.add("market-flash");
+      }
+
+      const pct = s.changePct;
+      const v21Names = (s.packs || []).filter((n) => {
+        // exclude additive pack full names from grey pills
+        return !Object.values(ADDITIVE_META).some((m) => m.name === n);
+      });
+      const packsHtmlV21 = v21Names
+        .map((n) => `<span class="pack-pill" title="${escapeAttr(n)}">${escapeHtml(SHORT[n] || n)}</span>`)
+        .join("");
+      const packsHtmlAdd = (s.additivePackIds || [])
+        .map((id) => {
+          const meta = ADDITIVE_META[id] || {};
+          const name = meta.name || id;
+          const short = meta.short || SHORT[name] || name;
+          return `<span class="pack-pill additive-pill" title="${escapeAttr(name + " (additive; research only)")}">${escapeHtml(short)}</span>`;
+        })
+        .join("");
+      const packsHtml = packsHtmlV21 + packsHtmlAdd;
+      const ttfSrc = (s.sources || []).find((x) => x.id === "ttf");
+      const tsmSrc = (s.sources || []).find((x) => x.id === "tsm");
+      let badgeHtml = "";
+      if (ttfSrc) {
+        const vids = ttfSrc.videos || [];
+        const tip = vids.length
+          ? vids.map((v) => v.title).slice(0, 3).join(" · ")
+          : "Trading Fraternity";
+        const href = (vids[0] && vids[0].url) || ttfSrc.channelUrl || "https://www.youtube.com/@Thetradingfraternity";
+        badgeHtml += `<a class="source-badge source-ttf" href="${escapeAttr(href)}" target="_blank" rel="noopener noreferrer" title="${escapeAttr("Trading Fraternity — " + tip)}">TTF</a>`;
+      }
+      if (tsmSrc) {
+        const vids = tsmSrc.videos || [];
+        const tip = vids.length
+          ? vids.map((v) => v.title).slice(0, 3).join(" · ")
+          : "Stock Market Live";
+        const href = (vids[0] && vids[0].url) || tsmSrc.channelUrl || "https://www.youtube.com/@TheStockMarket";
+        badgeHtml += `<a class="source-badge source-tsm" href="${escapeAttr(href)}" target="_blank" rel="noopener noreferrer" title="${escapeAttr("Stock Market Live / TSM — " + tip)}">TSM</a>`;
+      }
+
+      let bookHtml = "";
+      for (const b of s.books || []) {
+        const meta = BOOK_META[b.id] || {};
+        const tip = `${meta.title || b.id} — ${b.why || ""}${b.note ? " [" + b.note + "]" : ""}`;
+        bookHtml += `<span class="book-badge book-${escapeAttr(b.id)}${b.note ? " has-gate" : ""}" title="${escapeAttr(tip)}">${escapeHtml(meta.label || b.id)}</span>`;
+      }
+      if (s.booksAlign) {
+        bookHtml += `<span class="book-badge book-align" title="${escapeAttr("Book align — " + s.books.map((b) => (BOOK_META[b.id] || {}).label || b.id).join(" + ") + " (Finviz-pack proxy; research only)")}">ALIGN</span>`;
+        tr.classList.add("is-book-align");
+      }
+
+      if (s.hasTtf) tr.classList.add("has-ttf");
+      if (s.hasTsm) tr.classList.add("has-tsm");
+
+      tr.innerHTML = `
+        <td class="col-ticker"><span class="ticker">${escapeHtml(s.ticker)}</span>${badgeHtml ? `<span class="ticker-badges">${badgeHtml}</span>` : ""}</td>
+        <td class="col-name name-cell" title="${escapeAttr(s.name || "")}">${escapeHtml(s.name || "—")}</td>
+        <td class="col-price num"><span class="price">${fmtPrice(s.price)}</span></td>
+        <td class="col-chg num"><span class="chg ${chgClass(pct)}">${fmtPct(pct)}</span></td>
+        <td class="col-packs packs-cell"><div class="packs">${badgeHtml}${bookHtml}${packsHtml || (badgeHtml || bookHtml ? "" : "—")}</div></td>
+        <td class="col-count num"><span class="pack-count">${s.packCount ?? "—"}</span></td>
+      `;
+      tr.classList.add("is-clickable");
+      tr.style.cursor = "pointer";
+      tr.title = "Open chart · " + s.ticker;
+      tr.addEventListener("click", (e) => {
+        if (e.target.closest("a.source-badge")) return;
+        openChart(s.ticker);
+      });
+      tr.querySelectorAll("a.source-badge").forEach((a) => {
+        a.addEventListener("click", (e) => e.stopPropagation());
+      });
+      frag.appendChild(tr);
+    }
+    body.appendChild(frag);
+  }
+
+  function setView(view) {
+    state.view = view;
+    document.querySelectorAll(".view-tab").forEach((b) => {
+      b.classList.toggle("is-on", b.dataset.view === view);
+    });
+    const wl = $("#view-watchlist");
+    const gt = $("#view-gate");
+    const mk = $("#view-market");
+    if (wl) wl.hidden = view !== "watchlist";
+    if (gt) gt.hidden = view !== "gate";
+    if (mk) mk.hidden = view !== "market";
+    if (view === "market") renderMarket();
+    if (view === "gate") renderGate();
+  }
+
+  function jumpToTicker(ticker) {
+    const t = String(ticker || "").toUpperCase();
+    if (!byTicker.has(t)) return;
+    state.highlightTicker = t;
+    state.search = t;
+    state.packIds.clear();
+    state.changeFilter = "all";
+    state.minPct = null;
+    state.maxPct = null;
+    state.sourceFilter = "all";
+    state.bookAlign = false;
+    if (bookChip) bookChip.classList.remove("is-on");
+    const searchEl = $("#search");
+    if (searchEl) searchEl.value = t;
+    $("#sort").value = "ticker-asc";
+    state.sort = "ticker-asc";
+    $("#min-pct").value = "";
+    $("#max-pct").value = "";
+    document.querySelectorAll("#change-chips .chip").forEach((b) => {
+      b.classList.toggle("is-on", b.dataset.change === "all");
+    });
+    document.querySelectorAll("#pack-chips .chip, #additive-pack-chips .chip").forEach((b) => b.classList.remove("is-on"));
+    document.querySelectorAll("#source-chips .chip").forEach((b) => {
+      b.classList.toggle("is-on", b.dataset.source === "all");
+    });
+    setView("watchlist");
+    render();
+    requestAnimationFrame(() => {
+      const row = body.querySelector(`tr[data-ticker="${CSS.escape(t)}"]`);
+      if (row) {
+        row.scrollIntoView({ behavior: "smooth", block: "center" });
+      }
+    });
+    setTimeout(() => {
+      if (state.highlightTicker === t) {
+        state.highlightTicker = null;
+      }
+    }, 2200);
+  }
+
+
+  function renderGateOverview() {
+    const card = $("#gate-overview-card");
+    if (!card) return;
+    if (!gate || !gate.sample) {
+      card.hidden = true;
+      return;
+    }
+    card.hidden = false;
+    const sample = gate.sample;
+    const counts = sample.counts || {};
+    const blurb = $("#gate-card-blurb");
+    if (blurb) {
+      blurb.textContent =
+        (gate.gate && gate.gate.summaryBullets && gate.gate.summaryBullets[0]) ||
+        "Second pass after Finviz pack capture — EPS, FCF, sector-relative PEG.";
+    }
+    const countsEl = $("#gate-card-counts");
+    if (countsEl) {
+      countsEl.innerHTML = `
+        <div class="gate-count-pill is-pass"><span>Pass</span><b>${counts.pass ?? "—"}</b></div>
+        <div class="gate-count-pill is-fail"><span>Fail</span><b>${counts.fail ?? "—"}</b></div>
+        <div class="gate-count-pill is-exception"><span>Exception</span><b>${counts.exception ?? "—"}</b></div>
+      `;
+    }
+    const meta = $("#gate-card-meta");
+    if (meta) {
+      const name = sample.packName || sample.packId || "sample";
+      const n = sample.nTickers != null ? `${sample.nTickers} tickers` : "";
+      meta.textContent = `${name}${n ? " · " + n : ""} · v${sample.finvizPackVersion || "2.1"}`;
+    }
+  }
+
+  function renderGate() {
+    if (!gate || !gate.sample) {
+      const list = $("#gate-ticker-list");
+      if (list) {
+        list.innerHTML =
+          '<div class="empty-state"><div class="empty-icon">∅</div><h3>No quality gate sample</h3><p>Generate gate-summary.js from finviz screener-quality-gate + gate-sample artifacts.</p></div>';
+      }
+      return;
+    }
+
+    const sample = gate.sample;
+    const counts = sample.counts || {};
+    const g = gate.gate || {};
+
+    const angle = $("#gate-angle");
+    if (angle) {
+      angle.textContent =
+        (g.summaryBullets && g.summaryBullets.slice(0, 2).join(" ")) ||
+        "Second pass after pack capture: EPS quality, FCF>0 or disclosed exception, sector-relative PEG.";
+    }
+    const disc = $("#gate-disclaimer");
+    if (disc) disc.textContent = gate.disclaimer || "";
+
+    const setCount = (id, v) => {
+      const el = $(id);
+      if (el) el.textContent = String(v ?? "—");
+    };
+    setCount("#gate-count-pass", counts.pass);
+    setCount("#gate-count-fail", counts.fail);
+    setCount("#gate-count-exception", counts.exception);
+
+    const exNote = $("#gate-exception-note");
+    if (exNote) exNote.textContent = sample.exceptionNote ? "SMCI" : "disclosed";
+
+    const sampleName = $("#gate-sample-name");
+    if (sampleName) sampleName.textContent = sample.packName || sample.packId || "—";
+    const runAt = $("#gate-run-at");
+    if (runAt) runAt.textContent = fmtTime(sample.gateRunAt || gate.generatedAt);
+
+    const bullets = $("#gate-bullets");
+    if (bullets && !bullets.dataset.ready) {
+      bullets.innerHTML = (g.summaryBullets || [])
+        .map((b) => `<li>${escapeHtml(b)}</li>`)
+        .join("");
+      bullets.dataset.ready = "1";
+    }
+
+    const crit = $("#gate-criteria");
+    if (crit && !crit.dataset.ready) {
+      crit.innerHTML = (g.criteria || [])
+        .map(
+          (c) =>
+            `<span class="gate-criterion"><b>${escapeHtml(c.id || "")}</b>${escapeHtml(c.title || "")}</span>`
+        )
+        .join("");
+      crit.dataset.ready = "1";
+    }
+
+    const chips = $("#gate-status-chips");
+    if (chips && !chips.dataset.ready) {
+      chips.querySelectorAll(".chip").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          chips.querySelectorAll(".chip").forEach((b) => b.classList.remove("is-on"));
+          btn.classList.add("is-on");
+          state.gateStatus = btn.dataset.gstatus;
+          renderGateTickers();
+        });
+      });
+      chips.dataset.ready = "1";
+    }
+
+    renderGateTickers();
+  }
+
+  function renderGateTickers() {
+    const list = $("#gate-ticker-list");
+    if (!list || !gate) return;
+    const rows = (gate.tickers || []).filter((t) => {
+      if (state.gateStatus === "all") return true;
+      return t.status === state.gateStatus;
+    });
+    const hint = $("#gate-detail-hint");
+    if (hint) {
+      const c = gate.sample && gate.sample.counts ? gate.sample.counts : {};
+      hint.textContent = `${rows.length} shown · pass ${c.pass ?? "—"} / fail ${c.fail ?? "—"} / exception ${c.exception ?? "—"}`;
+    }
+    if (!rows.length) {
+      list.innerHTML =
+        '<div class="empty-state"><div class="empty-icon">∅</div><h3>No tickers in this filter</h3></div>';
+      return;
+    }
+    list.innerHTML = "";
+    const frag = document.createDocumentFragment();
+    for (const t of rows) {
+      const onBoard = byTicker.has(t.ticker);
+      const row = document.createElement("div");
+      row.className = `gate-ticker-row status-${escapeAttr(t.status)}${onBoard ? " on-board" : ""}`;
+      const flags = (t.flags || [])
+        .map((f) => `<span class="gate-flag">${escapeHtml(f)}</span>`)
+        .join("");
+      const tickerBtn = onBoard
+        ? `<button type="button" class="gate-ticker-btn" data-ticker="${escapeAttr(t.ticker)}" title="Jump to watchlist">${escapeHtml(t.ticker)}</button>`
+        : `<span class="gate-ticker-off" title="Not on current watchlist board">${escapeHtml(t.ticker)}</span>`;
+      row.innerHTML = `
+        <div class="gate-ticker-left">
+          ${tickerBtn}
+          <span class="gate-status-pill status-${escapeAttr(t.status)}">${escapeHtml(t.status)}</span>
+          ${flags}
+        </div>
+        <div class="gate-ticker-mid">
+          <span class="gate-name">${escapeHtml(t.name || "")}</span>
+          <span class="gate-reason">${escapeHtml(t.reason || "")}</span>
+        </div>
+      `;
+      const btn = row.querySelector(".gate-ticker-btn");
+      if (btn) btn.addEventListener("click", () => jumpToTicker(btn.dataset.ticker));
+      frag.appendChild(row);
+    }
+    list.appendChild(frag);
+  }
+
+
+  function renderMarket() {
+    if (!market || !Array.isArray(market.sections)) {
+      const feed = $("#market-feed");
+      if (feed) {
+        feed.innerHTML =
+          '<div class="empty-state"><div class="empty-icon">∅</div><h3>No Market briefing</h3><p>Run rebuild_market.py after seeding market.json with cited headlines.</p></div>';
+      }
+      return;
+    }
+
+    $("#market-angle").textContent = market.angle || "Lynch/GARP · TTF · TSM";
+    $("#market-disclaimer").textContent = market.disclaimer || "";
+    $("#market-updated-at").textContent = fmtTime(market.updatedAt);
+    const itemCount = market.itemCount ?? market.sections.reduce((n, s) => n + (s.items || []).length, 0);
+    const matchCount =
+      market.matchedTickerCount ??
+      new Set(market.sections.flatMap((s) => (s.items || []).flatMap((i) => i.matchedTickers || []))).size;
+    $("#market-item-count").textContent = String(itemCount);
+    $("#market-match-count").textContent = String(matchCount);
+
+    // Section chips (once)
+    const chips = $("#market-section-chips");
+    if (chips && !chips.dataset.ready) {
+      for (const sec of market.sections) {
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "chip";
+        btn.dataset.msection = sec.id;
+        btn.textContent = sec.title || sec.id;
+        btn.addEventListener("click", () => {
+          chips.querySelectorAll(".chip").forEach((b) => b.classList.remove("is-on"));
+          btn.classList.add("is-on");
+          state.marketSection = sec.id;
+          renderMarket();
+        });
+        chips.appendChild(btn);
+      }
+      chips.querySelector('[data-msection="all"]').addEventListener("click", () => {
+        chips.querySelectorAll(".chip").forEach((b) => b.classList.remove("is-on"));
+        chips.querySelector('[data-msection="all"]').classList.add("is-on");
+        state.marketSection = "all";
+        renderMarket();
+      });
+      chips.dataset.ready = "1";
+    }
+
+    // Source gaps
+    const gapsEl = $("#market-gaps");
+    const gaps = (market.sourceGaps || []).filter((g) => g.status && g.status !== "reachable");
+    if (gapsEl) {
+      if (!gaps.length) {
+        gapsEl.hidden = true;
+        gapsEl.innerHTML = "";
+      } else {
+        gapsEl.hidden = false;
+        gapsEl.innerHTML =
+          "<strong>Source gaps</strong><ul>" +
+          gaps
+            .map(
+              (g) =>
+                `<li><b>${escapeHtml(g.source || "source")}</b> — ${escapeHtml(g.note || g.status || "")}</li>`
+            )
+            .join("") +
+          "</ul>";
+      }
+    }
+
+    const feed = $("#market-feed");
+    feed.innerHTML = "";
+    const sections =
+      state.marketSection === "all"
+        ? market.sections
+        : market.sections.filter((s) => s.id === state.marketSection);
+
+    for (const sec of sections) {
+      const block = document.createElement("section");
+      block.className = "market-section-block";
+      block.dataset.section = sec.id;
+      block.innerHTML = `
+        <div class="market-section-head">
+          <h3>${escapeHtml(sec.title || sec.id)}</h3>
+          ${sec.blurb ? `<p class="sec-blurb">${escapeHtml(sec.blurb)}</p>` : ""}
+        </div>
+      `;
+      for (const item of sec.items || []) {
+        const card = document.createElement("article");
+        card.className = "market-card";
+        const tags = (item.tags || [])
+          .map((t) => `<span class="market-tag">${escapeHtml(t)}</span>`)
+          .join("");
+        const src = item.source || {};
+        const cite = src.url
+          ? `<a class="market-cite" href="${escapeAttr(src.url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(src.name || "Source")} · <time datetime="${escapeAttr(src.fetchedAt || "")}">${escapeHtml(fmtTime(src.fetchedAt || market.updatedAt))}</time></a>`
+          : `<span class="market-cite">${escapeHtml(src.name || "Source unavailable")}</span>`;
+
+        const tickersHtml = (item.matchedTickers || [])
+          .map((t) => {
+            const s = byTicker.get(t);
+            const cls = [
+              "market-ticker-btn",
+              s && s.hasTtf ? "has-ttf" : "",
+              s && s.hasTsm ? "has-tsm" : "",
+            ]
+              .filter(Boolean)
+              .join(" ");
+            const tip = s
+              ? `${t}${s.name ? " — " + s.name : ""}${s.hasTtf ? " · TTF" : ""}${s.hasTsm ? " · TSM" : ""}`
+              : t;
+            return `<button type="button" class="${cls}" data-ticker="${escapeAttr(t)}" title="${escapeAttr(tip)}">${escapeHtml(t)}</button>`;
+          })
+          .join("");
+
+        card.innerHTML = `
+          <div class="market-card-top">
+            <h4>${escapeHtml(item.title || "")}</h4>
+            <div class="market-tags">${tags}</div>
+          </div>
+          <p class="market-why">${escapeHtml(item.whyItMatters || "")}</p>
+          <div class="market-card-foot">
+            ${cite}
+            <div class="market-tickers">${tickersHtml || '<span class="market-cite">No watchlist ticker match</span>'}</div>
+          </div>
+        `;
+        card.querySelectorAll(".market-ticker-btn").forEach((btn) => {
+          btn.addEventListener("click", () => jumpToTicker(btn.dataset.ticker));
+        });
+        block.appendChild(card);
+      }
+      feed.appendChild(block);
+    }
+  }
+
+  // View tabs
+  document.querySelectorAll(".view-tab").forEach((btn) => {
+    btn.addEventListener("click", () => setView(btn.dataset.view));
+  });
+  const gateOpenBtn = $("#gate-open-detail");
+  if (gateOpenBtn) {
+    gateOpenBtn.addEventListener("click", () => setView("gate"));
+  }
+
+  // Controls
+  $("#search").addEventListener("input", (e) => {
+    state.search = e.target.value;
+    render();
+  });
+  $("#sort").addEventListener("change", (e) => {
+    state.sort = e.target.value;
+    render();
+  });
+  $("#min-pct").addEventListener("input", (e) => {
+    const v = e.target.value;
+    state.minPct = v === "" ? null : Number(v);
+    render();
+  });
+  $("#max-pct").addEventListener("input", (e) => {
+    const v = e.target.value;
+    state.maxPct = v === "" ? null : Number(v);
+    render();
+  });
+  document.querySelectorAll("#change-chips .chip").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      document.querySelectorAll("#change-chips .chip").forEach((b) => b.classList.remove("is-on"));
+      btn.classList.add("is-on");
+      state.changeFilter = btn.dataset.change;
+      render();
+    });
+  });
+  $("#clear-filters").addEventListener("click", () => {
+    state.search = "";
+    state.packIds.clear();
+    state.changeFilter = "all";
+    state.minPct = null;
+    state.maxPct = null;
+    state.sort = "changePct-desc";
+    state.sourceFilter = "all";
+    state.bookAlign = false;
+    if (bookChip) bookChip.classList.remove("is-on");
+    state.highlightTicker = null;
+    $("#search").value = "";
+    $("#sort").value = "changePct-desc";
+    $("#min-pct").value = "";
+    $("#max-pct").value = "";
+    document.querySelectorAll("#change-chips .chip").forEach((b) => {
+      b.classList.toggle("is-on", b.dataset.change === "all");
+    });
+    document.querySelectorAll("#pack-chips .chip, #additive-pack-chips .chip").forEach((b) => b.classList.remove("is-on"));
+    document.querySelectorAll("#source-chips .chip").forEach((b) => {
+      b.classList.toggle("is-on", b.dataset.source === "all");
+    });
+    render();
+  });
+  $("#refresh-btn").addEventListener("click", () => location.reload());
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      if (chartDrawer && !chartDrawer.hidden) {
+        e.preventDefault();
+        closeChart();
+        return;
+      }
+    }
+    if (e.key === "/" && document.activeElement !== $("#search") && state.view === "watchlist") {
+      e.preventDefault();
+      $("#search").focus();
+    }
+    if (e.key === "1" && (e.metaKey || e.ctrlKey)) {
+      e.preventDefault();
+      setView("watchlist");
+    }
+    if (e.key === "2" && (e.metaKey || e.ctrlKey)) {
+      e.preventDefault();
+      setView("gate");
+    }
+    if (e.key === "3" && (e.metaKey || e.ctrlKey)) {
+      e.preventDefault();
+      setView("market");
+    }
+  });
+
+  // Deep-link: ?view=market|gate or #market|#gate; ?ticker=MSFT opens chart
+  const params = new URLSearchParams(location.search);
+  const viewParam = params.get("view") || "";
+  if (viewParam === "market" || location.hash === "#market") {
+    setView("market");
+  } else if (viewParam === "gate" || location.hash === "#gate") {
+    setView("gate");
+  } else {
+    setView("watchlist");
+  }
+
+  render();
+  renderGateOverview();
+  if (gate) renderGate();
+  if (market) renderMarket();
+
+  const deepTicker = (params.get("ticker") || "").toUpperCase();
+  if (deepTicker && byTicker.has(deepTicker)) {
+    openChart(deepTicker);
+  }
+})();
