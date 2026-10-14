@@ -1,1 +1,1 @@
-{"ticker":"QGEN","name":"QGEN","currency":"USD","regularMarketPrice":46.150001525878906,"change":0.7100015258789085,"changePct":1.5625033580081615,"range":"1d","interval":"5m","bars":[{"t":1791984600,"o":45.77000045776367,"h":46.119998931884766,"l":45.72999954223633,"c":46.10900115966797,"v":61880},{"t":1791984900,"o":46.220001220703125,"h":46.290000915527344,"l":46.11000061035156,"c":46.18000030517578,"v":5958}]}
+{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"QGEN","range":"1d"}

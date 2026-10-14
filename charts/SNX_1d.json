@@ -1,1 +1,1 @@
-{"ticker":"SNX","name":"SNX","currency":"USD","regularMarketPrice":272.4100036621094,"change":-3.6299963378906455,"changePct":-1.3150254810500817,"range":"1d","interval":"5m","bars":[{"t":1791984600,"o":271.760009765625,"h":271.7900085449219,"l":270.54779052734375,"c":271.7900085449219,"v":17607},{"t":1791984900,"o":271.3900146484375,"h":272.4100036621094,"l":270.05999755859375,"c":272.4100036621094,"v":4899}]}
+{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"SNX","range":"1d"}

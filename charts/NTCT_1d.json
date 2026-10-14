@@ -1,1 +1,1 @@
-{"ticker":"NTCT","name":"NTCT","currency":"USD","regularMarketPrice":39.810001373291016,"change":-0.33999862670898295,"changePct":-0.8468209880672053,"range":"1d","interval":"5m","bars":[{"t":1791984600,"o":39.650001525878906,"h":39.81999969482422,"l":39.650001525878906,"c":39.79499816894531,"v":8052},{"t":1791984900,"o":39.810001373291016,"h":39.810001373291016,"l":39.810001373291016,"c":39.810001373291016,"v":0}]}
+{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"NTCT","range":"1d"}

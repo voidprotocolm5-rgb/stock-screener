@@ -1,1 +1,1 @@
-{"ticker":"QQQ","name":"QQQ","currency":"USD","regularMarketPrice":738.1900024414062,"change":-5.3799975585938,"changePct":-0.7235361241838428,"range":"1d","interval":"5m","bars":[{"t":1791984600,"o":738.0,"h":739.030029296875,"l":736.9000244140625,"c":737.969970703125,"v":3611691},{"t":1791984900,"o":737.9600219726562,"h":738.469970703125,"l":736.6699829101562,"c":738.1900024414062,"v":575550}]}
+{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"QQQ","range":"1d"}

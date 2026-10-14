@@ -1,1 +1,1 @@
-{"ticker":"PWR","name":"PWR","currency":"USD","regularMarketPrice":681.9199829101562,"change":-4.58001708984375,"changePct":-0.6671547108293883,"range":"1d","interval":"5m","bars":[{"t":1791984600,"o":680.4949951171875,"h":685.2999877929688,"l":680.4949951171875,"c":682.1799926757812,"v":12748},{"t":1791984900,"o":682.3599853515625,"h":683.1849975585938,"l":680.030029296875,"c":681.9199829101562,"v":4608}]}
+{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"PWR","range":"1d"}

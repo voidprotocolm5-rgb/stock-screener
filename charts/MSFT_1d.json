@@ -1,1 +1,1 @@
-{"ticker":"MSFT","name":"MSFT","currency":"USD","regularMarketPrice":543.864990234375,"change":0.4149902343749545,"changePct":0.07636217395803745,"range":"1d","interval":"5m","bars":[{"t":1791984600,"o":545.1500244140625,"h":545.739990234375,"l":541.6599731445312,"c":543.9099731445312,"v":1216457},{"t":1791984900,"o":543.8099975585938,"h":544.6099853515625,"l":542.7899780273438,"c":543.8499755859375,"v":183123}]}
+{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"MSFT","range":"1d"}

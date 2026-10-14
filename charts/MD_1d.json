@@ -1,1 +1,1 @@
-{"ticker":"MD","name":"MD","currency":"USD","regularMarketPrice":26.80620002746582,"change":0.19620002746582088,"changePct":0.7373169014123295,"range":"1d","interval":"5m","bars":[{"t":1791984900,"o":26.809999465942383,"h":26.809999465942383,"l":26.75,"c":26.80620002746582,"v":485}]}
+{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"MD","range":"1d"}

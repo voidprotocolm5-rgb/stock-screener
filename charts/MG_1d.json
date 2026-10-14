@@ -1,1 +1,1 @@
-{"ticker":"MG","name":"MG","currency":"USD","regularMarketPrice":20.799999237060547,"change":-0.04000076293945298,"changePct":-0.19194224059238477,"range":"1d","interval":"5m","bars":[{"t":1791984836,"o":20.799999237060547,"h":20.799999237060547,"l":20.799999237060547,"c":20.799999237060547,"v":0}]}
+{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"MG","range":"1d"}

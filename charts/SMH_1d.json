@@ -1,1 +1,1 @@
-{"ticker":"SMH","name":"SMH","currency":"USD","regularMarketPrice":577.7000122070312,"change":-10.419987792968755,"changePct":-1.7717451868613132,"range":"1d","interval":"5m","bars":[{"t":1791984600,"o":576.219970703125,"h":579.0,"l":575.8300170898438,"c":577.5,"v":497701},{"t":1791984900,"o":577.4390258789062,"h":578.1799926757812,"l":575.5499877929688,"c":577.7000122070312,"v":718770}]}
+{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"SMH","range":"1d"}

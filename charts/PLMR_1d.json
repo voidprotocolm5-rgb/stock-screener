@@ -1,1 +1,1 @@
-{"ticker":"PLMR","name":"PLMR","currency":"USD","regularMarketPrice":132.22000122070312,"change":-1.1699981689453125,"changePct":-0.8771258522369472,"range":"1d","interval":"5m","bars":[{"t":1791984600,"o":132.50999450683594,"h":133.42999267578125,"l":132.50999450683594,"c":133.42999267578125,"v":0},{"t":1791984900,"o":132.6699981689453,"h":132.6699981689453,"l":132.14849853515625,"c":132.22000122070312,"v":591}]}
+{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"PLMR","range":"1d"}

@@ -1,1 +1,1 @@
-{"ticker":"NTES","name":"NTES","currency":"USD","regularMarketPrice":124.93000030517578,"change":0.17000030517577613,"changePct":0.13626186692511713,"range":"1d","interval":"5m","bars":[{"t":1791984600,"o":125.33999633789062,"h":125.37999725341797,"l":124.45999908447266,"c":125.37999725341797,"v":24788},{"t":1791984900,"o":125.02999877929688,"h":125.26000213623047,"l":124.93000030517578,"c":124.93000030517578,"v":5923}]}
+{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"NTES","range":"1d"}

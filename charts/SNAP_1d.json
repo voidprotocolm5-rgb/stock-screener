@@ -1,1 +1,1 @@
-{"ticker":"SNAP","name":"SNAP","currency":"USD","regularMarketPrice":6.514999866485596,"change":0.09499986648559577,"changePct":1.4797486991525821,"range":"1d","interval":"5m","bars":[{"t":1791984600,"o":6.349999904632568,"h":6.505000114440918,"l":6.349999904632568,"c":6.47599983215332,"v":1971775},{"t":1791984900,"o":6.46999979019165,"h":6.550000190734863,"l":6.460000038146973,"c":6.514999866485596,"v":514227}]}
+{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"SNAP","range":"1d"}

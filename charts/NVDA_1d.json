@@ -1,1 +1,1 @@
-{"ticker":"NVDA","name":"NVDA","currency":"USD","regularMarketPrice":225.19000244140625,"change":-3.3299975585937602,"changePct":-1.4572018022902855,"range":"1d","interval":"5m","bars":[{"t":1791984600,"o":225.60499572753906,"h":225.75,"l":224.60000610351562,"c":224.90499877929688,"v":5799128},{"t":1791984900,"o":224.86000061035156,"h":225.2198944091797,"l":224.25,"c":225.1999053955078,"v":2005644}]}
+{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"NVDA","range":"1d"}

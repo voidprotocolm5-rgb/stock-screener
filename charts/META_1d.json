@@ -1,1 +1,1 @@
-{"ticker":"META","name":"META","currency":"USD","regularMarketPrice":748.6099853515625,"change":-13.8900146484375,"changePct":-1.8216412653688525,"range":"1d","interval":"5m","bars":[{"t":1791984600,"o":760.75,"h":761.47998046875,"l":751.7000122070312,"c":753.3200073242188,"v":1336715},{"t":1791984900,"o":753.1300048828125,"h":753.8499755859375,"l":747.3800048828125,"c":748.905029296875,"v":391879}]}
+{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"META","range":"1d"}
