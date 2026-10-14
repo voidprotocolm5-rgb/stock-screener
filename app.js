@@ -563,7 +563,8 @@
       u.searchParams.set("ticker", t);
       history.replaceState(null, "", u.pathname + u.search + u.hash);
     } catch (_) {}
-    loadChartData(t, r);
+    state.chartRange = r;
+    openTvChart(t);
   }
 
   function closeChart() {
@@ -577,6 +578,7 @@
       chartAbort = null;
     }
     destroyCharts();
+    { const h = document.getElementById("tv-chart"); if (h) h.innerHTML = ""; }
     setChartStatus(null);
     try {
       const u = new URL(location.href);
@@ -1471,7 +1473,174 @@
     }
   })();
 
+  // ===== Live quotes (TradingView scanner, CORS-allowed for this origin; ~15-min delayed) + TradingView Advanced Chart =====
+  const TV_SYMBOLS = window.TV_SYMBOLS || {};
+  const TV_SCAN = "https://scanner.tradingview.com/america/scan";
+  const CHECK_COLS = ["close", "change", "change_abs", "volume", "SMA20", "SMA50", "SMA200", "RSI", "price_earnings_growth_ttm", "debt_to_equity", "total_revenue_yoy_growth_ttm", "earnings_per_share_diluted_yoy_growth_ttm", "update_mode"];
+  function tvSymbol(t) { return TV_SYMBOLS[t] || null; }
+  async function tvScan(symbols, cols, timeoutMs) {
+    const ctl = typeof AbortController !== "undefined" ? new AbortController() : null;
+    const timer = ctl ? setTimeout(() => ctl.abort(), timeoutMs || 8000) : null;
+    try {
+      const res = await fetch(TV_SCAN, {
+        method: "POST",
+        headers: { "Content-Type": "text/plain;charset=UTF-8" }, // simple request: no CORS preflight
+        body: JSON.stringify({ symbols: { tickers: symbols }, columns: cols }),
+        signal: ctl ? ctl.signal : undefined,
+      });
+      if (!res.ok) throw new Error("HTTP " + res.status);
+      const j = await res.json();
+      const out = {};
+      for (const row of j.data || []) { const o = {}; cols.forEach((c, i) => (o[c] = row.d[i])); out[row.s] = o; }
+      return out;
+    } finally { if (timer) clearTimeout(timer); }
+  }
+  const liveState = { ok: false, at: null, delayed: true };
+  function setQuoteStamp(msg, kind) {
+    const el = document.getElementById("live-quote-status");
+    if (el) { el.textContent = msg; el.className = "live-quote-status" + (kind ? " is-" + kind : ""); }
+  }
+  async function refreshLiveQuotes() {
+    const pairs = data.stocks.map((s) => [s.ticker, tvSymbol(s.ticker)]).filter((p) => p[1]);
+    if (!pairs.length) { setQuoteStamp("Baked quotes as of " + fmtTime(data.updatedAt), "baked"); return; }
+    try {
+      const res = await tvScan(pairs.map((p) => p[1]), ["close", "change", "change_abs", "volume", "update_mode"], 10000);
+      let n = 0, delayed = false;
+      for (const [t, sym] of pairs) {
+        const q = res[sym]; const s = byTicker.get(t);
+        if (!q || !s || q.close == null) continue;
+        s.price = q.close; s.changePct = q.change; s.change = q.change_abs; if (q.volume != null) s.volume = q.volume;
+        s.liveQuote = true; n++;
+        if (String(q.update_mode || "").indexOf("delayed") !== -1) delayed = true;
+      }
+      if (!n) throw new Error("no rows");
+      liveState.ok = true; liveState.at = new Date(); liveState.delayed = delayed;
+      render();
+      setQuoteStamp(`Live ${n}/${data.stocks.length} via TradingView${delayed ? " (≈15-min delayed)" : ""} · ${liveState.at.toLocaleTimeString([], { hour: "numeric", minute: "2-digit" })} · others as of ${fmtTime(data.updatedAt)}`, "live");
+    } catch (e) {
+      setQuoteStamp("Live quotes unavailable — showing baked quotes as of " + fmtTime(data.updatedAt), "baked");
+    }
+  }
+
+  // Pass/fail checklist (our pack rules) beside the chart, live from TradingView fundamentals/technicals
+  async function renderChecklist(t) {
+    const el = document.getElementById("chart-checklist");
+    if (!el) return;
+    const sym = tvSymbol(t);
+    el.innerHTML = `<h3>Screen checklist</h3><p class="ck-note">Loading…</p>`;
+    if (!sym) { el.innerHTML = `<h3>Screen checklist</h3><p class="ck-note">No TradingView symbol mapped for ${escapeHtml(t)}.</p>`; return; }
+    let q;
+    try { q = (await tvScan([sym], CHECK_COLS, 8000))[sym]; } catch (_) {}
+    if (state.chartTicker !== t) return;
+    if (!q) { el.innerHTML = `<h3>Screen checklist</h3><p class="ck-note">Checklist data unavailable right now.</p>`; return; }
+    const f2 = (v, d = 2) => (v == null ? "—" : Number(v).toFixed(d));
+    const rows = [
+      ["Price > SMA50", q.close != null && q.SMA50 != null ? q.close > q.SMA50 : null, `${f2(q.close)} vs ${f2(q.SMA50)}`],
+      ["Price > SMA200", q.close != null && q.SMA200 != null ? q.close > q.SMA200 : null, `${f2(q.close)} vs ${f2(q.SMA200)}`],
+      ["RSI(14) < 60", q.RSI != null ? q.RSI < 60 : null, f2(q.RSI, 1)],
+      ["PEG < 2", q.price_earnings_growth_ttm != null ? q.price_earnings_growth_ttm > 0 && q.price_earnings_growth_ttm < 2 : null, f2(q.price_earnings_growth_ttm)],
+      ["PEG ≤ 1.2 (2nd pass)", q.price_earnings_growth_ttm != null ? q.price_earnings_growth_ttm > 0 && q.price_earnings_growth_ttm <= 1.2 : null, f2(q.price_earnings_growth_ttm)],
+      ["Debt/Equity < 1", q.debt_to_equity != null ? q.debt_to_equity < 1 : null, f2(q.debt_to_equity)],
+      ["Revenue growth YoY > 0", q.total_revenue_yoy_growth_ttm != null ? q.total_revenue_yoy_growth_ttm > 0 : null, q.total_revenue_yoy_growth_ttm == null ? "—" : f2(q.total_revenue_yoy_growth_ttm, 1) + "%"],
+      ["EPS growth YoY > 0", q.earnings_per_share_diluted_yoy_growth_ttm != null ? q.earnings_per_share_diluted_yoy_growth_ttm > 0 : null, q.earnings_per_share_diluted_yoy_growth_ttm == null ? "—" : f2(q.earnings_per_share_diluted_yoy_growth_ttm, 1) + "%"],
+    ];
+    const pass = rows.filter((r) => r[1] === true).length;
+    el.innerHTML = `<h3>Screen checklist <span class="ck-score">${pass}/${rows.length}</span></h3><ul class="ck-list">${rows
+      .map((r) => `<li class="${r[1] === true ? "is-pass" : r[1] === false ? "is-fail" : "is-na"}"><span class="ck-mark">${r[1] === true ? "✓" : r[1] === false ? "✕" : "–"}</span><span class="ck-label">${escapeHtml(r[0])}</span><span class="ck-val">${escapeHtml(r[2])}</span></li>`)
+      .join("")}</ul><p class="ck-note">TradingView data${String(q.update_mode || "").indexOf("delayed") !== -1 ? " (≈15-min delayed)" : ""} · research only</p>`;
+  }
+
+  // TradingView Advanced Chart widget
+  const TV_RANGES = { "1D": "1D", "3D": "5D", "5D": "5D", "1M": "1M", "6M": "6M", "1Y": "12M", "5Y": "60M" };
+  const TV_INTERVALS = { "1m": "1", "5m": "5", "15m": "15", "1h": "60", "1D": "D" };
+  state.tvInterval = state.tvInterval || "1D";
+  state.tvRange = state.tvRange || "6M";
+  function tvTheme() {
+    const t = document.documentElement.dataset.theme;
+    return t ? t : (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+  }
+  function showTvMode(on) {
+    const tv = document.getElementById("tv-chart");
+    const tvc = document.getElementById("tv-controls");
+    const fb = document.getElementById("chart-ranges");
+    if (tv) tv.hidden = !on;
+    if (tvc) tvc.hidden = !on;
+    if (fb) fb.hidden = on;
+    if (chartPriceEl) chartPriceEl.hidden = on;
+    if (chartVolumeEl) chartVolumeEl.hidden = on;
+  }
+  function mountTvChart(t) {
+    const host = document.getElementById("tv-chart");
+    const sym = tvSymbol(t);
+    if (!host || !sym) return false;
+    host.innerHTML = "";
+    const wrap = document.createElement("div");
+    wrap.className = "tradingview-widget-container";
+    wrap.style.height = "100%"; wrap.style.width = "100%";
+    const inner = document.createElement("div");
+    inner.className = "tradingview-widget-container__widget";
+    inner.style.height = "100%"; inner.style.width = "100%";
+    wrap.appendChild(inner);
+    const cfg = {
+      autosize: true, symbol: sym, interval: TV_INTERVALS[state.tvInterval] || "D", range: TV_RANGES[state.tvRange] || "6M",
+      timezone: "America/Chicago", theme: tvTheme(), style: "1", locale: "en", allow_symbol_change: false,
+      hide_volume: false, hide_side_toolbar: true, withdateranges: false, save_image: false, calendar: false, support_host: "https://www.tradingview.com",
+      studies: [
+        { id: "MASimple@tv-basicstudies", inputs: { length: 50 } },
+        { id: "MASimple@tv-basicstudies", inputs: { length: 200 } },
+        { id: "RSI@tv-basicstudies", inputs: { length: 14 } },
+      ],
+    };
+    const sc = document.createElement("script");
+    sc.type = "text/javascript"; sc.async = true;
+    sc.src = "https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js";
+    sc.text = JSON.stringify(cfg);
+    let settled = false;
+    const fail = () => {
+      if (settled || state.chartTicker !== t) return;
+      settled = true;
+      showTvMode(false);
+      loadChartData(t, state.chartRange || "1mo"); // static baked fallback
+    };
+    sc.onerror = fail;
+    wrap.appendChild(sc);
+    host.appendChild(wrap);
+    // If no iframe appears in 9s, fall back to the baked chart.
+    setTimeout(() => { if (!host.querySelector("iframe")) fail(); else settled = true; }, 9000);
+    document.querySelectorAll("#tv-intervals .chip").forEach((b) => b.classList.toggle("is-on", b.dataset.tvInterval === state.tvInterval));
+    document.querySelectorAll("#tv-ranges .chip").forEach((b) => b.classList.toggle("is-on", b.dataset.tvRange === state.tvRange));
+    return true;
+  }
+  function openTvChart(t) {
+    state.chartTicker = t;
+    const boardRow = byTicker.get(t) || null;
+    applyChartQuote(null, boardRow);
+    renderChartMeta(boardRow);
+    renderChecklist(t);
+    destroyCharts();
+    setChartStatus(null);
+    if (mountTvChart(t)) { showTvMode(true); return; }
+    showTvMode(false);
+    loadChartData(t, state.chartRange || "1mo");
+  }
+  document.querySelectorAll("#tv-intervals .chip").forEach((b) => b.addEventListener("click", () => {
+    state.tvInterval = b.dataset.tvInterval;
+    // Pick a sensible range for very short intervals
+    if (["1m", "5m"].includes(state.tvInterval) && !["1D", "3D", "5D"].includes(state.tvRange)) state.tvRange = "1D";
+    if (state.chartTicker) mountTvChart(state.chartTicker);
+  }));
+  document.querySelectorAll("#tv-ranges .chip").forEach((b) => b.addEventListener("click", () => {
+    state.tvRange = b.dataset.tvRange;
+    const auto = { "1D": "5m", "3D": "15m", "5D": "15m", "1M": "1h", "6M": "1D", "1Y": "1D", "5Y": "1D" };
+    state.tvInterval = auto[state.tvRange] || state.tvInterval;
+    if (state.chartTicker) mountTvChart(state.chartTicker);
+  }));
+  window.__tvDebug = { tvSymbol, refreshLiveQuotes, liveState };
+
   render();
+  setQuoteStamp("Baked quotes as of " + fmtTime(data.updatedAt) + " · fetching live…", "baked");
+  refreshLiveQuotes();
+  setInterval(() => { if (!document.hidden) refreshLiveQuotes(); }, 120000);
   renderGateOverview();
   if (gate) renderGate();
   if (market) renderMarket();
