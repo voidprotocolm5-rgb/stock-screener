@@ -1516,6 +1516,12 @@
       if (!n) throw new Error("no rows");
       liveState.ok = true; liveState.at = new Date(); liveState.delayed = delayed;
       render();
+      document.querySelectorAll("#top5-cards .ss-card").forEach((c) => {
+        const s = byTicker.get(c.dataset.ticker); const el = c.querySelector(".ss-card-price");
+        if (s && el && s.liveQuote) el.innerHTML = `<span>${fmtPrice(s.price)}</span><span class="chg ${chgClass(s.changePct)}">${fmtPct(s.changePct)}</span>`;
+      });
+      const sub = document.getElementById("top5-sub");
+      if (sub) sub.textContent = sub.textContent.replace(/Quotes .*? \(Yahoo\)\./, `Quotes live via TradingView${delayed ? " (≈15-min delayed)" : ""}; baked ${fmtTime(data.updatedAt)}.`);
       setQuoteStamp(`Live ${n}/${data.stocks.length} via TradingView${delayed ? " (≈15-min delayed)" : ""} · ${liveState.at.toLocaleTimeString([], { hour: "numeric", minute: "2-digit" })} · others as of ${fmtTime(data.updatedAt)}`, "live");
     } catch (e) {
       setQuoteStamp("Live quotes unavailable — showing baked quotes as of " + fmtTime(data.updatedAt), "baked");
