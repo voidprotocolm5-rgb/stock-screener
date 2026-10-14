@@ -1534,6 +1534,11 @@
     if (state.chartTicker !== t) return;
     if (!q) { el.innerHTML = `<h3>Screen checklist</h3><p class="ck-note">Checklist data unavailable right now.</p>`; return; }
     const f2 = (v, d = 2) => (v == null ? "—" : Number(v).toFixed(d));
+    if (q.close != null) {
+      const s0 = byTicker.get(t);
+      if (s0) { s0.price = q.close; s0.changePct = q.change; s0.change = q.change_abs; }
+      applyChartQuote(null, s0 || null);
+    }
     const rows = [
       ["Price > SMA50", q.close != null && q.SMA50 != null ? q.close > q.SMA50 : null, `${f2(q.close)} vs ${f2(q.SMA50)}`],
       ["Price > SMA200", q.close != null && q.SMA200 != null ? q.close > q.SMA200 : null, `${f2(q.close)} vs ${f2(q.SMA200)}`],
@@ -1582,7 +1587,7 @@
     inner.style.height = "100%"; inner.style.width = "100%";
     wrap.appendChild(inner);
     const cfg = {
-      autosize: true, symbol: sym, interval: TV_INTERVALS[state.tvInterval] || "D", range: TV_RANGES[state.tvRange] || "6M",
+      autosize: true, symbol: sym, interval: TV_INTERVALS[state.tvInterval] || "D",
       timezone: "America/Chicago", theme: tvTheme(), style: "1", locale: "en", allow_symbol_change: false,
       hide_volume: false, hide_side_toolbar: true, withdateranges: false, save_image: false, calendar: false, support_host: "https://www.tradingview.com",
       studies: [
@@ -1591,6 +1596,8 @@
         { id: "RSI@tv-basicstudies", inputs: { length: 14 } },
       ],
     };
+    // TradingView's embed lets "range" override "interval": send range only when the user last picked a range.
+    if (state.tvPick !== "interval") cfg.range = TV_RANGES[state.tvRange] || "6M";
     const sc = document.createElement("script");
     sc.type = "text/javascript"; sc.async = true;
     sc.src = "https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js";
@@ -1608,7 +1615,7 @@
     // If no iframe appears in 9s, fall back to the baked chart.
     setTimeout(() => { if (!host.querySelector("iframe")) fail(); else settled = true; }, 9000);
     document.querySelectorAll("#tv-intervals .chip").forEach((b) => b.classList.toggle("is-on", b.dataset.tvInterval === state.tvInterval));
-    document.querySelectorAll("#tv-ranges .chip").forEach((b) => b.classList.toggle("is-on", b.dataset.tvRange === state.tvRange));
+    document.querySelectorAll("#tv-ranges .chip").forEach((b) => b.classList.toggle("is-on", state.tvPick !== "interval" && b.dataset.tvRange === state.tvRange));
     return true;
   }
   function openTvChart(t) {
@@ -1624,13 +1631,13 @@
     loadChartData(t, state.chartRange || "1mo");
   }
   document.querySelectorAll("#tv-intervals .chip").forEach((b) => b.addEventListener("click", () => {
-    state.tvInterval = b.dataset.tvInterval;
+    state.tvInterval = b.dataset.tvInterval; state.tvPick = "interval";
     // Pick a sensible range for very short intervals
     if (["1m", "5m"].includes(state.tvInterval) && !["1D", "3D", "5D"].includes(state.tvRange)) state.tvRange = "1D";
     if (state.chartTicker) mountTvChart(state.chartTicker);
   }));
   document.querySelectorAll("#tv-ranges .chip").forEach((b) => b.addEventListener("click", () => {
-    state.tvRange = b.dataset.tvRange;
+    state.tvRange = b.dataset.tvRange; state.tvPick = "range";
     const auto = { "1D": "5m", "3D": "15m", "5D": "15m", "1M": "1h", "6M": "1D", "1Y": "1D", "5Y": "1D" };
     state.tvInterval = auto[state.tvRange] || state.tvInterval;
     if (state.chartTicker) mountTvChart(state.chartTicker);
