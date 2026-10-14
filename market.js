@@ -19,7 +19,7 @@ window.MARKET = {
     {
       "source": "Post-open tape 10/14",
       "status": "partial",
-      "note": "Index levels after the 8:30 ET open not yet confirmed from a fetched source at 8:45 CT; economist/tape sections carried from 10/13 PM."
+      "note": "Index levels after the 8:30 ET open not yet confirmed from a fetched source at 8:37 CT; economist/tape sections carried from 10/13 PM."
     }
   ],
   "sections": [
@@ -34,7 +34,7 @@ window.MARKET = {
           "source": {
             "name": "AP",
             "url": "https://apnews.com/article/cpi-inflation-consumer-prices-affordability-3985019a54c82421e6112fb57baba048",
-            "fetchedAt": "2026-10-14T08:45:00-05:00"
+            "fetchedAt": "2026-10-14T08:37:00-05:00"
           },
           "matchedTickers": [
             "XOM",
@@ -56,7 +56,7 @@ window.MARKET = {
           "source": {
             "name": "Axios",
             "url": "https://www.axios.com/2026/10/14/cpi-september-inflation-trump",
-            "fetchedAt": "2026-10-14T08:45:00-05:00"
+            "fetchedAt": "2026-10-14T08:37:00-05:00"
           },
           "matchedTickers": [],
           "tags": [
@@ -73,7 +73,7 @@ window.MARKET = {
           "source": {
             "name": "Quartz",
             "url": "https://qz.com/september-cpi-gasoline-energy-inflation-101426",
-            "fetchedAt": "2026-10-14T08:45:00-05:00"
+            "fetchedAt": "2026-10-14T08:37:00-05:00"
           },
           "matchedTickers": [
             "XOM",
@@ -94,7 +94,7 @@ window.MARKET = {
           "source": {
             "name": "Reuters via US News",
             "url": "https://money.usnews.com/investing/news/articles/2026-10-14/s-p-500-dow-futures-rise-ahead-of-big-bank-results-cpi-data",
-            "fetchedAt": "2026-10-14T08:45:00-05:00"
+            "fetchedAt": "2026-10-14T08:37:00-05:00"
           },
           "matchedTickers": [
             "ICE",
@@ -115,7 +115,7 @@ window.MARKET = {
           "source": {
             "name": "XTB",
             "url": "https://www.xtb.com/en/market-analysis/morning-wrap-wall-street-looks-to-rebound-ahead-of-us-cpi-as-asml-results-weigh-on-sentiment-14-10-2026",
-            "fetchedAt": "2026-10-14T08:45:00-05:00"
+            "fetchedAt": "2026-10-14T08:37:00-05:00"
           },
           "matchedTickers": [
             "ASML",
@@ -139,7 +139,7 @@ window.MARKET = {
           "source": {
             "name": "AP via Newser",
             "url": "https://www.newser.com/article/a2edaf9ec297fb75ff2a4e245063ec08/us-stocks-edge-back-from-their-record-following-the-first-big-batch-of-profit-reports-for-the-summer.html",
-            "fetchedAt": "2026-10-14T08:45:00-05:00"
+            "fetchedAt": "2026-10-14T08:37:00-05:00"
           },
           "matchedTickers": [
             "MU"
