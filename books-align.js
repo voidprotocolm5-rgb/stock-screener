@@ -2,9 +2,9 @@
 window.BOOKS_ALIGN = {
   "id": "books-align",
   "version": "1.0",
-  "generatedAt": "2026-10-07T09:37:51-05:00",
+  "generatedAt": "2026-10-14T08:38:22-05:00",
   "disclaimer": "Research organizer only — not investment advice. Book labels are Finviz-pack proxies; no PEG/FCF/IV/VAP/chart data invented.",
-  "boardTickerCount": 146,
+  "boardTickerCount": 139,
   "books": {
     "lynch": {
       "label": "Lynch",
@@ -109,17 +109,17 @@ window.BOOKS_ALIGN = {
     "Logic of Sports Betting (457c38ae)"
   ],
   "counts": {
-    "lynch": 61,
-    "chan": 38,
-    "mayer100": 22,
-    "booksAlign": 81
+    "lynch": 67,
+    "chan": 33,
+    "mayer100": 18,
+    "booksAlign": 80
   },
   "tickers": {
-    "ACN": {
+    "ADI": {
       "books": [
         {
           "id": "lynch",
-          "why": "Finviz pack: Stalwart Quality, Cyclical Quality → Lynch category screen."
+          "why": "Finviz pack: Stalwart Quality → Lynch category screen."
         }
       ],
       "booksAlign": true
@@ -142,8 +142,12 @@ window.BOOKS_ALIGN = {
       ],
       "booksAlign": true
     },
-    "ANET": {
+    "AMD": {
       "books": [
+        {
+          "id": "lynch",
+          "why": "Finviz pack: Stalwart Quality → Lynch category screen."
+        },
         {
           "id": "chan",
           "why": "Finviz pack: Mid Momentum Pullback → pack-proxy for Chan momentum/mean-reversion process (not a backtested Chan signal)."
@@ -151,16 +155,33 @@ window.BOOKS_ALIGN = {
       ],
       "booksAlign": true
     },
-    "ANF": {
+    "AMZN": {
       "books": [
         {
           "id": "lynch",
-          "why": "Finviz pack: Cyclical Quality → Lynch category screen."
+          "why": "Finviz pack: Lynch Fast Grower GARP, Stalwart Quality → Lynch category screen."
+        },
+        {
+          "id": "chan",
+          "why": "Finviz pack: Mid Momentum Pullback → pack-proxy for Chan momentum/mean-reversion process (not a backtested Chan signal)."
         }
       ],
       "booksAlign": true
     },
-    "APA": {
+    "ANET": {
+      "books": [
+        {
+          "id": "lynch",
+          "why": "Finviz pack: Lynch Fast Grower GARP, Stalwart Quality → Lynch category screen."
+        },
+        {
+          "id": "chan",
+          "why": "Finviz pack: Mid Momentum Pullback → pack-proxy for Chan momentum/mean-reversion process (not a backtested Chan signal)."
+        }
+      ],
+      "booksAlign": true
+    },
+    "AR": {
       "books": [
         {
           "id": "lynch",
@@ -182,21 +203,11 @@ window.BOOKS_ALIGN = {
       ],
       "booksAlign": true
     },
-    "ASC": {
-      "books": [
-        {
-          "id": "mayer100",
-          "why": "Finviz pack: Micro Insider Compounders → Mayer owner-operator / skin-in-the-game theme (Bookey summary source)."
-        }
-      ],
-      "booksAlign": true
-    },
-    "ASML": {
+    "ASX": {
       "books": [
         {
           "id": "lynch",
-          "why": "Finviz pack: Lynch Fast Grower GARP, Stalwart Quality → Lynch category screen. Quality-gate sample (Lynch GARP, 2026-09-30): pass.",
-          "note": "gate:pass"
+          "why": "Finviz pack: Stalwart Quality → Lynch category screen."
         },
         {
           "id": "chan",
@@ -204,7 +215,7 @@ window.BOOKS_ALIGN = {
         },
         {
           "id": "mayer100",
-          "why": "Finviz pack: Hidden Gem Low-Inst + 4 packs → Mayer underfollowed / lesser-known compounder theme (Bookey summary source)."
+          "why": "Finviz pack: Hidden Gem Low-Inst + 3 packs → Mayer underfollowed / lesser-known compounder theme (Bookey summary source)."
         }
       ],
       "booksAlign": true
@@ -222,6 +233,15 @@ window.BOOKS_ALIGN = {
       ],
       "booksAlign": true
     },
+    "AUPH": {
+      "books": [
+        {
+          "id": "lynch",
+          "why": "Finviz pack: Cyclical Quality → Lynch category screen."
+        }
+      ],
+      "booksAlign": true
+    },
     "AVT": {
       "books": [
         {
@@ -231,6 +251,82 @@ window.BOOKS_ALIGN = {
         {
           "id": "chan",
           "why": "Finviz pack: Mid Momentum Pullback → pack-proxy for Chan momentum/mean-reversion process (not a backtested Chan signal)."
+        }
+      ],
+      "booksAlign": true
+    },
+    "BAP": {
+      "books": [
+        {
+          "id": "lynch",
+          "why": "Finviz pack: Lynch Fast Grower GARP → Lynch category screen. Quality-gate sample (Lynch GARP, 2026-09-30): pass.",
+          "note": "gate:pass"
+        }
+      ],
+      "booksAlign": true
+    },
+    "BEKE": {
+      "books": [
+        {
+          "id": "lynch",
+          "why": "Finviz pack: Cyclical Quality → Lynch category screen."
+        },
+        {
+          "id": "mayer100",
+          "why": "Finviz pack: Hidden Gem Low-Inst + 2 packs → Mayer underfollowed / lesser-known compounder theme (Bookey summary source)."
+        }
+      ],
+      "booksAlign": true
+    },
+    "BUD": {
+      "books": [
+        {
+          "id": "lynch",
+          "why": "Finviz pack: Cyclical Quality → Lynch category screen."
+        },
+        {
+          "id": "mayer100",
+          "why": "Finviz pack: Hidden Gem Low-Inst + 2 packs → Mayer underfollowed / lesser-known compounder theme (Bookey summary source)."
+        }
+      ],
+      "booksAlign": true
+    },
+    "CBOE": {
+      "books": [
+        {
+          "id": "chan",
+          "why": "Finviz pack: Mid Momentum Pullback → pack-proxy for Chan momentum/mean-reversion process (not a backtested Chan signal)."
+        }
+      ],
+      "booksAlign": true
+    },
+    "CEG": {
+      "books": [
+        {
+          "id": "lynch",
+          "why": "Finviz pack: Lynch Fast Grower GARP, Stalwart Quality → Lynch category screen."
+        },
+        {
+          "id": "chan",
+          "why": "Finviz pack: Mid Momentum Pullback → pack-proxy for Chan momentum/mean-reversion process (not a backtested Chan signal)."
+        }
+      ],
+      "booksAlign": true
+    },
+    "CHRD": {
+      "books": [
+        {
+          "id": "lynch",
+          "why": "Finviz pack: Cyclical Quality → Lynch category screen."
+        }
+      ],
+      "booksAlign": true
+    },
+    "CIG": {
+      "books": [
+        {
+          "id": "lynch",
+          "why": "Finviz pack: Cyclical Quality → Lynch category screen."
         }
       ],
       "booksAlign": true
@@ -249,24 +345,6 @@ window.BOOKS_ALIGN = {
       ],
       "booksAlign": true
     },
-    "COHR": {
-      "books": [
-        {
-          "id": "chan",
-          "why": "Finviz pack: Mid Momentum Pullback → pack-proxy for Chan momentum/mean-reversion process (not a backtested Chan signal)."
-        }
-      ],
-      "booksAlign": true
-    },
-    "COP": {
-      "books": [
-        {
-          "id": "lynch",
-          "why": "Finviz pack: Cyclical Quality → Lynch category screen."
-        }
-      ],
-      "booksAlign": true
-    },
     "CRSR": {
       "books": [
         {
@@ -276,7 +354,20 @@ window.BOOKS_ALIGN = {
       ],
       "booksAlign": true
     },
-    "CVX": {
+    "CSCO": {
+      "books": [
+        {
+          "id": "lynch",
+          "why": "Finviz pack: Stalwart Quality → Lynch category screen."
+        },
+        {
+          "id": "chan",
+          "why": "Finviz pack: Mid Momentum Pullback → pack-proxy for Chan momentum/mean-reversion process (not a backtested Chan signal)."
+        }
+      ],
+      "booksAlign": true
+    },
+    "CVE": {
       "books": [
         {
           "id": "lynch",
@@ -285,11 +376,33 @@ window.BOOKS_ALIGN = {
       ],
       "booksAlign": true
     },
-    "CYPH": {
+    "CVSA": {
       "books": [
         {
-          "id": "mayer100",
-          "why": "Finviz pack: Micro Insider Compounders → Mayer owner-operator / skin-in-the-game theme (Bookey summary source)."
+          "id": "lynch",
+          "why": "Finviz pack: Lynch Fast Grower GARP → Lynch category screen."
+        }
+      ],
+      "booksAlign": true
+    },
+    "CXW": {
+      "books": [
+        {
+          "id": "lynch",
+          "why": "Finviz pack: Cyclical Quality → Lynch category screen."
+        },
+        {
+          "id": "chan",
+          "why": "Finviz pack: Mid Momentum Pullback → pack-proxy for Chan momentum/mean-reversion process (not a backtested Chan signal)."
+        }
+      ],
+      "booksAlign": true
+    },
+    "DIS": {
+      "books": [
+        {
+          "id": "lynch",
+          "why": "Finviz pack: Cyclical Quality → Lynch category screen."
         }
       ],
       "booksAlign": true
@@ -311,28 +424,6 @@ window.BOOKS_ALIGN = {
       ],
       "booksAlign": true
     },
-    "DSGX": {
-      "books": [
-        {
-          "id": "lynch",
-          "why": "Finviz pack: Lynch Fast Grower GARP, Stalwart Quality → Lynch category screen."
-        },
-        {
-          "id": "chan",
-          "why": "Finviz pack: Mid Momentum Pullback → pack-proxy for Chan momentum/mean-reversion process (not a backtested Chan signal)."
-        }
-      ],
-      "booksAlign": true
-    },
-    "DVN": {
-      "books": [
-        {
-          "id": "lynch",
-          "why": "Finviz pack: Cyclical Quality → Lynch category screen."
-        }
-      ],
-      "booksAlign": true
-    },
     "EDU": {
       "books": [
         {
@@ -350,16 +441,7 @@ window.BOOKS_ALIGN = {
       ],
       "booksAlign": true
     },
-    "ELMT": {
-      "books": [
-        {
-          "id": "mayer100",
-          "why": "Finviz pack: Micro Insider Compounders → Mayer owner-operator / skin-in-the-game theme (Bookey summary source)."
-        }
-      ],
-      "booksAlign": true
-    },
-    "EME": {
+    "EG": {
       "books": [
         {
           "id": "lynch",
@@ -368,16 +450,11 @@ window.BOOKS_ALIGN = {
       ],
       "booksAlign": true
     },
-    "ERO": {
+    "ELMT": {
       "books": [
         {
-          "id": "lynch",
-          "why": "Finviz pack: Lynch Fast Grower GARP, Stalwart Quality, Cyclical Quality → Lynch category screen. Quality-gate sample (Lynch GARP, 2026-09-30): pass.",
-          "note": "gate:pass"
-        },
-        {
-          "id": "chan",
-          "why": "Finviz pack: Mid Momentum Pullback → pack-proxy for Chan momentum/mean-reversion process (not a backtested Chan signal)."
+          "id": "mayer100",
+          "why": "Finviz pack: Micro Insider Compounders → Mayer owner-operator / skin-in-the-game theme (Bookey summary source)."
         }
       ],
       "booksAlign": true
@@ -391,81 +468,25 @@ window.BOOKS_ALIGN = {
       ],
       "booksAlign": true
     },
-    "EXEL": {
-      "books": [
-        {
-          "id": "lynch",
-          "why": "Finviz pack: Lynch Fast Grower GARP, Stalwart Quality, Cyclical Quality → Lynch category screen. Quality-gate sample (Lynch GARP, 2026-09-30): pass.",
-          "note": "gate:pass"
-        },
-        {
-          "id": "chan",
-          "why": "Finviz pack: Mid Momentum Pullback → pack-proxy for Chan momentum/mean-reversion process (not a backtested Chan signal)."
-        }
-      ],
-      "booksAlign": true
-    },
     "EXPD": {
       "books": [
         {
-          "id": "lynch",
-          "why": "Finviz pack: Stalwart Quality → Lynch category screen."
-        },
-        {
           "id": "chan",
           "why": "Finviz pack: Mid Momentum Pullback → pack-proxy for Chan momentum/mean-reversion process (not a backtested Chan signal)."
         }
       ],
       "booksAlign": true
     },
-    "FCX": {
+    "EZPW": {
       "books": [
         {
           "id": "lynch",
-          "why": "Finviz pack: Lynch Fast Grower GARP, Stalwart Quality → Lynch category screen. Quality-gate sample (Lynch GARP, 2026-09-30): pass.",
-          "note": "gate:pass"
-        },
-        {
-          "id": "chan",
-          "why": "Finviz pack: Mid Momentum Pullback → pack-proxy for Chan momentum/mean-reversion process (not a backtested Chan signal)."
+          "why": "Finviz pack: Cyclical Quality → Lynch category screen."
         }
       ],
       "booksAlign": true
     },
-    "FIX": {
-      "books": [
-        {
-          "id": "lynch",
-          "why": "Finviz pack: Lynch Fast Grower GARP → Lynch category screen. Quality-gate sample (Lynch GARP, 2026-09-30): pass.",
-          "note": "gate:pass"
-        }
-      ],
-      "booksAlign": true
-    },
-    "GDYN": {
-      "books": [
-        {
-          "id": "mayer100",
-          "why": "Finviz pack: Micro Insider Compounders → Mayer owner-operator / skin-in-the-game theme (Bookey summary source)."
-        }
-      ],
-      "booksAlign": true
-    },
-    "GLW": {
-      "books": [
-        {
-          "id": "lynch",
-          "why": "Finviz pack: Lynch Fast Grower GARP, Stalwart Quality → Lynch category screen. Quality-gate sample (Lynch GARP, 2026-09-30): pass.",
-          "note": "gate:pass"
-        },
-        {
-          "id": "chan",
-          "why": "Finviz pack: Mid Momentum Pullback → pack-proxy for Chan momentum/mean-reversion process (not a backtested Chan signal)."
-        }
-      ],
-      "booksAlign": true
-    },
-    "GTES": {
+    "FDS": {
       "books": [
         {
           "id": "lynch",
@@ -474,6 +495,84 @@ window.BOOKS_ALIGN = {
         {
           "id": "chan",
           "why": "Finviz pack: Mid Momentum Pullback → pack-proxy for Chan momentum/mean-reversion process (not a backtested Chan signal)."
+        }
+      ],
+      "booksAlign": true
+    },
+    "GMAB": {
+      "books": [
+        {
+          "id": "lynch",
+          "why": "Finviz pack: Stalwart Quality → Lynch category screen."
+        },
+        {
+          "id": "chan",
+          "why": "Finviz pack: Mid Momentum Pullback → pack-proxy for Chan momentum/mean-reversion process (not a backtested Chan signal)."
+        },
+        {
+          "id": "mayer100",
+          "why": "Finviz pack: Hidden Gem Low-Inst + 3 packs → Mayer underfollowed / lesser-known compounder theme (Bookey summary source)."
+        }
+      ],
+      "booksAlign": true
+    },
+    "HOG": {
+      "books": [
+        {
+          "id": "lynch",
+          "why": "Finviz pack: Cyclical Quality → Lynch category screen."
+        }
+      ],
+      "booksAlign": true
+    },
+    "HPE": {
+      "books": [
+        {
+          "id": "lynch",
+          "why": "Finviz pack: Stalwart Quality, Cyclical Quality → Lynch category screen."
+        },
+        {
+          "id": "chan",
+          "why": "Finviz pack: Mid Momentum Pullback → pack-proxy for Chan momentum/mean-reversion process (not a backtested Chan signal)."
+        }
+      ],
+      "booksAlign": true
+    },
+    "ICE": {
+      "books": [
+        {
+          "id": "lynch",
+          "why": "Finviz pack: Stalwart Quality, Cyclical Quality → Lynch category screen."
+        },
+        {
+          "id": "chan",
+          "why": "Finviz pack: Mid Momentum Pullback → pack-proxy for Chan momentum/mean-reversion process (not a backtested Chan signal)."
+        }
+      ],
+      "booksAlign": true
+    },
+    "IMO": {
+      "books": [
+        {
+          "id": "lynch",
+          "why": "Finviz pack: Cyclical Quality → Lynch category screen."
+        },
+        {
+          "id": "mayer100",
+          "why": "Finviz pack: Hidden Gem Low-Inst + 2 packs → Mayer underfollowed / lesser-known compounder theme (Bookey summary source)."
+        }
+      ],
+      "booksAlign": true
+    },
+    "INGM": {
+      "books": [
+        {
+          "id": "lynch",
+          "why": "Finviz pack: Cyclical Quality → Lynch category screen."
+        },
+        {
+          "id": "mayer100",
+          "why": "Finviz pack: Hidden Gem Low-Inst + 2 packs → Mayer underfollowed / lesser-known compounder theme (Bookey summary source)."
         }
       ],
       "booksAlign": true
@@ -487,7 +586,33 @@ window.BOOKS_ALIGN = {
       ],
       "booksAlign": true
     },
-    "KEX": {
+    "JCI": {
+      "books": [
+        {
+          "id": "lynch",
+          "why": "Finviz pack: Stalwart Quality → Lynch category screen."
+        },
+        {
+          "id": "chan",
+          "why": "Finviz pack: Mid Momentum Pullback → pack-proxy for Chan momentum/mean-reversion process (not a backtested Chan signal)."
+        }
+      ],
+      "booksAlign": true
+    },
+    "KEYS": {
+      "books": [
+        {
+          "id": "lynch",
+          "why": "Finviz pack: Stalwart Quality → Lynch category screen."
+        },
+        {
+          "id": "chan",
+          "why": "Finviz pack: Mid Momentum Pullback → pack-proxy for Chan momentum/mean-reversion process (not a backtested Chan signal)."
+        }
+      ],
+      "booksAlign": true
+    },
+    "LOGI": {
       "books": [
         {
           "id": "lynch",
@@ -496,30 +621,7 @@ window.BOOKS_ALIGN = {
       ],
       "booksAlign": true
     },
-    "KLAC": {
-      "books": [
-        {
-          "id": "lynch",
-          "why": "Finviz pack: Lynch Fast Grower GARP, Stalwart Quality → Lynch category screen. Quality-gate sample (Lynch GARP, 2026-09-30): pass.",
-          "note": "gate:pass"
-        },
-        {
-          "id": "chan",
-          "why": "Finviz pack: Mid Momentum Pullback → pack-proxy for Chan momentum/mean-reversion process (not a backtested Chan signal)."
-        }
-      ],
-      "booksAlign": true
-    },
-    "KN": {
-      "books": [
-        {
-          "id": "chan",
-          "why": "Finviz pack: Mid Momentum Pullback → pack-proxy for Chan momentum/mean-reversion process (not a backtested Chan signal)."
-        }
-      ],
-      "booksAlign": true
-    },
-    "LAUR": {
+    "LPG": {
       "books": [
         {
           "id": "lynch",
@@ -528,28 +630,20 @@ window.BOOKS_ALIGN = {
       ],
       "booksAlign": true
     },
-    "LRCX": {
+    "MD": {
       "books": [
         {
           "id": "lynch",
-          "why": "Finviz pack: Lynch Fast Grower GARP, Stalwart Quality → Lynch category screen."
-        },
-        {
-          "id": "chan",
-          "why": "Finviz pack: Mid Momentum Pullback → pack-proxy for Chan momentum/mean-reversion process (not a backtested Chan signal)."
+          "why": "Finviz pack: Cyclical Quality → Lynch category screen."
         }
       ],
       "booksAlign": true
     },
-    "META": {
+    "MDLZ": {
       "books": [
         {
           "id": "lynch",
-          "why": "Finviz pack: Lynch Fast Grower GARP, Stalwart Quality → Lynch category screen."
-        },
-        {
-          "id": "chan",
-          "why": "Finviz pack: Mid Momentum Pullback → pack-proxy for Chan momentum/mean-reversion process (not a backtested Chan signal)."
+          "why": "Finviz pack: Cyclical Quality → Lynch category screen."
         }
       ],
       "booksAlign": true
@@ -563,15 +657,11 @@ window.BOOKS_ALIGN = {
       ],
       "booksAlign": true
     },
-    "MU": {
+    "MTDR": {
       "books": [
         {
           "id": "lynch",
-          "why": "Finviz pack: Lynch Fast Grower GARP, Stalwart Quality, Cyclical Quality → Lynch category screen."
-        },
-        {
-          "id": "chan",
-          "why": "Finviz pack: Mid Momentum Pullback → pack-proxy for Chan momentum/mean-reversion process (not a backtested Chan signal)."
+          "why": "Finviz pack: Cyclical Quality → Lynch category screen."
         }
       ],
       "booksAlign": true
@@ -616,6 +706,37 @@ window.BOOKS_ALIGN = {
       ],
       "booksAlign": true
     },
+    "NTES": {
+      "books": [
+        {
+          "id": "lynch",
+          "why": "Finviz pack: Lynch Fast Grower GARP, Stalwart Quality, Cyclical Quality → Lynch category screen."
+        },
+        {
+          "id": "chan",
+          "why": "Finviz pack: Mid Momentum Pullback → pack-proxy for Chan momentum/mean-reversion process (not a backtested Chan signal)."
+        },
+        {
+          "id": "mayer100",
+          "why": "Finviz pack: Hidden Gem Low-Inst + 5 packs → Mayer underfollowed / lesser-known compounder theme (Bookey summary source)."
+        }
+      ],
+      "booksAlign": true
+    },
+    "NVDA": {
+      "books": [
+        {
+          "id": "lynch",
+          "why": "Finviz pack: Lynch Fast Grower GARP, Stalwart Quality → Lynch category screen. Quality-gate sample (Lynch GARP, 2026-09-30): pass.",
+          "note": "gate:pass"
+        },
+        {
+          "id": "chan",
+          "why": "Finviz pack: Mid Momentum Pullback → pack-proxy for Chan momentum/mean-reversion process (not a backtested Chan signal)."
+        }
+      ],
+      "booksAlign": true
+    },
     "NVGS": {
       "books": [
         {
@@ -625,11 +746,20 @@ window.BOOKS_ALIGN = {
       ],
       "booksAlign": true
     },
-    "ONTO": {
+    "OBE": {
       "books": [
         {
-          "id": "chan",
-          "why": "Finviz pack: Mid Momentum Pullback → pack-proxy for Chan momentum/mean-reversion process (not a backtested Chan signal)."
+          "id": "mayer100",
+          "why": "Finviz pack: Micro Insider Compounders → Mayer owner-operator / skin-in-the-game theme (Bookey summary source)."
+        }
+      ],
+      "booksAlign": true
+    },
+    "PAA": {
+      "books": [
+        {
+          "id": "lynch",
+          "why": "Finviz pack: Cyclical Quality → Lynch category screen."
         }
       ],
       "booksAlign": true
@@ -637,29 +767,26 @@ window.BOOKS_ALIGN = {
     "PGNY": {
       "books": [
         {
-          "id": "lynch",
-          "why": "Finviz pack: Stalwart Quality → Lynch category screen."
-        },
-        {
           "id": "chan",
           "why": "Finviz pack: Mid Momentum Pullback → pack-proxy for Chan momentum/mean-reversion process (not a backtested Chan signal)."
         }
       ],
       "booksAlign": true
     },
-    "PSO": {
+    "PLGO": {
       "books": [
         {
           "id": "lynch",
-          "why": "Finviz pack: Cyclical Quality → Lynch category screen."
-        },
+          "why": "Finviz pack: Lynch Fast Grower GARP → Lynch category screen."
+        }
+      ],
+      "booksAlign": true
+    },
+    "PLMR": {
+      "books": [
         {
-          "id": "chan",
-          "why": "Finviz pack: Mid Momentum Pullback → pack-proxy for Chan momentum/mean-reversion process (not a backtested Chan signal)."
-        },
-        {
-          "id": "mayer100",
-          "why": "Finviz pack: Hidden Gem Low-Inst + 3 packs → Mayer underfollowed / lesser-known compounder theme (Bookey summary source)."
+          "id": "lynch",
+          "why": "Finviz pack: Lynch Fast Grower GARP → Lynch category screen."
         }
       ],
       "booksAlign": true
@@ -696,21 +823,11 @@ window.BOOKS_ALIGN = {
       ],
       "booksAlign": true
     },
-    "RGA": {
+    "RS": {
       "books": [
         {
           "id": "lynch",
-          "why": "Finviz pack: Lynch Fast Grower GARP → Lynch category screen. Quality-gate sample (Lynch GARP, 2026-09-30): pass.",
-          "note": "gate:pass"
-        }
-      ],
-      "booksAlign": true
-    },
-    "RMD": {
-      "books": [
-        {
-          "id": "lynch",
-          "why": "Finviz pack: Stalwart Quality, Cyclical Quality → Lynch category screen."
+          "why": "Finviz pack: Lynch Fast Grower GARP → Lynch category screen."
         }
       ],
       "booksAlign": true
@@ -719,91 +836,7 @@ window.BOOKS_ALIGN = {
       "books": [
         {
           "id": "lynch",
-          "why": "Finviz pack: Stalwart Quality, Cyclical Quality → Lynch category screen."
-        },
-        {
-          "id": "chan",
-          "why": "Finviz pack: Mid Momentum Pullback → pack-proxy for Chan momentum/mean-reversion process (not a backtested Chan signal)."
-        }
-      ],
-      "booksAlign": true
-    },
-    "SB": {
-      "books": [
-        {
-          "id": "mayer100",
-          "why": "Finviz pack: Micro Insider Compounders → Mayer owner-operator / skin-in-the-game theme (Bookey summary source)."
-        }
-      ],
-      "booksAlign": true
-    },
-    "SHEL": {
-      "books": [
-        {
-          "id": "lynch",
-          "why": "Finviz pack: Cyclical Quality → Lynch category screen."
-        },
-        {
-          "id": "mayer100",
-          "why": "Finviz pack: Hidden Gem Low-Inst + 2 packs → Mayer underfollowed / lesser-known compounder theme (Bookey summary source)."
-        }
-      ],
-      "booksAlign": true
-    },
-    "SHIP": {
-      "books": [
-        {
-          "id": "mayer100",
-          "why": "Finviz pack: Micro Insider Compounders → Mayer owner-operator / skin-in-the-game theme (Bookey summary source)."
-        }
-      ],
-      "booksAlign": true
-    },
-    "SHOO": {
-      "books": [
-        {
-          "id": "lynch",
-          "why": "Finviz pack: Cyclical Quality → Lynch category screen."
-        }
-      ],
-      "booksAlign": true
-    },
-    "SIG": {
-      "books": [
-        {
-          "id": "lynch",
-          "why": "Finviz pack: Cyclical Quality → Lynch category screen."
-        }
-      ],
-      "booksAlign": true
-    },
-    "SIMO": {
-      "books": [
-        {
-          "id": "lynch",
           "why": "Finviz pack: Stalwart Quality → Lynch category screen."
-        },
-        {
-          "id": "chan",
-          "why": "Finviz pack: Mid Momentum Pullback → pack-proxy for Chan momentum/mean-reversion process (not a backtested Chan signal)."
-        }
-      ],
-      "booksAlign": true
-    },
-    "SKHY": {
-      "books": [
-        {
-          "id": "lynch",
-          "why": "Finviz pack: Lynch Fast Grower GARP, Stalwart Quality, Cyclical Quality → Lynch category screen. Quality-gate sample (Lynch GARP, 2026-09-30): pass.",
-          "note": "gate:pass"
-        },
-        {
-          "id": "chan",
-          "why": "Finviz pack: Mid Momentum Pullback → pack-proxy for Chan momentum/mean-reversion process (not a backtested Chan signal)."
-        },
-        {
-          "id": "mayer100",
-          "why": "Finviz pack: Hidden Gem Low-Inst + 5 packs → Mayer underfollowed / lesser-known compounder theme (Bookey summary source)."
         }
       ],
       "booksAlign": true
@@ -829,35 +862,13 @@ window.BOOKS_ALIGN = {
     "SPSC": {
       "books": [
         {
-          "id": "lynch",
-          "why": "Finviz pack: Cyclical Quality → Lynch category screen."
-        },
-        {
           "id": "chan",
           "why": "Finviz pack: Mid Momentum Pullback → pack-proxy for Chan momentum/mean-reversion process (not a backtested Chan signal)."
         }
       ],
       "booksAlign": true
     },
-    "SPT": {
-      "books": [
-        {
-          "id": "mayer100",
-          "why": "Finviz pack: Micro Insider Compounders → Mayer owner-operator / skin-in-the-game theme (Bookey summary source)."
-        }
-      ],
-      "booksAlign": true
-    },
-    "STNG": {
-      "books": [
-        {
-          "id": "lynch",
-          "why": "Finviz pack: Cyclical Quality → Lynch category screen."
-        }
-      ],
-      "booksAlign": true
-    },
-    "SU": {
+    "TDC": {
       "books": [
         {
           "id": "lynch",
@@ -875,43 +886,24 @@ window.BOOKS_ALIGN = {
       ],
       "booksAlign": true
     },
-    "TS": {
+    "TSM": {
       "books": [
         {
           "id": "lynch",
-          "why": "Finviz pack: Cyclical Quality → Lynch category screen."
+          "why": "Finviz pack: Lynch Fast Grower GARP, Stalwart Quality → Lynch category screen."
+        },
+        {
+          "id": "chan",
+          "why": "Finviz pack: Mid Momentum Pullback → pack-proxy for Chan momentum/mean-reversion process (not a backtested Chan signal)."
         },
         {
           "id": "mayer100",
-          "why": "Finviz pack: Hidden Gem Low-Inst + 2 packs → Mayer underfollowed / lesser-known compounder theme (Bookey summary source)."
+          "why": "Finviz pack: Hidden Gem Low-Inst + 4 packs → Mayer underfollowed / lesser-known compounder theme (Bookey summary source)."
         }
       ],
       "booksAlign": true
     },
-    "TSEM": {
-      "books": [
-        {
-          "id": "chan",
-          "why": "Finviz pack: Mid Momentum Pullback → pack-proxy for Chan momentum/mean-reversion process (not a backtested Chan signal)."
-        }
-      ],
-      "booksAlign": true
-    },
-    "TT": {
-      "books": [
-        {
-          "id": "lynch",
-          "why": "Finviz pack: Lynch Fast Grower GARP, Stalwart Quality → Lynch category screen. Quality-gate sample (Lynch GARP, 2026-09-30): pass.",
-          "note": "gate:pass"
-        },
-        {
-          "id": "chan",
-          "why": "Finviz pack: Mid Momentum Pullback → pack-proxy for Chan momentum/mean-reversion process (not a backtested Chan signal)."
-        }
-      ],
-      "booksAlign": true
-    },
-    "TTC": {
+    "TTE": {
       "books": [
         {
           "id": "lynch",
@@ -933,6 +925,15 @@ window.BOOKS_ALIGN = {
       ],
       "booksAlign": true
     },
+    "TYL": {
+      "books": [
+        {
+          "id": "chan",
+          "why": "Finviz pack: Mid Momentum Pullback → pack-proxy for Chan momentum/mean-reversion process (not a backtested Chan signal)."
+        }
+      ],
+      "booksAlign": true
+    },
     "UMC": {
       "books": [
         {
@@ -950,20 +951,16 @@ window.BOOKS_ALIGN = {
       ],
       "booksAlign": true
     },
-    "URBN": {
+    "UTHR": {
       "books": [
         {
           "id": "lynch",
-          "why": "Finviz pack: Lynch Fast Grower GARP, Stalwart Quality, Cyclical Quality → Lynch category screen."
-        },
-        {
-          "id": "chan",
-          "why": "Finviz pack: Mid Momentum Pullback → pack-proxy for Chan momentum/mean-reversion process (not a backtested Chan signal)."
+          "why": "Finviz pack: Cyclical Quality → Lynch category screen."
         }
       ],
       "booksAlign": true
     },
-    "V": {
+    "VICR": {
       "books": [
         {
           "id": "lynch",
@@ -976,38 +973,16 @@ window.BOOKS_ALIGN = {
       ],
       "booksAlign": true
     },
-    "VCTR": {
+    "WDS": {
       "books": [
         {
           "id": "lynch",
-          "why": "Finviz pack: Stalwart Quality, Cyclical Quality → Lynch category screen."
-        },
-        {
-          "id": "chan",
-          "why": "Finviz pack: Mid Momentum Pullback → pack-proxy for Chan momentum/mean-reversion process (not a backtested Chan signal)."
+          "why": "Finviz pack: Cyclical Quality → Lynch category screen."
         }
       ],
       "booksAlign": true
     },
-    "VPG": {
-      "books": [
-        {
-          "id": "mayer100",
-          "why": "Finviz pack: Micro Insider Compounders → Mayer owner-operator / skin-in-the-game theme (Bookey summary source)."
-        }
-      ],
-      "booksAlign": true
-    },
-    "VTEX": {
-      "books": [
-        {
-          "id": "mayer100",
-          "why": "Finviz pack: Micro Insider Compounders → Mayer owner-operator / skin-in-the-game theme (Bookey summary source)."
-        }
-      ],
-      "booksAlign": true
-    },
-    "XOM": {
+    "YPF": {
       "books": [
         {
           "id": "lynch",
