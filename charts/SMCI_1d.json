@@ -1,1 +1,1 @@
-{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"SMCI","range":"1d"}
+{"ticker":"SMCI","name":"SMCI","currency":"USD","regularMarketPrice":37.23820114135742,"change":-1.8317988586425784,"changePct":-4.688504885187045,"range":"1d","interval":"5m","bars":[{"t":1791984600,"o":37.970001220703125,"h":38.02000045776367,"l":37.20000076293945,"c":37.36000061035156,"v":2289042},{"t":1791984900,"o":37.31999969482422,"h":37.36000061035156,"l":37.04999923706055,"c":37.23820114135742,"v":603640}]}

@@ -1,1 +1,1 @@
-{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"LOGI","range":"1d"}
+{"ticker":"LOGI","name":"LOGI","currency":"USD","regularMarketPrice":102.44499969482422,"change":-0.32500030517577727,"changePct":-0.31624044485333974,"range":"1d","interval":"5m","bars":[{"t":1791984600,"o":102.88999938964844,"h":103.04000091552734,"l":102.34500122070312,"c":102.44000244140625,"v":27188},{"t":1791984900,"o":102.41999816894531,"h":102.44499969482422,"l":102.18000030517578,"c":102.44499969482422,"v":4380}]}

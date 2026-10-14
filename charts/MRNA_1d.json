@@ -1,1 +1,1 @@
-{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"MRNA","range":"1d"}
+{"ticker":"MRNA","name":"MRNA","currency":"USD","regularMarketPrice":221.13999938964844,"change":4.8899993896484375,"changePct":2.261271394057081,"range":"1d","interval":"5m","bars":[{"t":1791984600,"o":216.69000244140625,"h":220.22000122070312,"l":213.03050231933594,"c":219.46499633789062,"v":711016},{"t":1791984900,"o":219.3300018310547,"h":222.47999572753906,"l":219.0301055908203,"c":221.13999938964844,"v":539040}]}

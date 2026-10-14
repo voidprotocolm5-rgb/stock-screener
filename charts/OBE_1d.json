@@ -1,1 +1,1 @@
-{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"OBE","range":"1d"}
+{"ticker":"OBE","name":"OBE","currency":"USD","regularMarketPrice":11.65999984741211,"change":-0.040000152587889914,"changePct":-0.34188164605034116,"range":"1d","interval":"5m","bars":[{"t":1791984600,"o":11.680000305175781,"h":11.90999984741211,"l":11.680000305175781,"c":11.795000076293945,"v":20970},{"t":1791984900,"o":11.800000190734863,"h":11.800000190734863,"l":11.65999984741211,"c":11.65999984741211,"v":5949}]}

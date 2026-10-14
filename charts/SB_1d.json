@@ -1,1 +1,1 @@
-{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"SB","range":"1d"}
+{"ticker":"SB","name":"SB","currency":"USD","regularMarketPrice":8.364999771118164,"change":-0.32500022888183544,"changePct":-3.7399335889739405,"range":"1d","interval":"5m","bars":[{"t":1791984600,"o":8.550000190734863,"h":8.579999923706055,"l":8.399999618530273,"c":8.444999694824219,"v":35025},{"t":1791984900,"o":8.420000076293945,"h":8.420000076293945,"l":8.359999656677246,"c":8.364999771118164,"v":23140}]}

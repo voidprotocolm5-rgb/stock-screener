@@ -1,1 +1,1 @@
-{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"RS","range":"1d"}
+{"ticker":"RS","name":"RS","currency":"USD","regularMarketPrice":400.885009765625,"change":-3.1749902343750023,"changePct":-0.7857719730671193,"range":"1d","interval":"5m","bars":[{"t":1791984600,"o":398.79998779296875,"h":404.19000244140625,"l":398.79998779296875,"c":402.3299865722656,"v":807},{"t":1791984900,"o":401.82501220703125,"h":402.30499267578125,"l":400.6300964355469,"c":400.885009765625,"v":2561}]}

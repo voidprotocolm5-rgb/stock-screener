@@ -1,1 +1,1 @@
-{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"PAA","range":"1d"}
+{"ticker":"PAA","name":"PAA","currency":"USD","regularMarketPrice":24.950000762939453,"change":0.03000076293945142,"changePct":0.12038829429956428,"range":"1d","interval":"5m","bars":[{"t":1791984600,"o":24.997600555419922,"h":25.110000610351562,"l":24.989999771118164,"c":25.020000457763672,"v":46922},{"t":1791984900,"o":25.0,"h":25.040000915527344,"l":24.950000762939453,"c":24.950000762939453,"v":25532}]}

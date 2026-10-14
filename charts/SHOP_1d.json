@@ -1,1 +1,1 @@
-{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"SHOP","range":"1d"}
+{"ticker":"SHOP","name":"SHOP","currency":"USD","regularMarketPrice":177.375,"change":0.8549999999999898,"changePct":0.48436437797416143,"range":"1d","interval":"5m","bars":[{"t":1791984600,"o":174.5500030517578,"h":177.44000244140625,"l":174.16000366210938,"c":177.3699951171875,"v":285685},{"t":1791984900,"o":177.22000122070312,"h":177.5749969482422,"l":176.80999755859375,"c":177.375,"v":81850}]}

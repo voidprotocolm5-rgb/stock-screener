@@ -1,1 +1,1 @@
-{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"NOW","range":"1d"}
+{"ticker":"NOW","name":"NOW","currency":"USD","regularMarketPrice":142.4199981689453,"change":3.9799981689453148,"changePct":2.874890327178066,"range":"1d","interval":"5m","bars":[{"t":1791984600,"o":139.49000549316406,"h":141.39999389648438,"l":139.34500122070312,"c":141.27670288085938,"v":954051},{"t":1791984900,"o":141.11000061035156,"h":142.4199981689453,"l":140.8699951171875,"c":142.4199981689453,"v":276475}]}

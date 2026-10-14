@@ -1,1 +1,1 @@
-{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"MUR","range":"1d"}
+{"ticker":"MUR","name":"MUR","currency":"USD","regularMarketPrice":39.224998474121094,"change":-0.6550015258789088,"changePct":-1.642431108021336,"range":"1d","interval":"5m","bars":[{"t":1791984600,"o":39.46500015258789,"h":39.63999938964844,"l":39.46500015258789,"c":39.53499984741211,"v":4646},{"t":1791984900,"o":39.53499984741211,"h":39.53499984741211,"l":39.20500183105469,"c":39.224998474121094,"v":15970}]}

@@ -1,1 +1,1 @@
-{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"PLGO","range":"1d"}
+{"ticker":"PLGO","name":"PLGO","currency":"USD","regularMarketPrice":24.514999389648438,"change":-0.14500061035156264,"changePct":-0.5879992309471316,"range":"1d","interval":"5m","bars":[{"t":1791984600,"o":24.56999969482422,"h":24.56999969482422,"l":24.5,"c":24.55500030517578,"v":923},{"t":1791984900,"o":24.514999389648438,"h":24.514999389648438,"l":24.514999389648438,"c":24.514999389648438,"v":0}]}

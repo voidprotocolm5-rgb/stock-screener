@@ -1,1 +1,1 @@
-{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"SG","range":"1d"}
+{"ticker":"SG","name":"SG","currency":"USD","regularMarketPrice":10.055000305175781,"change":0.15350030517578084,"changePct":1.5502732432033615,"range":"1d","interval":"5m","bars":[{"t":1791984600,"o":9.90999984741211,"h":10.045000076293945,"l":9.819999694824219,"c":9.880000114440918,"v":138192},{"t":1791984900,"o":9.880000114440918,"h":10.100000381469727,"l":9.880000114440918,"c":10.055000305175781,"v":50749}]}

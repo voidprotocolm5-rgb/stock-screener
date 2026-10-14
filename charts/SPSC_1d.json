@@ -1,1 +1,1 @@
-{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"SPSC","range":"1d"}
+{"ticker":"SPSC","name":"SPSC","currency":"USD","regularMarketPrice":84.20999908447266,"change":0.5199966430664062,"changePct":0.6213366326885588,"range":"1d","interval":"5m","bars":[{"t":1791984600,"o":82.91000366210938,"h":83.8550033569336,"l":82.66010284423828,"c":83.8550033569336,"v":4904},{"t":1791984900,"o":83.9800033569336,"h":84.20999908447266,"l":83.9800033569336,"c":84.20999908447266,"v":1718}]}

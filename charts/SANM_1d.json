@@ -1,1 +1,1 @@
-{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"SANM","range":"1d"}
+{"ticker":"SANM","name":"SANM","currency":"USD","regularMarketPrice":205.77499389648438,"change":-6.0,"changePct":-2.8331956902016486,"range":"1d","interval":"5m","bars":[{"t":1791984600,"o":206.5800018310547,"h":206.9199981689453,"l":206.5800018310547,"c":206.9199981689453,"v":2270},{"t":1791984900,"o":206.97999572753906,"h":206.97999572753906,"l":204.75999450683594,"c":205.77499389648438,"v":6691}]}

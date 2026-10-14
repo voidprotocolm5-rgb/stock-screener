@@ -1,1 +1,1 @@
-{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"PGNY","range":"1d"}
+{"ticker":"PGNY","name":"PGNY","currency":"USD","regularMarketPrice":27.945999145507812,"change":0.5559991455078119,"changePct":2.029934813829178,"range":"1d","interval":"5m","bars":[{"t":1791984600,"o":27.309999465942383,"h":27.940000534057617,"l":27.260000228881836,"c":27.8700008392334,"v":56419},{"t":1791984900,"o":27.860000610351562,"h":27.979999542236328,"l":27.860000610351562,"c":27.945999145507812,"v":1845}]}

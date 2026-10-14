@@ -1,1 +1,1 @@
-{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"MTDR","range":"1d"}
+{"ticker":"MTDR","name":"MTDR","currency":"USD","regularMarketPrice":55.75,"change":-0.13000000000000256,"changePct":-0.23264137437366242,"range":"1d","interval":"5m","bars":[{"t":1791984600,"o":56.13999938964844,"h":56.38999938964844,"l":56.13999938964844,"c":56.255001068115234,"v":17629},{"t":1791984900,"o":56.189998626708984,"h":56.19499969482422,"l":55.75,"c":55.75,"v":6167}]}

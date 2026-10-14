@@ -1,1 +1,1 @@
-{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"NICE","range":"1d"}
+{"ticker":"NICE","name":"NICE","currency":"USD","regularMarketPrice":113.87999725341797,"change":-1.070002746582034,"changePct":-0.9308418848038574,"range":"1d","interval":"5m","bars":[{"t":1791984600,"o":113.94499969482422,"h":114.29000091552734,"l":113.56999969482422,"c":114.29000091552734,"v":20370},{"t":1791984900,"o":114.08999633789062,"h":114.31500244140625,"l":113.87999725341797,"c":113.87999725341797,"v":7481}]}

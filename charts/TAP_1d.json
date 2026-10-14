@@ -1,1 +1,1 @@
-{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"TAP","range":"1d"}
+{"ticker":"TAP","name":"TAP","currency":"USD","regularMarketPrice":38.250099182128906,"change":-0.304901123046875,"changePct":-0.7908212180870968,"range":"1d","interval":"5m","bars":[{"t":1791984600,"o":38.55500030517578,"h":38.630001068115234,"l":38.380001068115234,"c":38.400001525878906,"v":12862},{"t":1791984900,"o":38.43000030517578,"h":38.45500183105469,"l":38.250099182128906,"c":38.250099182128906,"v":10112}]}

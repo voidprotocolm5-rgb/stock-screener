@@ -1,1 +1,1 @@
-{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"MDLZ","range":"1d"}
+{"ticker":"MDLZ","name":"MDLZ","currency":"USD","regularMarketPrice":62.20500183105469,"change":0.7050018310546875,"changePct":1.1463444407393293,"range":"1d","interval":"5m","bars":[{"t":1791984600,"o":62.119998931884766,"h":62.439998626708984,"l":62.09000015258789,"c":62.32500076293945,"v":192116},{"t":1791984900,"o":62.34000015258789,"h":62.41999816894531,"l":62.20500183105469,"c":62.20500183105469,"v":39321}]}

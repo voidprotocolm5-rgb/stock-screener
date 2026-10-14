@@ -1,1 +1,1 @@
-{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"ORCL","range":"1d"}
+{"ticker":"ORCL","name":"ORCL","currency":"USD","regularMarketPrice":134.60000610351562,"change":-8.500093896484373,"changePct":-5.939963631391154,"range":"1d","interval":"5m","bars":[{"t":1791984600,"o":140.0,"h":141.0399932861328,"l":135.960205078125,"c":136.07000732421875,"v":2618133},{"t":1791984900,"o":136.0500030517578,"h":136.1300048828125,"l":133.7550048828125,"c":134.55999755859375,"v":2014983}]}
