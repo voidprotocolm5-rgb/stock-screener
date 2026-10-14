@@ -417,6 +417,8 @@
     const tsmSrc = (boardRow.sources || []).find((x) => x.id === "tsm");
     if (ttfSrc) html += `<span class="source-badge source-ttf" title="Trading Fraternity">TTF</span>`;
     if (tsmSrc) html += `<span class="source-badge source-tsm" title="Stock Market Live">TSM</span>`;
+    const ttgSrc0 = (boardRow.sources || []).find((x) => x.id === "ttg");
+    if (ttgSrc0) html += `<a class="source-badge source-ttg" href="${escapeAttr((ttgSrc0.videos && ttgSrc0.videos[0] && ttgSrc0.videos[0].url) || "https://www.youtube.com/@cfromhertz33")}" target="_blank" rel="noopener noreferrer" title="${escapeAttr("Tribeca Trade Group (Christian Fromhertz) — " + (ttgSrc0.stance || ""))}">TTG</a>`;
     for (const b of boardRow.books || []) {
       const meta = BOOK_META[b.id] || {};
       html += `<span class="book-badge book-${escapeAttr(b.id)}">${escapeHtml(meta.label || b.id)}</span>`;
@@ -625,6 +627,8 @@
   if (ttfEl) ttfEl.textContent = String(data.ttfCount ?? data.stocks.filter((s) => s.hasTtf).length);
   const tsmEl = $("#metric-tsm");
   if (tsmEl) tsmEl.textContent = String(data.tsmCount ?? data.stocks.filter((s) => s.hasTsm).length);
+  const ttgEl = $("#metric-ttg");
+  if (ttgEl) ttgEl.textContent = String(data.ttgCount ?? data.stocks.filter((s) => s.hasTtg).length);
 
   // Pack chips (v2.1 six) + Finviz screener links
   const packChips = $("#pack-chips");
@@ -780,6 +784,7 @@
     }
     if (state.sourceFilter === "ttf" && !s.hasTtf) return false;
     if (state.sourceFilter === "tsm" && !s.hasTsm) return false;
+    if (state.sourceFilter === "ttg" && !s.hasTtg) return false;
     if (state.sourceFilter === "finviz" && !(s.packIds && s.packIds.length)) return false;
     if (state.bookAlign && !s.booksAlign) return false;
     const pct = s.changePct;
@@ -866,6 +871,14 @@
         const href = (vids[0] && vids[0].url) || tsmSrc.channelUrl || "https://www.youtube.com/@TheStockMarket";
         badgeHtml += `<a class="source-badge source-tsm" href="${escapeAttr(href)}" target="_blank" rel="noopener noreferrer" title="${escapeAttr("Stock Market Live / TSM — " + tip)}">TSM</a>`;
       }
+      const ttgSrc = (s.sources || []).find((x) => x.id === "ttg");
+      if (ttgSrc) {
+        const vids = ttgSrc.videos || [];
+        const v0 = vids[0] || {};
+        const tip = `${ttgSrc.stance || ""}${v0.title ? " · " + v0.title : ""}${v0.ts ? " @" + v0.ts : ""}${v0.snip ? " — “" + v0.snip.slice(0, 140) + "…”" : ""}`;
+        const href = v0.url || ttgSrc.channelUrl || "https://www.youtube.com/@cfromhertz33";
+        badgeHtml += `<a class="source-badge source-ttg" href="${escapeAttr(href)}" target="_blank" rel="noopener noreferrer" title="${escapeAttr("Tribeca Trade Group (Christian Fromhertz) — " + tip)}">TTG</a>`;
+      }
 
       let bookHtml = "";
       for (const b of s.books || []) {
@@ -880,6 +893,7 @@
 
       if (s.hasTtf) tr.classList.add("has-ttf");
       if (s.hasTsm) tr.classList.add("has-tsm");
+      if (s.hasTtg) tr.classList.add("has-ttg");
 
       tr.innerHTML = `
         <td class="col-ticker"><span class="ticker">${escapeHtml(s.ticker)}</span>${badgeHtml ? `<span class="ticker-badges">${badgeHtml}</span>` : ""}</td>
@@ -1427,6 +1441,7 @@
       const p = [];
       if (s.hasTtf) p.push('<span class="ss-pill ss-pill-ttf">TTF</span>');
       if (s.hasTsm) p.push('<span class="ss-pill ss-pill-tsm">TSM</span>');
+      if (s.hasTtg) p.push('<span class="ss-pill ss-pill-ttg">TTG</span>');
       if (s.booksAlign) p.push('<span class="ss-pill ss-pill-book">Books</span>');
       const g = gateMap.get(s.ticker);
       if (g) p.push(`<span class="ss-pill ss-pill-gate-${escapeAttr(g.status)}">Gate ${escapeHtml(g.status)}</span>`);

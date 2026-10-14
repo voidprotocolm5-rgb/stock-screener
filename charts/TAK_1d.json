@@ -1,1 +1,1 @@
-{"ticker":"TAK","name":"TAK","currency":"USD","regularMarketPrice":18.719999313354492,"change":0.1999993133544926,"changePct":1.0799098993223144,"range":"1d","interval":"5m","bars":[{"t":1791984600,"o":18.579999923706055,"h":18.684999465942383,"l":18.56999969482422,"c":18.684999465942383,"v":181093},{"t":1791984900,"o":18.684999465942383,"h":18.7549991607666,"l":18.684999465942383,"c":18.719999313354492,"v":60075}]}
+{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"TAK","range":"1d"}

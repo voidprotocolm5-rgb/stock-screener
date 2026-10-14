@@ -2,8 +2,8 @@
 window.WATCHLIST = {
   "updatedAt": "2026-10-14T08:38:22-05:00",
   "capturedAt": "2026-10-14T08:36:59-05:00",
-  "uniqueCount": 139,
-  "quotedCount": 137,
+  "uniqueCount": 163,
+  "quotedCount": 161,
   "ttfCount": 36,
   "tsmCount": 42,
   "packs": [
@@ -68,7 +68,7 @@ window.WATCHLIST = {
             },
             {
               "id": "YR9K8fZhvXc",
-              "title": "*MUST WATCH* Trading Options With A Small Account / Small Positions – THE POWELL PUT EXPLAINED",
+              "title": "*MUST WATCH* Trading Options With A Small Account / Small Positions \u2013 THE POWELL PUT EXPLAINED",
               "url": "https://www.youtube.com/watch?v=YR9K8fZhvXc",
               "bucket": "transcript",
               "date": "20190502",
@@ -84,7 +84,7 @@ window.WATCHLIST = {
             },
             {
               "id": "yPDW0-LT58c",
-              "title": "When To Sell An Option Contract For The Most Profit – Robinhood Swing Trading Strategy – Small Accou",
+              "title": "When To Sell An Option Contract For The Most Profit \u2013 Robinhood Swing Trading Strategy \u2013 Small Accou",
               "url": "https://www.youtube.com/watch?v=yPDW0-LT58c",
               "bucket": "transcript",
               "date": "20190713",
@@ -159,7 +159,8 @@ window.WATCHLIST = {
         }
       ],
       "hasTtf": true,
-      "hasTsm": true
+      "hasTsm": true,
+      "hasTtg": false
     },
     {
       "ticker": "ABNB",
@@ -231,7 +232,8 @@ window.WATCHLIST = {
         }
       ],
       "hasTtf": true,
-      "hasTsm": false
+      "hasTsm": false,
+      "hasTtg": false
     },
     {
       "ticker": "ADI",
@@ -250,7 +252,8 @@ window.WATCHLIST = {
       "packCount": 1,
       "sources": [],
       "hasTtf": false,
-      "hasTsm": false
+      "hasTsm": false,
+      "hasTtg": false
     },
     {
       "ticker": "ADM",
@@ -269,7 +272,8 @@ window.WATCHLIST = {
       "packCount": 1,
       "sources": [],
       "hasTtf": false,
-      "hasTsm": false
+      "hasTsm": false,
+      "hasTtg": false
     },
     {
       "ticker": "ADP",
@@ -303,7 +307,8 @@ window.WATCHLIST = {
         }
       ],
       "hasTtf": false,
-      "hasTsm": true
+      "hasTsm": true,
+      "hasTtg": false
     },
     {
       "ticker": "AFYA",
@@ -322,7 +327,63 @@ window.WATCHLIST = {
       "packCount": 1,
       "sources": [],
       "hasTtf": false,
-      "hasTsm": false
+      "hasTsm": false,
+      "hasTtg": false
+    },
+    {
+      "ticker": "ALAB",
+      "name": "Astera Labs, Inc.",
+      "price": 307.44,
+      "changePct": -5.5223,
+      "change": -17.97,
+      "volume": 1335708,
+      "marketCap": 53336260608,
+      "packs": [],
+      "packIds": [],
+      "packCount": 0,
+      "sources": [
+        {
+          "id": "ttg",
+          "label": "TTG",
+          "name": "Tribeca Trade Group (Christian Fromhertz)",
+          "mentionCount": 5,
+          "recentMentionCount": 0,
+          "videos": [
+            {
+              "id": "sFxhYqotCFc",
+              "title": "Stock Market Recap by TTG: Small Caps Super Strong, Semis Huge Day, What to Watch Next",
+              "url": "https://www.youtube.com/watch?v=sFxhYqotCFc&t=398s",
+              "date": "20250918",
+              "ts": "6:38",
+              "snip": "had a big move, but that's a move up to um to new highs. And um ALAB, which I know is like a very very popular name as well. Um tacked on another what 1% today too, also a little bit extended in the",
+              "bucket": "transcript"
+            },
+            {
+              "id": "v16wuN4SwPk",
+              "title": "Stock Market Recap by TTG: FOMC Price Action Takeaways; Quantum Stocks Take A Leap",
+              "url": "https://www.youtube.com/watch?v=v16wuN4SwPk&t=694s",
+              "date": "20250917",
+              "ts": "11:34",
+              "snip": "a couple weeks ago. It's now at $80. Very, very fast. ALAB got another uh price target raise. Stocks up again. Um I we talked about this one. It was down 2% today. And look at it close up 4% for",
+              "bucket": "transcript"
+            },
+            {
+              "id": "en28T4PP6hI",
+              "title": "Stock Market Recap by TTG: Bitcoin new Highs / RSP Equal Weight SPX strong /Software -",
+              "url": "https://www.youtube.com/watch?v=en28T4PP6hI&t=690s",
+              "date": "20250710",
+              "ts": "11:30",
+              "snip": "right? But you got to understand when a setup doesn't work. But here's ALAB versus the SMH ETF, right? uh ALAB. Yeah, it's it's been underperforming a little bit, right? So,",
+              "bucket": "transcript"
+            }
+          ],
+          "channelUrl": "https://www.youtube.com/@cfromhertz33",
+          "stance": "Leader \u2014 new highs"
+        }
+      ],
+      "hasTtf": false,
+      "hasTsm": false,
+      "hasTtg": true
     },
     {
       "ticker": "ALNT",
@@ -341,7 +402,8 @@ window.WATCHLIST = {
       "packCount": 1,
       "sources": [],
       "hasTtf": false,
-      "hasTsm": false
+      "hasTsm": false,
+      "hasTtg": false
     },
     {
       "ticker": "AMC",
@@ -411,7 +473,8 @@ window.WATCHLIST = {
         }
       ],
       "hasTtf": true,
-      "hasTsm": false
+      "hasTsm": false,
+      "hasTtg": false
     },
     {
       "ticker": "AMD",
@@ -464,7 +527,7 @@ window.WATCHLIST = {
             },
             {
               "id": "u24S4SngbeU",
-              "title": "How To Find Stocks To Trade – Making $2500 In 5 Minutes Trading Faceook",
+              "title": "How To Find Stocks To Trade \u2013 Making $2500 In 5 Minutes Trading Faceook",
               "url": "https://www.youtube.com/watch?v=u24S4SngbeU",
               "bucket": "transcript",
               "date": "20180930",
@@ -536,10 +599,31 @@ window.WATCHLIST = {
             }
           ],
           "channelUrl": "https://www.youtube.com/@TheStockMarket"
+        },
+        {
+          "id": "ttg",
+          "label": "TTG",
+          "name": "Tribeca Trade Group (Christian Fromhertz)",
+          "mentionCount": 1,
+          "recentMentionCount": 0,
+          "videos": [
+            {
+              "id": "rBfKf2Hr0CQ",
+              "title": "Stock Market Recap by TTG: NVDA New Highs and Semis Shine",
+              "url": "https://www.youtube.com/watch?v=rBfKf2Hr0CQ&t=515s",
+              "date": "20250625",
+              "ts": "8:35",
+              "snip": "of people looking out for a catch-up trade in AMD. Watch this tomorrow. Watch this 140 uh you know we've got two more days of the week to go. But be interesting to see if if AMD can close",
+              "bucket": "transcript"
+            }
+          ],
+          "channelUrl": "https://www.youtube.com/@cfromhertz33",
+          "stance": "Watching \u2014 possible catch-up trade"
         }
       ],
       "hasTtf": true,
-      "hasTsm": true
+      "hasTsm": true,
+      "hasTtg": true
     },
     {
       "ticker": "AMZN",
@@ -653,7 +737,8 @@ window.WATCHLIST = {
         }
       ],
       "hasTtf": true,
-      "hasTsm": true
+      "hasTsm": true,
+      "hasTtg": false
     },
     {
       "ticker": "ANET",
@@ -674,9 +759,31 @@ window.WATCHLIST = {
         "mid-momentum-pullback"
       ],
       "packCount": 3,
-      "sources": [],
+      "sources": [
+        {
+          "id": "ttg",
+          "label": "TTG",
+          "name": "Tribeca Trade Group (Christian Fromhertz)",
+          "mentionCount": 1,
+          "recentMentionCount": 0,
+          "videos": [
+            {
+              "id": "sFxhYqotCFc",
+              "title": "Stock Market Recap by TTG: Small Caps Super Strong, Semis Huge Day, What to Watch Next",
+              "url": "https://www.youtube.com/watch?v=sFxhYqotCFc&t=730s",
+              "date": "20250918",
+              "ts": "12:10",
+              "snip": "extended to me, but something like this, Arista Networks, not extended. Just got back above the five period moving average after some digestion. Um, not too far from the 50-day moving average.",
+              "bucket": "transcript"
+            }
+          ],
+          "channelUrl": "https://www.youtube.com/@cfromhertz33",
+          "stance": "Watching \u2014 not extended, back above 5-period MA"
+        }
+      ],
       "hasTtf": false,
-      "hasTsm": false
+      "hasTsm": false,
+      "hasTtg": true
     },
     {
       "ticker": "AR",
@@ -695,7 +802,8 @@ window.WATCHLIST = {
       "packCount": 1,
       "sources": [],
       "hasTtf": false,
-      "hasTsm": false
+      "hasTsm": false,
+      "hasTtg": false
     },
     {
       "ticker": "ARM",
@@ -761,7 +869,8 @@ window.WATCHLIST = {
         }
       ],
       "hasTtf": true,
-      "hasTsm": false
+      "hasTsm": false,
+      "hasTtg": false
     },
     {
       "ticker": "ARW",
@@ -782,7 +891,8 @@ window.WATCHLIST = {
       "packCount": 2,
       "sources": [],
       "hasTtf": false,
-      "hasTsm": false
+      "hasTsm": false,
+      "hasTtg": false
     },
     {
       "ticker": "ASML",
@@ -848,7 +958,8 @@ window.WATCHLIST = {
         }
       ],
       "hasTtf": false,
-      "hasTsm": true
+      "hasTsm": true,
+      "hasTtg": false
     },
     {
       "ticker": "ASX",
@@ -871,7 +982,8 @@ window.WATCHLIST = {
       "packCount": 3,
       "sources": [],
       "hasTtf": false,
-      "hasTsm": false
+      "hasTsm": false,
+      "hasTtg": false
     },
     {
       "ticker": "ATEN",
@@ -894,7 +1006,8 @@ window.WATCHLIST = {
       "packCount": 3,
       "sources": [],
       "hasTtf": false,
-      "hasTsm": false
+      "hasTsm": false,
+      "hasTtg": false
     },
     {
       "ticker": "AUPH",
@@ -913,7 +1026,8 @@ window.WATCHLIST = {
       "packCount": 1,
       "sources": [],
       "hasTtf": false,
-      "hasTsm": false
+      "hasTsm": false,
+      "hasTtg": false
     },
     {
       "ticker": "AVGO",
@@ -976,10 +1090,40 @@ window.WATCHLIST = {
             }
           ],
           "channelUrl": "https://www.youtube.com/@TheStockMarket"
+        },
+        {
+          "id": "ttg",
+          "label": "TTG",
+          "name": "Tribeca Trade Group (Christian Fromhertz)",
+          "mentionCount": 2,
+          "recentMentionCount": 0,
+          "videos": [
+            {
+              "id": "h0GAXdpKwjw",
+              "title": "Stock Market Recap by TTG: Super strong breadth, Commodities shine, QQQ & Growth powers ahead",
+              "url": "https://www.youtube.com/watch?v=h0GAXdpKwjw&t=489s",
+              "date": "20250626",
+              "ts": "8:09",
+              "snip": "semis. You know, I continue to like Broadcom uh which um made a new high today. Very, um impressive move. I could bring up probably like seven or eight other semi- charts, but I want to go",
+              "bucket": "transcript"
+            },
+            {
+              "id": "rBfKf2Hr0CQ",
+              "title": "Stock Market Recap by TTG: NVDA New Highs and Semis Shine",
+              "url": "https://www.youtube.com/watch?v=rBfKf2Hr0CQ&t=637s",
+              "date": "20250625",
+              "ts": "10:37",
+              "snip": "Semiconductor, that's also breaking higher. Um I would watch Broadcom as well. Um didn't close around the highs but um but still um it moved up and to the right. Little bit of a bullish uh",
+              "bucket": "transcript"
+            }
+          ],
+          "channelUrl": "https://www.youtube.com/@cfromhertz33",
+          "stance": "Bullish \u2014 'continue to like Broadcom' (new high)"
         }
       ],
       "hasTtf": false,
-      "hasTsm": true
+      "hasTsm": true,
+      "hasTtg": true
     },
     {
       "ticker": "AVT",
@@ -1000,7 +1144,8 @@ window.WATCHLIST = {
       "packCount": 2,
       "sources": [],
       "hasTtf": false,
-      "hasTsm": false
+      "hasTsm": false,
+      "hasTtg": false
     },
     {
       "ticker": "BA",
@@ -1023,7 +1168,7 @@ window.WATCHLIST = {
           "videos": [
             {
               "id": "LivYtN9CG4Y",
-              "title": "The REAL Reason Why The Stock Market Went Down Today – More Yield Curve Inversion, Brexit, Boeing",
+              "title": "The REAL Reason Why The Stock Market Went Down Today \u2013 More Yield Curve Inversion, Brexit, Boeing",
               "url": "https://www.youtube.com/watch?v=LivYtN9CG4Y",
               "bucket": "transcript",
               "date": "20190327",
@@ -1039,7 +1184,7 @@ window.WATCHLIST = {
             },
             {
               "id": "yPDW0-LT58c",
-              "title": "When To Sell An Option Contract For The Most Profit – Robinhood Swing Trading Strategy – Small Accou",
+              "title": "When To Sell An Option Contract For The Most Profit \u2013 Robinhood Swing Trading Strategy \u2013 Small Accou",
               "url": "https://www.youtube.com/watch?v=yPDW0-LT58c",
               "bucket": "transcript",
               "date": "20190713",
@@ -1047,7 +1192,7 @@ window.WATCHLIST = {
             },
             {
               "id": "nm98SnBN2Xk",
-              "title": "THE WORST STOCK MARKET EARNINGS EVER – Stocks I'm Buying Tomorrow – Tesla Stock CRASH",
+              "title": "THE WORST STOCK MARKET EARNINGS EVER \u2013 Stocks I'm Buying Tomorrow \u2013 Tesla Stock CRASH",
               "url": "https://www.youtube.com/watch?v=nm98SnBN2Xk",
               "bucket": "transcript",
               "date": "20190725",
@@ -1114,7 +1259,8 @@ window.WATCHLIST = {
         }
       ],
       "hasTtf": true,
-      "hasTsm": true
+      "hasTsm": true,
+      "hasTtg": false
     },
     {
       "ticker": "BABA",
@@ -1180,7 +1326,8 @@ window.WATCHLIST = {
         }
       ],
       "hasTtf": false,
-      "hasTsm": true
+      "hasTsm": true,
+      "hasTtg": false
     },
     {
       "ticker": "BAP",
@@ -1199,7 +1346,8 @@ window.WATCHLIST = {
       "packCount": 1,
       "sources": [],
       "hasTtf": false,
-      "hasTsm": false
+      "hasTsm": false,
+      "hasTtg": false
     },
     {
       "ticker": "BEKE",
@@ -1220,7 +1368,91 @@ window.WATCHLIST = {
       "packCount": 2,
       "sources": [],
       "hasTtf": false,
-      "hasTsm": false
+      "hasTsm": false,
+      "hasTtg": false
+    },
+    {
+      "ticker": "BKSY",
+      "name": "BlackSky Technology Inc.",
+      "price": 17.45,
+      "changePct": -11.5111,
+      "change": -2.27,
+      "volume": 924920,
+      "marketCap": 714138624,
+      "packs": [],
+      "packIds": [],
+      "packCount": 0,
+      "sources": [
+        {
+          "id": "ttg",
+          "label": "TTG",
+          "name": "Tribeca Trade Group (Christian Fromhertz)",
+          "mentionCount": 1,
+          "recentMentionCount": 0,
+          "videos": [
+            {
+              "id": "qnfcbY67WQ4",
+              "title": "Stock Market Recap by TTG: Test & Bounce on Support SPY QQQ, Also Could the Fed Be Changing?",
+              "url": "https://www.youtube.com/watch?v=qnfcbY67WQ4&t=1646s",
+              "date": "20250623",
+              "ts": "27:26",
+              "snip": "some option activity that caught my attention is uh BKSY. Again, this one is already kind of gone a bit, but um I would be watching maybe if it has an inside day tomorrow or something like",
+              "bucket": "transcript"
+            }
+          ],
+          "channelUrl": "https://www.youtube.com/@cfromhertz33",
+          "stance": "Watching \u2014 option activity, wait for pullback"
+        }
+      ],
+      "hasTtf": false,
+      "hasTsm": false,
+      "hasTtg": true
+    },
+    {
+      "ticker": "BLDR",
+      "name": "Builders FirstSource, Inc.",
+      "price": 50.19,
+      "changePct": -2.9395,
+      "change": -1.52,
+      "volume": 1468892,
+      "marketCap": 5400265728,
+      "packs": [],
+      "packIds": [],
+      "packCount": 0,
+      "sources": [
+        {
+          "id": "ttg",
+          "label": "TTG",
+          "name": "Tribeca Trade Group (Christian Fromhertz)",
+          "mentionCount": 2,
+          "recentMentionCount": 0,
+          "videos": [
+            {
+              "id": "en28T4PP6hI",
+              "title": "Stock Market Recap by TTG: Bitcoin new Highs / RSP Equal Weight SPX strong /Software -",
+              "url": "https://www.youtube.com/watch?v=en28T4PP6hI&t=1235s",
+              "date": "20250710",
+              "ts": "20:35",
+              "snip": "that this h that this So, please expand your watch list a little bit. BLDR since that um I think it was the CEO who bought who had a big insider buy. This has been acting really well. Um a couple",
+              "bucket": "transcript"
+            },
+            {
+              "id": "sluYu6nDSAE",
+              "title": "Stock Market Recap by TTG: Semis $SMH & $BTC_F Bitcoin new highs!",
+              "url": "https://www.youtube.com/watch?v=sluYu6nDSAE&t=853s",
+              "date": "20250709",
+              "ts": "14:13",
+              "snip": "bad. Let's talk about a couple of the um the names in real estate. Um, BLDR, this was a name from our um from our midday note yesterday. Posted this as a trade idea. Um, it got to this Vpo and I",
+              "bucket": "transcript"
+            }
+          ],
+          "channelUrl": "https://www.youtube.com/@cfromhertz33",
+          "stance": "Watch-list add \u2014 CEO insider buy"
+        }
+      ],
+      "hasTtf": false,
+      "hasTsm": false,
+      "hasTtg": true
     },
     {
       "ticker": "BUD",
@@ -1241,7 +1473,8 @@ window.WATCHLIST = {
       "packCount": 2,
       "sources": [],
       "hasTtf": false,
-      "hasTsm": false
+      "hasTsm": false,
+      "hasTtg": false
     },
     {
       "ticker": "CBOE",
@@ -1260,7 +1493,54 @@ window.WATCHLIST = {
       "packCount": 1,
       "sources": [],
       "hasTtf": false,
-      "hasTsm": false
+      "hasTsm": false,
+      "hasTtg": false
+    },
+    {
+      "ticker": "CCJ",
+      "name": "Cameco Corporation",
+      "price": 81.94,
+      "changePct": -4.8868,
+      "change": -4.21,
+      "volume": 2873743,
+      "marketCap": 35687575552,
+      "packs": [],
+      "packIds": [],
+      "packCount": 0,
+      "sources": [
+        {
+          "id": "ttg",
+          "label": "TTG",
+          "name": "Tribeca Trade Group (Christian Fromhertz)",
+          "mentionCount": 2,
+          "recentMentionCount": 0,
+          "videos": [
+            {
+              "id": "ets2Gg5Qiko",
+              "title": "Stock Market Recap by TTG: Semis / Rare Earths +  / Weak Breadth / Stronger Dollar",
+              "url": "https://www.youtube.com/watch?v=ets2Gg5Qiko&t=984s",
+              "date": "20250715",
+              "ts": "16:24",
+              "snip": "move can be in this group. And um I also took a quick target in CCJ too. Uh right around I think 76 today u which was a trade that I added yesterday. Um names that are that didn't look right to me",
+              "bucket": "transcript"
+            },
+            {
+              "id": "8PtOzHbu3wQ",
+              "title": "Stock Market Recap by TTG: While Indices Chop, Uranium / Aerospace & Defense / Cryptos climb",
+              "url": "https://www.youtube.com/watch?v=8PtOzHbu3wQ&t=733s",
+              "date": "20250714",
+              "ts": "12:13",
+              "snip": "been the case for a while with this um URA ETF is that CCJ is about 24% of the ETF, but you you have a catch-up in some of these other names. Um, OLO is about 5 a.5% of the ETF. SMR is about 5.3% of",
+              "bucket": "transcript"
+            }
+          ],
+          "channelUrl": "https://www.youtube.com/@cfromhertz33",
+          "stance": "Long trade; took a quick target ~76"
+        }
+      ],
+      "hasTtf": false,
+      "hasTsm": false,
+      "hasTtg": true
     },
     {
       "ticker": "CEG",
@@ -1283,7 +1563,8 @@ window.WATCHLIST = {
       "packCount": 3,
       "sources": [],
       "hasTtf": false,
-      "hasTsm": false
+      "hasTsm": false,
+      "hasTtg": false
     },
     {
       "ticker": "CHRD",
@@ -1302,7 +1583,8 @@ window.WATCHLIST = {
       "packCount": 1,
       "sources": [],
       "hasTtf": false,
-      "hasTsm": false
+      "hasTsm": false,
+      "hasTtg": false
     },
     {
       "ticker": "CIG",
@@ -1321,7 +1603,8 @@ window.WATCHLIST = {
       "packCount": 1,
       "sources": [],
       "hasTtf": false,
-      "hasTsm": false
+      "hasTsm": false,
+      "hasTtg": false
     },
     {
       "ticker": "CLS",
@@ -1344,7 +1627,8 @@ window.WATCHLIST = {
       "packCount": 3,
       "sources": [],
       "hasTtf": false,
-      "hasTsm": false
+      "hasTsm": false,
+      "hasTtg": false
     },
     {
       "ticker": "CMG",
@@ -1391,7 +1675,7 @@ window.WATCHLIST = {
             },
             {
               "id": "ngrWJ5Ak2DI",
-              "title": "🚨BIG NEWS🚨 NVDA STOCK SPLIT",
+              "title": "\ud83d\udea8BIG NEWS\ud83d\udea8 NVDA STOCK SPLIT",
               "url": "https://www.youtube.com/watch?v=ngrWJ5Ak2DI",
               "bucket": "transcript",
               "date": "20240522",
@@ -1408,7 +1692,8 @@ window.WATCHLIST = {
         }
       ],
       "hasTtf": true,
-      "hasTsm": false
+      "hasTsm": false,
+      "hasTtg": false
     },
     {
       "ticker": "COIN",
@@ -1431,7 +1716,7 @@ window.WATCHLIST = {
           "videos": [
             {
               "id": "LivYtN9CG4Y",
-              "title": "The REAL Reason Why The Stock Market Went Down Today – More Yield Curve Inversion, Brexit, Boeing",
+              "title": "The REAL Reason Why The Stock Market Went Down Today \u2013 More Yield Curve Inversion, Brexit, Boeing",
               "url": "https://www.youtube.com/watch?v=LivYtN9CG4Y",
               "bucket": "transcript",
               "date": "20190327",
@@ -1447,7 +1732,7 @@ window.WATCHLIST = {
             },
             {
               "id": "bK-zpxugmx8",
-              "title": "The Safest RISKY Robinhood Options Trading Strategy – Credit Spread Explained – Selling Calls & Puts",
+              "title": "The Safest RISKY Robinhood Options Trading Strategy \u2013 Credit Spread Explained \u2013 Selling Calls & Puts",
               "url": "https://www.youtube.com/watch?v=bK-zpxugmx8",
               "bucket": "transcript",
               "date": "20190901",
@@ -1471,10 +1756,49 @@ window.WATCHLIST = {
             }
           ],
           "channelUrl": "https://www.youtube.com/@Thetradingfraternity"
+        },
+        {
+          "id": "ttg",
+          "label": "TTG",
+          "name": "Tribeca Trade Group (Christian Fromhertz)",
+          "mentionCount": 5,
+          "recentMentionCount": 0,
+          "videos": [
+            {
+              "id": "en28T4PP6hI",
+              "title": "Stock Market Recap by TTG: Bitcoin new Highs / RSP Equal Weight SPX strong /Software -",
+              "url": "https://www.youtube.com/watch?v=en28T4PP6hI&t=849s",
+              "date": "20250710",
+              "ts": "14:09",
+              "snip": "other names that are not acting that way. Coinbase, it's been more methodical, right? You know, move into into some support and touch new highs and break broke broke out to new highs,",
+              "bucket": "transcript"
+            },
+            {
+              "id": "sluYu6nDSAE",
+              "title": "Stock Market Recap by TTG: Semis $SMH & $BTC_F Bitcoin new highs!",
+              "url": "https://www.youtube.com/watch?v=sluYu6nDSAE&t=617s",
+              "date": "20250709",
+              "ts": "10:17",
+              "snip": "that's been acting really well. Coinbase, nice check back here in Coinbase. Got to the top of the value area. So, that's there's your check back and there's your break higher and now",
+              "bucket": "transcript"
+            },
+            {
+              "id": "qnfcbY67WQ4",
+              "title": "Stock Market Recap by TTG: Test & Bounce on Support SPY QQQ, Also Could the Fed Be Changing?",
+              "url": "https://www.youtube.com/watch?v=qnfcbY67WQ4&t=1675s",
+              "date": "20250623",
+              "ts": "27:55",
+              "snip": "from what I've ever from what I've read about this stable coin stuff is that it's going to be a long time before this stuff really becomes um efficient and also the fees are not supposed to be",
+              "bucket": "transcript"
+            }
+          ],
+          "channelUrl": "https://www.youtube.com/@cfromhertz33",
+          "stance": "Leader \u2014 methodical new highs"
         }
       ],
       "hasTtf": true,
-      "hasTsm": false
+      "hasTsm": false,
+      "hasTtg": true
     },
     {
       "ticker": "COST",
@@ -1508,7 +1832,63 @@ window.WATCHLIST = {
         }
       ],
       "hasTtf": false,
-      "hasTsm": true
+      "hasTsm": true,
+      "hasTtg": false
+    },
+    {
+      "ticker": "CRDO",
+      "name": "Credo Technology Group Holding ",
+      "price": 182.36,
+      "changePct": -8.0428,
+      "change": -15.95,
+      "volume": 5426938,
+      "marketCap": 34274912256,
+      "packs": [],
+      "packIds": [],
+      "packCount": 0,
+      "sources": [
+        {
+          "id": "ttg",
+          "label": "TTG",
+          "name": "Tribeca Trade Group (Christian Fromhertz)",
+          "mentionCount": 5,
+          "recentMentionCount": 1,
+          "videos": [
+            {
+              "id": "9UGIv0dZdfM",
+              "title": "Stock Market Recap by TTG: End of Weak Recap, The Leaders Are Leading",
+              "url": "https://www.youtube.com/watch?v=9UGIv0dZdfM&t=633s",
+              "date": "20260618",
+              "ts": "10:33",
+              "snip": "Another name that I traded today was CRDO. You know, what's funny about this is CRDO you know, and I always hear this on financial media like that you got to be",
+              "bucket": "transcript"
+            },
+            {
+              "id": "sFxhYqotCFc",
+              "title": "Stock Market Recap by TTG: Small Caps Super Strong, Semis Huge Day, What to Watch Next",
+              "url": "https://www.youtube.com/watch?v=sFxhYqotCFc&t=117s",
+              "date": "20250918",
+              "ts": "1:57",
+              "snip": "names, um those were great names to be long. Um I was long CRDO uh today and um certainly took some profits in that today. Risk disclaimer in front of you. By the way, everything that we're going",
+              "bucket": "transcript"
+            },
+            {
+              "id": "v16wuN4SwPk",
+              "title": "Stock Market Recap by TTG: FOMC Price Action Takeaways; Quantum Stocks Take A Leap",
+              "url": "https://www.youtube.com/watch?v=v16wuN4SwPk&t=726s",
+              "date": "20250917",
+              "ts": "12:06",
+              "snip": "very impressive. Um, I actually put some CRDO on, right? This is one that's been going sideways and considering just these things, this still has to break through the top of the value area. Um,",
+              "bucket": "transcript"
+            }
+          ],
+          "channelUrl": "https://www.youtube.com/@cfromhertz33",
+          "stance": "Traded long (re-entry on reclaim of 5-day MA)"
+        }
+      ],
+      "hasTtf": false,
+      "hasTsm": false,
+      "hasTtg": true
     },
     {
       "ticker": "CRM",
@@ -1542,7 +1922,8 @@ window.WATCHLIST = {
         }
       ],
       "hasTtf": false,
-      "hasTsm": true
+      "hasTsm": true,
+      "hasTtg": false
     },
     {
       "ticker": "CRSR",
@@ -1563,7 +1944,8 @@ window.WATCHLIST = {
       "packCount": 2,
       "sources": [],
       "hasTtf": false,
-      "hasTsm": false
+      "hasTsm": false,
+      "hasTtg": false
     },
     {
       "ticker": "CSCO",
@@ -1582,9 +1964,40 @@ window.WATCHLIST = {
         "mid-momentum-pullback"
       ],
       "packCount": 2,
-      "sources": [],
+      "sources": [
+        {
+          "id": "ttg",
+          "label": "TTG",
+          "name": "Tribeca Trade Group (Christian Fromhertz)",
+          "mentionCount": 2,
+          "recentMentionCount": 0,
+          "videos": [
+            {
+              "id": "rBfKf2Hr0CQ",
+              "title": "Stock Market Recap by TTG: NVDA New Highs and Semis Shine",
+              "url": "https://www.youtube.com/watch?v=rBfKf2Hr0CQ&t=600s",
+              "date": "20250625",
+              "ts": "10:00",
+              "snip": "they're just not maybe as exciting, but Cisco made another high today. Um, very nice. Uh, the cyber stocks, as I mentioned, um, Crowd Strike Clo I think that is a new closing high. didn't close",
+              "bucket": "transcript"
+            },
+            {
+              "id": "qnfcbY67WQ4",
+              "title": "Stock Market Recap by TTG: Test & Bounce on Support SPY QQQ, Also Could the Fed Be Changing?",
+              "url": "https://www.youtube.com/watch?v=qnfcbY67WQ4&t=1323s",
+              "date": "20250623",
+              "ts": "22:03",
+              "snip": "cyber um issues. Um I tell you, look at Cisco right now. I know Cisco is not going to move as fast as some of the other names, but it's there's not that many names that have that have hit 52-",
+              "bucket": "transcript"
+            }
+          ],
+          "channelUrl": "https://www.youtube.com/@cfromhertz33",
+          "stance": "Leader \u2014 new high"
+        }
+      ],
       "hasTtf": false,
-      "hasTsm": false
+      "hasTsm": false,
+      "hasTtg": true
     },
     {
       "ticker": "CVE",
@@ -1603,7 +2016,45 @@ window.WATCHLIST = {
       "packCount": 1,
       "sources": [],
       "hasTtf": false,
-      "hasTsm": false
+      "hasTsm": false,
+      "hasTtg": false
+    },
+    {
+      "ticker": "CVNA",
+      "name": "Carvana Co.",
+      "price": 56.895,
+      "changePct": -5.7864,
+      "change": -3.495,
+      "volume": 5736563,
+      "marketCap": 63066046464,
+      "packs": [],
+      "packIds": [],
+      "packCount": 0,
+      "sources": [
+        {
+          "id": "ttg",
+          "label": "TTG",
+          "name": "Tribeca Trade Group (Christian Fromhertz)",
+          "mentionCount": 1,
+          "recentMentionCount": 0,
+          "videos": [
+            {
+              "id": "uQKboxvWOq4",
+              "title": "Stock Market Recap by TTG: End of Week Recap / Levels to Watch",
+              "url": "https://www.youtube.com/watch?v=uQKboxvWOq4&t=1121s",
+              "date": "20250620",
+              "ts": "18:41",
+              "snip": "Coinbase, we talked about that one. Um, Carvana had a big had a nice day. So, Carvana had a little bit of a deeper pullback. Um, I would still watch what it what it does at the 5day moving",
+              "bucket": "transcript"
+            }
+          ],
+          "channelUrl": "https://www.youtube.com/@cfromhertz33",
+          "stance": "Watching \u2014 deeper pullback in a leader"
+        }
+      ],
+      "hasTtf": false,
+      "hasTsm": false,
+      "hasTtg": true
     },
     {
       "ticker": "CVSA",
@@ -1622,7 +2073,8 @@ window.WATCHLIST = {
       "packCount": 1,
       "sources": [],
       "hasTtf": false,
-      "hasTsm": false
+      "hasTsm": false,
+      "hasTtg": false
     },
     {
       "ticker": "CXW",
@@ -1643,7 +2095,45 @@ window.WATCHLIST = {
       "packCount": 2,
       "sources": [],
       "hasTtf": false,
-      "hasTsm": false
+      "hasTsm": false,
+      "hasTtg": false
+    },
+    {
+      "ticker": "DAVE",
+      "name": "Dave Inc.",
+      "price": 350.175,
+      "changePct": -3.4985,
+      "change": -12.695,
+      "volume": 145769,
+      "marketCap": 4466659328,
+      "packs": [],
+      "packIds": [],
+      "packCount": 0,
+      "sources": [
+        {
+          "id": "ttg",
+          "label": "TTG",
+          "name": "Tribeca Trade Group (Christian Fromhertz)",
+          "mentionCount": 1,
+          "recentMentionCount": 0,
+          "videos": [
+            {
+              "id": "ytCRvNrzIBU",
+              "title": "Stock Market Recap by TTG: QQQ Breaks Out! SMH Semis Strong, What to Watch Tomorrow NVDA",
+              "url": "https://www.youtube.com/watch?v=ytCRvNrzIBU&t=1096s",
+              "date": "20250624",
+              "ts": "18:16",
+              "snip": "there. This consolidated for a week and a half. Um Dave was another one, right? This this um dip was was a little bit uh more this was a little deeper, right? And um but it did come back",
+              "bucket": "transcript"
+            }
+          ],
+          "channelUrl": "https://www.youtube.com/@cfromhertz33",
+          "stance": "Watching \u2014 deeper dip in consolidation"
+        }
+      ],
+      "hasTtf": false,
+      "hasTsm": false,
+      "hasTtg": true
     },
     {
       "ticker": "DELL",
@@ -1677,7 +2167,8 @@ window.WATCHLIST = {
         }
       ],
       "hasTtf": false,
-      "hasTsm": true
+      "hasTsm": true,
+      "hasTtg": false
     },
     {
       "ticker": "DIS",
@@ -1696,7 +2187,8 @@ window.WATCHLIST = {
       "packCount": 1,
       "sources": [],
       "hasTtf": false,
-      "hasTsm": false
+      "hasTsm": false,
+      "hasTtg": false
     },
     {
       "ticker": "DKNG",
@@ -1752,7 +2244,8 @@ window.WATCHLIST = {
         }
       ],
       "hasTtf": true,
-      "hasTsm": false
+      "hasTsm": false,
+      "hasTtg": false
     },
     {
       "ticker": "DLO",
@@ -1779,7 +2272,8 @@ window.WATCHLIST = {
       "packCount": 5,
       "sources": [],
       "hasTtf": false,
-      "hasTsm": false
+      "hasTsm": false,
+      "hasTtg": false
     },
     {
       "ticker": "EDU",
@@ -1802,7 +2296,8 @@ window.WATCHLIST = {
       "packCount": 3,
       "sources": [],
       "hasTtf": false,
-      "hasTsm": false
+      "hasTsm": false,
+      "hasTtg": false
     },
     {
       "ticker": "EG",
@@ -1821,7 +2316,8 @@ window.WATCHLIST = {
       "packCount": 1,
       "sources": [],
       "hasTtf": false,
-      "hasTsm": false
+      "hasTsm": false,
+      "hasTtg": false
     },
     {
       "ticker": "ELMT",
@@ -1840,7 +2336,54 @@ window.WATCHLIST = {
       "packCount": 1,
       "sources": [],
       "hasTtf": false,
-      "hasTsm": false
+      "hasTsm": false,
+      "hasTtg": false
+    },
+    {
+      "ticker": "EQT",
+      "name": "EQT Corporation",
+      "price": 53.0,
+      "changePct": -2.6272,
+      "change": -1.43,
+      "volume": 2044328,
+      "marketCap": 33152350208,
+      "packs": [],
+      "packIds": [],
+      "packCount": 0,
+      "sources": [
+        {
+          "id": "ttg",
+          "label": "TTG",
+          "name": "Tribeca Trade Group (Christian Fromhertz)",
+          "mentionCount": 2,
+          "recentMentionCount": 0,
+          "videos": [
+            {
+              "id": "8PtOzHbu3wQ",
+              "title": "Stock Market Recap by TTG: While Indices Chop, Uranium / Aerospace & Defense / Cryptos climb",
+              "url": "https://www.youtube.com/watch?v=8PtOzHbu3wQ&t=102s",
+              "date": "20250714",
+              "ts": "1:42",
+              "snip": "that was kind of best performing in a particular sector. Um EQT was a name that uh jumped out to me too. That was a name that I was long u about a week ago and I saw selling in that name and I'm",
+              "bucket": "transcript"
+            },
+            {
+              "id": "h0GAXdpKwjw",
+              "title": "Stock Market Recap by TTG: Super strong breadth, Commodities shine, QQQ & Growth powers ahead",
+              "url": "https://www.youtube.com/watch?v=h0GAXdpKwjw&t=1227s",
+              "date": "20250626",
+              "ts": "20:27",
+              "snip": "like some of the pullback that's going on in um, you know, like an EQT. EQ EQT is a great name to buy on dips, by the way. And that's what it uh, that's what it did today. Um, what else do I do? Do",
+              "bucket": "transcript"
+            }
+          ],
+          "channelUrl": "https://www.youtube.com/@cfromhertz33",
+          "stance": "Was long (sector leader)"
+        }
+      ],
+      "hasTtf": false,
+      "hasTsm": false,
+      "hasTtg": true
     },
     {
       "ticker": "ESI",
@@ -1859,7 +2402,8 @@ window.WATCHLIST = {
       "packCount": 1,
       "sources": [],
       "hasTtf": false,
-      "hasTsm": false
+      "hasTsm": false,
+      "hasTtg": false
     },
     {
       "ticker": "EXPD",
@@ -1878,7 +2422,8 @@ window.WATCHLIST = {
       "packCount": 1,
       "sources": [],
       "hasTtf": false,
-      "hasTsm": false
+      "hasTsm": false,
+      "hasTtg": false
     },
     {
       "ticker": "EZPW",
@@ -1897,7 +2442,45 @@ window.WATCHLIST = {
       "packCount": 1,
       "sources": [],
       "hasTtf": false,
-      "hasTsm": false
+      "hasTsm": false,
+      "hasTtg": false
+    },
+    {
+      "ticker": "FANG",
+      "name": "Diamondback Energy, Inc.",
+      "price": 197.88,
+      "changePct": -0.1514,
+      "change": -0.3,
+      "volume": 914612,
+      "marketCap": 55666278400,
+      "packs": [],
+      "packIds": [],
+      "packCount": 0,
+      "sources": [
+        {
+          "id": "ttg",
+          "label": "TTG",
+          "name": "Tribeca Trade Group (Christian Fromhertz)",
+          "mentionCount": 1,
+          "recentMentionCount": 0,
+          "videos": [
+            {
+              "id": "6zbxp8eq7TI",
+              "title": "Stock Market Recap by TTG:  ROTATION Out of Some AI & Into Health Care/ Bios & Energy",
+              "url": "https://www.youtube.com/watch?v=6zbxp8eq7TI&t=995s",
+              "date": "20251111",
+              "ts": "16:35",
+              "snip": "little bit of Exxon today. Another name that I bought today was um, Fang, right? Look at how coiled this is today, right? So, um it did not close on its highs and it's had some difficulty with",
+              "bucket": "transcript"
+            }
+          ],
+          "channelUrl": "https://www.youtube.com/@cfromhertz33",
+          "stance": "Bought (coiled chart)"
+        }
+      ],
+      "hasTtf": false,
+      "hasTsm": false,
+      "hasTtg": true
     },
     {
       "ticker": "FDS",
@@ -1920,7 +2503,8 @@ window.WATCHLIST = {
       "packCount": 3,
       "sources": [],
       "hasTtf": false,
-      "hasTsm": false
+      "hasTsm": false,
+      "hasTtg": false
     },
     {
       "ticker": "GGB",
@@ -1939,7 +2523,8 @@ window.WATCHLIST = {
       "packCount": 1,
       "sources": [],
       "hasTtf": false,
-      "hasTsm": false
+      "hasTsm": false,
+      "hasTtg": false
     },
     {
       "ticker": "GMAB",
@@ -1962,7 +2547,8 @@ window.WATCHLIST = {
       "packCount": 3,
       "sources": [],
       "hasTtf": false,
-      "hasTsm": false
+      "hasTsm": false,
+      "hasTtg": false
     },
     {
       "ticker": "GME",
@@ -2032,7 +2618,8 @@ window.WATCHLIST = {
         }
       ],
       "hasTtf": true,
-      "hasTsm": false
+      "hasTsm": false,
+      "hasTtg": false
     },
     {
       "ticker": "GOOGL",
@@ -2138,7 +2725,8 @@ window.WATCHLIST = {
         }
       ],
       "hasTtf": true,
-      "hasTsm": true
+      "hasTsm": true,
+      "hasTtg": false
     },
     {
       "ticker": "HOG",
@@ -2157,7 +2745,8 @@ window.WATCHLIST = {
       "packCount": 1,
       "sources": [],
       "hasTtf": false,
-      "hasTsm": false
+      "hasTsm": false,
+      "hasTtg": false
     },
     {
       "ticker": "HOOD",
@@ -2180,7 +2769,7 @@ window.WATCHLIST = {
           "videos": [
             {
               "id": "YR9K8fZhvXc",
-              "title": "*MUST WATCH* Trading Options With A Small Account / Small Positions – THE POWELL PUT EXPLAINED",
+              "title": "*MUST WATCH* Trading Options With A Small Account / Small Positions \u2013 THE POWELL PUT EXPLAINED",
               "url": "https://www.youtube.com/watch?v=YR9K8fZhvXc",
               "bucket": "transcript",
               "date": "20190502",
@@ -2188,7 +2777,7 @@ window.WATCHLIST = {
             },
             {
               "id": "yPDW0-LT58c",
-              "title": "When To Sell An Option Contract For The Most Profit – Robinhood Swing Trading Strategy – Small Accou",
+              "title": "When To Sell An Option Contract For The Most Profit \u2013 Robinhood Swing Trading Strategy \u2013 Small Accou",
               "url": "https://www.youtube.com/watch?v=yPDW0-LT58c",
               "bucket": "transcript",
               "date": "20190713",
@@ -2204,7 +2793,7 @@ window.WATCHLIST = {
             },
             {
               "id": "ypWiJbDhnWU",
-              "title": "THE WORST OPEN FOR THE STOCK MARKET SINCE 2015 – How To FInd Cheap Puts When Stocks Are Dropping",
+              "title": "THE WORST OPEN FOR THE STOCK MARKET SINCE 2015 \u2013 How To FInd Cheap Puts When Stocks Are Dropping",
               "url": "https://www.youtube.com/watch?v=ypWiJbDhnWU",
               "bucket": "transcript",
               "date": "20200201",
@@ -2229,7 +2818,8 @@ window.WATCHLIST = {
         }
       ],
       "hasTtf": true,
-      "hasTsm": false
+      "hasTsm": false,
+      "hasTtg": false
     },
     {
       "ticker": "HPE",
@@ -2252,7 +2842,45 @@ window.WATCHLIST = {
       "packCount": 3,
       "sources": [],
       "hasTtf": false,
-      "hasTsm": false
+      "hasTsm": false,
+      "hasTtg": false
+    },
+    {
+      "ticker": "IBKR",
+      "name": "Interactive Brokers Group, Inc.",
+      "price": 84.3,
+      "changePct": -3.6461,
+      "change": -3.19,
+      "volume": 1482831,
+      "marketCap": 143631663104,
+      "packs": [],
+      "packIds": [],
+      "packCount": 0,
+      "sources": [
+        {
+          "id": "ttg",
+          "label": "TTG",
+          "name": "Tribeca Trade Group (Christian Fromhertz)",
+          "mentionCount": 1,
+          "recentMentionCount": 0,
+          "videos": [
+            {
+              "id": "sFxhYqotCFc",
+              "title": "Stock Market Recap by TTG: Small Caps Super Strong, Semis Huge Day, What to Watch Next",
+              "url": "https://www.youtube.com/watch?v=sFxhYqotCFc&t=642s",
+              "date": "20250918",
+              "ts": "10:42",
+              "snip": "Um I'm just going to keep going with a couple other symbols here. IBKR nice move. This is one I'm watching tomorrow. Um a lot of consolidation around this 50-day moving average, but",
+              "bucket": "transcript"
+            }
+          ],
+          "channelUrl": "https://www.youtube.com/@cfromhertz33",
+          "stance": "Watching \u2014 consolidation, possible breakout"
+        }
+      ],
+      "hasTtf": false,
+      "hasTsm": false,
+      "hasTtg": true
     },
     {
       "ticker": "IBM",
@@ -2291,10 +2919,31 @@ window.WATCHLIST = {
             }
           ],
           "channelUrl": "https://www.youtube.com/@TheStockMarket"
+        },
+        {
+          "id": "ttg",
+          "label": "TTG",
+          "name": "Tribeca Trade Group (Christian Fromhertz)",
+          "mentionCount": 1,
+          "recentMentionCount": 0,
+          "videos": [
+            {
+              "id": "v16wuN4SwPk",
+              "title": "Stock Market Recap by TTG: FOMC Price Action Takeaways; Quantum Stocks Take A Leap",
+              "url": "https://www.youtube.com/watch?v=v16wuN4SwPk&t=749s",
+              "date": "20250917",
+              "ts": "12:29",
+              "snip": "this a little bit. Um, I also got long some IBM. Um, it is also I think has, you know, certainly it's not a pure play on Quantum, but it also has some exposure there. So, of course, it didn't",
+              "bucket": "transcript"
+            }
+          ],
+          "channelUrl": "https://www.youtube.com/@cfromhertz33",
+          "stance": "Got long (quantum-adjacent)"
         }
       ],
       "hasTtf": false,
-      "hasTsm": true
+      "hasTsm": true,
+      "hasTtg": true
     },
     {
       "ticker": "ICE",
@@ -2317,7 +2966,8 @@ window.WATCHLIST = {
       "packCount": 3,
       "sources": [],
       "hasTtf": false,
-      "hasTsm": false
+      "hasTsm": false,
+      "hasTtg": false
     },
     {
       "ticker": "IGV",
@@ -2383,7 +3033,8 @@ window.WATCHLIST = {
         }
       ],
       "hasTtf": false,
-      "hasTsm": true
+      "hasTsm": true,
+      "hasTtg": false
     },
     {
       "ticker": "IMO",
@@ -2404,7 +3055,8 @@ window.WATCHLIST = {
       "packCount": 2,
       "sources": [],
       "hasTtf": false,
-      "hasTsm": false
+      "hasTsm": false,
+      "hasTtg": false
     },
     {
       "ticker": "INGM",
@@ -2425,7 +3077,8 @@ window.WATCHLIST = {
       "packCount": 2,
       "sources": [],
       "hasTtf": false,
-      "hasTsm": false
+      "hasTsm": false,
+      "hasTtg": false
     },
     {
       "ticker": "INTC",
@@ -2456,7 +3109,7 @@ window.WATCHLIST = {
             },
             {
               "id": "u24S4SngbeU",
-              "title": "How To Find Stocks To Trade – Making $2500 In 5 Minutes Trading Faceook",
+              "title": "How To Find Stocks To Trade \u2013 Making $2500 In 5 Minutes Trading Faceook",
               "url": "https://www.youtube.com/watch?v=u24S4SngbeU",
               "bucket": "transcript",
               "date": "20180930",
@@ -2547,7 +3200,8 @@ window.WATCHLIST = {
         }
       ],
       "hasTtf": true,
-      "hasTsm": true
+      "hasTsm": true,
+      "hasTtg": false
     },
     {
       "ticker": "INTU",
@@ -2605,7 +3259,8 @@ window.WATCHLIST = {
         }
       ],
       "hasTtf": true,
-      "hasTsm": true
+      "hasTsm": true,
+      "hasTtg": false
     },
     {
       "ticker": "IOT",
@@ -2624,7 +3279,8 @@ window.WATCHLIST = {
       "packCount": 1,
       "sources": [],
       "hasTtf": false,
-      "hasTsm": false
+      "hasTsm": false,
+      "hasTtg": false
     },
     {
       "ticker": "IWM",
@@ -2647,7 +3303,7 @@ window.WATCHLIST = {
           "videos": [
             {
               "id": "VVdHxepsJm4",
-              "title": "BONDS WENT CRAZY TODAY – Why The Stock Market Went Up Today   Yield Curve, Small Caps, & Transports",
+              "title": "BONDS WENT CRAZY TODAY \u2013 Why The Stock Market Went Up Today   Yield Curve, Small Caps, & Transports",
               "url": "https://www.youtube.com/watch?v=VVdHxepsJm4",
               "bucket": "transcript",
               "date": "20190326",
@@ -2666,7 +3322,8 @@ window.WATCHLIST = {
         }
       ],
       "hasTtf": true,
-      "hasTsm": false
+      "hasTsm": false,
+      "hasTtg": false
     },
     {
       "ticker": "JCI",
@@ -2687,7 +3344,8 @@ window.WATCHLIST = {
       "packCount": 2,
       "sources": [],
       "hasTtf": false,
-      "hasTsm": false
+      "hasTsm": false,
+      "hasTtg": false
     },
     {
       "ticker": "JNJ",
@@ -2749,7 +3407,54 @@ window.WATCHLIST = {
         }
       ],
       "hasTtf": true,
-      "hasTsm": true
+      "hasTsm": true,
+      "hasTtg": false
+    },
+    {
+      "ticker": "JOBY",
+      "name": "Joby Aviation, Inc.",
+      "price": 4.73,
+      "changePct": -4.4444,
+      "change": -0.22,
+      "volume": 12766144,
+      "marketCap": 4712472064,
+      "packs": [],
+      "packIds": [],
+      "packCount": 0,
+      "sources": [
+        {
+          "id": "ttg",
+          "label": "TTG",
+          "name": "Tribeca Trade Group (Christian Fromhertz)",
+          "mentionCount": 2,
+          "recentMentionCount": 0,
+          "videos": [
+            {
+              "id": "izEjzcpYVQI",
+              "title": "Stock Market Recap by TTG: Indices Chop, Strength in Quantum / Aero & Drones / Uranium / Cryptos",
+              "url": "https://www.youtube.com/watch?v=izEjzcpYVQI&t=920s",
+              "date": "20250716",
+              "ts": "15:20",
+              "snip": "the top of value uh for the month. Aerospace names look at this Joby today. Holy cow up 17% today. What a winner. this name is standing out versus its competitor that you hear a lot ACR but",
+              "bucket": "transcript"
+            },
+            {
+              "id": "ets2Gg5Qiko",
+              "title": "Stock Market Recap by TTG: Semis / Rare Earths +  / Weak Breadth / Stronger Dollar",
+              "url": "https://www.youtube.com/watch?v=ets2Gg5Qiko&t=1053s",
+              "date": "20250715",
+              "ts": "17:33",
+              "snip": "stay above 1120. Um the other name in the space um Joby right is acting better. Um son of a gun OS which I was stalking a trade this last week and I didn't take it because I",
+              "bucket": "transcript"
+            }
+          ],
+          "channelUrl": "https://www.youtube.com/@cfromhertz33",
+          "stance": "Leader \u2014 standout vs aerospace group"
+        }
+      ],
+      "hasTtf": false,
+      "hasTsm": false,
+      "hasTtg": true
     },
     {
       "ticker": "JPM",
@@ -2815,7 +3520,8 @@ window.WATCHLIST = {
         }
       ],
       "hasTtf": false,
-      "hasTsm": true
+      "hasTsm": true,
+      "hasTtg": false
     },
     {
       "ticker": "KEYS",
@@ -2836,7 +3542,8 @@ window.WATCHLIST = {
       "packCount": 2,
       "sources": [],
       "hasTtf": false,
-      "hasTsm": false
+      "hasTsm": false,
+      "hasTtg": false
     },
     {
       "ticker": "KMB",
@@ -2902,7 +3609,8 @@ window.WATCHLIST = {
         }
       ],
       "hasTtf": false,
-      "hasTsm": true
+      "hasTsm": true,
+      "hasTtg": false
     },
     {
       "ticker": "KO",
@@ -2968,7 +3676,63 @@ window.WATCHLIST = {
         }
       ],
       "hasTtf": false,
-      "hasTsm": true
+      "hasTsm": true,
+      "hasTtg": false
+    },
+    {
+      "ticker": "LEU",
+      "name": "Centrus Energy Corp.",
+      "price": 122.17,
+      "changePct": -9.0148,
+      "change": -12.11,
+      "volume": 808627,
+      "marketCap": 2498756096,
+      "packs": [],
+      "packIds": [],
+      "packCount": 0,
+      "sources": [
+        {
+          "id": "ttg",
+          "label": "TTG",
+          "name": "Tribeca Trade Group (Christian Fromhertz)",
+          "mentionCount": 5,
+          "recentMentionCount": 0,
+          "videos": [
+            {
+              "id": "vUmEQf0KUus",
+              "title": "Stock Market Recap by TTG: Uranium & Quantum Stocks Had a Huge Week",
+              "url": "https://www.youtube.com/watch?v=vUmEQf0KUus&t=857s",
+              "date": "20250919",
+              "ts": "14:17",
+              "snip": "and then a smaller like satellite position will will be the LEU, right? And you could do that same thing with the semis, right? you could be long the semis ETF and then pick one or two",
+              "bucket": "transcript"
+            },
+            {
+              "id": "sFxhYqotCFc",
+              "title": "Stock Market Recap by TTG: Small Caps Super Strong, Semis Huge Day, What to Watch Next",
+              "url": "https://www.youtube.com/watch?v=sFxhYqotCFc&t=481s",
+              "date": "20250918",
+              "ts": "8:01",
+              "snip": "nuclear names um did very well today. This is LEU. This is a name that I got long in here. I actually added back on the dip which made the trade work out really nice to me. So notice how this",
+              "bucket": "transcript"
+            },
+            {
+              "id": "izEjzcpYVQI",
+              "title": "Stock Market Recap by TTG: Indices Chop, Strength in Quantum / Aero & Drones / Uranium / Cryptos",
+              "url": "https://www.youtube.com/watch?v=izEjzcpYVQI&t=735s",
+              "date": "20250716",
+              "ts": "12:15",
+              "snip": "yet. 6574. LEU has also been super strong. New brand new high in this one. Um and then CCJ, which I'm also long. This one did not do much today. That's okay.",
+              "bucket": "transcript"
+            }
+          ],
+          "channelUrl": "https://www.youtube.com/@cfromhertz33",
+          "stance": "Long \u2014 smaller satellite uranium position"
+        }
+      ],
+      "hasTtf": false,
+      "hasTsm": false,
+      "hasTtg": true
     },
     {
       "ticker": "LLY",
@@ -3002,7 +3766,8 @@ window.WATCHLIST = {
         }
       ],
       "hasTtf": false,
-      "hasTsm": true
+      "hasTsm": true,
+      "hasTtg": false
     },
     {
       "ticker": "LOGI",
@@ -3021,7 +3786,8 @@ window.WATCHLIST = {
       "packCount": 1,
       "sources": [],
       "hasTtf": false,
-      "hasTsm": false
+      "hasTsm": false,
+      "hasTtg": false
     },
     {
       "ticker": "LPG",
@@ -3040,7 +3806,8 @@ window.WATCHLIST = {
       "packCount": 1,
       "sources": [],
       "hasTtf": false,
-      "hasTsm": false
+      "hasTsm": false,
+      "hasTtg": false
     },
     {
       "ticker": "MD",
@@ -3059,7 +3826,8 @@ window.WATCHLIST = {
       "packCount": 1,
       "sources": [],
       "hasTtf": false,
-      "hasTsm": false
+      "hasTsm": false,
+      "hasTtg": false
     },
     {
       "ticker": "MDLZ",
@@ -3078,7 +3846,8 @@ window.WATCHLIST = {
       "packCount": 1,
       "sources": [],
       "hasTtf": false,
-      "hasTsm": false
+      "hasTsm": false,
+      "hasTtg": false
     },
     {
       "ticker": "META",
@@ -3200,7 +3969,8 @@ window.WATCHLIST = {
         }
       ],
       "hasTtf": true,
-      "hasTsm": true
+      "hasTsm": true,
+      "hasTtg": false
     },
     {
       "ticker": "MG",
@@ -3219,7 +3989,54 @@ window.WATCHLIST = {
       "packCount": 1,
       "sources": [],
       "hasTtf": false,
-      "hasTsm": false
+      "hasTsm": false,
+      "hasTtg": false
+    },
+    {
+      "ticker": "MP",
+      "name": "MP Materials Corp.",
+      "price": 39.6992,
+      "changePct": -6.436,
+      "change": -2.7308,
+      "volume": 4705582,
+      "marketCap": 7070490112,
+      "packs": [],
+      "packIds": [],
+      "packCount": 0,
+      "sources": [
+        {
+          "id": "ttg",
+          "label": "TTG",
+          "name": "Tribeca Trade Group (Christian Fromhertz)",
+          "mentionCount": 2,
+          "recentMentionCount": 0,
+          "videos": [
+            {
+              "id": "ets2Gg5Qiko",
+              "title": "Stock Market Recap by TTG: Semis / Rare Earths +  / Weak Breadth / Stronger Dollar",
+              "url": "https://www.youtube.com/watch?v=ets2Gg5Qiko&t=859s",
+              "date": "20250715",
+              "ts": "14:19",
+              "snip": "the um with the rare earths with and this MP has been very very strong, but the whole group is also very strong too. Um, METC actually had a huge day today, up 14% today. And then the one that I",
+              "bucket": "transcript"
+            },
+            {
+              "id": "rBfKf2Hr0CQ",
+              "title": "Stock Market Recap by TTG: NVDA New Highs and Semis Shine",
+              "url": "https://www.youtube.com/watch?v=rBfKf2Hr0CQ&t=844s",
+              "date": "20250625",
+              "ts": "14:04",
+              "snip": "I really want to cover? Um I like the dip in MP. I got a little involved in this one um today. Um this setup is basically uh bullish 80% rule is now in place on the 1 hour chart",
+              "bucket": "transcript"
+            }
+          ],
+          "channelUrl": "https://www.youtube.com/@cfromhertz33",
+          "stance": "Leader \u2014 rare earths very strong"
+        }
+      ],
+      "hasTtf": false,
+      "hasTsm": false,
+      "hasTtg": true
     },
     {
       "ticker": "MPW",
@@ -3242,7 +4059,7 @@ window.WATCHLIST = {
           "videos": [
             {
               "id": "ngrWJ5Ak2DI",
-              "title": "🚨BIG NEWS🚨 NVDA STOCK SPLIT",
+              "title": "\ud83d\udea8BIG NEWS\ud83d\udea8 NVDA STOCK SPLIT",
               "url": "https://www.youtube.com/watch?v=ngrWJ5Ak2DI",
               "bucket": "transcript",
               "date": "20240522",
@@ -3270,7 +4087,7 @@ window.WATCHLIST = {
               "url": "https://www.youtube.com/watch?v=C0pSr2_2Zqc",
               "bucket": "transcript",
               "date": "20250304",
-              "snip": "mes. Anything that we're down by 20% or less, 25%—MPW has been getting there lately. These might be names that you want to look at and pay a"
+              "snip": "mes. Anything that we're down by 20% or less, 25%\u2014MPW has been getting there lately. These might be names that you want to look at and pay a"
             },
             {
               "id": "JXO8GtY5RM0",
@@ -3285,7 +4102,8 @@ window.WATCHLIST = {
         }
       ],
       "hasTtf": true,
-      "hasTsm": false
+      "hasTsm": false,
+      "hasTtg": false
     },
     {
       "ticker": "MRNA",
@@ -3319,7 +4137,8 @@ window.WATCHLIST = {
         }
       ],
       "hasTtf": false,
-      "hasTsm": true
+      "hasTsm": true,
+      "hasTtg": false
     },
     {
       "ticker": "MSFT",
@@ -3366,7 +4185,7 @@ window.WATCHLIST = {
             },
             {
               "id": "yPDW0-LT58c",
-              "title": "When To Sell An Option Contract For The Most Profit – Robinhood Swing Trading Strategy – Small Accou",
+              "title": "When To Sell An Option Contract For The Most Profit \u2013 Robinhood Swing Trading Strategy \u2013 Small Accou",
               "url": "https://www.youtube.com/watch?v=yPDW0-LT58c",
               "bucket": "transcript",
               "date": "20190713",
@@ -3441,7 +4260,54 @@ window.WATCHLIST = {
         }
       ],
       "hasTtf": true,
-      "hasTsm": true
+      "hasTsm": true,
+      "hasTtg": false
+    },
+    {
+      "ticker": "MSTR",
+      "name": "Strategy Inc",
+      "price": 144.941,
+      "changePct": -4.7569,
+      "change": -7.239,
+      "volume": 11065184,
+      "marketCap": 61374840832,
+      "packs": [],
+      "packIds": [],
+      "packCount": 0,
+      "sources": [
+        {
+          "id": "ttg",
+          "label": "TTG",
+          "name": "Tribeca Trade Group (Christian Fromhertz)",
+          "mentionCount": 2,
+          "recentMentionCount": 0,
+          "videos": [
+            {
+              "id": "8PtOzHbu3wQ",
+              "title": "Stock Market Recap by TTG: While Indices Chop, Uranium / Aerospace & Defense / Cryptos climb",
+              "url": "https://www.youtube.com/watch?v=8PtOzHbu3wQ&t=1117s",
+              "date": "20250714",
+              "ts": "18:37",
+              "snip": "moving average catch up. Um, I did sell my my MSTR position, which I got long last week. Again, just a little bit too short-term extended for me. So, I took some profits in uh in",
+              "bucket": "transcript"
+            },
+            {
+              "id": "sluYu6nDSAE",
+              "title": "Stock Market Recap by TTG: Semis $SMH & $BTC_F Bitcoin new highs!",
+              "url": "https://www.youtube.com/watch?v=sluYu6nDSAE&t=631s",
+              "date": "20250709",
+              "ts": "10:31",
+              "snip": "Coinbase. Uh, a few other ones in this space. MSTR also perking up. I know this hasn't been um the one to really play as of late, but it looks like it's gearing up here a bit. Let's see if it can take",
+              "bucket": "transcript"
+            }
+          ],
+          "channelUrl": "https://www.youtube.com/@cfromhertz33",
+          "stance": "Exited \u2014 sold, too short-term extended"
+        }
+      ],
+      "hasTtf": false,
+      "hasTsm": false,
+      "hasTtg": true
     },
     {
       "ticker": "MTDR",
@@ -3460,7 +4326,8 @@ window.WATCHLIST = {
       "packCount": 1,
       "sources": [],
       "hasTtf": false,
-      "hasTsm": false
+      "hasTsm": false,
+      "hasTtg": false
     },
     {
       "ticker": "MU",
@@ -3523,10 +4390,40 @@ window.WATCHLIST = {
             }
           ],
           "channelUrl": "https://www.youtube.com/@TheStockMarket"
+        },
+        {
+          "id": "ttg",
+          "label": "TTG",
+          "name": "Tribeca Trade Group (Christian Fromhertz)",
+          "mentionCount": 2,
+          "recentMentionCount": 1,
+          "videos": [
+            {
+              "id": "9UGIv0dZdfM",
+              "title": "Stock Market Recap by TTG: End of Weak Recap, The Leaders Are Leading",
+              "url": "https://www.youtube.com/watch?v=9UGIv0dZdfM&t=598s",
+              "date": "20260618",
+              "ts": "9:58",
+              "snip": "All right. I also traded Micron today. Look at what you know, Micron had a nice day today. It's actually at new highs, but you",
+              "bucket": "transcript"
+            },
+            {
+              "id": "rBfKf2Hr0CQ",
+              "title": "Stock Market Recap by TTG: NVDA New Highs and Semis Shine",
+              "url": "https://www.youtube.com/watch?v=rBfKf2Hr0CQ&t=546s",
+              "date": "20250625",
+              "ts": "9:06",
+              "snip": "Um and um nice move back above the 200 day moving average. Um clearly uh Micron reported earnings. I mean this is another one I I could not play Micron after the move that it had, but um they",
+              "bucket": "transcript"
+            }
+          ],
+          "channelUrl": "https://www.youtube.com/@cfromhertz33",
+          "stance": "Traded long (at new highs)"
         }
       ],
       "hasTtf": false,
-      "hasTsm": true
+      "hasTsm": true,
+      "hasTtg": true
     },
     {
       "ticker": "MUR",
@@ -3545,7 +4442,63 @@ window.WATCHLIST = {
       "packCount": 1,
       "sources": [],
       "hasTtf": false,
-      "hasTsm": false
+      "hasTsm": false,
+      "hasTtg": false
+    },
+    {
+      "ticker": "NBIS",
+      "name": "Nebius Group N.V.",
+      "price": 186.7325,
+      "changePct": -9.73,
+      "change": -20.1275,
+      "volume": 21201966,
+      "marketCap": 47411044352,
+      "packs": [],
+      "packIds": [],
+      "packCount": 0,
+      "sources": [
+        {
+          "id": "ttg",
+          "label": "TTG",
+          "name": "Tribeca Trade Group (Christian Fromhertz)",
+          "mentionCount": 3,
+          "recentMentionCount": 1,
+          "videos": [
+            {
+              "id": "9TlXnlMHO8I",
+              "title": "NBIS buy the dip trade using the MarketWebs system",
+              "url": "https://www.youtube.com/watch?v=9TlXnlMHO8I&t=0s",
+              "date": "20260601",
+              "ts": "0:00",
+              "snip": "NBIS, let's talk about this stock today. Right, this stock came right down into support today. Right, and we talked about this in our",
+              "bucket": "transcript"
+            },
+            {
+              "id": "v16wuN4SwPk",
+              "title": "Stock Market Recap by TTG: FOMC Price Action Takeaways; Quantum Stocks Take A Leap",
+              "url": "https://www.youtube.com/watch?v=v16wuN4SwPk&t=790s",
+              "date": "20250917",
+              "ts": "13:10",
+              "snip": "know, have seen it many times before. NBIS started to um resolve out of is starting to resolve out of this consolidation higher. That's NBIS. Um team is another one that I'm watching.",
+              "bucket": "transcript"
+            },
+            {
+              "id": "ytCRvNrzIBU",
+              "title": "Stock Market Recap by TTG: QQQ Breaks Out! SMH Semis Strong, What to Watch Tomorrow NVDA",
+              "url": "https://www.youtube.com/watch?v=ytCRvNrzIBU&t=568s",
+              "date": "20250624",
+              "ts": "9:28",
+              "snip": "are names that folks like to keep an eye on. NBIS, by the way, had a good day. like it's hard to complain about a se up 7% day but um I would say this it did turn the corner but um you know didn't",
+              "bucket": "transcript"
+            }
+          ],
+          "channelUrl": "https://www.youtube.com/@cfromhertz33",
+          "stance": "Buy-the-dip setup at support (MarketWebs)"
+        }
+      ],
+      "hasTtf": false,
+      "hasTsm": false,
+      "hasTtg": true
     },
     {
       "ticker": "NFLX",
@@ -3651,7 +4604,8 @@ window.WATCHLIST = {
         }
       ],
       "hasTtf": true,
-      "hasTsm": true
+      "hasTsm": true,
+      "hasTtg": false
     },
     {
       "ticker": "NICE",
@@ -3672,7 +4626,8 @@ window.WATCHLIST = {
       "packCount": 2,
       "sources": [],
       "hasTtf": false,
-      "hasTsm": false
+      "hasTsm": false,
+      "hasTtg": false
     },
     {
       "ticker": "NOW",
@@ -3746,7 +4701,8 @@ window.WATCHLIST = {
         }
       ],
       "hasTtf": false,
-      "hasTsm": true
+      "hasTsm": true,
+      "hasTtg": false
     },
     {
       "ticker": "NTCT",
@@ -3765,7 +4721,8 @@ window.WATCHLIST = {
       "packCount": 1,
       "sources": [],
       "hasTtf": false,
-      "hasTsm": false
+      "hasTsm": false,
+      "hasTtg": false
     },
     {
       "ticker": "NTES",
@@ -3792,7 +4749,8 @@ window.WATCHLIST = {
       "packCount": 5,
       "sources": [],
       "hasTtf": false,
-      "hasTsm": false
+      "hasTsm": false,
+      "hasTtg": false
     },
     {
       "ticker": "NVDA",
@@ -3831,7 +4789,7 @@ window.WATCHLIST = {
             },
             {
               "id": "V0QIjeOCzek",
-              "title": "How To Find Support & Resistance And How To Use It PROPERLY – Understanding Trading Indicators",
+              "title": "How To Find Support & Resistance And How To Use It PROPERLY \u2013 Understanding Trading Indicators",
               "url": "https://www.youtube.com/watch?v=V0QIjeOCzek",
               "bucket": "transcript",
               "date": "20200126",
@@ -3839,7 +4797,7 @@ window.WATCHLIST = {
             },
             {
               "id": "ngrWJ5Ak2DI",
-              "title": "🚨BIG NEWS🚨 NVDA STOCK SPLIT",
+              "title": "\ud83d\udea8BIG NEWS\ud83d\udea8 NVDA STOCK SPLIT",
               "url": "https://www.youtube.com/watch?v=ngrWJ5Ak2DI",
               "bucket": "transcript",
               "date": "20240522",
@@ -3847,7 +4805,7 @@ window.WATCHLIST = {
             },
             {
               "id": "yPDW0-LT58c",
-              "title": "When To Sell An Option Contract For The Most Profit – Robinhood Swing Trading Strategy – Small Accou",
+              "title": "When To Sell An Option Contract For The Most Profit \u2013 Robinhood Swing Trading Strategy \u2013 Small Accou",
               "url": "https://www.youtube.com/watch?v=yPDW0-LT58c",
               "bucket": "transcript",
               "date": "20190713",
@@ -3919,10 +4877,49 @@ window.WATCHLIST = {
             }
           ],
           "channelUrl": "https://www.youtube.com/@TheStockMarket"
+        },
+        {
+          "id": "ttg",
+          "label": "TTG",
+          "name": "Tribeca Trade Group (Christian Fromhertz)",
+          "mentionCount": 7,
+          "recentMentionCount": 0,
+          "videos": [
+            {
+              "id": "6zbxp8eq7TI",
+              "title": "Stock Market Recap by TTG:  ROTATION Out of Some AI & Into Health Care/ Bios & Energy",
+              "url": "https://www.youtube.com/watch?v=6zbxp8eq7TI&t=104s",
+              "date": "20251111",
+              "ts": "1:44",
+              "snip": "review more things, but I'm going to start with Nvidia. uh you know this was kind of like a little bit of of of an excuse to sell uh Nvidia. So let me just put the let me just change the screen",
+              "bucket": "transcript"
+            },
+            {
+              "id": "sFxhYqotCFc",
+              "title": "Stock Market Recap by TTG: Small Caps Super Strong, Semis Huge Day, What to Watch Next",
+              "url": "https://www.youtube.com/watch?v=sFxhYqotCFc&t=102s",
+              "date": "20250918",
+              "ts": "1:42",
+              "snip": "about, you know, when we woke up this morning, uh the story that um Nvidia is investing $5 billion in uh in Intel, which got a lot of different groups going within the semiconductors. So, if",
+              "bucket": "transcript"
+            },
+            {
+              "id": "ets2Gg5Qiko",
+              "title": "Stock Market Recap by TTG: Semis / Rare Earths +  / Weak Breadth / Stronger Dollar",
+              "url": "https://www.youtube.com/watch?v=ets2Gg5Qiko&t=60s",
+              "date": "20250715",
+              "ts": "1:00",
+              "snip": "those markets are pretty difficult. We had that news about Nvidia last night um getting a boosting not only Nvidia and a couple of the other semiconductors um AMD was also positive for them that they",
+              "bucket": "transcript"
+            }
+          ],
+          "channelUrl": "https://www.youtube.com/@cfromhertz33",
+          "stance": "Mixed \u2014 leader mid-2025; Nov 11 2025 'an excuse to sell Nvidia'"
         }
       ],
       "hasTtf": true,
-      "hasTsm": true
+      "hasTsm": true,
+      "hasTtg": true
     },
     {
       "ticker": "NVGS",
@@ -3941,7 +4938,8 @@ window.WATCHLIST = {
       "packCount": 1,
       "sources": [],
       "hasTtf": false,
-      "hasTsm": false
+      "hasTsm": false,
+      "hasTtg": false
     },
     {
       "ticker": "NVO",
@@ -3975,7 +4973,45 @@ window.WATCHLIST = {
         }
       ],
       "hasTtf": false,
-      "hasTsm": true
+      "hasTsm": true,
+      "hasTtg": false
+    },
+    {
+      "ticker": "NVTS",
+      "name": "Navitas Semiconductor Corporati",
+      "price": 9.525,
+      "changePct": -8.8517,
+      "change": -0.925,
+      "volume": 11578525,
+      "marketCap": 2500840704,
+      "packs": [],
+      "packIds": [],
+      "packCount": 0,
+      "sources": [
+        {
+          "id": "ttg",
+          "label": "TTG",
+          "name": "Tribeca Trade Group (Christian Fromhertz)",
+          "mentionCount": 1,
+          "recentMentionCount": 1,
+          "videos": [
+            {
+              "id": "jfa72w8Kx-M",
+              "title": "NVTS #bullish setup",
+              "url": "https://www.youtube.com/watch?v=jfa72w8Kx-M&t=3s",
+              "date": "20260603",
+              "ts": "0:03",
+              "snip": "name that I'm watching for tomorrow, which is NVTS. Notice this price came into this support and you got a hammer bar off of this today. There's",
+              "bucket": "transcript"
+            }
+          ],
+          "channelUrl": "https://www.youtube.com/@cfromhertz33",
+          "stance": "Bullish setup \u2014 hammer off support, on watch"
+        }
+      ],
+      "hasTtf": false,
+      "hasTsm": false,
+      "hasTtg": true
     },
     {
       "ticker": "OBE",
@@ -3994,7 +5030,8 @@ window.WATCHLIST = {
       "packCount": 1,
       "sources": [],
       "hasTtf": false,
-      "hasTsm": false
+      "hasTsm": false,
+      "hasTtg": false
     },
     {
       "ticker": "ORCL",
@@ -4105,10 +5142,86 @@ window.WATCHLIST = {
             }
           ],
           "channelUrl": "https://www.youtube.com/@TheStockMarket"
+        },
+        {
+          "id": "ttg",
+          "label": "TTG",
+          "name": "Tribeca Trade Group (Christian Fromhertz)",
+          "mentionCount": 5,
+          "recentMentionCount": 0,
+          "videos": [
+            {
+              "id": "vUmEQf0KUus",
+              "title": "Stock Market Recap by TTG: Uranium & Quantum Stocks Had a Huge Week",
+              "url": "https://www.youtube.com/watch?v=vUmEQf0KUus&t=1028s",
+              "date": "20250919",
+              "ts": "17:08",
+              "snip": "right at the right at the close today in Oracle getting another contract per se possibly from Microsoft $20 billion. Um we this was a really great observation that we made at the end of the day and a",
+              "bucket": "transcript"
+            },
+            {
+              "id": "ets2Gg5Qiko",
+              "title": "Stock Market Recap by TTG: Semis / Rare Earths +  / Weak Breadth / Stronger Dollar",
+              "url": "https://www.youtube.com/watch?v=ets2Gg5Qiko&t=1023s",
+              "date": "20250715",
+              "ts": "17:03",
+              "snip": "pretty interesting here. Again, it's just up a lot, is this Oracle. nice turn today back above the five period moving average. Um so I'll have that on radar for tomorrow. So that's it guys. I I'm",
+              "bucket": "transcript"
+            },
+            {
+              "id": "rBfKf2Hr0CQ",
+              "title": "Stock Market Recap by TTG: NVDA New Highs and Semis Shine",
+              "url": "https://www.youtube.com/watch?v=rBfKf2Hr0CQ&t=882s",
+              "date": "20250625",
+              "ts": "14:42",
+              "snip": "whatever reason, I will be looking to add to my Oracle position, which I trimmed yesterday, but looking to kind of add around this um around this 209 level, 209 210. Um, that's where I would",
+              "bucket": "transcript"
+            }
+          ],
+          "channelUrl": "https://www.youtube.com/@cfromhertz33",
+          "stance": "Bullish observation \u2014 contract news at close"
         }
       ],
       "hasTtf": true,
-      "hasTsm": true
+      "hasTsm": true,
+      "hasTtg": true
+    },
+    {
+      "ticker": "OSCR",
+      "name": "Oscar Health, Inc.",
+      "price": 33.4722,
+      "changePct": -0.9405,
+      "change": -0.3178,
+      "volume": 1742875,
+      "marketCap": 10331026432,
+      "packs": [],
+      "packIds": [],
+      "packCount": 0,
+      "sources": [
+        {
+          "id": "ttg",
+          "label": "TTG",
+          "name": "Tribeca Trade Group (Christian Fromhertz)",
+          "mentionCount": 1,
+          "recentMentionCount": 0,
+          "videos": [
+            {
+              "id": "UjpOwJbWrGA",
+              "title": "Stock Market Recap by TTG: Indices Chop, but Plenty of Strong Moves",
+              "url": "https://www.youtube.com/watch?v=UjpOwJbWrGA&t=1394s",
+              "date": "20250618",
+              "ts": "23:14",
+              "snip": "you can look for this to back and fill Oscar another name that people like have been talking about incredibly. Um Oscar gave a nice little check back here in the first 10 minutes but look at the",
+              "bucket": "transcript"
+            }
+          ],
+          "channelUrl": "https://www.youtube.com/@cfromhertz33",
+          "stance": "Watching \u2014 check-back after move"
+        }
+      ],
+      "hasTtf": false,
+      "hasTsm": false,
+      "hasTtg": true
     },
     {
       "ticker": "PAA",
@@ -4127,7 +5240,8 @@ window.WATCHLIST = {
       "packCount": 1,
       "sources": [],
       "hasTtf": false,
-      "hasTsm": false
+      "hasTsm": false,
+      "hasTtg": false
     },
     {
       "ticker": "PG",
@@ -4150,7 +5264,7 @@ window.WATCHLIST = {
           "videos": [
             {
               "id": "VrK9Yx_Mino",
-              "title": "Long Term Investing – Using PE Ratio To Buy Stocks – PE Ratio Explained – Stocks To Buy Now",
+              "title": "Long Term Investing \u2013 Using PE Ratio To Buy Stocks \u2013 PE Ratio Explained \u2013 Stocks To Buy Now",
               "url": "https://www.youtube.com/watch?v=VrK9Yx_Mino",
               "bucket": "transcript",
               "date": "20190127",
@@ -4169,7 +5283,8 @@ window.WATCHLIST = {
         }
       ],
       "hasTtf": true,
-      "hasTsm": false
+      "hasTsm": false,
+      "hasTtg": false
     },
     {
       "ticker": "PGNY",
@@ -4188,7 +5303,8 @@ window.WATCHLIST = {
       "packCount": 1,
       "sources": [],
       "hasTtf": false,
-      "hasTsm": false
+      "hasTsm": false,
+      "hasTtg": false
     },
     {
       "ticker": "PLGO",
@@ -4207,7 +5323,8 @@ window.WATCHLIST = {
       "packCount": 1,
       "sources": [],
       "hasTtf": false,
-      "hasTsm": false
+      "hasTsm": false,
+      "hasTtg": false
     },
     {
       "ticker": "PLMR",
@@ -4226,7 +5343,8 @@ window.WATCHLIST = {
       "packCount": 1,
       "sources": [],
       "hasTtf": false,
-      "hasTsm": false
+      "hasTsm": false,
+      "hasTtg": false
     },
     {
       "ticker": "PWR",
@@ -4249,7 +5367,8 @@ window.WATCHLIST = {
       "packCount": 3,
       "sources": [],
       "hasTtf": false,
-      "hasTsm": false
+      "hasTsm": false,
+      "hasTtg": false
     },
     {
       "ticker": "QGEN",
@@ -4268,7 +5387,8 @@ window.WATCHLIST = {
       "packCount": 1,
       "sources": [],
       "hasTtf": false,
-      "hasTsm": false
+      "hasTsm": false,
+      "hasTtg": false
     },
     {
       "ticker": "QQQ",
@@ -4334,7 +5454,8 @@ window.WATCHLIST = {
         }
       ],
       "hasTtf": false,
-      "hasTsm": true
+      "hasTsm": true,
+      "hasTtg": false
     },
     {
       "ticker": "QRVO",
@@ -4353,7 +5474,137 @@ window.WATCHLIST = {
       "packCount": 1,
       "sources": [],
       "hasTtf": false,
-      "hasTsm": false
+      "hasTsm": false,
+      "hasTtg": false
+    },
+    {
+      "ticker": "RBRK",
+      "name": "Rubrik, Inc.",
+      "price": 114.4319,
+      "changePct": -3.4085,
+      "change": -4.0381,
+      "volume": 1069425,
+      "marketCap": 23553353728,
+      "packs": [],
+      "packIds": [],
+      "packCount": 0,
+      "sources": [
+        {
+          "id": "ttg",
+          "label": "TTG",
+          "name": "Tribeca Trade Group (Christian Fromhertz)",
+          "mentionCount": 4,
+          "recentMentionCount": 0,
+          "videos": [
+            {
+              "id": "sFxhYqotCFc",
+              "title": "Stock Market Recap by TTG: Small Caps Super Strong, Semis Huge Day, What to Watch Next",
+              "url": "https://www.youtube.com/watch?v=sFxhYqotCFc&t=537s",
+              "date": "20250918",
+              "ts": "8:57",
+              "snip": "um uh RBRK. Oops. RBRK. There we go. Um, I just thought that this was depressed enough. I I thought it kind of got oversold. You",
+              "bucket": "transcript"
+            },
+            {
+              "id": "sluYu6nDSAE",
+              "title": "Stock Market Recap by TTG: Semis $SMH & $BTC_F Bitcoin new highs!",
+              "url": "https://www.youtube.com/watch?v=sluYu6nDSAE&t=832s",
+              "date": "20250709",
+              "ts": "13:52",
+              "snip": "point out a few other things that I thought were interesting. RBRK, which is one of our weekend watch list names, also trying to turn the corner here. Looks pretty good. spent some time",
+              "bucket": "transcript"
+            },
+            {
+              "id": "rBfKf2Hr0CQ",
+              "title": "Stock Market Recap by TTG: NVDA New Highs and Semis Shine",
+              "url": "https://www.youtube.com/watch?v=rBfKf2Hr0CQ&t=669s",
+              "date": "20250625",
+              "ts": "11:09",
+              "snip": "in the trading room yesterday. So nice move there. Um RBRK just going back to the side where you know did not close above value. I looked at this earlier in the day. I was thinking about taking a",
+              "bucket": "transcript"
+            }
+          ],
+          "channelUrl": "https://www.youtube.com/@cfromhertz33",
+          "stance": "Long idea \u2014 thought it was oversold"
+        }
+      ],
+      "hasTtf": false,
+      "hasTsm": false,
+      "hasTtg": true
+    },
+    {
+      "ticker": "RDDT",
+      "name": "Reddit, Inc.",
+      "price": 150.77,
+      "changePct": -2.9107,
+      "change": -4.52,
+      "volume": 1703857,
+      "marketCap": 29007622144,
+      "packs": [],
+      "packIds": [],
+      "packCount": 0,
+      "sources": [
+        {
+          "id": "ttg",
+          "label": "TTG",
+          "name": "Tribeca Trade Group (Christian Fromhertz)",
+          "mentionCount": 1,
+          "recentMentionCount": 0,
+          "videos": [
+            {
+              "id": "UjpOwJbWrGA",
+              "title": "Stock Market Recap by TTG: Indices Chop, but Plenty of Strong Moves",
+              "url": "https://www.youtube.com/watch?v=UjpOwJbWrGA&t=1366s",
+              "date": "20250618",
+              "ts": "22:46",
+              "snip": "little bit. Um still riding the 5day moving average. Um Reddit um really nice comeback yesterday from you know it sold off quite a bit yesterday",
+              "bucket": "transcript"
+            }
+          ],
+          "channelUrl": "https://www.youtube.com/@cfromhertz33",
+          "stance": "Leader \u2014 riding 5-day MA"
+        }
+      ],
+      "hasTtf": false,
+      "hasTsm": false,
+      "hasTtg": true
+    },
+    {
+      "ticker": "RDW",
+      "name": "Redwire Corporation",
+      "price": 8.625,
+      "changePct": -5.8406,
+      "change": -0.535,
+      "volume": 6427235,
+      "marketCap": 2156186368,
+      "packs": [],
+      "packIds": [],
+      "packCount": 0,
+      "sources": [
+        {
+          "id": "ttg",
+          "label": "TTG",
+          "name": "Tribeca Trade Group (Christian Fromhertz)",
+          "mentionCount": 1,
+          "recentMentionCount": 0,
+          "videos": [
+            {
+              "id": "8PtOzHbu3wQ",
+              "title": "Stock Market Recap by TTG: While Indices Chop, Uranium / Aerospace & Defense / Cryptos climb",
+              "url": "https://www.youtube.com/watch?v=8PtOzHbu3wQ&t=1013s",
+              "date": "20250714",
+              "ts": "16:53",
+              "snip": "but saw some continuation in um this is RDW. Um I like this company. Um it will have to get through some resistance. Just another u aerospace and satellite uh",
+              "bucket": "transcript"
+            }
+          ],
+          "channelUrl": "https://www.youtube.com/@cfromhertz33",
+          "stance": "Bullish \u2014 'I like this company' (needs to clear resistance)"
+        }
+      ],
+      "hasTtf": false,
+      "hasTsm": false,
+      "hasTtg": true
     },
     {
       "ticker": "RS",
@@ -4372,7 +5623,8 @@ window.WATCHLIST = {
       "packCount": 1,
       "sources": [],
       "hasTtf": false,
-      "hasTsm": false
+      "hasTsm": false,
+      "hasTtg": false
     },
     {
       "ticker": "SANM",
@@ -4391,7 +5643,8 @@ window.WATCHLIST = {
       "packCount": 1,
       "sources": [],
       "hasTtf": false,
-      "hasTsm": false
+      "hasTsm": false,
+      "hasTtg": false
     },
     {
       "ticker": "SB",
@@ -4410,7 +5663,8 @@ window.WATCHLIST = {
       "packCount": 1,
       "sources": [],
       "hasTtf": false,
-      "hasTsm": false
+      "hasTsm": false,
+      "hasTtg": false
     },
     {
       "ticker": "SG",
@@ -4442,7 +5696,8 @@ window.WATCHLIST = {
         }
       ],
       "hasTtf": true,
-      "hasTsm": false
+      "hasTsm": false,
+      "hasTtg": false
     },
     {
       "ticker": "SHOP",
@@ -4465,7 +5720,7 @@ window.WATCHLIST = {
           "videos": [
             {
               "id": "YpZ2I4Je-Eo",
-              "title": "STOCK MARKET GOES CRAZY ON TRADE WAR NEWS – My Watchlist – How To Roll Over Credit Spreads",
+              "title": "STOCK MARKET GOES CRAZY ON TRADE WAR NEWS \u2013 My Watchlist \u2013 How To Roll Over Credit Spreads",
               "url": "https://www.youtube.com/watch?v=YpZ2I4Je-Eo",
               "bucket": "transcript",
               "date": "20190906",
@@ -4473,7 +5728,7 @@ window.WATCHLIST = {
             },
             {
               "id": "QEim2pSkIVs",
-              "title": "THE FED Just TRICKED The Stock Market – My Watchlist – Bond Market Yield Curve INVERTS AGAIN",
+              "title": "THE FED Just TRICKED The Stock Market \u2013 My Watchlist \u2013 Bond Market Yield Curve INVERTS AGAIN",
               "url": "https://www.youtube.com/watch?v=QEim2pSkIVs",
               "bucket": "transcript",
               "date": "20190822",
@@ -4497,7 +5752,7 @@ window.WATCHLIST = {
             },
             {
               "id": "ypWiJbDhnWU",
-              "title": "THE WORST OPEN FOR THE STOCK MARKET SINCE 2015 – How To FInd Cheap Puts When Stocks Are Dropping",
+              "title": "THE WORST OPEN FOR THE STOCK MARKET SINCE 2015 \u2013 How To FInd Cheap Puts When Stocks Are Dropping",
               "url": "https://www.youtube.com/watch?v=ypWiJbDhnWU",
               "bucket": "transcript",
               "date": "20200201",
@@ -4514,7 +5769,8 @@ window.WATCHLIST = {
         }
       ],
       "hasTtf": true,
-      "hasTsm": false
+      "hasTsm": false,
+      "hasTtg": false
     },
     {
       "ticker": "SMCI",
@@ -4582,7 +5838,8 @@ window.WATCHLIST = {
         }
       ],
       "hasTtf": true,
-      "hasTsm": true
+      "hasTsm": true,
+      "hasTtg": false
     },
     {
       "ticker": "SMH",
@@ -4616,7 +5873,63 @@ window.WATCHLIST = {
         }
       ],
       "hasTtf": false,
-      "hasTsm": true
+      "hasTsm": true,
+      "hasTtg": false
+    },
+    {
+      "ticker": "SMR",
+      "name": "NuScale Power Corporation",
+      "price": 5.9,
+      "changePct": -9.0909,
+      "change": -0.59,
+      "volume": 23916687,
+      "marketCap": 2421298176,
+      "packs": [],
+      "packIds": [],
+      "packCount": 0,
+      "sources": [
+        {
+          "id": "ttg",
+          "label": "TTG",
+          "name": "Tribeca Trade Group (Christian Fromhertz)",
+          "mentionCount": 6,
+          "recentMentionCount": 0,
+          "videos": [
+            {
+              "id": "izEjzcpYVQI",
+              "title": "Stock Market Recap by TTG: Indices Chop, Strength in Quantum / Aero & Drones / Uranium / Cryptos",
+              "url": "https://www.youtube.com/watch?v=izEjzcpYVQI&t=717s",
+              "date": "20250716",
+              "ts": "11:57",
+              "snip": "talk a little bit about the uranium names today. And I've been long um SMR, which made a new high today. Right. I've been talking about how I like SMR a bit over a which was no slouch today. Olo",
+              "bucket": "transcript"
+            },
+            {
+              "id": "ets2Gg5Qiko",
+              "title": "Stock Market Recap by TTG: Semis / Rare Earths +  / Weak Breadth / Stronger Dollar",
+              "url": "https://www.youtube.com/watch?v=ets2Gg5Qiko&t=943s",
+              "date": "20250715",
+              "ts": "15:43",
+              "snip": "you might consider if you like this name. I went long SMR today. I just wanted to review that trade today. Um, I went long and I was pretty aggressive with this setup. Um, into the five",
+              "bucket": "transcript"
+            },
+            {
+              "id": "8PtOzHbu3wQ",
+              "title": "Stock Market Recap by TTG: While Indices Chop, Uranium / Aerospace & Defense / Cryptos climb",
+              "url": "https://www.youtube.com/watch?v=8PtOzHbu3wQ&t=743s",
+              "date": "20250714",
+              "ts": "12:23",
+              "snip": "of these other names. Um, OLO is about 5 a.5% of the ETF. SMR is about 5.3% of the ETF, right? And then you also have I think LEU is in here someplace. Um that's 4.3%. So I think overall this",
+              "bucket": "transcript"
+            }
+          ],
+          "channelUrl": "https://www.youtube.com/@cfromhertz33",
+          "stance": "Long (said 'I've been long SMR' at new high)"
+        }
+      ],
+      "hasTtf": false,
+      "hasTsm": false,
+      "hasTtg": true
     },
     {
       "ticker": "SNAP",
@@ -4688,7 +6001,45 @@ window.WATCHLIST = {
         }
       ],
       "hasTtf": true,
-      "hasTsm": false
+      "hasTsm": false,
+      "hasTtg": false
+    },
+    {
+      "ticker": "SNOW",
+      "name": "Snowflake Inc.",
+      "price": 341.95,
+      "changePct": -4.4192,
+      "change": -15.81,
+      "volume": 1921928,
+      "marketCap": 120639963136,
+      "packs": [],
+      "packIds": [],
+      "packCount": 0,
+      "sources": [
+        {
+          "id": "ttg",
+          "label": "TTG",
+          "name": "Tribeca Trade Group (Christian Fromhertz)",
+          "mentionCount": 1,
+          "recentMentionCount": 0,
+          "videos": [
+            {
+              "id": "ytCRvNrzIBU",
+              "title": "Stock Market Recap by TTG: QQQ Breaks Out! SMH Semis Strong, What to Watch Tomorrow NVDA",
+              "url": "https://www.youtube.com/watch?v=ytCRvNrzIBU&t=973s",
+              "date": "20250624",
+              "ts": "16:13",
+              "snip": "to next? Um, snowflake. That was a nice trade. Um, this is a trade that I added on Friday. Um, sideways sideways sideways. 20-day moving average catches up. Um, nice",
+              "bucket": "transcript"
+            }
+          ],
+          "channelUrl": "https://www.youtube.com/@cfromhertz33",
+          "stance": "Trade added (20-day MA catch-up)"
+        }
+      ],
+      "hasTtf": false,
+      "hasTsm": false,
+      "hasTtg": true
     },
     {
       "ticker": "SNX",
@@ -4707,7 +6058,8 @@ window.WATCHLIST = {
       "packCount": 1,
       "sources": [],
       "hasTtf": false,
-      "hasTsm": false
+      "hasTsm": false,
+      "hasTtg": false
     },
     {
       "ticker": "SPNT",
@@ -4726,7 +6078,8 @@ window.WATCHLIST = {
       "packCount": 1,
       "sources": [],
       "hasTtf": false,
-      "hasTsm": false
+      "hasTsm": false,
+      "hasTtg": false
     },
     {
       "ticker": "SPSC",
@@ -4745,7 +6098,8 @@ window.WATCHLIST = {
       "packCount": 1,
       "sources": [],
       "hasTtf": false,
-      "hasTsm": false
+      "hasTsm": false,
+      "hasTtg": false
     },
     {
       "ticker": "SPY",
@@ -4776,7 +6130,7 @@ window.WATCHLIST = {
             },
             {
               "id": "4kgKk5b0eQs",
-              "title": "How To Find Cheap Option Contracts – Stocks To Trade Tomorrow",
+              "title": "How To Find Cheap Option Contracts \u2013 Stocks To Trade Tomorrow",
               "url": "https://www.youtube.com/watch?v=4kgKk5b0eQs",
               "bucket": "transcript",
               "date": "20190102",
@@ -4784,7 +6138,7 @@ window.WATCHLIST = {
             },
             {
               "id": "V0QIjeOCzek",
-              "title": "How To Find Support & Resistance And How To Use It PROPERLY – Understanding Trading Indicators",
+              "title": "How To Find Support & Resistance And How To Use It PROPERLY \u2013 Understanding Trading Indicators",
               "url": "https://www.youtube.com/watch?v=V0QIjeOCzek",
               "bucket": "transcript",
               "date": "20200126",
@@ -4861,7 +6215,8 @@ window.WATCHLIST = {
         }
       ],
       "hasTtf": true,
-      "hasTsm": true
+      "hasTsm": true,
+      "hasTtg": false
     },
     {
       "ticker": "TAK",
@@ -4880,7 +6235,8 @@ window.WATCHLIST = {
       "packCount": 1,
       "sources": [],
       "hasTtf": false,
-      "hasTsm": false
+      "hasTsm": false,
+      "hasTtg": false
     },
     {
       "ticker": "TAP",
@@ -4927,7 +6283,7 @@ window.WATCHLIST = {
             },
             {
               "id": "ngrWJ5Ak2DI",
-              "title": "🚨BIG NEWS🚨 NVDA STOCK SPLIT",
+              "title": "\ud83d\udea8BIG NEWS\ud83d\udea8 NVDA STOCK SPLIT",
               "url": "https://www.youtube.com/watch?v=ngrWJ5Ak2DI",
               "bucket": "transcript",
               "date": "20240522",
@@ -4944,7 +6300,8 @@ window.WATCHLIST = {
         }
       ],
       "hasTtf": true,
-      "hasTsm": false
+      "hasTsm": false,
+      "hasTtg": false
     },
     {
       "ticker": "TDC",
@@ -4963,7 +6320,8 @@ window.WATCHLIST = {
       "packCount": 1,
       "sources": [],
       "hasTtf": false,
-      "hasTsm": false
+      "hasTsm": false,
+      "hasTtg": false
     },
     {
       "ticker": "TEL",
@@ -4982,7 +6340,8 @@ window.WATCHLIST = {
       "packCount": 1,
       "sources": [],
       "hasTtf": false,
-      "hasTsm": false
+      "hasTsm": false,
+      "hasTtg": false
     },
     {
       "ticker": "TGT",
@@ -5016,7 +6375,8 @@ window.WATCHLIST = {
         }
       ],
       "hasTtf": false,
-      "hasTsm": true
+      "hasTsm": true,
+      "hasTtg": false
     },
     {
       "ticker": "TLT",
@@ -5055,7 +6415,7 @@ window.WATCHLIST = {
             },
             {
               "id": "LivYtN9CG4Y",
-              "title": "The REAL Reason Why The Stock Market Went Down Today – More Yield Curve Inversion, Brexit, Boeing",
+              "title": "The REAL Reason Why The Stock Market Went Down Today \u2013 More Yield Curve Inversion, Brexit, Boeing",
               "url": "https://www.youtube.com/watch?v=LivYtN9CG4Y",
               "bucket": "transcript",
               "date": "20190327",
@@ -5063,7 +6423,7 @@ window.WATCHLIST = {
             },
             {
               "id": "ypWiJbDhnWU",
-              "title": "THE WORST OPEN FOR THE STOCK MARKET SINCE 2015 – How To FInd Cheap Puts When Stocks Are Dropping",
+              "title": "THE WORST OPEN FOR THE STOCK MARKET SINCE 2015 \u2013 How To FInd Cheap Puts When Stocks Are Dropping",
               "url": "https://www.youtube.com/watch?v=ypWiJbDhnWU",
               "bucket": "transcript",
               "date": "20200201",
@@ -5138,7 +6498,54 @@ window.WATCHLIST = {
         }
       ],
       "hasTtf": true,
-      "hasTsm": true
+      "hasTsm": true,
+      "hasTtg": false
+    },
+    {
+      "ticker": "TMC",
+      "name": "TMC the metals company Inc.",
+      "price": 2.615,
+      "changePct": -7.1048,
+      "change": -0.2,
+      "volume": 3748013,
+      "marketCap": 1153569280,
+      "packs": [],
+      "packIds": [],
+      "packCount": 0,
+      "sources": [
+        {
+          "id": "ttg",
+          "label": "TTG",
+          "name": "Tribeca Trade Group (Christian Fromhertz)",
+          "mentionCount": 2,
+          "recentMentionCount": 0,
+          "videos": [
+            {
+              "id": "ets2Gg5Qiko",
+              "title": "Stock Market Recap by TTG: Semis / Rare Earths +  / Weak Breadth / Stronger Dollar",
+              "url": "https://www.youtube.com/watch?v=ets2Gg5Qiko&t=870s",
+              "date": "20250715",
+              "ts": "14:30",
+              "snip": "up 14% today. And then the one that I like out of this group is TMC, which also advanced today. So, again, there were pockets of strength in today's market. Um, I want to look at Bitcoin as",
+              "bucket": "transcript"
+            },
+            {
+              "id": "8PtOzHbu3wQ",
+              "title": "Stock Market Recap by TTG: While Indices Chop, Uranium / Aerospace & Defense / Cryptos climb",
+              "url": "https://www.youtube.com/watch?v=8PtOzHbu3wQ&t=882s",
+              "date": "20250714",
+              "ts": "14:42",
+              "snip": "V-po up here at 848. Very nice move there for TMC. All right. Um, what else did I wanted to uh to go over? Um, the na the natty gas names. Um, this also was kind of a little bit of a different",
+              "bucket": "transcript"
+            }
+          ],
+          "channelUrl": "https://www.youtube.com/@cfromhertz33",
+          "stance": "Bullish \u2014 'the one I like' in rare earths/metals"
+        }
+      ],
+      "hasTtf": false,
+      "hasTsm": false,
+      "hasTtg": true
     },
     {
       "ticker": "TSLA",
@@ -5177,7 +6584,7 @@ window.WATCHLIST = {
             },
             {
               "id": "nm98SnBN2Xk",
-              "title": "THE WORST STOCK MARKET EARNINGS EVER – Stocks I'm Buying Tomorrow – Tesla Stock CRASH",
+              "title": "THE WORST STOCK MARKET EARNINGS EVER \u2013 Stocks I'm Buying Tomorrow \u2013 Tesla Stock CRASH",
               "url": "https://www.youtube.com/watch?v=nm98SnBN2Xk",
               "bucket": "transcript",
               "date": "20190725",
@@ -5260,7 +6667,8 @@ window.WATCHLIST = {
         }
       ],
       "hasTtf": true,
-      "hasTsm": true
+      "hasTsm": true,
+      "hasTtg": false
     },
     {
       "ticker": "TSM",
@@ -5354,7 +6762,8 @@ window.WATCHLIST = {
         }
       ],
       "hasTtf": true,
-      "hasTsm": true
+      "hasTsm": true,
+      "hasTtg": false
     },
     {
       "ticker": "TTE",
@@ -5373,7 +6782,8 @@ window.WATCHLIST = {
       "packCount": 1,
       "sources": [],
       "hasTtf": false,
-      "hasTsm": false
+      "hasTsm": false,
+      "hasTtg": false
     },
     {
       "ticker": "TX",
@@ -5394,7 +6804,8 @@ window.WATCHLIST = {
       "packCount": 2,
       "sources": [],
       "hasTtf": false,
-      "hasTsm": false
+      "hasTsm": false,
+      "hasTtg": false
     },
     {
       "ticker": "TXN",
@@ -5428,7 +6839,8 @@ window.WATCHLIST = {
         }
       ],
       "hasTtf": false,
-      "hasTsm": true
+      "hasTsm": true,
+      "hasTtg": false
     },
     {
       "ticker": "TYL",
@@ -5447,7 +6859,8 @@ window.WATCHLIST = {
       "packCount": 1,
       "sources": [],
       "hasTtf": false,
-      "hasTsm": false
+      "hasTsm": false,
+      "hasTtg": false
     },
     {
       "ticker": "UBER",
@@ -5517,7 +6930,8 @@ window.WATCHLIST = {
         }
       ],
       "hasTtf": true,
-      "hasTsm": false
+      "hasTsm": false,
+      "hasTtg": false
     },
     {
       "ticker": "UMC",
@@ -5540,7 +6954,8 @@ window.WATCHLIST = {
       "packCount": 3,
       "sources": [],
       "hasTtf": false,
-      "hasTsm": false
+      "hasTsm": false,
+      "hasTtg": false
     },
     {
       "ticker": "UNH",
@@ -5574,7 +6989,8 @@ window.WATCHLIST = {
         }
       ],
       "hasTtf": false,
-      "hasTsm": true
+      "hasTsm": true,
+      "hasTtg": false
     },
     {
       "ticker": "UPS",
@@ -5608,7 +7024,8 @@ window.WATCHLIST = {
         }
       ],
       "hasTtf": false,
-      "hasTsm": true
+      "hasTsm": true,
+      "hasTtg": false
     },
     {
       "ticker": "UTHR",
@@ -5627,7 +7044,8 @@ window.WATCHLIST = {
       "packCount": 1,
       "sources": [],
       "hasTtf": false,
-      "hasTsm": false
+      "hasTsm": false,
+      "hasTtg": false
     },
     {
       "ticker": "VICR",
@@ -5650,7 +7068,45 @@ window.WATCHLIST = {
       "packCount": 3,
       "sources": [],
       "hasTtf": false,
-      "hasTsm": false
+      "hasTsm": false,
+      "hasTtg": false
+    },
+    {
+      "ticker": "VST",
+      "name": "Vistra Corp.",
+      "price": 152.345,
+      "changePct": -6.1684,
+      "change": -10.015,
+      "volume": 3830231,
+      "marketCap": 51132346368,
+      "packs": [],
+      "packIds": [],
+      "packCount": 0,
+      "sources": [
+        {
+          "id": "ttg",
+          "label": "TTG",
+          "name": "Tribeca Trade Group (Christian Fromhertz)",
+          "mentionCount": 1,
+          "recentMentionCount": 0,
+          "videos": [
+            {
+              "id": "h0GAXdpKwjw",
+              "title": "Stock Market Recap by TTG: Super strong breadth, Commodities shine, QQQ & Growth powers ahead",
+              "url": "https://www.youtube.com/watch?v=h0GAXdpKwjw&t=1168s",
+              "date": "20250626",
+              "ts": "19:28",
+              "snip": "up 5% and again the whole group is doing really well. VST continues to chug higher. PWR quietly made a new that's the one for whatever reason people don't tend to",
+              "bucket": "transcript"
+            }
+          ],
+          "channelUrl": "https://www.youtube.com/@cfromhertz33",
+          "stance": "Leader \u2014 'continues to chug higher'"
+        }
+      ],
+      "hasTtf": false,
+      "hasTsm": false,
+      "hasTtg": true
     },
     {
       "ticker": "WDS",
@@ -5669,7 +7125,8 @@ window.WATCHLIST = {
       "packCount": 1,
       "sources": [],
       "hasTtf": false,
-      "hasTsm": false
+      "hasTsm": false,
+      "hasTtg": false
     },
     {
       "ticker": "WEAT",
@@ -5713,7 +7170,8 @@ window.WATCHLIST = {
         }
       ],
       "hasTtf": true,
-      "hasTsm": false
+      "hasTsm": false,
+      "hasTtg": false
     },
     {
       "ticker": "WMT",
@@ -5779,7 +7237,8 @@ window.WATCHLIST = {
         }
       ],
       "hasTtf": false,
-      "hasTsm": true
+      "hasTsm": true,
+      "hasTtg": false
     },
     {
       "ticker": "XOM",
@@ -5802,7 +7261,7 @@ window.WATCHLIST = {
           "videos": [
             {
               "id": "ngrWJ5Ak2DI",
-              "title": "🚨BIG NEWS🚨 NVDA STOCK SPLIT",
+              "title": "\ud83d\udea8BIG NEWS\ud83d\udea8 NVDA STOCK SPLIT",
               "url": "https://www.youtube.com/watch?v=ngrWJ5Ak2DI",
               "bucket": "transcript",
               "date": "20240522",
@@ -5834,10 +7293,31 @@ window.WATCHLIST = {
             }
           ],
           "channelUrl": "https://www.youtube.com/@Thetradingfraternity"
+        },
+        {
+          "id": "ttg",
+          "label": "TTG",
+          "name": "Tribeca Trade Group (Christian Fromhertz)",
+          "mentionCount": 1,
+          "recentMentionCount": 0,
+          "videos": [
+            {
+              "id": "6zbxp8eq7TI",
+              "title": "Stock Market Recap by TTG:  ROTATION Out of Some AI & Into Health Care/ Bios & Energy",
+              "url": "https://www.youtube.com/watch?v=6zbxp8eq7TI&t=981s",
+              "date": "20251111",
+              "ts": "16:21",
+              "snip": "chance. Um, so again, here's the weekly chart. So, for example, like Exxon, you know, why can't Exxon break out here, right? I don't have any a reason why Exxon can't break out of going sideways",
+              "bucket": "transcript"
+            }
+          ],
+          "channelUrl": "https://www.youtube.com/@cfromhertz33",
+          "stance": "Bought a little (watching for weekly breakout)"
         }
       ],
       "hasTtf": true,
-      "hasTsm": false
+      "hasTsm": false,
+      "hasTtg": true
     },
     {
       "ticker": "YPF",
@@ -5856,7 +7336,9 @@ window.WATCHLIST = {
       "packCount": 1,
       "sources": [],
       "hasTtf": false,
-      "hasTsm": false
+      "hasTsm": false,
+      "hasTtg": false
     }
-  ]
+  ],
+  "ttgCount": 34
 };

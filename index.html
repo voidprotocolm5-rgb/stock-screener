@@ -17,13 +17,13 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <script>(function(){try{var t=localStorage.getItem("ss-theme");if(t)document.documentElement.dataset.theme=t;}catch(e){}})();</script>
-  <link rel="stylesheet" href="styles.css?v=13">
-  <script src="data.js?v=13"></script>
-  <script src="market.js?v=13"></script>
-  <script src="gate-summary.js?v=13"></script>
-  <script src="books-align.js?v=13"></script>
-  <script src="additive-packs.js?v=13"></script>
-  <script src="pack-screener-urls.js?v=13"></script>
+  <link rel="stylesheet" href="styles.css?v=14">
+  <script src="data.js?v=14"></script>
+  <script src="market.js?v=14"></script>
+  <script src="gate-summary.js?v=14"></script>
+  <script src="books-align.js?v=14"></script>
+  <script src="additive-packs.js?v=14"></script>
+  <script src="pack-screener-urls.js?v=14"></script>
 </head>
 <body>
   <div class="shell">
@@ -98,6 +98,11 @@
           <strong id="metric-tsm">—</strong>
           <span class="metric-note">Stock Market Live</span>
         </div>
+        <div class="metric">
+          <span class="metric-label">TTG names</span>
+          <strong id="metric-ttg">—</strong>
+          <span class="metric-note">Tribeca Trade Group</span>
+        </div>
         <div class="metric metric-books">
           <span class="metric-label">Book align</span>
           <strong id="metric-books">—</strong>
@@ -159,6 +164,7 @@
           <button type="button" class="chip is-on" data-source="all">All sources</button>
           <button type="button" class="chip source-ttf-chip" data-source="ttf">TTF only</button>
           <button type="button" class="chip source-tsm-chip" data-source="tsm">TSM only</button>
+          <button type="button" class="chip source-ttg-chip" data-source="ttg">TTG only</button>
           <button type="button" class="chip" data-source="finviz">Finviz packs</button>
           <button type="button" class="chip book-align-chip" id="book-align-chip" title="UI filter only — shows tickers with ≥1 book label (Lynch / Chan / 100×); no tickers removed">Book align</button>
         </div>
@@ -352,6 +358,6 @@
   </div>
 
   <script src="https://unpkg.com/lightweight-charts@4.2.1/dist/lightweight-charts.standalone.production.js"></script>
-  <script src="app.js?v=13"></script>
+  <script src="app.js?v=14"></script>
 </body>
 </html>
