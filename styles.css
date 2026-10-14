@@ -1099,3 +1099,10 @@ body { background: var(--bg); color: var(--text); font-family: var(--font); font
   .chart-drawer { align-items: stretch; }
   .chart-panel { position: fixed; inset: 0; margin: 0; border-radius: 0; max-height: none; transform: none; }
 }
+
+@media (max-width: 820px) {
+  .chart-panel { overflow-y: auto; display: block; }
+  .chart-panel > * { margin-bottom: 12px; }
+  .chart-body { display: block; flex: none; }
+  .chart-body .chart-canvas-wrap { height: 62dvh; margin-bottom: 12px; }
+}

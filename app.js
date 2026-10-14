@@ -1614,7 +1614,7 @@
     host.appendChild(wrap);
     // If no iframe appears in 9s, fall back to the baked chart.
     setTimeout(() => { if (!host.querySelector("iframe")) fail(); else settled = true; }, 9000);
-    document.querySelectorAll("#tv-intervals .chip").forEach((b) => b.classList.toggle("is-on", b.dataset.tvInterval === state.tvInterval));
+    document.querySelectorAll("#tv-intervals .chip").forEach((b) => b.classList.toggle("is-on", state.tvPick === "interval" && b.dataset.tvInterval === state.tvInterval));
     document.querySelectorAll("#tv-ranges .chip").forEach((b) => b.classList.toggle("is-on", state.tvPick !== "interval" && b.dataset.tvRange === state.tvRange));
     return true;
   }
