@@ -1345,6 +1345,117 @@
     setView("watchlist");
   }
 
+  // ===== Phase 1 redesign: Screens menu, Top 5 hero, glossary, theme =====
+  (function phase1() {
+    const body = document.getElementById("screens-body");
+    if (body) {
+      ["change-chips", "source-chips", "pack-chips", "additive-pack-wrap", "screener-links-row"].forEach((id) => {
+        const el = document.getElementById(id);
+        if (el) body.appendChild(el);
+      });
+      const range = document.querySelector("#controls-section .range-row");
+      if (range) body.appendChild(range);
+      const hint = document.getElementById("screens-hint");
+      const upd = () => {
+        const on = Array.from(body.querySelectorAll(".chip.is-on"))
+          .map((b) => b.textContent.trim())
+          .filter((t) => !/^All( sources)?$/.test(t));
+        hint.textContent = on.length ? on.join(" · ") : "All tickers";
+      };
+      body.addEventListener("click", () => setTimeout(upd, 0));
+      upd();
+    }
+    const gBtn = document.getElementById("glossary-btn");
+    const gl = document.getElementById("glossary");
+    if (gBtn && gl) gBtn.addEventListener("click", () => {
+      gl.hidden = !gl.hidden;
+      if (!gl.hidden) { setView("watchlist"); gl.scrollIntoView({ behavior: "smooth", block: "start" }); }
+    });
+    const tBtn = document.getElementById("theme-btn");
+    if (tBtn) tBtn.addEventListener("click", () => {
+      const root = document.documentElement;
+      const cur = root.dataset.theme || (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+      const next = cur === "dark" ? "light" : "dark";
+      root.dataset.theme = next;
+      try { localStorage.setItem("ss-theme", next); } catch (e) {}
+    });
+
+    // Top 5: transparent ranking from real data only (no score until Phase 2).
+    // Rank = # screens (v2.1 + additive) → quality-gate pass → book-align → TTF/TSM mentions.
+    const gateMap = new Map(((gate && gate.tickers) || []).map((t) => [t.ticker, t]));
+    const addById = new Map(((additivePacks && additivePacks.packs) || []).map((p) => [p.id, p]));
+    const addFor = (t) => ((additivePacks && additivePacks.packs) || []).filter((p) => (p.tickers || []).includes(t));
+    const screensOf = (s) => {
+      const ids = new Set(s.packIds || []);
+      addFor(s.ticker).forEach((p) => ids.add(p.id));
+      return Array.from(ids);
+    };
+    const nameOf = (id) => {
+      const p = (data.packs || []).find((x) => x.id === id);
+      if (p) return SHORT[p.name] || p.name;
+      const a = addById.get(id);
+      return a ? a.name : id;
+    };
+    const rankKey = (s) => {
+      const g = gateMap.get(s.ticker);
+      return [screensOf(s).length, g && g.status === "pass" ? 1 : 0, s.booksAlign ? 1 : 0, (s.hasTtf ? 1 : 0) + (s.hasTsm ? 1 : 0)];
+    };
+    const cmp = (a, b) => {
+      const ka = rankKey(a), kb = rankKey(b);
+      for (let i = 0; i < ka.length; i++) if (ka[i] !== kb[i]) return kb[i] - ka[i];
+      return a.ticker.localeCompare(b.ticker);
+    };
+    const pool = data.stocks.filter((s) => s.price != null && screensOf(s).length);
+    const top = pool.slice().sort(cmp).slice(0, 5);
+    const gateRun = gate && gate.sample ? fmtTime(gate.sample.gateRunAt) : null;
+    const why = (s) => {
+      const out = [];
+      const sc = screensOf(s);
+      out.push(`Passes ${sc.length} of 8 screens: ${sc.map(nameOf).join(", ")}.`);
+      const g = gateMap.get(s.ticker);
+      if (g) out.push(`Quality gate (${gate.sample.packName} sample, ${gateRun}): ${g.status}${g.status === "pass" ? " — EPS quality, FCF > 0 and PEG checks cleared" : ""}.`);
+      if (s.booksAlign && s.books && s.books.length) {
+        const ba = (window.BOOKS_ALIGN && window.BOOKS_ALIGN.books) || {};
+        out.push(`Book align: ${s.books.map((b) => (ba[b.id] && ba[b.id].label) || b.id).join(", ")} framework${s.books.length > 1 ? "s" : ""} via its screens.`);
+      }
+      const src = (s.sources || []).map((x) => `${x.label}${x.mentionCount ? ` (${x.mentionCount} mentions)` : ""}`);
+      if (src.length) out.push(`Discussed on ${src.join(", ")}.`);
+      if (s.marketCap) out.push(`Market cap ${(s.marketCap / 1e9).toFixed(1)}B USD (Yahoo).`);
+      return out.slice(0, 3);
+    };
+    const pills = (s) => {
+      const p = [];
+      if (s.hasTtf) p.push('<span class="ss-pill ss-pill-ttf">TTF</span>');
+      if (s.hasTsm) p.push('<span class="ss-pill ss-pill-tsm">TSM</span>');
+      if (s.booksAlign) p.push('<span class="ss-pill ss-pill-book">Books</span>');
+      const g = gateMap.get(s.ticker);
+      if (g) p.push(`<span class="ss-pill ss-pill-gate-${escapeAttr(g.status)}">Gate ${escapeHtml(g.status)}</span>`);
+      if (addFor(s.ticker).length) p.push('<span class="ss-pill">TTF×Books</span>');
+      return p.join("");
+    };
+    const sub = document.getElementById("top5-sub");
+    if (sub) sub.textContent = `Ranked by how many of the 8 screens each stock passes, then quality gate, book alignment and channel mentions. Quotes ${fmtTime(data.updatedAt)} (Yahoo). A 0–100 score arrives in Phase 2.`;
+    const wrap = document.getElementById("top5-cards");
+    if (wrap) {
+      wrap.innerHTML = top.map((s, i) => `
+        <article class="ss-card" data-ticker="${escapeAttr(s.ticker)}" tabindex="0" role="button" aria-label="Open ${escapeAttr(s.ticker)} chart">
+          <div class="ss-card-head">
+            <span class="ss-rank">${i + 1}</span>
+            <div class="ss-card-id"><strong>${escapeHtml(s.ticker)}</strong><span>${escapeHtml(s.name || "")}</span></div>
+            <div class="ss-score" title="Composite score coming in Phase 2"><b>—</b><small>score soon</small></div>
+          </div>
+          <div class="ss-card-price"><span>${fmtPrice(s.price)}</span><span class="chg ${chgClass(s.changePct)}">${fmtPct(s.changePct)}</span></div>
+          <ul class="ss-why">${why(s).map((w) => `<li>${escapeHtml(w)}</li>`).join("")}</ul>
+          <div class="ss-pills">${pills(s)}</div>
+        </article>`).join("");
+      wrap.querySelectorAll(".ss-card").forEach((c) => {
+        const go = () => openChart(c.dataset.ticker);
+        c.addEventListener("click", go);
+        c.addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); go(); } });
+      });
+    }
+  })();
+
   render();
   renderGateOverview();
   if (gate) renderGate();

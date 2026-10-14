@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#080b10">
+  <meta name="theme-color" content="#ffffff">
   <meta name="description" content="Stock screener — Finviz packs, Market briefing, TTF/TSM. Research organizer only — not investment advice.">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Stock screener">
@@ -16,13 +16,14 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=10">
-  <script src="data.js?v=10"></script>
-  <script src="market.js?v=10"></script>
-  <script src="gate-summary.js?v=10"></script>
-  <script src="books-align.js?v=10"></script>
-  <script src="additive-packs.js?v=10"></script>
-  <script src="pack-screener-urls.js?v=10"></script>
+  <script>(function(){try{var t=localStorage.getItem("ss-theme");if(t)document.documentElement.dataset.theme=t;}catch(e){}})();</script>
+  <link rel="stylesheet" href="styles.css?v=12">
+  <script src="data.js?v=12"></script>
+  <script src="market.js?v=12"></script>
+  <script src="gate-summary.js?v=12"></script>
+  <script src="books-align.js?v=12"></script>
+  <script src="additive-packs.js?v=12"></script>
+  <script src="pack-screener-urls.js?v=12"></script>
 </head>
 <body>
   <div class="shell">
@@ -31,11 +32,13 @@
         <div class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></div>
         <div>
           <p class="eyebrow">Finviz v2.1 · Quality gate · TTF · TSM · Market · research organizer</p>
-          <h1>Watchlist</h1>
+          <h1>Stock screener</h1>
         </div>
       </div>
       <div class="header-actions">
         <span class="safety-pill"><i></i>Research only</span>
+        <button class="ghost-button" id="glossary-btn" type="button" aria-controls="glossary">Glossary</button>
+        <button class="ghost-button" id="theme-btn" type="button" aria-label="Toggle dark or light theme">◐ Theme</button>
         <button class="ghost-button" id="refresh-btn" type="button" title="Reload page">↻ Refresh</button>
       </div>
     </header>
@@ -47,6 +50,28 @@
     </nav>
 
     <div id="view-watchlist" class="view-panel">
+      <section class="ss-hero" id="top5" aria-labelledby="top5-title">
+        <p class="eyebrow">Research and education only · not investment advice</p>
+        <h2 class="ss-hero-title" id="top5-title">Today's Top 5</h2>
+        <p class="ss-hero-sub" id="top5-sub">—</p>
+        <div class="ss-cards" id="top5-cards"></div>
+      </section>
+      <section class="ss-glossary" id="glossary" hidden aria-label="Glossary">
+        <h3>Glossary</h3>
+        <dl>
+          <dt>v2.1 packs</dt><dd>The six Finviz screens (Lynch GARP, Stalwart, Micro Insider, Mid Momentum, Cyclical, Hidden Gem) in their v2.1 filter definitions, re-captured each weekday.</dd>
+          <dt>TTF×Books</dt><dd>Two additive Finviz screens (Long Compounder, FCF Compounder) layered on top of v2.1 — never merged into the six.</dd>
+          <dt>TTF</dt><dd>Trading Fraternity — YouTube channel; the badge means the ticker was mentioned in its videos (qualitative source, not a signal).</dd>
+          <dt>TSM</dt><dd>The Stock Market (Live) — YouTube channel; badge means the ticker was mentioned there.</dd>
+          <dt>GARP</dt><dd>Growth at a reasonable price — Peter Lynch style: growing earnings with a PEG ratio (P/E ÷ growth) near or below 1.</dd>
+          <dt>Quality gate</dt><dd>A second pass after the Finviz capture: EPS quality, free cash flow &gt; 0 (or a disclosed exception), and sector-relative PEG.</dd>
+          <dt>Book align</dt><dd>Ticker sits in a pack mapped to a book framework (Lynch, Chan, Mayer 100×). Labels only; no tickers are removed.</dd>
+        </dl>
+      </section>
+      <details class="ss-screens" id="screens-menu">
+        <summary><span>Screens &amp; filters</span><span class="ss-screens-hint" id="screens-hint">All tickers</span></summary>
+        <div class="ss-screens-body" id="screens-body"></div>
+      </details>
       <section class="overview" aria-label="Watchlist overview">
         <div class="metric">
           <span class="metric-label">Unique tickers</span>
@@ -101,7 +126,7 @@
 
       <section class="books-legend" id="books-legend" aria-label="Book alignment legend" hidden></section>
 
-      <section class="controls" aria-label="Filters and sort">
+      <section class="controls" id="controls-section" aria-label="Filters and sort">
         <div class="controls-row">
           <label class="search">
             <span aria-hidden="true">⌕</span>
@@ -277,12 +302,12 @@
 
     <footer class="footer">
       <div>
-        <strong>Research organizer only.</strong>
+        <strong>Research and education only, not investment advice.</strong>
         Not investment advice. Does not place orders or connect to a broker.
         Series 7/63 framing: informational watchlist for personal research organization.
       </div>
       <div class="footer-links">
-        <span>Atlas Reed</span>
+                <span>Atlas Reed</span>
         <span>Finviz v2.1 packs</span>
         <span>TTF / TSM source badges ≠ pack pills ≠ book pills</span>
         <span>Yahoo quotes · quality gate · cited Market · no invented data</span>
@@ -327,6 +352,6 @@
   </div>
 
   <script src="https://unpkg.com/lightweight-charts@4.2.1/dist/lightweight-charts.standalone.production.js"></script>
-  <script src="app.js?v=10"></script>
+  <script src="app.js?v=12"></script>
 </body>
 </html>
