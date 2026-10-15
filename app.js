@@ -1643,7 +1643,7 @@
 
   // TradingView Advanced Chart widget
   const TV_RANGES = { "1D": "1D", "3D": "5D", "5D": "5D", "1M": "1M", "6M": "6M", "1Y": "12M", "5Y": "60M" };
-  const TV_INTERVALS = { "1m": "1", "5m": "5", "15m": "15", "1h": "60", "1D": "D" };
+  const TV_INTERVALS = { "1m": "1", "5m": "5", "15m": "15", "1h": "60", "1D": "D", "3Dc": "3D" };
   state.tvInterval = state.tvInterval || "1D";
   state.tvRange = state.tvRange || "6M";
   function tvTheme() {
