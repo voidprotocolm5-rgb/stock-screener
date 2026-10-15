@@ -920,6 +920,41 @@
     body.appendChild(frag);
   }
 
+  // ===== Performance (forward track record) =====
+  function renderPerformance() {
+    const el = document.getElementById("perf-root");
+    const P = window.PERFORMANCE;
+    if (!el) return;
+    if (!P || !P.packs) { el.innerHTML = `<p class="perf-note">Track record data not generated yet (track_record.py).</p>`; return; }
+    const pct = (v) => (v == null ? "—" : (v >= 0 ? "+" : "") + (v * 100).toFixed(2) + "%");
+    const cls = (v) => (v == null ? "" : v > 0 ? "up" : v < 0 ? "down" : "");
+    const snaps = P.snapshots || [];
+    const nb = snaps.filter((s) => s.backfilled).length, nf = snaps.length - nb;
+    const W = [["1w", "1 week"], ["4w", "4 weeks"], ["12w", "12 weeks"]];
+    let html = `<header class="perf-hero"><p class="perf-eyebrow">Research and education only, not investment advice</p><h2>Track record</h2>
+      <p class="perf-sub">Every Finviz pack, snapshotted daily with entry at that day's close, measured against SPY and QQQ. Equal-weight per pack. Last close used: <b>${escapeHtml(P.lastClose)}</b> · generated ${escapeHtml(fmtTime(P.generatedAt))}.</p>
+      <div class="perf-pills"><span class="perf-pill">${snaps.length} snapshots</span><span class="perf-pill is-warn">${nb} backfilled</span><span class="perf-pill is-ok">${nf} forward</span></div></header>`;
+    html += `<div class="perf-table-wrap"><table class="perf-table"><thead><tr><th>Pack</th>${W.map(([, l]) => `<th>${l}</th>`).join("")}</tr></thead><tbody>`;
+    for (const [pid, r] of Object.entries(P.packs)) {
+      html += `<tr><td class="perf-pack">${escapeHtml(r.name || pid)}</td>`;
+      for (const [w] of W) {
+        const x = (r.windows || {})[w] || {};
+        if (x.status !== "ok") { html += `<td class="perf-na"><b>N/A</b><small>N=0 · ${x.tradingDaysRemaining ?? "?"} trading days to first result</small></td>`; continue; }
+        html += `<td><div class="perf-ret ${cls(x.avgReturn)}">${pct(x.avgReturn)}</div>
+          <div class="perf-row"><span>vs SPY</span><b class="${cls(x.excessVsSPY)}">${pct(x.excessVsSPY)}</b></div>
+          <div class="perf-row"><span>vs QQQ</span><b class="${cls(x.excessVsQQQ)}">${pct(x.excessVsQQQ)}</b></div>
+          <div class="perf-row"><span>Hit rate</span><b>${(x.hitRateVsSPY * 100).toFixed(0)}%</b></div>
+          <div class="perf-row"><span>Max DD</span><b class="down">${pct(x.maxDrawdown)}</b></div>
+          <small>N=${x.cohorts} cohorts (${x.backfilledCohorts} backfilled) · ${x.positions} positions</small></td>`;
+      }
+      html += `</tr>`;
+    }
+    html += `</tbody></table></div>`;
+    html += `<details class="perf-details"><summary>Snapshot log (${snaps.length})</summary><ul class="perf-log">${snaps.map((s) => `<li><b>${escapeHtml(s.date)}</b> <span class="perf-pill ${s.backfilled ? "is-warn" : "is-ok"}">${s.backfilled ? "backfilled" : "forward"}</span> ${escapeHtml(s.status || "")}${s.membershipFrom && s.membershipFrom !== s.date ? ` · membership carried from ${escapeHtml(s.membershipFrom)} capture` : ""}${s.elapsedTradingDays != null ? ` · ${s.elapsedTradingDays} trading days elapsed` : ""}</li>`).join("")}</ul></details>`;
+    html += `<p class="perf-note"><b>Method.</b> ${escapeHtml(P.method)} Cohorts overlap (daily snapshots share many names), so they are not independent samples. Small N: treat early numbers as noise.</p>`;
+    el.innerHTML = html;
+  }
+
   function setView(view) {
     state.view = view;
     document.querySelectorAll(".view-tab").forEach((b) => {
@@ -931,6 +966,9 @@
     if (wl) wl.hidden = view !== "watchlist";
     if (gt) gt.hidden = view !== "gate";
     if (mk) mk.hidden = view !== "market";
+    const pf = $("#view-performance");
+    if (pf) pf.hidden = view !== "performance";
+    if (view === "performance") renderPerformance();
     if (view === "market") renderMarket();
     if (view === "gate") renderGate();
   }
@@ -1353,7 +1391,9 @@
   // Deep-link: ?view=market|gate or #market|#gate; ?ticker=MSFT opens chart
   const params = new URLSearchParams(location.search);
   const viewParam = params.get("view") || "";
-  if (viewParam === "market" || location.hash === "#market") {
+  if (viewParam === "performance" || location.hash === "#performance") {
+    setView("performance");
+  } else if (viewParam === "market" || location.hash === "#market") {
     setView("market");
   } else if (viewParam === "gate" || location.hash === "#gate") {
     setView("gate");
