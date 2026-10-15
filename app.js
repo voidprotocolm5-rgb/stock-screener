@@ -1142,7 +1142,7 @@
 
     $("#market-angle").textContent = market.angle || "Lynch/GARP · TTF · TSM";
     $("#market-disclaimer").textContent = market.disclaimer || "";
-    $("#market-updated-at").textContent = fmtTime(market.updatedAt);
+    $("#market-updated-at").textContent = fmtTime(market.updatedAt) + (market.stale ? ` · STALE: content from ${market.contentDate}` : "");
     const itemCount = market.itemCount ?? market.sections.reduce((n, s) => n + (s.items || []).length, 0);
     const matchCount =
       market.matchedTickerCount ??
