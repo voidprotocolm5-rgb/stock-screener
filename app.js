@@ -898,7 +898,7 @@
       if (s.hasTtg) tr.classList.add("has-ttg");
 
       tr.innerHTML = `
-        <td class="col-ticker"><span class="ticker">${escapeHtml(s.ticker)}</span>${badgeHtml ? `<span class="ticker-badges">${badgeHtml}</span>` : ""}</td>
+        <td class="col-ticker"><span class="ticker">${escapeHtml(s.ticker)}</span>${scoreBadge(s.ticker)}${badgeHtml ? `<span class="ticker-badges">${badgeHtml}</span>` : ""}</td>
         <td class="col-name name-cell" title="${escapeAttr(s.name || "")}">${escapeHtml(s.name || "—")}</td>
         <td class="col-price num"><span class="price">${fmtPrice(s.price)}</span></td>
         <td class="col-chg num"><span class="chg ${chgClass(pct)}">${fmtPct(pct)}</span></td>
@@ -934,6 +934,7 @@
     let html = `<header class="perf-hero"><p class="perf-eyebrow">Research and education only, not investment advice</p><h2>Track record</h2>
       <p class="perf-sub">Every Finviz pack, snapshotted daily with entry at that day's close, measured against SPY and QQQ. Equal-weight per pack. Last close used: <b>${escapeHtml(P.lastClose)}</b> · generated ${escapeHtml(fmtTime(P.generatedAt))}.</p>
       <div class="perf-pills"><span class="perf-pill">${snaps.length} snapshots</span><span class="perf-pill is-warn">${nb} backfilled</span><span class="perf-pill is-ok">${nf} forward</span></div></header>`;
+    for (const m of P.missingCaptures || []) html += `<p class="perf-warn">⚠ ${escapeHtml(m.date)}: no Finviz capture, so no forward snapshot was written. Yesterday's members were not reused.</p>`;
     html += `<div class="perf-table-wrap"><table class="perf-table"><thead><tr><th>Pack</th>${W.map(([, l]) => `<th>${l}</th>`).join("")}</tr></thead><tbody>`;
     for (const [pid, r] of Object.entries(P.packs)) {
       html += `<tr><td class="perf-pack">${escapeHtml(r.name || pid)}</td>`;
@@ -953,6 +954,45 @@
     html += `<details class="perf-details"><summary>Snapshot log (${snaps.length})</summary><ul class="perf-log">${snaps.map((s) => `<li><b>${escapeHtml(s.date)}</b> <span class="perf-pill ${s.backfilled ? "is-warn" : "is-ok"}">${s.backfilled ? "backfilled" : "forward"}</span> ${escapeHtml(s.status || "")}${s.membershipFrom && s.membershipFrom !== s.date ? ` · membership carried from ${escapeHtml(s.membershipFrom)} capture` : ""}${s.elapsedTradingDays != null ? ` · ${s.elapsedTradingDays} trading days elapsed` : ""}</li>`).join("")}</ul></details>`;
     html += `<p class="perf-note"><b>Method.</b> ${escapeHtml(P.method)} Cohorts overlap (daily snapshots share many names), so they are not independent samples. Small N: treat early numbers as noise.</p>`;
     el.innerHTML = html;
+  }
+
+  // ===== Composite score (PROVISIONAL equal weights) + diffs =====
+  const SCORES = window.SCORES || null;
+  const scoreOf = (t) => (SCORES && SCORES.scores && SCORES.scores[t]) || null;
+  function scoreBadge(t, big) {
+    const s = scoreOf(t);
+    if (!s || s.score == null) return big ? `<div class="sc-ring is-na" title="Not enough factor data (needs 3 of 5)"><b>—</b><small>no score</small></div>` : "";
+    const cls = s.score >= 70 ? "is-hi" : s.score >= 50 ? "is-mid" : "is-lo";
+    const tip = `Composite ${s.score}/100 (provisional equal weights) · ` + Object.entries(s.factors).map(([k, v]) => `${k} ${v ?? "—"}`).join(" · ") + (s.topTier ? " · Top tier" : "");
+    if (big) return `<div class="sc-ring ${cls}" style="--p:${s.score}" title="${escapeAttr(tip)}"><b>${s.score}</b><small>score</small></div>`;
+    return `<span class="sc-chip ${cls}${s.topTier ? " is-top" : ""}" title="${escapeAttr(tip)}">${s.score}</span>`;
+  }
+  function factorHtml(t) {
+    const s = scoreOf(t);
+    if (!s) return "";
+    const names = { growth: "Growth", valuation: "PEG / valuation", quality: "ROIC / FCF quality", momentum: "Momentum", ownership: "Insider / inst." };
+    return `<div class="sc-factors"><h3>Composite score <span class="ck-score">${s.score ?? "—"}/100</span></h3><p class="ck-note">Provisional equal weights (20% each) · percentile vs board${s.topTier ? " · <b>Top tier</b>" : ""}</p>${Object.entries(names)
+      .map(([k, l]) => { const v = s.factors[k]; return `<div class="sc-bar"><span>${l}</span><i><em style="width:${v ?? 0}%"></em></i><b>${v ?? "—"}</b></div>`; }).join("")}</div>`;
+  }
+  function renderDiffs() {
+    const el = document.getElementById("sc-diffs");
+    if (!el || !SCORES) return;
+    const td = SCORES.tierDiff, pd = SCORES.packDiff;
+    const chips = (arr, kind) => arr && arr.length ? arr.map((t) => `<button type="button" class="sc-diff-chip is-${kind}" data-ticker="${escapeAttr(t)}">${kind === "in" ? "+" : "−"}${escapeHtml(t)}</button>`).join("") : `<span class="ck-note">none</span>`;
+    let h = `<h2 class="ss-h2">Entered / exited</h2>`;
+    h += `<div class="sc-diff-card"><h3>Top tier (score ≥ 72 to enter, &lt; 68 to exit)</h3>`;
+    h += td ? `<p class="ck-note">vs ${escapeHtml(td.vs)}</p><div class="sc-diff-row"><span>Entered</span>${chips(td.entered, "in")}</div><div class="sc-diff-row"><span>Exited</span>${chips(td.exited, "out")}</div>`
+            : `<p class="ck-note">First score snapshot is ${escapeHtml(SCORES.date)}. Tier diffs start with the next daily snapshot (no prior day to compare yet).</p>`;
+    h += `</div>`;
+    if (pd) {
+      h += `<div class="sc-diff-card"><h3>Pack membership: ${escapeHtml(pd.to)} vs ${escapeHtml(pd.from)} capture</h3>${pd.todayCapture ? "" : `<p class="ck-note is-warn">No Finviz capture for today yet, so this compares the two latest captures.</p>`}`;
+      for (const [, p] of Object.entries(pd.packs)) {
+        h += `<details class="sc-pack"><summary><b>${escapeHtml(p.name)}</b> <span class="sc-in">+${p.entered.length}</span> <span class="sc-out">−${p.exited.length}</span></summary><div class="sc-diff-row"><span>Entered</span>${chips(p.entered, "in")}</div><div class="sc-diff-row"><span>Exited</span>${chips(p.exited, "out")}</div></details>`;
+      }
+      h += `</div>`;
+    }
+    el.innerHTML = h;
+    el.querySelectorAll(".sc-diff-chip").forEach((b) => b.addEventListener("click", () => { if (byTicker.has(b.dataset.ticker)) openChart(b.dataset.ticker); }));
   }
 
   function setView(view) {
@@ -1436,7 +1476,7 @@
       try { localStorage.setItem("ss-theme", next); } catch (e) {}
     });
 
-    // Top 5: transparent ranking from real data only (no score until Phase 2).
+    // Top 5: transparent ranking from real data only; composite score shown (provisional weights).
     // Rank = # screens (v2.1 + additive) → quality-gate pass → book-align → TTF/TSM mentions.
     const gateMap = new Map(((gate && gate.tickers) || []).map((t) => [t.ticker, t]));
     const addById = new Map(((additivePacks && additivePacks.packs) || []).map((p) => [p.id, p]));
@@ -1491,7 +1531,7 @@
       return p.join("");
     };
     const sub = document.getElementById("top5-sub");
-    if (sub) sub.textContent = `Ranked by how many of the 8 screens each stock passes, then quality gate, book alignment and channel mentions. Quotes ${fmtTime(data.updatedAt)} (Yahoo). A 0–100 score arrives in Phase 2.`;
+    if (sub) sub.textContent = `Ranked by how many of the 8 screens each stock passes, then quality gate, book alignment and channel mentions. Quotes ${fmtTime(data.updatedAt)} (Yahoo). Score = composite 0–100, provisional equal weights.`;
     const wrap = document.getElementById("top5-cards");
     if (wrap) {
       wrap.innerHTML = top.map((s, i) => `
@@ -1499,7 +1539,7 @@
           <div class="ss-card-head">
             <span class="ss-rank">${i + 1}</span>
             <div class="ss-card-id"><strong>${escapeHtml(s.ticker)}</strong><span>${escapeHtml(s.name || "")}</span></div>
-            <div class="ss-score" title="Composite score coming in Phase 2"><b>—</b><small>score soon</small></div>
+            ${scoreBadge(s.ticker, true)}
           </div>
           <div class="ss-card-price"><span>${fmtPrice(s.price)}</span><span class="chg ${chgClass(s.changePct)}">${fmtPct(s.changePct)}</span></div>
           <ul class="ss-why">${why(s).map((w) => `<li>${escapeHtml(w)}</li>`).join("")}</ul>
@@ -1598,7 +1638,7 @@
     const pass = rows.filter((r) => r[1] === true).length;
     el.innerHTML = `<h3>Screen checklist <span class="ck-score">${pass}/${rows.length}</span></h3><ul class="ck-list">${rows
       .map((r) => `<li class="${r[1] === true ? "is-pass" : r[1] === false ? "is-fail" : "is-na"}"><span class="ck-mark">${r[1] === true ? "✓" : r[1] === false ? "✕" : "–"}</span><span class="ck-label">${escapeHtml(r[0])}</span><span class="ck-val">${escapeHtml(r[2])}</span></li>`)
-      .join("")}</ul><p class="ck-note">TradingView data${String(q.update_mode || "").indexOf("delayed") !== -1 ? " (≈15-min delayed)" : ""} · research only</p>`;
+      .join("")}</ul>${factorHtml(t)}<p class="ck-note">TradingView data${String(q.update_mode || "").indexOf("delayed") !== -1 ? " (≈15-min delayed)" : ""} · research only</p>`;
   }
 
   // TradingView Advanced Chart widget
@@ -1691,6 +1731,7 @@
   window.__tvDebug = { tvSymbol, refreshLiveQuotes, liveState };
 
   render();
+  renderDiffs();
   setQuoteStamp("Baked quotes as of " + fmtTime(data.updatedAt) + " · fetching live…", "baked");
   refreshLiveQuotes();
   setInterval(() => { if (!document.hidden) refreshLiveQuotes(); }, 120000);

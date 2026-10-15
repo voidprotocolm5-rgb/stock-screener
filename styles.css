@@ -1136,3 +1136,61 @@ body { background: var(--bg); color: var(--text); font-family: var(--font); font
 .perf-log li { padding: 6px 0; border-bottom: 1px solid var(--line-soft); }
 .perf-note { font-size: 13px; color: var(--muted); line-height: 1.5; margin-top: 16px; }
 @media (max-width: 720px) { .perf-hero h2 { font-size: 36px; } .perf-table { font-size: 14px; } }
+
+/* ===================== v22: Apple-clean redesign layer (DESIGN-SYSTEM.md, Stocks accent #0a84ff) ===================== */
+:root { --teal: #0a84ff; --teal-soft: rgba(10,132,255,.12); --blue: #0a84ff; --blue-soft: rgba(10,132,255,.12); --mono: var(--font); --green: #34c759; --rose: #ff3b30; }
+html, body { font-family: var(--font); font-size: 17px; line-height: 1.5; background: var(--bg); color: var(--text); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+.ticker, .chart-ticker, .chart-last, .num, td.num, .chg, .market-cite, .chart-range-chip { font-family: var(--font); font-variant-numeric: tabular-nums; }
+/* neutral tickers: colour only via badges, not text */
+tr.has-ttf .ticker, tr.has-tsm .ticker, tr.has-ttg .ticker, tr.has-ttf.has-tsm .ticker, tr.is-book-align .ticker { color: var(--text) !important; }
+.ticker { font-weight: 600; letter-spacing: -0.01em; }
+/* table → clean card list */
+.table-wrap, .watchlist-table-wrap { border-radius: 18px; box-shadow: var(--shadow); background: var(--panel-3); border: 1px solid var(--line-soft); overflow: hidden; }
+table thead th, thead tr { background: var(--panel) !important; color: var(--muted) !important; font-size: 13px; font-weight: 600; text-transform: none; letter-spacing: 0; border-bottom: 1px solid var(--line-soft); }
+tbody tr { background: transparent !important; border-bottom: 1px solid var(--line-soft); transition: background .2s ease; }
+tbody tr:hover { background: var(--panel) !important; }
+tbody td { padding-top: 12px; padding-bottom: 12px; }
+.chg { border-radius: 999px; }
+.chg.up, .chg.pos { color: #248a3d; background: rgba(52,199,89,.12); }
+.chg.down, .chg.neg { color: #d70015; background: rgba(255,59,48,.10); }
+/* pills: one consistent shape */
+.pack-pill, .book-badge, .source-badge, .chip, .market-tag, .ss-pill { border-radius: 999px !important; font-family: var(--font); }
+.chip { min-height: 36px; padding: 6px 14px; font-size: 13px; font-weight: 600; border: 1px solid var(--line); background: var(--panel-3); color: var(--text); transition: background .2s ease; }
+.chip.is-on, .view-tab.is-on { background: var(--accent, #0a84ff) !important; color: #fff !important; border-color: transparent !important; }
+.view-tab { min-height: 44px; border-radius: 999px; font-weight: 600; }
+/* cards */
+.metric, .gate-card, .market-hero, .ss-card, .panel, .card { border-radius: 18px !important; box-shadow: var(--shadow); border: 1px solid var(--line-soft); background: var(--panel); }
+.ss-hero-title { font-size: 56px; line-height: 1.05; font-weight: 600; letter-spacing: -0.02em; }
+@media (max-width: 720px) { .ss-hero-title { font-size: 36px; } }
+.ss-h2 { font-size: 28px; font-weight: 600; margin: 40px 0 12px; letter-spacing: -0.01em; }
+/* score ring + chip */
+.sc-ring { --p: 0; width: 64px; height: 64px; border-radius: 50%; display: grid; place-items: center; align-content: center; text-align: center; flex: none;
+  background: radial-gradient(closest-side, var(--panel) 78%, transparent 80% 100%), conic-gradient(var(--sc, #0a84ff) calc(var(--p) * 1%), var(--line-soft) 0); }
+.sc-ring b { font-size: 20px; font-weight: 600; line-height: 1; } .sc-ring small { font-size: 10px; color: var(--muted); }
+.sc-ring.is-hi { --sc: #34c759; } .sc-ring.is-mid { --sc: #0a84ff; } .sc-ring.is-lo { --sc: #ff9f0a; } .sc-ring.is-na { background: var(--line-soft); }
+.sc-chip { display: inline-block; margin-left: 8px; min-width: 30px; text-align: center; font-size: 12px; font-weight: 700; padding: 1px 8px; border-radius: 999px; vertical-align: 1px; }
+.sc-chip.is-hi { color: #248a3d; background: rgba(52,199,89,.14); } .sc-chip.is-mid { color: #0a84ff; background: rgba(10,132,255,.12); } .sc-chip.is-lo { color: #c93400; background: rgba(255,159,10,.14); }
+.sc-chip.is-top { box-shadow: 0 0 0 1.5px #34c759 inset; }
+.sc-factors { margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--line-soft); }
+.sc-factors h3 { margin: 0 0 4px; font-size: 17px; font-weight: 600; display: flex; justify-content: space-between; }
+.sc-bar { display: grid; grid-template-columns: 1fr 90px 28px; gap: 8px; align-items: center; font-size: 13px; padding: 4px 0; }
+.sc-bar i { height: 6px; border-radius: 999px; background: var(--line-soft); overflow: hidden; } .sc-bar em { display: block; height: 100%; background: #0a84ff; border-radius: 999px; }
+.sc-bar b { text-align: right; font-variant-numeric: tabular-nums; }
+/* diffs */
+.sc-diffs { margin-top: 8px; }
+.sc-diff-card { background: var(--panel); border-radius: 18px; padding: 16px 20px; margin-bottom: 12px; box-shadow: var(--shadow); }
+.sc-diff-card h3 { margin: 0 0 6px; font-size: 17px; font-weight: 600; }
+.sc-diff-row { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin: 6px 0; }
+.sc-diff-row > span:first-child { width: 64px; font-size: 13px; color: var(--muted); }
+.sc-diff-chip { border: 0; border-radius: 999px; padding: 4px 10px; min-height: 30px; font: 600 13px var(--font); cursor: pointer; }
+.sc-diff-chip.is-in { color: #248a3d; background: rgba(52,199,89,.14); } .sc-diff-chip.is-out { color: #d70015; background: rgba(255,59,48,.10); }
+.sc-pack { border-top: 1px solid var(--line-soft); padding: 8px 0; } .sc-pack summary { cursor: pointer; font-size: 15px; }
+.sc-in { color: #248a3d; font-weight: 600; } .sc-out { color: #d70015; font-weight: 600; } .ck-note.is-warn, .perf-warn { color: #c93400; }
+.perf-warn { background: rgba(255,159,10,.12); border-radius: 12px; padding: 10px 14px; font-size: 14px; }
+.overview { flex-wrap: wrap; }
+.overview-note { flex-wrap: wrap; margin-left: 0; max-width: 100%; }
+.ss-cards > * { min-width: 0; }
+.ss-card { overflow-wrap: anywhere; }
+.view-tabs, nav[role="tablist"] { flex-wrap: wrap; max-width: 100%; }
+@media (max-width: 720px) { .view-tab { padding: 8px 12px; font-size: 14px; } .ss-card { padding: 18px; } }
+@media (max-width: 720px) { .view-nav { overflow-x: auto; max-width: 100%; -webkit-overflow-scrolling: touch; } .view-nav .view-tab { flex: none; padding: 8px 10px; } }
