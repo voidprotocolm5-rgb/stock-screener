@@ -1643,7 +1643,35 @@
 
   // TradingView Advanced Chart widget
   const TV_RANGES = { "1D": "1D", "3D": "5D", "5D": "5D", "1M": "1M", "6M": "6M", "1Y": "12M", "5Y": "60M" };
-  const TV_INTERVALS = { "1m": "1", "5m": "5", "15m": "15", "1h": "60", "1D": "D", "3Dc": "3D" };
+  const TV_INTERVALS = { "1m": "1", "5m": "5", "15m": "15", "1h": "60", "1D": "D" };
+  // TradingView's free embeds (embed-widget-advanced-chart.js and tv.js) reject multi-day intervals:
+  // "3D"/"2D" silently fall back to 1W (tested 2026-10-15). So 3-day candles are built here from
+  // baked daily OHLCV (charts/<T>_1y.json): each candle = 3 consecutive trading days.
+  async function mountThreeDay(t) {
+    showTvMode(false);
+    const fb = document.getElementById("chart-ranges"); if (fb) fb.hidden = true;
+    const tvc = document.getElementById("tv-controls"); if (tvc) tvc.hidden = false;
+    document.querySelectorAll("#tv-intervals .chip").forEach((b) => b.classList.toggle("is-on", b.dataset.tvInterval === "3Dc"));
+    document.querySelectorAll("#tv-ranges .chip").forEach((b) => b.classList.remove("is-on"));
+    setChartStatus("Loading 3-day candles…", "loading");
+    try {
+      const res = await fetch(`charts/${encodeURIComponent(t)}_1y.json`, { cache: "no-cache" });
+      const j = res.ok ? await res.json() : null;
+      if (state.chartTicker !== t) return;
+      const d = (j && j.bars) || [];
+      if (!d.length) { destroyCharts(); setChartStatus("3-day candles unavailable (no baked daily data)", "error"); return; }
+      const bars = [];
+      for (let i = 0; i < d.length; i += 3) {
+        const g = d.slice(i, i + 3);
+        bars.push({ t: g[0].t, o: g[0].o, h: Math.max(...g.map((x) => x.h)), l: Math.min(...g.map((x) => x.l)), c: g[g.length - 1].c, v: g.reduce((a, x) => a + (x.v || 0), 0) });
+      }
+      destroyCharts();
+      paintChartBars({ bars, interval: "1d" });
+      const last = new Date(d[d.length - 1].t * 1000).toISOString().slice(0, 10);
+      const note = document.getElementById("chart-3d-note");
+      if (note) { note.hidden = false; note.textContent = `3-day candles (${bars.length} bars, each = 3 trading days) built from baked daily data through ${last}. TradingView's free embed doesn't offer multi-day intervals.`; }
+    } catch (e) { destroyCharts(); setChartStatus("3-day candles unavailable", "error"); }
+  }
   state.tvInterval = state.tvInterval || "1D";
   state.tvRange = state.tvRange || "6M";
   function tvTheme() {
@@ -1663,6 +1691,7 @@
   function mountTvChart(t) {
     const host = document.getElementById("tv-chart");
     const sym = tvSymbol(t);
+    { const n = document.getElementById("chart-3d-note"); if (n) n.hidden = true; }
     if (!host || !sym) return false;
     host.innerHTML = "";
     const wrap = document.createElement("div");
@@ -1698,6 +1727,7 @@
     sc.onerror = fail;
     wrap.appendChild(sc);
     host.appendChild(wrap);
+    showTvMode(true);
     // If no iframe appears in 9s, fall back to the baked chart.
     setTimeout(() => { if (!host.querySelector("iframe")) fail(); else settled = true; }, 9000);
     document.querySelectorAll("#tv-intervals .chip").forEach((b) => b.classList.toggle("is-on", state.tvPick === "interval" && b.dataset.tvInterval === state.tvInterval));
@@ -1717,6 +1747,7 @@
     loadChartData(t, state.chartRange || "1mo");
   }
   document.querySelectorAll("#tv-intervals .chip").forEach((b) => b.addEventListener("click", () => {
+    if (b.dataset.tvInterval === "3Dc") { if (state.chartTicker) mountThreeDay(state.chartTicker); return; }
     state.tvInterval = b.dataset.tvInterval; state.tvPick = "interval";
     // Pick a sensible range for very short intervals
     if (["1m", "5m"].includes(state.tvInterval) && !["1D", "3D", "5D"].includes(state.tvRange)) state.tvRange = "1D";
