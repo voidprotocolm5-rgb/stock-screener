@@ -1106,3 +1106,6 @@ body { background: var(--bg); color: var(--text); font-family: var(--font); font
   .chart-body { display: block; flex: none; }
   .chart-body .chart-canvas-wrap { height: 62dvh; margin-bottom: 12px; }
 }
+/* v20: market cards follow theme (fix dark-on-dark text in light mode) */
+.market-card { background: var(--panel); }
+.market-card:hover { background: var(--panel-2); border-color: var(--line); }
