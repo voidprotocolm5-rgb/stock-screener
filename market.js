@@ -4,7 +4,7 @@ window.MARKET = {
   "timezone": "America/Chicago",
   "disclaimer": "Research organizer only — not investment advice. Headlines are cited from live sources at fetch time; never fabricated. Does not place trades or connect to a broker.",
   "angle": "Warsh: no Oct prejudge · hike odds ~15% · AI/debt still fragile · TSLA Roadster · Brent ~$105–106",
-  "watchlistTickerCount": 146,
+  "watchlistTickerCount": 142,
   "sourceGaps": [
     {
       "source": "X / economist posts",
@@ -141,14 +141,15 @@ window.MARKET = {
             "fetchedAt": "2026-10-16T08:20:50-05:00"
           },
           "matchedTickers": [
-            "DLO",
             "BAP"
           ],
           "tags": [
             "fed",
             "fx"
           ],
-          "offWatchlistMentions": []
+          "offWatchlistMentions": [
+            "DLO"
+          ]
         }
       ]
     },
@@ -310,7 +311,7 @@ window.MARKET = {
     }
   ],
   "itemCount": 15,
-  "matchedTickerCount": 10,
+  "matchedTickerCount": 9,
   "contentDate": "2026-10-16",
-  "stale": false
+  "stale": true
 };
