@@ -1272,3 +1272,4 @@ tbody td { padding-top: 12px; padding-bottom: 12px; }
 .inv-screen-src { margin: 6px 0 4px; opacity: 0.85; }
 .inv-screen-rules { margin: 4px 0 6px; padding-left: 18px; line-height: 1.45; }
 .inv-screen-codes code { font: 0.66rem var(--mono, monospace); word-break: break-all; }
+.inv-screen-note { opacity: 0.75; font-size: 0.68rem; }

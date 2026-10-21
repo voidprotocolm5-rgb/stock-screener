@@ -1054,7 +1054,7 @@
         : p.fscorePass ? `<p class="ck-note">Piotroski pass (F-Score ≥ 7 from SEC filings): ${p.fscorePass.length}</p><div class="inv-chips">${p.fscorePass.map(chip).join("") || "—"}</div>`
         : p.strict ? `<p class="ck-note">Strict CAN SLIM / Trend Template (qtr EPS ≥ 25% and trend ≥ 6/7): ${p.strict.length}</p><div class="inv-chips">${p.strict.map(chip).join("") || "—"}</div>` : "";
       return `<article class="inv-preset" id="preset-${escapeAttr(p.id)}"><header><span class="inv-letter">${escapeHtml(p.letter)}</span><div><h3>${escapeHtml(p.name)}</h3><p class="ck-note">${escapeHtml(p.filterHighlight || "")}</p></div><span class="inv-count">${p.count ?? p.tickers.length}</span></header>
-        <p class="inv-links"><a href="${escapeAttr(p.publicUrl)}" target="_blank" rel="noopener noreferrer">Open Finviz screen ↗</a> · captured ${fmtT(p.capturedAt)} · sorted by combined score</p>
+        <p class="inv-links"><a href="${escapeAttr(p.screenerUrl || p.publicUrl)}" target="_blank" rel="noopener noreferrer">Open Finviz screen ↗</a>${p.finvizPresetId ? " · preset " + escapeHtml(p.finvizPresetId) : ""} · captured ${fmtT(p.capturedAt)} · sorted by combined score</p>
         <div class="inv-chips">${(p.ranked || p.tickers).map(chip).join("") || "—"}</div>${extra}</article>`;
     }).join("")}</section>`;
     h += `<p class="ck-note inv-foot">Sources: /library PDFs (Berkshire letters, Fundsmith, Nomad, Pershing, Oaktree memos, Greenblatt, ARK Big Ideas, Piotroski, AQR, Fama-French, Novy-Marx). Data: Finviz (presets), TradingView scanner (metrics), SEC EDGAR (F-Score, dilution, asset growth), Yahoo (ownership), FRED (HY spread). Click any ticker to open its chart.</p>`;
@@ -1551,6 +1551,7 @@
         <p class="inv-screen-src"><b>Source PDFs:</b> ${(p.sourcePdfs || []).map(escapeHtml).join(" · ") || "—"}</p>
         <ul class="inv-screen-rules">${(p.rulesPlain || []).map((r) => `<li>${escapeHtml(r)}</li>`).join("")}</ul>
         <p class="inv-screen-codes"><b>Finviz filters:</b> <code>${escapeHtml((p.filters || []).join(","))}</code></p>
+        <p class="inv-screen-codes"><b>Saved Finviz preset:</b> ${p.finvizPresetId ? `<code>${escapeHtml(p.finvizPresetId)}</code>` : "—"}${p.finvizPresetNote ? ` <span class="inv-screen-note">(${escapeHtml(p.finvizPresetNote)})</span>` : ""}</p>
         <p class="inv-links"><a href="${escapeAttr(urlOf(p))}" target="_blank" rel="noopener noreferrer">Open on Finviz ↗</a> · <a href="?view=investors#preset-${escapeAttr(p.id)}" data-preset-jump="${escapeAttr(p.id)}">See tickers &amp; combined scores</a> · ${countOf(p)} tickers, captured ${p.capturedAt ? escapeHtml(String(p.capturedAt).slice(0, 10)) : "—"}</p>
       </article>`).join("");
       list.querySelectorAll("[data-preset-jump]").forEach((a) => a.addEventListener("click", (e) => {
