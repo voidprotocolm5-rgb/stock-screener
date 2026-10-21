@@ -409,7 +409,7 @@
   function renderChartMeta(boardRow) {
     if (!chartMeta) return;
     if (!boardRow) {
-      chartMeta.innerHTML = "";
+      chartMeta.innerHTML = state.chartTicker ? invLabelHtml(state.chartTicker, 99) : "";
       return;
     }
     let html = "";
@@ -426,6 +426,7 @@
     if (boardRow.booksAlign) {
       html += `<span class="book-badge book-align">ALIGN</span>`;
     }
+    html += invLabelHtml(boardRow.ticker, 99);
     const v21Names = (boardRow.packs || []).filter((n) => {
       return !Object.values(ADDITIVE_META).some((m) => m.name === n);
     });
@@ -888,6 +889,7 @@
         const tip = `${meta.title || b.id} — ${b.why || ""}${b.note ? " [" + b.note + "]" : ""}`;
         bookHtml += `<span class="book-badge book-${escapeAttr(b.id)}${b.note ? " has-gate" : ""}" title="${escapeAttr(tip)}">${escapeHtml(meta.label || b.id)}</span>`;
       }
+      bookHtml += invLabelHtml(s.ticker, 3);
       if (s.booksAlign) {
         bookHtml += `<span class="book-badge book-align" title="${escapeAttr("Book align — " + s.books.map((b) => (BOOK_META[b.id] || {}).label || b.id).join(" + ") + " (Finviz-pack proxy; research only)")}">ALIGN</span>`;
         tr.classList.add("is-book-align");
@@ -898,7 +900,7 @@
       if (s.hasTtg) tr.classList.add("has-ttg");
 
       tr.innerHTML = `
-        <td class="col-ticker"><span class="ticker">${escapeHtml(s.ticker)}</span>${scoreBadge(s.ticker)}${badgeHtml ? `<span class="ticker-badges">${badgeHtml}</span>` : ""}</td>
+        <td class="col-ticker"><span class="ticker">${escapeHtml(s.ticker)}</span>${scoreBadge(s.ticker)}${combinedChip(s.ticker)}${badgeHtml ? `<span class="ticker-badges">${badgeHtml}</span>` : ""}</td>
         <td class="col-name name-cell" title="${escapeAttr(s.name || "")}">${escapeHtml(s.name || "—")}</td>
         <td class="col-price num"><span class="price">${fmtPrice(s.price)}</span></td>
         <td class="col-chg num"><span class="chg ${chgClass(pct)}">${fmtPct(pct)}</span></td>
@@ -967,11 +969,39 @@
     if (big) return `<div class="sc-ring ${cls}" style="--p:${s.score}" title="${escapeAttr(tip)}"><b>${s.score}</b><small>score</small></div>`;
     return `<span class="sc-chip ${cls}${s.topTier ? " is-top" : ""}" title="${escapeAttr(tip)}">${s.score}</span>`;
   }
+  const COMBINED = (SCORES && SCORES.combined) || null;
+  const combOf = (t) => (COMBINED && COMBINED.scores && COMBINED.scores[t]) || null;
+  function invLabelHtml(t, max) {
+    const c = combOf(t);
+    if (!c || !c.labels || !c.labels.length) return "";
+    const L = c.labels, shown = L.slice(0, max);
+    let h = shown.map((l) => `<span class="book-badge book-inv book-inv-${escapeAttr(l.id)}" title="${escapeAttr(l.label + " — " + l.why + " · source: " + l.src + " (investor-principle label; research only)")}">${escapeHtml(l.label)}</span>`).join("");
+    if (L.length > shown.length) h += `<span class="book-badge book-inv book-inv-more" title="${escapeAttr(L.slice(max).map((l) => l.label).join(" · "))}">+${L.length - shown.length}</span>`;
+    return h;
+  }
+  function combinedChip(t) {
+    const c = combOf(t);
+    if (!c || c.score == null) return "";
+    const cls = c.score >= 70 ? "is-hi" : c.score >= 50 ? "is-mid" : "is-lo";
+    return `<span class="sc-chip sc-comb ${cls}${c.topTier ? " is-top" : ""}" title="${escapeAttr("Combined investor score " + c.score + "/100 (base " + c.base + " + preset bonus " + c.bonus + ")" + (c.gates.length ? " · gated: " + c.gates.join("; ") : "") + (c.topTier ? " · Top tier" : ""))}">C${c.score}</span>`;
+  }
+  function combinedFactorHtml(t) {
+    const c = combOf(t);
+    if (!c) return "";
+    const names = { quality: "Quality (ROIC, GP/A, FCF, margin)", value: "Value (EBIT/EV, FCF yld, PEG)", growth: "Growth (sales, EPS, qtr EPS)", momentum: "Momentum (12-1, 6M, trend)", strength: "Strength (F-Score, D/E, beta)", ownership: "Ownership (insider, inst, buybacks)" };
+    const w = COMBINED.weights || {};
+    return `<div class="sc-factors"><h3>Combined investor score <span class="ck-score">${c.score ?? "—"}/100</span></h3><p class="ck-note">Base ${c.base ?? "—"} + preset bonus ${c.bonus}${c.presets.length ? " (" + c.presets.map(presetLetter).join(", ") + ")" : ""}${c.fscore != null ? " · F-Score " + c.fscore + "/9" : ""}${c.topTier ? " · <b>Top tier</b>" : ""}${c.gates.length ? " · gated: " + escapeHtml(c.gates.join("; ")) : ""}</p>${Object.entries(names)
+      .map(([k, l]) => { const v = c.families[k]; return `<div class="sc-bar"><span>${l} · ${Math.round((w[k] || 0) * 100)}%</span><i><em style="width:${v ?? 0}%"></em></i><b>${v ?? "—"}</b></div>`; }).join("")}</div>`;
+  }
+  function presetLetter(id) {
+    const p = COMBINED && (COMBINED.presets || []).find((x) => x.id === id);
+    return p ? p.letter : id;
+  }
   function factorHtml(t) {
     const s = scoreOf(t);
-    if (!s) return "";
+    if (!s) return combinedFactorHtml(t);
     const names = { growth: "Growth", valuation: "PEG / valuation", quality: "ROIC / FCF quality", momentum: "Momentum", ownership: "Insider / inst." };
-    return `<div class="sc-factors"><h3>Composite score <span class="ck-score">${s.score ?? "—"}/100</span></h3><p class="ck-note">Provisional equal weights (20% each) · percentile vs board${s.topTier ? " · <b>Top tier</b>" : ""}</p>${Object.entries(names)
+    return combinedFactorHtml(t) + `<div class="sc-factors"><h3>Legacy composite score <span class="ck-score">${s.score ?? "—"}/100</span></h3><p class="ck-note">Provisional equal weights (20% each) · percentile vs board${s.topTier ? " · <b>Top tier</b>" : ""}</p>${Object.entries(names)
       .map(([k, l]) => { const v = s.factors[k]; return `<div class="sc-bar"><span>${l}</span><i><em style="width:${v ?? 0}%"></em></i><b>${v ?? "—"}</b></div>`; }).join("")}</div>`;
   }
   function renderDiffs() {
@@ -995,6 +1025,47 @@
     el.querySelectorAll(".sc-diff-chip").forEach((b) => b.addEventListener("click", () => { if (byTicker.has(b.dataset.ticker)) openChart(b.dataset.ticker); }));
   }
 
+  // ===== Investor presets tab (A–F) + combined investor score ranking — data from scores.js (build_scores.py → combined_score.py) =====
+  let investorsRendered = false;
+  function renderInvestors() {
+    const el = document.getElementById("inv-root");
+    if (!el || investorsRendered) return;
+    if (!COMBINED) { el.innerHTML = `<p class="ck-note">Combined score not available yet — runs with the weekday 8:12 AM CT pipeline.</p>`; return; }
+    investorsRendered = true;
+    const C = COMBINED, R = C.regime || {};
+    const fmtT = (iso) => { try { return new Date(iso).toLocaleString("en-US", { timeZone: "America/Chicago", month: "short", day: "numeric", hour: "numeric", minute: "2-digit" }) + " CT"; } catch (_) { return iso || "—"; } };
+    const chip = (t) => {
+      const c = C.scores[t] || {};
+      const cls = c.score == null ? "is-na" : c.score >= 70 ? "is-hi" : c.score >= 50 ? "is-mid" : "is-lo";
+      return `<button type="button" class="inv-tk ${cls}${c.topTier ? " is-top" : ""}${c.gates && c.gates.length ? " is-gated" : ""}" data-ticker="${escapeAttr(t)}" title="${escapeAttr((c.name || t) + (c.score != null ? " · combined " + c.score : "") + (c.gates && c.gates.length ? " · gated: " + c.gates.join("; ") : "") + (c.labels && c.labels.length ? " · " + c.labels.map((l) => l.label).join(", ") : ""))}"><b>${escapeHtml(t)}</b><span>${c.score ?? "—"}</span></button>`;
+    };
+    const regimeTxt = `${(R.level || "risk-on").toUpperCase()} · SPY ${R.spyClose ?? "—"} vs SMA200 ${R.spySma200 != null ? R.spySma200.toFixed(1) : "—"} · HY spread ${R.hyOas ?? "—"}% (1-yr median ${R.hyMedian1y ?? "—"}%)`;
+    const W = C.weights || {};
+    const top = (C.ranked || []).slice(0, 25);
+    const legacy = (t) => { const s = scoreOf(t); return s && s.score != null ? s.score : "—"; };
+    const fam = (c, k) => (c.families && c.families[k] != null ? c.families[k] : "—");
+    let h = `<section class="inv-hero"><p class="eyebrow">Research and education only · not investment advice</p>
+      <h2 class="ss-hero-title">Investor presets &amp; combined score</h2>
+      <p class="ss-hero-sub">Six Finviz presets built from the investor library (Lynch, Greenblatt, O'Neil/Minervini, ARK, Buffett/Munger/Smith/Ackman, Piotroski), captured ${fmtT((C.presets[0] || {}).capturedAt)}. Combined score = Quality ${Math.round(W.quality * 100)}% · Value ${Math.round(W.value * 100)}% · Growth ${Math.round(W.growth * 100)}% · Momentum ${Math.round(W.momentum * 100)}% · Strength ${Math.round(W.strength * 100)}% · Ownership ${Math.round(W.ownership * 100)}%, +4 per preset passed (max +12). Hard gates: F-Score ≤ 3, negative FCF, D/E &gt; 2, avg volume &lt; 200k, dilution ≥ 10%/yr, weak value.</p>
+      <p class="inv-regime inv-regime-${escapeAttr(R.level || "risk-on")}" title="${escapeAttr((R.reasons || []).join(" · ") + " — Marks 'Calibrating' / O'Neil 'M' overlay")}">Market regime: ${escapeHtml(regimeTxt)}${(R.reasons || []).length ? " — " + escapeHtml(R.reasons.join("; ")) : ""}</p></section>`;
+    h += `<section class="inv-rank"><h3>Top 25 by combined score <small>${C.scored} scored of ${C.universe} (board + presets) · legacy score shown for comparison</small></h3><div class="table-wrap"><table class="wl-table inv-table"><thead><tr><th>#</th><th>Ticker</th><th>Combined</th><th>Legacy</th><th>Q</th><th>V</th><th>G</th><th>M</th><th>S</th><th>O</th><th>Presets</th><th>Investor principles met</th></tr></thead><tbody>${top.map((t, i) => { const c = C.scores[t]; return `<tr class="inv-row${c.topTier ? " is-top" : ""}" data-ticker="${escapeAttr(t)}" tabindex="0"><td>${i + 1}</td><td class="col-ticker"><span class="ticker">${escapeHtml(t)}</span><div class="inv-name">${escapeHtml(c.name || "")}</div></td><td><span class="sc-chip ${c.score >= 70 ? "is-hi" : c.score >= 50 ? "is-mid" : "is-lo"}${c.topTier ? " is-top" : ""}" title="${escapeAttr("base " + c.base + " + bonus " + c.bonus + (c.gates.length ? " · gated: " + c.gates.join("; ") : ""))}">${c.score}</span>${c.gates.length ? '<span class="inv-gate" title="' + escapeAttr(c.gates.join("; ")) + '">gated</span>' : ""}</td><td>${legacy(t)}</td><td>${fam(c, "quality")}</td><td>${fam(c, "value")}</td><td>${fam(c, "growth")}</td><td>${fam(c, "momentum")}</td><td>${fam(c, "strength")}</td><td>${fam(c, "ownership")}</td><td>${c.presets.map(presetLetter).join(" ") || "—"}</td><td><div class="packs">${invLabelHtml(t, 4)}</div></td></tr>`; }).join("")}</tbody></table></div></section>`;
+    h += `<section class="inv-presets">${(C.presets || []).map((p) => {
+      const extra = p.greenblattRank ? `<p class="ck-note">Greenblatt rank (EBIT/EV rank + ROIC rank, financials/utilities excluded${p.excludedFinUtil && p.excludedFinUtil.length ? ": " + escapeHtml(p.excludedFinUtil.join(", ")) : ""}):</p><div class="inv-chips">${p.greenblattRank.slice(0, 30).map(chip).join("")}</div>`
+        : p.fscorePass ? `<p class="ck-note">Piotroski pass (F-Score ≥ 7 from SEC filings): ${p.fscorePass.length}</p><div class="inv-chips">${p.fscorePass.map(chip).join("") || "—"}</div>`
+        : p.strict ? `<p class="ck-note">Strict CAN SLIM / Trend Template (qtr EPS ≥ 25% and trend ≥ 6/7): ${p.strict.length}</p><div class="inv-chips">${p.strict.map(chip).join("") || "—"}</div>` : "";
+      return `<article class="inv-preset" id="preset-${escapeAttr(p.id)}"><header><span class="inv-letter">${escapeHtml(p.letter)}</span><div><h3>${escapeHtml(p.name)}</h3><p class="ck-note">${escapeHtml(p.filterHighlight || "")}</p></div><span class="inv-count">${p.count ?? p.tickers.length}</span></header>
+        <p class="inv-links"><a href="${escapeAttr(p.publicUrl)}" target="_blank" rel="noopener noreferrer">Open Finviz screen ↗</a> · captured ${fmtT(p.capturedAt)} · sorted by combined score</p>
+        <div class="inv-chips">${(p.ranked || p.tickers).map(chip).join("") || "—"}</div>${extra}</article>`;
+    }).join("")}</section>`;
+    h += `<p class="ck-note inv-foot">Sources: /library PDFs (Berkshire letters, Fundsmith, Nomad, Pershing, Oaktree memos, Greenblatt, ARK Big Ideas, Piotroski, AQR, Fama-French, Novy-Marx). Data: Finviz (presets), TradingView scanner (metrics), SEC EDGAR (F-Score, dilution, asset growth), Yahoo (ownership), FRED (HY spread). Click any ticker to open its chart.</p>`;
+    el.innerHTML = h;
+    el.querySelectorAll("[data-ticker]").forEach((b) => {
+      const go = () => openChart(b.dataset.ticker);
+      b.addEventListener("click", go);
+      b.addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); go(); } });
+    });
+  }
+
   function setView(view) {
     state.view = view;
     document.querySelectorAll(".view-tab").forEach((b) => {
@@ -1011,6 +1082,9 @@
     if (view === "performance") renderPerformance();
     if (view === "market") renderMarket();
     if (view === "gate") renderGate();
+    const iv = $("#view-investors");
+    if (iv) iv.hidden = view !== "investors";
+    if (view === "investors") renderInvestors();
   }
 
   function jumpToTicker(ticker) {
@@ -1770,8 +1844,9 @@
   if (gate) renderGate();
   if (market) renderMarket();
 
+  if (params.get("view") === "investors") setView("investors");
   const deepTicker = (params.get("ticker") || "").toUpperCase();
-  if (deepTicker && byTicker.has(deepTicker)) {
+  if (deepTicker && (byTicker.has(deepTicker) || (COMBINED && COMBINED.scores && COMBINED.scores[deepTicker]))) {
     openChart(deepTicker);
   }
 })();
