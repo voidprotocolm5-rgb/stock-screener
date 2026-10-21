@@ -901,7 +901,7 @@
 
       tr.innerHTML = `
         <td class="col-ticker"><span class="ticker">${escapeHtml(s.ticker)}</span>${scoreBadge(s.ticker)}${combinedChip(s.ticker)}${badgeHtml ? `<span class="ticker-badges">${badgeHtml}</span>` : ""}</td>
-        <td class="col-name name-cell" title="${escapeAttr(s.name || "")}">${escapeHtml(s.name || "—")}</td>
+        <td class="col-name name-cell" title="${escapeAttr(s.name || "")}">${escapeHtml(s.name || "—")}${industryTag(s.ticker)}</td>
         <td class="col-price num"><span class="price">${fmtPrice(s.price)}</span></td>
         <td class="col-chg num"><span class="chg ${chgClass(pct)}">${fmtPct(pct)}</span></td>
         <td class="col-packs packs-cell"><div class="packs">${badgeHtml}${bookHtml}${packsHtml || (badgeHtml || bookHtml ? "" : "—")}</div></td>
@@ -1907,8 +1907,34 @@
     document.querySelectorAll("#tv-ranges .chip").forEach((b) => b.classList.toggle("is-on", state.tvPick !== "interval" && b.dataset.tvRange === state.tvRange));
     return true;
   }
+  // —— Company "at a glance" (profiles.js: Finviz public quote page + SEC EDGAR, cached) ——
+  function profileFor(t) {
+    const PROFILES = (window.PROFILES && window.PROFILES.profiles) || {};
+    return PROFILES[t] || PROFILES[String(t || "").replace("-", ".")] || PROFILES[String(t || "").replace(".", "-")] || null; }
+  function industryTag(t) {
+    const p = profileFor(t);
+    if (!p || !p.industry) return "";
+    return `<span class="ind-tag" title="${escapeAttr((p.sector ? p.sector + " · " : "") + p.industry)}">${escapeHtml(p.industry)}</span>`;
+  }
+  function renderGlance(t) {
+    const el = document.getElementById("chart-glance");
+    if (!el) return;
+    const p = profileFor(t);
+    if (!p || !(p.sector || p.industry || p.summary)) { el.hidden = true; el.innerHTML = ""; return; }
+    const host = (u) => { try { return new URL(u).hostname.replace(/^www\./, ""); } catch (_) { return u; } };
+    const safeUrl = p.website && /^https?:\/\//i.test(p.website) ? p.website : null;
+    const facts = [];
+    if (p.hq) facts.push(`<span class="glance-fact"><i>HQ</i>${escapeHtml(p.hq)}</span>`);
+    if (p.employees != null) facts.push(`<span class="glance-fact"><i>Employees</i>${escapeHtml(Number(p.employees).toLocaleString("en-US"))}</span>`);
+    if (safeUrl) facts.push(`<span class="glance-fact"><i>Website</i><a href="${escapeAttr(safeUrl)}" target="_blank" rel="noopener nofollow">${escapeHtml(host(safeUrl))}</a></span>`);
+    el.innerHTML = `<div class="glance-tags">${p.sector ? `<span class="glance-tag is-sector" title="Sector">${escapeHtml(p.sector)}</span>` : ""}${p.industry ? `<span class="glance-tag is-industry" title="Industry">${escapeHtml(p.industry)}</span>` : ""}</div>`
+      + (p.summary ? `<p class="glance-summary">${escapeHtml(p.summary)}</p>` : "")
+      + (facts.length ? `<div class="glance-facts">${facts.join("")}</div>` : "");
+    el.hidden = false;
+  }
   function openTvChart(t) {
     state.chartTicker = t;
+    try { renderGlance(t); } catch (_) {}
     const boardRow = byTicker.get(t) || null;
     applyChartQuote(null, boardRow);
     renderChartMeta(boardRow);
