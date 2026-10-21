@@ -979,18 +979,47 @@
     if (L.length > shown.length) h += `<span class="book-badge book-inv book-inv-more" title="${escapeAttr(L.slice(max).map((l) => l.label).join(" · "))}">+${L.length - shown.length}</span>`;
     return h;
   }
+  const B31 = (COMBINED && COMBINED.books31) || null;
+  const B31BY = {}; ((B31 && B31.books) || []).forEach((b) => { B31BY[b.id] = b; });
+  function booksChip(t) {
+    const c = combOf(t);
+    if (!c || !c.books) return "";
+    const n = c.books.n, cls = n >= 20 ? "is-hi" : n >= 13 ? "is-mid" : "is-lo";
+    const names = (c.books.ids || []).map((id) => (B31BY[id] || {}).title || id);
+    return `<span class="sc-chip sc-books ${cls}" title="${escapeAttr("Books aligned " + n + "/31 (" + c.books.scorable + " are ticker-scorable; MarketWebs and Think and Grow Rich map to site presentation). Met: " + names.join(" · "))}">📚${n}/31</span>`;
+  }
+  const TA_RULES = [
+    "Price above the 200-day SMA (or a reclaim: back above the 20/50-day within 3% of the 200-day) and a rising 200-day: score points (Grimes)",
+    "RSI(14) in the 40–70 band scores best; overbought (≥ 70) earns fewer points except for the CAN SLIM preset; oversold earns partial credit, more for value presets (Option Trader's Guide)",
+    "At least 15% above the 52-week low scores full points; within 5% earns none (25 Rules of Trading: no breakdown)",
+    "ATR under 6% of price scores best (volatility sanity, Option Trader's Guide)",
+    "Bullish candle in context (above the 200-day, oversold, or near the 52-week low) = points plus a +2 bonus; bearish reversal candle = 0 points (Candlestick Bible)",
+    "Extended-hours move under 3% scores points (After-Hours Trader); more than 25% above the 50-day loses 10 points (no chasing)",
+    "Only hard technical gate: a broken chart (below 70% of the 200-day, or within 3% of the 52-week low while below the 200-day)",
+  ];
+  function screenAlignHtml(id) {
+    const sc = ((B31 && B31.screens) || []).find((x) => x.id === id);
+    if (!sc) return "";
+    const gaps = (B31.books || []).filter((b) => (sc.cells[b.id] || {}).status === "P").map((b) => b.title);
+    return `<p class="inv-align"><b>Books aligned: 31/31</b> — ${sc.native} via this screen's own Finviz filters, ${sc.shared} via the shared score/gates/labels, ${sc.presentation} presentation-only (${escapeHtml(gaps.join("; "))})${sc.avgBooksPerStock != null ? ` · its stocks meet ${sc.avgBooksPerStock}/31 on average` : ""}</p>`;
+  }
+  function techText(c) {
+    const x = (c && c.tech) || {};
+    if (x.score == null) return "Technical: no data";
+    return `Technical ${x.score}/100 · ${x.aboveSma200 ? "above" : "below"} SMA200${x.sma200Rising ? " (rising)" : ""}${x.reclaim ? " · reclaim" : ""} · RSI ${x.rsi ?? "—"} · ATR ${x.atrPct ?? "—"}% · ${x.pctAbove52wLow ?? "—"}% above 52w low${(x.candles || []).length ? " · candle: " + x.candles.join(", ") : ""}${x.extMove ? " · ext-hours " + x.extMove + "%" : ""}${x.broken ? " · BROKEN CHART (gated)" : ""}`;
+  }
   function combinedChip(t) {
     const c = combOf(t);
     if (!c || c.score == null) return "";
     const cls = c.score >= 70 ? "is-hi" : c.score >= 50 ? "is-mid" : "is-lo";
-    return `<span class="sc-chip sc-comb ${cls}${c.topTier ? " is-top" : ""}" title="${escapeAttr("Combined investor score " + c.score + "/100 (base " + c.base + " + preset bonus " + c.bonus + ")" + (c.gates.length ? " · gated: " + c.gates.join("; ") : "") + (c.topTier ? " · Top tier" : ""))}">C${c.score}</span>`;
+    return `<span class="sc-chip sc-comb ${cls}${c.topTier ? " is-top" : ""}" title="${escapeAttr("Combined investor score " + c.score + "/100 (base " + c.base + " + bonus " + c.bonus + ")" + (c.gates.length ? " · gated: " + c.gates.join("; ") : "") + (c.topTier ? " · Top tier" : "") + " · " + techText(c))}">C${c.score}</span>` + booksChip(t);
   }
   function combinedFactorHtml(t) {
     const c = combOf(t);
     if (!c) return "";
-    const names = { quality: "Quality (ROIC, GP/A, FCF, margin)", value: "Value (EBIT/EV, FCF yld, PEG)", growth: "Growth (sales, EPS, qtr EPS)", momentum: "Momentum (12-1, 6M, trend)", strength: "Strength (F-Score, D/E, beta)", ownership: "Ownership (insider, inst, buybacks)" };
+    const names = { quality: "Quality (ROIC, GP/A, FCF, margin)", value: "Value (EBIT/EV, FCF yld, PEG)", growth: "Growth (sales, EPS, qtr EPS)", momentum: "Momentum (12-1, 6M, trend)", strength: "Strength (F-Score, D/E, beta)", ownership: "Ownership (insider, inst, buybacks)", technical: "Technical (loose TA: trend, RSI, ATR, candles)" };
     const w = COMBINED.weights || {};
-    return `<div class="sc-factors"><h3>Combined investor score <span class="ck-score">${c.score ?? "—"}/100</span></h3><p class="ck-note">Base ${c.base ?? "—"} + preset bonus ${c.bonus}${c.presets.length ? " (" + c.presets.map(presetLetter).join(", ") + ")" : ""}${c.fscore != null ? " · F-Score " + c.fscore + "/9" : ""}${c.topTier ? " · <b>Top tier</b>" : ""}${c.gates.length ? " · gated: " + escapeHtml(c.gates.join("; ")) : ""}</p>${Object.entries(names)
+    return `<div class="sc-factors"><h3>Combined investor score <span class="ck-score">${c.score ?? "—"}/100</span></h3><p class="ck-note">Base ${c.base ?? "—"} + preset bonus ${c.bonus}${c.presets.length ? " (" + c.presets.map(presetLetter).join(", ") + ")" : ""}${c.fscore != null ? " · F-Score " + c.fscore + "/9" : ""}${c.topTier ? " · <b>Top tier</b>" : ""}${c.gates.length ? " · gated: " + escapeHtml(c.gates.join("; ")) : ""}</p><p class="ck-note">${escapeHtml(techText(c))}</p>${c.books ? `<p class="ck-note"><b>Books aligned ${c.books.n}/31:</b> ${escapeHtml((c.books.ids || []).map((id) => (B31BY[id] || {}).title || id).join(" · "))}</p>` : ""}${Object.entries(names)
       .map(([k, l]) => { const v = c.families[k]; return `<div class="sc-bar"><span>${l} · ${Math.round((w[k] || 0) * 100)}%</span><i><em style="width:${v ?? 0}%"></em></i><b>${v ?? "—"}</b></div>`; }).join("")}</div>`;
   }
   function presetLetter(id) {
@@ -1037,7 +1066,7 @@
     const chip = (t) => {
       const c = C.scores[t] || {};
       const cls = c.score == null ? "is-na" : c.score >= 70 ? "is-hi" : c.score >= 50 ? "is-mid" : "is-lo";
-      return `<button type="button" class="inv-tk ${cls}${c.topTier ? " is-top" : ""}${c.gates && c.gates.length ? " is-gated" : ""}" data-ticker="${escapeAttr(t)}" title="${escapeAttr((c.name || t) + (c.score != null ? " · combined " + c.score : "") + (c.gates && c.gates.length ? " · gated: " + c.gates.join("; ") : "") + (c.labels && c.labels.length ? " · " + c.labels.map((l) => l.label).join(", ") : ""))}"><b>${escapeHtml(t)}</b><span>${c.score ?? "—"}</span></button>`;
+      return `<button type="button" class="inv-tk ${cls}${c.topTier ? " is-top" : ""}${c.gates && c.gates.length ? " is-gated" : ""}" data-ticker="${escapeAttr(t)}" title="${escapeAttr((c.name || t) + (c.score != null ? " · combined " + c.score : "") + (c.gates && c.gates.length ? " · gated: " + c.gates.join("; ") : "") + (c.labels && c.labels.length ? " · " + c.labels.map((l) => l.label).join(", ") : "") + (c.books ? " · books " + c.books.n + "/31" : "") + " · " + techText(c))}"><b>${escapeHtml(t)}</b><span>${c.score ?? "—"}</span>${c.books ? `<i class="inv-tk-books" title="books aligned">${c.books.n}</i>` : ""}</button>`;
     };
     const regimeTxt = `${(R.level || "risk-on").toUpperCase()} · SPY ${R.spyClose ?? "—"} vs SMA200 ${R.spySma200 != null ? R.spySma200.toFixed(1) : "—"} · HY spread ${R.hyOas ?? "—"}% (1-yr median ${R.hyMedian1y ?? "—"}%)`;
     const W = C.weights || {};
@@ -1046,14 +1075,14 @@
     const fam = (c, k) => (c.families && c.families[k] != null ? c.families[k] : "—");
     let h = `<section class="inv-hero"><p class="eyebrow">Research and education only · not investment advice</p>
       <h2 class="ss-hero-title">Investor presets &amp; combined score</h2>
-      <p class="ss-hero-sub">Six Finviz presets built from the investor library (Lynch, Greenblatt, O'Neil/Minervini, ARK, Buffett/Munger/Smith/Ackman, Piotroski), captured ${fmtT((C.presets[0] || {}).capturedAt)}. Combined score = Quality ${Math.round(W.quality * 100)}% · Value ${Math.round(W.value * 100)}% · Growth ${Math.round(W.growth * 100)}% · Momentum ${Math.round(W.momentum * 100)}% · Strength ${Math.round(W.strength * 100)}% · Ownership ${Math.round(W.ownership * 100)}%, +4 per preset passed (max +12). Hard gates: F-Score ≤ 3, negative FCF, D/E &gt; 2, avg volume &lt; 200k, dilution ≥ 10%/yr, weak value.</p>
+      <p class="ss-hero-sub">Six Finviz presets built from the investor library (Lynch, Greenblatt, O'Neil/Minervini, ARK, Buffett/Munger/Smith/Ackman, Piotroski), captured ${fmtT((C.presets[0] || {}).capturedAt)}. Combined score = Quality ${Math.round(W.quality * 100)}% · Value ${Math.round(W.value * 100)}% · Growth ${Math.round(W.growth * 100)}% · Momentum ${Math.round(W.momentum * 100)}% · Strength ${Math.round(W.strength * 100)}% · Ownership ${Math.round(W.ownership * 100)}%${W.technical != null ? " · Technical " + Math.round(W.technical * 100) + "%" : ""}, +4 per preset passed (max +12), +2 for a bullish candle in trend context. Hard gates: F-Score ≤ 3, negative FCF, D/E &gt; 2, avg volume &lt; 200k, dilution ≥ 10%/yr, weak value, broken chart. 📚 = books aligned out of 31 (21 library PDFs + 10 original Grok project books).</p>
       <p class="inv-regime inv-regime-${escapeAttr(R.level || "risk-on")}" title="${escapeAttr((R.reasons || []).join(" · ") + " — Marks 'Calibrating' / O'Neil 'M' overlay")}">Market regime: ${escapeHtml(regimeTxt)}${(R.reasons || []).length ? " — " + escapeHtml(R.reasons.join("; ")) : ""}</p></section>`;
-    h += `<section class="inv-rank"><h3>Top 25 by combined score <small>${C.scored} scored of ${C.universe} (board + presets) · legacy score shown for comparison</small></h3><div class="table-wrap"><table class="wl-table inv-table"><thead><tr><th>#</th><th>Ticker</th><th>Combined</th><th>Legacy</th><th>Q</th><th>V</th><th>G</th><th>M</th><th>S</th><th>O</th><th>Presets</th><th>Investor principles met</th></tr></thead><tbody>${top.map((t, i) => { const c = C.scores[t]; return `<tr class="inv-row${c.topTier ? " is-top" : ""}" data-ticker="${escapeAttr(t)}" tabindex="0"><td>${i + 1}</td><td class="col-ticker"><span class="ticker">${escapeHtml(t)}</span><div class="inv-name">${escapeHtml(c.name || "")}</div></td><td><span class="sc-chip ${c.score >= 70 ? "is-hi" : c.score >= 50 ? "is-mid" : "is-lo"}${c.topTier ? " is-top" : ""}" title="${escapeAttr("base " + c.base + " + bonus " + c.bonus + (c.gates.length ? " · gated: " + c.gates.join("; ") : ""))}">${c.score}</span>${c.gates.length ? '<span class="inv-gate" title="' + escapeAttr(c.gates.join("; ")) + '">gated</span>' : ""}</td><td>${legacy(t)}</td><td>${fam(c, "quality")}</td><td>${fam(c, "value")}</td><td>${fam(c, "growth")}</td><td>${fam(c, "momentum")}</td><td>${fam(c, "strength")}</td><td>${fam(c, "ownership")}</td><td>${c.presets.map(presetLetter).join(" ") || "—"}</td><td><div class="packs">${invLabelHtml(t, 4)}</div></td></tr>`; }).join("")}</tbody></table></div></section>`;
+    h += `<section class="inv-rank"><h3>Top 25 by combined score <small>${C.scored} scored of ${C.universe} (board + presets) · legacy score shown for comparison</small></h3><div class="table-wrap"><table class="wl-table inv-table"><thead><tr><th>#</th><th>Ticker</th><th>Combined</th><th>Legacy</th><th>Q</th><th>V</th><th>G</th><th>M</th><th>S</th><th>O</th><th>T</th><th>📚/31</th><th>Presets</th><th>Investor principles met</th></tr></thead><tbody>${top.map((t, i) => { const c = C.scores[t]; return `<tr class="inv-row${c.topTier ? " is-top" : ""}" data-ticker="${escapeAttr(t)}" tabindex="0"><td>${i + 1}</td><td class="col-ticker"><span class="ticker">${escapeHtml(t)}</span><div class="inv-name">${escapeHtml(c.name || "")}</div></td><td><span class="sc-chip ${c.score >= 70 ? "is-hi" : c.score >= 50 ? "is-mid" : "is-lo"}${c.topTier ? " is-top" : ""}" title="${escapeAttr("base " + c.base + " + bonus " + c.bonus + (c.gates.length ? " · gated: " + c.gates.join("; ") : ""))}">${c.score}</span>${c.gates.length ? '<span class="inv-gate" title="' + escapeAttr(c.gates.join("; ")) + '">gated</span>' : ""}</td><td>${legacy(t)}</td><td>${fam(c, "quality")}</td><td>${fam(c, "value")}</td><td>${fam(c, "growth")}</td><td>${fam(c, "momentum")}</td><td>${fam(c, "strength")}</td><td>${fam(c, "ownership")}</td><td title="${escapeAttr(techText(c))}">${fam(c, "technical")}</td><td title="${escapeAttr(((c.books || {}).ids || []).map((id) => (B31BY[id] || {}).title || id).join(" · "))}">${c.books ? c.books.n : "—"}</td><td>${c.presets.map(presetLetter).join(" ") || "—"}</td><td><div class="packs">${invLabelHtml(t, 4)}</div></td></tr>`; }).join("")}</tbody></table></div></section>`;
     h += `<section class="inv-presets">${(C.presets || []).map((p) => {
       const extra = p.greenblattRank ? `<p class="ck-note">Greenblatt rank (EBIT/EV rank + ROIC rank, financials/utilities excluded${p.excludedFinUtil && p.excludedFinUtil.length ? ": " + escapeHtml(p.excludedFinUtil.join(", ")) : ""}):</p><div class="inv-chips">${p.greenblattRank.slice(0, 30).map(chip).join("")}</div>`
         : p.fscorePass ? `<p class="ck-note">Piotroski pass (F-Score ≥ 7 from SEC filings): ${p.fscorePass.length}</p><div class="inv-chips">${p.fscorePass.map(chip).join("") || "—"}</div>`
         : p.strict ? `<p class="ck-note">Strict CAN SLIM / Trend Template (qtr EPS ≥ 25% and trend ≥ 6/7): ${p.strict.length}</p><div class="inv-chips">${p.strict.map(chip).join("") || "—"}</div>` : "";
-      return `<article class="inv-preset" id="preset-${escapeAttr(p.id)}"><header><span class="inv-letter">${escapeHtml(p.letter)}</span><div><h3>${escapeHtml(p.name)}</h3><p class="ck-note">${escapeHtml(p.filterHighlight || "")}</p></div><span class="inv-count">${p.count ?? p.tickers.length}</span></header>
+      return `<article class="inv-preset" id="preset-${escapeAttr(p.id)}"><header><span class="inv-letter">${escapeHtml(p.letter)}</span><div><h3>${escapeHtml(p.name)}</h3><p class="ck-note">${escapeHtml(p.filterHighlight || "")}</p></div><span class="inv-count">${p.count ?? p.tickers.length}</span></header>${screenAlignHtml(p.id)}${p.countBefore31 != null && p.countBefore31 !== p.count ? `<p class="ck-note">Count ${p.countBefore31} → ${p.count} after the loose technical filter (+ta_highlow52w_a5h)</p>` : ""}
         <p class="inv-links"><a href="${escapeAttr(p.screenerUrl || p.publicUrl)}" target="_blank" rel="noopener noreferrer">Open Finviz screen ↗</a>${p.finvizPresetId ? " · preset " + escapeHtml(p.finvizPresetId) : ""} · captured ${fmtT(p.capturedAt)} · sorted by combined score</p>
         <div class="inv-chips">${(p.ranked || p.tickers).map(chip).join("") || "—"}</div>${extra}</article>`;
     }).join("")}</section>`;
@@ -1550,10 +1579,18 @@
         <header><span class="inv-letter">${escapeHtml(p.letter || "")}</span><div><h4>${escapeHtml(p.name)}</h4><p class="inv-screen-who">${escapeHtml(p.investors || "")}</p></div><span class="inv-count" title="Tickers in the latest Finviz capture">${countOf(p)}</span></header>
         <p class="inv-screen-src"><b>Source PDFs:</b> ${(p.sourcePdfs || []).map(escapeHtml).join(" · ") || "—"}</p>
         <ul class="inv-screen-rules">${(p.rulesPlain || []).map((r) => `<li>${escapeHtml(r)}</li>`).join("")}</ul>
-        <p class="inv-screen-codes"><b>Finviz filters:</b> <code>${escapeHtml((p.filters || []).join(","))}</code></p>
-        <p class="inv-screen-codes"><b>Saved Finviz preset:</b> ${p.finvizPresetId ? `<code>${escapeHtml(p.finvizPresetId)}</code>` : "—"}${p.finvizPresetNote ? ` <span class="inv-screen-note">(${escapeHtml(p.finvizPresetNote)})</span>` : ""}</p>
+        ${screenAlignHtml(p.id)}
+        <p class="inv-screen-codes"><b>Finviz filters:</b> <code>${escapeHtml((p.filters || []).join(","))}</code>${p.countBefore31 != null && p.countBefore31 !== p.count ? ` <span class="inv-screen-note">(count ${p.countBefore31} → ${p.count} after the loose TA filter)</span>` : ""}</p>
+        <p class="inv-screen-codes"><b>Saved Finviz preset:</b> ${p.finvizPresetId ? `<code>${escapeHtml(p.finvizPresetId)}</code>` : "—"}${p.finvizPresetNote ? ` <span class="inv-screen-note">(${escapeHtml(p.finvizPresetNote)})</span>` : ""}${p.needsResave ? ` <span class="inv-gate">preset needs re-save</span>` : ""}</p>
         <p class="inv-links"><a href="${escapeAttr(urlOf(p))}" target="_blank" rel="noopener noreferrer">Open on Finviz ↗</a> · <a href="?view=investors#preset-${escapeAttr(p.id)}" data-preset-jump="${escapeAttr(p.id)}">See tickers &amp; combined scores</a> · ${countOf(p)} tickers, captured ${p.capturedAt ? escapeHtml(String(p.capturedAt).slice(0, 10)) : "—"}</p>
       </article>`).join("");
+      const scs = (B31 && B31.screens) || [];
+      if (scs.length) {
+        const st = (c) => (c.status === "F" ? "●" : c.status === "S" ? "◐" : "○");
+        list.insertAdjacentHTML("beforeend", `<article class="inv-screen inv-screen-wide"><h4>Shared loose technical layer (all screens)</h4><ul class="inv-screen-rules">${TA_RULES.map((r) => `<li>${escapeHtml(r)}</li>`).join("")}</ul></article>
+          <article class="inv-screen inv-screen-wide"><h4>31-book alignment by screen</h4><p class="ck-note">● = enforced by the screen's own Finviz filter · ◐ = added through the shared combined score, gates and labels · ○ = presentation only (no ticker-level rule exists). ${escapeHtml(B31.excludedNote || "")}</p>
+          <div class="table-wrap"><table class="wl-table inv-table b31-table"><thead><tr><th>Screen</th><th>Tickers</th><th>●</th><th>◐</th><th>○</th><th>Avg 📚/stock</th><th>Books (hover for the rule)</th></tr></thead><tbody>${scs.map((sc) => `<tr><td>${escapeHtml(sc.letter ? sc.letter + " · " : "")}${escapeHtml(sc.name)}</td><td>${sc.count ?? "—"}</td><td>${sc.native}</td><td>${sc.shared}</td><td>${sc.presentation}</td><td>${sc.avgBooksPerStock ?? "—"}</td><td class="b31-cells">${(B31.books || []).map((b) => { const c = sc.cells[b.id] || {}; return `<span class="b31-c b31-${c.status}" title="${escapeAttr(b.title + ": " + b.principle + " → " + (c.rule || ""))}">${st(c)}</span>`; }).join("")}</td></tr>`).join("")}</tbody></table></div></article>`);
+      }
       list.querySelectorAll("[data-preset-jump]").forEach((a) => a.addEventListener("click", (e) => {
         e.preventDefault();
         const p = presets.find((x) => x.id === a.dataset.presetJump);

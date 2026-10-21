@@ -1273,3 +1273,15 @@ tbody td { padding-top: 12px; padding-bottom: 12px; }
 .inv-screen-rules { margin: 4px 0 6px; padding-left: 18px; line-height: 1.45; }
 .inv-screen-codes code { font: 0.66rem var(--mono, monospace); word-break: break-all; }
 .inv-screen-note { opacity: 0.75; font-size: 0.68rem; }
+
+/* ===== 31-book alignment + loose TA layer (2026-10-20 v30) ===== */
+.sc-chip.sc-books { margin-left: 3px; font-size: 0.62rem; background: rgba(123, 63, 209, 0.08); border: 1px solid rgba(123, 63, 209, 0.4); color: #7b3fd1; }
+:root[data-theme="dark"] .sc-chip.sc-books { color: #cfa8ff; }
+.inv-align { margin: 6px 0; font-size: 0.72rem; line-height: 1.4; }
+.inv-tk .inv-tk-books { font-style: normal; font-size: 0.6rem; opacity: 0.7; padding-left: 3px; border-left: 1px solid rgba(127,127,127,0.35); }
+.inv-screen-wide { grid-column: 1 / -1; }
+.b31-cells { white-space: nowrap; letter-spacing: 1px; font-size: 0.8rem; }
+.b31-c { cursor: help; }
+.b31-F { color: #128a4a; }
+.b31-S { color: #1f6fb5; }
+.b31-P { color: #9a9a9a; }
