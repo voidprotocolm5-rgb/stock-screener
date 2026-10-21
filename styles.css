@@ -1255,3 +1255,20 @@ tbody td { padding-top: 12px; padding-bottom: 12px; }
 :root[data-theme="dark"] .book-badge.book-inv-ark, :root[data-theme="dark"] .book-badge.book-inv-thiel { color: #cfa8ff; }
 .sc-chip.sc-comb { color: #1f6fb5; }
 :root[data-theme="dark"] .sc-chip.sc-comb { color: #bfe6ff; }
+
+/* ===== Investor presets inside "Screens & filters" (2026-10-20 v28) ===== */
+.investor-preset-wrap .additive-pack-label { color: #1f6fb5; border-color: rgba(31, 111, 181, 0.45); background: rgba(31, 111, 181, 0.08); }
+.investor-preset-chip { border-color: rgba(31, 111, 181, 0.45); }
+.screener-link-pill.is-investor { border-color: rgba(31, 111, 181, 0.45); color: #1f6fb5; }
+:root[data-theme="dark"] .screener-link-pill.is-investor, :root[data-theme="dark"] .investor-preset-wrap .additive-pack-label { color: #8cc8ff; }
+.inv-screens-detail { margin: 8px 0 10px; border: 1px solid rgba(127, 127, 127, 0.25); border-radius: 10px; padding: 6px 10px; }
+.inv-screens-detail > summary { cursor: pointer; font-size: 0.78rem; font-weight: 600; }
+.inv-screens-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 10px; margin-top: 8px; }
+.inv-screen { border: 1px solid rgba(127, 127, 127, 0.22); border-radius: 10px; padding: 10px 12px; font-size: 0.75rem; }
+.inv-screen header { display: flex; gap: 10px; align-items: flex-start; }
+.inv-screen header > div { flex: 1; }
+.inv-screen h4 { margin: 0; font-size: 0.85rem; }
+.inv-screen-who { margin: 2px 0 0; opacity: 0.75; }
+.inv-screen-src { margin: 6px 0 4px; opacity: 0.85; }
+.inv-screen-rules { margin: 4px 0 6px; padding-left: 18px; line-height: 1.45; }
+.inv-screen-codes code { font: 0.66rem var(--mono, monospace); word-break: break-all; }

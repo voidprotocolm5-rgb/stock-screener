@@ -1515,11 +1515,72 @@
     setView("watchlist");
   }
 
+  // ===== Investor presets A–F inside "Screens & filters" (chips + Finviz links + rules/codes list) =====
+  (function renderInvestorPresetScreens() {
+    const presets = (COMBINED && Array.isArray(COMBINED.presets)) ? COMBINED.presets : [];
+    const wrap = document.getElementById("investor-preset-wrap");
+    const det = document.getElementById("investor-preset-details");
+    const chips = document.getElementById("investor-preset-chips");
+    const list = document.getElementById("investor-preset-list");
+    if (!presets.length) { if (wrap) wrap.hidden = true; if (det) det.hidden = true; return; }
+    const urlOf = (p) => p.screenerUrl || p.publicUrl || ("https://finviz.com/screener.ashx?v=111&f=" + (p.filters || []).join(","));
+    const countOf = (p) => (p.count ?? (p.tickers || []).length);
+    const goPreset = (p) => {
+      setView("investors");
+      setTimeout(() => { const el = document.getElementById("preset-" + p.id); if (el) el.scrollIntoView({ behavior: "smooth", block: "start" }); }, 60);
+    };
+    if (chips) {
+      presets.forEach((p) => {
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "chip pack-chip additive-pack-chip investor-preset-chip";
+        btn.dataset.presetId = p.id;
+        btn.innerHTML = `${escapeHtml(p.letter || "")} · ${escapeHtml(p.short || p.name)}<b>${countOf(p)}</b>`;
+        btn.title = `${p.name} — ${p.investors || ""}. Opens the Investor presets tab (research only)`;
+        btn.addEventListener("click", () => goPreset(p));
+        const g = document.createElement("span");
+        g.className = "pack-chip-group";
+        g.appendChild(btn);
+        g.appendChild(makeFinvizLink(urlOf(p), `${p.name} on Finviz`));
+        chips.appendChild(g);
+      });
+    }
+    if (list) {
+      list.innerHTML = presets.map((p) => `<article class="inv-screen" id="screen-${escapeAttr(p.id)}">
+        <header><span class="inv-letter">${escapeHtml(p.letter || "")}</span><div><h4>${escapeHtml(p.name)}</h4><p class="inv-screen-who">${escapeHtml(p.investors || "")}</p></div><span class="inv-count" title="Tickers in the latest Finviz capture">${countOf(p)}</span></header>
+        <p class="inv-screen-src"><b>Source PDFs:</b> ${(p.sourcePdfs || []).map(escapeHtml).join(" · ") || "—"}</p>
+        <ul class="inv-screen-rules">${(p.rulesPlain || []).map((r) => `<li>${escapeHtml(r)}</li>`).join("")}</ul>
+        <p class="inv-screen-codes"><b>Finviz filters:</b> <code>${escapeHtml((p.filters || []).join(","))}</code></p>
+        <p class="inv-links"><a href="${escapeAttr(urlOf(p))}" target="_blank" rel="noopener noreferrer">Open on Finviz ↗</a> · <a href="?view=investors#preset-${escapeAttr(p.id)}" data-preset-jump="${escapeAttr(p.id)}">See tickers &amp; combined scores</a> · ${countOf(p)} tickers, captured ${p.capturedAt ? escapeHtml(String(p.capturedAt).slice(0, 10)) : "—"}</p>
+      </article>`).join("");
+      list.querySelectorAll("[data-preset-jump]").forEach((a) => a.addEventListener("click", (e) => {
+        e.preventDefault();
+        const p = presets.find((x) => x.id === a.dataset.presetJump);
+        if (p) goPreset(p);
+      }));
+    }
+    const row = document.getElementById("screener-links");
+    if (row) {
+      presets.forEach((p) => {
+        const a = document.createElement("a");
+        a.className = "screener-link-pill is-additive is-investor";
+        a.href = urlOf(p);
+        a.target = "_blank";
+        a.rel = "noopener noreferrer";
+        a.title = `${p.name} — open public Finviz screener`;
+        a.textContent = `${p.letter} ${p.short || p.name} ↗`;
+        row.appendChild(a);
+      });
+      const rw = document.getElementById("screener-links-row");
+      if (rw) rw.hidden = false;
+    }
+  })();
+
   // ===== Phase 1 redesign: Screens menu, Top 5 hero, glossary, theme =====
   (function phase1() {
     const body = document.getElementById("screens-body");
     if (body) {
-      ["change-chips", "source-chips", "pack-chips", "additive-pack-wrap", "screener-links-row"].forEach((id) => {
+      ["change-chips", "source-chips", "pack-chips", "additive-pack-wrap", "investor-preset-wrap", "investor-preset-details", "screener-links-row"].forEach((id) => {
         const el = document.getElementById(id);
         if (el) body.appendChild(el);
       });
@@ -1845,6 +1906,13 @@
   if (market) renderMarket();
 
   if (params.get("view") === "investors") setView("investors");
+  if (params.get("view") === "screens") {
+    const sm = document.getElementById("screens-menu");
+    const idt = document.getElementById("investor-preset-details");
+    if (sm) sm.open = true;
+    if (idt) idt.open = true;
+    setTimeout(() => { const el = idt || sm; if (el) el.scrollIntoView({ block: "start" }); }, 50);
+  }
   const deepTicker = (params.get("ticker") || "").toUpperCase();
   if (deepTicker && (byTicker.has(deepTicker) || (COMBINED && COMBINED.scores && COMBINED.scores[deepTicker]))) {
     openChart(deepTicker);

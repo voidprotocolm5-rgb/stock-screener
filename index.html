@@ -17,16 +17,16 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <script>(function(){try{var t=localStorage.getItem("ss-theme");if(t)document.documentElement.dataset.theme=t;}catch(e){}})();</script>
-  <link rel="stylesheet" href="styles.css?v=27">
-  <script src="data.js?v=27"></script>
-  <script src="exchanges.js?v=27"></script>
-  <script src="performance.js?v=27"></script>
-  <script src="scores.js?v=27"></script>
-  <script src="market.js?v=27"></script>
-  <script src="gate-summary.js?v=27"></script>
-  <script src="books-align.js?v=27"></script>
-  <script src="additive-packs.js?v=27"></script>
-  <script src="pack-screener-urls.js?v=27"></script>
+  <link rel="stylesheet" href="styles.css?v=28">
+  <script src="data.js?v=28"></script>
+  <script src="exchanges.js?v=28"></script>
+  <script src="performance.js?v=28"></script>
+  <script src="scores.js?v=28"></script>
+  <script src="market.js?v=28"></script>
+  <script src="gate-summary.js?v=28"></script>
+  <script src="books-align.js?v=28"></script>
+  <script src="additive-packs.js?v=28"></script>
+  <script src="pack-screener-urls.js?v=28"></script>
 </head>
 <body>
   <div class="shell">
@@ -181,6 +181,15 @@
           <span class="additive-pack-label" title="Atlas-accepted additive Finviz packs — not part of v2.1 six; research only">Additive</span>
           <div class="chip-row additive-pack-chips" id="additive-pack-chips" aria-label="Filter by additive pack"></div>
         </div>
+
+        <div class="additive-pack-wrap investor-preset-wrap" id="investor-preset-wrap">
+          <span class="additive-pack-label" title="Investor presets A–F (Lynch, Greenblatt, O'Neil/Minervini, ARK, Buffett/Munger/Smith/Ackman, Piotroski) — research only">Investor presets</span>
+          <div class="chip-row additive-pack-chips" id="investor-preset-chips" aria-label="Investor presets A–F"></div>
+        </div>
+        <details class="inv-screens-detail" id="investor-preset-details">
+          <summary>Investor presets A–F: rules, source PDFs and exact Finviz codes</summary>
+          <div class="inv-screens-list" id="investor-preset-list"></div>
+        </details>
 
         <div class="screener-links-row" id="screener-links-row" aria-label="Open Finviz screeners">
           <span class="screener-links-label" title="Opens public Finviz screener for each pack — research only">Screeners</span>
@@ -385,6 +394,6 @@
   </div>
 
   <script src="https://unpkg.com/lightweight-charts@4.2.1/dist/lightweight-charts.standalone.production.js"></script>
-  <script src="app.js?v=27"></script>
+  <script src="app.js?v=28"></script>
 </body>
 </html>
