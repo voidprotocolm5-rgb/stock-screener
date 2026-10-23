@@ -1,1 +1,1 @@
-{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"KMB","range":"1d"}
+{"ticker":"KMB","name":"KMB","currency":"USD","regularMarketPrice":111.455,"change":-0.4450000000000074,"changePct":-0.3976764968722139,"range":"1d","interval":"5m","bars":[{"t":1792762200,"o":111.45500183105469,"h":111.45500183105469,"l":111.45500183105469,"c":111.45500183105469,"v":0}]}

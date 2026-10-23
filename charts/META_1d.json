@@ -1,1 +1,1 @@
-{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"META","range":"1d"}
+{"ticker":"META","name":"META","currency":"USD","regularMarketPrice":637.16,"change":-8.730000000000018,"changePct":-1.351623341435851,"range":"1d","interval":"5m","bars":[{"t":1792762200,"o":637.6300048828125,"h":637.6300048828125,"l":637.6300048828125,"c":637.6300048828125,"v":0}]}

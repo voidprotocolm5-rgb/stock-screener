@@ -1,1 +1,1 @@
-{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"IWM","range":"1d"}
+{"ticker":"IWM","name":"IWM","currency":"USD","regularMarketPrice":274.885,"change":-1.6850000000000023,"changePct":-0.6092490147159859,"range":"1d","interval":"5m","bars":[{"t":1792762200,"o":274.885009765625,"h":274.885009765625,"l":274.885009765625,"c":274.885009765625,"v":0}]}
