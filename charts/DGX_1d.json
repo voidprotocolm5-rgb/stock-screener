@@ -1,1 +1,1 @@
-{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"DGX","range":"1d"}
+{"ticker":"DGX","name":"DGX","currency":"USD","regularMarketPrice":243.5399932861328,"change":1.739990234375,"changePct":0.7195989298654192,"range":"1d","interval":"5m","bars":[{"t":1793021410,"o":243.5399932861328,"h":243.5399932861328,"l":243.5399932861328,"c":243.5399932861328,"v":0}]}

@@ -1,1 +1,1 @@
-{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"DAVE","range":"1d"}
+{"ticker":"DAVE","name":"DAVE","currency":"USD","regularMarketPrice":344.0,"change":-10.32000732421875,"changePct":-2.9126233661356524,"range":"1d","interval":"5m","bars":[{"t":1793021400,"o":350.0,"h":352.3450012207031,"l":344.0,"c":344.0,"v":1962}]}

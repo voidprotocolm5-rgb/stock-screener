@@ -1,1 +1,1 @@
-{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"CVNA","range":"1d"}
+{"ticker":"CVNA","name":"CVNA","currency":"USD","regularMarketPrice":57.470001220703125,"change":-0.3799987792968764,"changePct":-0.6568691085512125,"range":"1d","interval":"5m","bars":[{"t":1793021400,"o":57.79130172729492,"h":58.125,"l":57.470001220703125,"c":57.470001220703125,"v":80862}]}

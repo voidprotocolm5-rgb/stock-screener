@@ -1,1 +1,1 @@
-{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"DELL","range":"1d"}
+{"ticker":"DELL","name":"DELL","currency":"USD","regularMarketPrice":465.93499755859375,"change":9.834997558593727,"changePct":2.1563248319652986,"range":"1d","interval":"5m","bars":[{"t":1793021400,"o":466.4200134277344,"h":467.9849853515625,"l":464.0,"c":465.93499755859375,"v":221596}]}

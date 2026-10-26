@@ -1,1 +1,1 @@
-{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"DVN","range":"1d"}
+{"ticker":"DVN","name":"DVN","currency":"USD","regularMarketPrice":51.35499954223633,"change":-0.3168004577636694,"changePct":-0.6131012617398066,"range":"1d","interval":"5m","bars":[{"t":1793021400,"o":51.34000015258789,"h":51.45500183105469,"l":51.209999084472656,"c":51.35499954223633,"v":226799}]}
