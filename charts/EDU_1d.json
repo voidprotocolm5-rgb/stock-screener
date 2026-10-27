@@ -1,1 +1,1 @@
-{"ticker":"EDU","name":"EDU","currency":"USD","regularMarketPrice":58.2400016784668,"change":-0.13999832153320568,"changePct":-0.23980527840562807,"range":"1d","interval":"5m","bars":[{"t":1793021400,"o":58.224998474121094,"h":58.2400016784668,"l":58.13999938964844,"c":58.2400016784668,"v":0}]}
+{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"EDU","range":"1d"}

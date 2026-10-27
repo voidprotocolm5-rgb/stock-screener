@@ -1,1 +1,1 @@
-{"ticker":"FANG","name":"FANG","currency":"USD","regularMarketPrice":205.10499572753906,"change":-0.8950042724609375,"changePct":-0.4344680934276396,"range":"1d","interval":"5m","bars":[{"t":1793021400,"o":205.54640197753906,"h":206.06500244140625,"l":204.4499969482422,"c":205.10499572753906,"v":35297}]}
+{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"FANG","range":"1d"}

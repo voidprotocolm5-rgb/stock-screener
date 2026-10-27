@@ -1,1 +1,1 @@
-{"ticker":"EXPD","name":"EXPD","currency":"USD","regularMarketPrice":197.7949981689453,"change":1.535003662109375,"changePct":0.782127639393116,"range":"1d","interval":"5m","bars":[{"t":1793021400,"o":198.06500244140625,"h":198.07000732421875,"l":197.7949981689453,"c":197.7949981689453,"v":0}]}
+{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"EXPD","range":"1d"}
