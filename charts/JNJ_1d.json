@@ -1,1 +1,1 @@
-{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"JNJ","range":"1d"}
+{"ticker":"JNJ","name":"JNJ","currency":"USD","regularMarketPrice":266.5,"change":-2.230000000000018,"changePct":-0.829829196591381,"range":"1d","interval":"5m","bars":[{"t":1793194200,"o":265.8299865722656,"h":266.43499755859375,"l":264.20001220703125,"c":266.43499755859375,"v":54469},{"t":1793194500,"o":266.2650146484375,"h":267.2200012207031,"l":266.1400146484375,"c":266.5,"v":68962}]}

@@ -1,1 +1,1 @@
-{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"DINO","range":"1d"}
+{"ticker":"DINO","name":"DINO","currency":"USD","regularMarketPrice":117.3499984741211,"change":0.710998474121098,"changePct":0.6095718191351932,"range":"1d","interval":"5m","bars":[{"t":1793194200,"o":117.58999633789062,"h":118.83000183105469,"l":115.5,"c":116.46499633789062,"v":87020},{"t":1793194500,"o":116.47000122070312,"h":117.74250030517578,"l":116.44999694824219,"c":117.3499984741211,"v":21300}]}

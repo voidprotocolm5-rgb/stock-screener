@@ -1,1 +1,1 @@
-{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"COLM","range":"1d"}
+{"ticker":"COLM","name":"COLM","currency":"USD","regularMarketPrice":60.483001708984375,"change":-0.6969985961914062,"changePct":-1.1392588962318797,"range":"1d","interval":"5m","bars":[{"t":1793194200,"o":60.2599983215332,"h":60.459999084472656,"l":59.93000030517578,"c":60.40800094604492,"v":1104},{"t":1793194500,"o":60.36800003051758,"h":60.4900016784668,"l":60.36800003051758,"c":60.483001708984375,"v":1292}]}

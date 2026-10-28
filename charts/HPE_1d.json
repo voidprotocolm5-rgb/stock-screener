@@ -1,1 +1,1 @@
-{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"HPE","range":"1d"}
+{"ticker":"HPE","name":"HPE","currency":"USD","regularMarketPrice":61.02000045776367,"change":-0.18999954223632898,"changePct":-0.3104060484174628,"range":"1d","interval":"5m","bars":[{"t":1793194200,"o":62.20000076293945,"h":62.20000076293945,"l":61.189998626708984,"c":61.29499816894531,"v":420717},{"t":1793194500,"o":61.29499816894531,"h":61.317501068115234,"l":60.81999969482422,"c":61.02000045776367,"v":200200}]}

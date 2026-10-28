@@ -1,1 +1,1 @@
-{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"INGM","range":"1d"}
+{"ticker":"INGM","name":"INGM","currency":"USD","regularMarketPrice":28.610000610351562,"change":0.3100006103515618,"changePct":1.0954085171433279,"range":"1d","interval":"5m","bars":[{"t":1793194200,"o":28.887500762939453,"h":28.887500762939453,"l":28.409000396728516,"c":28.610000610351562,"v":0}]}

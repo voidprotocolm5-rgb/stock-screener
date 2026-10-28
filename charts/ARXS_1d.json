@@ -1,1 +1,1 @@
-{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"ARXS","range":"1d"}
+{"ticker":"ARXS","name":"ARXS","currency":"USD","regularMarketPrice":52.58000183105469,"change":-0.01999664306640625,"changePct":-0.038016432788005664,"range":"1d","interval":"5m","bars":[{"t":1793194200,"o":52.97999954223633,"h":52.97999954223633,"l":52.380001068115234,"c":52.58000183105469,"v":1240},{"t":1793194500,"o":52.58000183105469,"h":52.58000183105469,"l":52.58000183105469,"c":52.58000183105469,"v":0}]}

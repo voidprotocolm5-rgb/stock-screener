@@ -1,1 +1,1 @@
-{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"CB","range":"1d"}
+{"ticker":"CB","name":"CB","currency":"USD","regularMarketPrice":354.0799865722656,"change":-2.170013427734375,"changePct":-0.6091265762061404,"range":"1d","interval":"5m","bars":[{"t":1793194200,"o":355.4150085449219,"h":356.25,"l":354.3550109863281,"c":354.3550109863281,"v":5498},{"t":1793194500,"o":354.3599853515625,"h":355.8800048828125,"l":354.0799865722656,"c":354.0799865722656,"v":6262}]}

@@ -1,1 +1,1 @@
-{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"ESNT","range":"1d"}
+{"ticker":"ESNT","name":"ESNT","currency":"USD","regularMarketPrice":66.29499816894531,"change":-0.015001831054689774,"changePct":-0.02262378382550109,"range":"1d","interval":"5m","bars":[{"t":1793194635,"o":66.29499816894531,"h":66.29499816894531,"l":66.29499816894531,"c":66.29499816894531,"v":0}]}

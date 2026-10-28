@@ -1,1 +1,1 @@
-{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"DKNG","range":"1d"}
+{"ticker":"DKNG","name":"DKNG","currency":"USD","regularMarketPrice":20.825000762939453,"change":0.10670076293945385,"changePct":0.5150073265637328,"range":"1d","interval":"5m","bars":[{"t":1793194200,"o":20.6200008392334,"h":20.920000076293945,"l":20.6200008392334,"c":20.889999389648438,"v":206121},{"t":1793194500,"o":20.8799991607666,"h":20.90999984741211,"l":20.75,"c":20.825000762939453,"v":77993}]}

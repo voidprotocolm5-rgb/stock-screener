@@ -1,1 +1,1 @@
-{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"COIN","range":"1d"}
+{"ticker":"COIN","name":"COIN","currency":"USD","regularMarketPrice":159.1649932861328,"change":0.6349932861328114,"changePct":0.40055086490431546,"range":"1d","interval":"5m","bars":[{"t":1793194200,"o":158.7100067138672,"h":159.22999572753906,"l":156.63999938964844,"c":158.1699981689453,"v":611384},{"t":1793194500,"o":158.07550048828125,"h":160.88619995117188,"l":157.97000122070312,"c":159.1649932861328,"v":120669}]}

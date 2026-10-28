@@ -1,1 +1,1 @@
-{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"BF-B","range":"1d"}
+{"ticker":"BF-B","name":"BF-B","currency":"USD","regularMarketPrice":28.344999313354492,"change":-0.16500068664550938,"changePct":-0.5787467086829512,"range":"1d","interval":"5m","bars":[{"t":1793194200,"o":28.299999237060547,"h":28.329999923706055,"l":28.190000534057617,"c":28.25,"v":3204},{"t":1793194500,"o":28.309999465942383,"h":28.399999618530273,"l":28.309999465942383,"c":28.344999313354492,"v":42687}]}

@@ -1,1 +1,1 @@
-{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"CMG","range":"1d"}
+{"ticker":"CMG","name":"CMG","currency":"USD","regularMarketPrice":28.329999923706055,"change":0.33999992370605625,"changePct":1.2147192701181004,"range":"1d","interval":"5m","bars":[{"t":1793194200,"o":28.09000015258789,"h":28.364999771118164,"l":28.06999969482422,"c":28.31999969482422,"v":637239},{"t":1793194500,"o":28.31999969482422,"h":28.405000686645508,"l":28.28499984741211,"c":28.344999313354492,"v":315507}]}

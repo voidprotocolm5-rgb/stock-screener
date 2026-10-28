@@ -1,1 +1,1 @@
-{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"CCJ","range":"1d"}
+{"ticker":"CCJ","name":"CCJ","currency":"USD","regularMarketPrice":82.2750015258789,"change":-0.15499847412110057,"changePct":-0.18803648443661355,"range":"1d","interval":"5m","bars":[{"t":1793194200,"o":83.50250244140625,"h":83.50250244140625,"l":82.6500015258789,"c":82.80500030517578,"v":89127},{"t":1793194500,"o":82.64320373535156,"h":82.73699951171875,"l":82.26000213623047,"c":82.2750015258789,"v":17284}]}

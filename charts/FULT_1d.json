@@ -1,1 +1,1 @@
-{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"FULT","range":"1d"}
+{"ticker":"FULT","name":"FULT","currency":"USD","regularMarketPrice":23.479999542236328,"change":-0.06999969482421875,"changePct":-0.2972386288406349,"range":"1d","interval":"5m","bars":[{"t":1793194200,"o":23.540000915527344,"h":23.575000762939453,"l":23.5,"c":23.5049991607666,"v":3853},{"t":1793194500,"o":23.510000228881836,"h":23.559999465942383,"l":23.479999542236328,"c":23.479999542236328,"v":12732}]}

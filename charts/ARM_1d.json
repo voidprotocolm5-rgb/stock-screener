@@ -1,1 +1,1 @@
-{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"ARM","range":"1d"}
+{"ticker":"ARM","name":"ARM","currency":"USD","regularMarketPrice":228.89500427246094,"change":1.8450042724609261,"changePct":0.812598226144429,"range":"1d","interval":"5m","bars":[{"t":1793194200,"o":231.0,"h":231.87989807128906,"l":228.89999389648438,"c":230.48880004882812,"v":252606},{"t":1793194500,"o":230.21499633789062,"h":231.0,"l":228.10000610351562,"c":228.89500427246094,"v":43201}]}

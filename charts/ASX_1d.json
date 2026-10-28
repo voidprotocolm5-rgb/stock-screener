@@ -1,1 +1,1 @@
-{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"ASX","range":"1d"}
+{"ticker":"ASX","name":"ASX","currency":"USD","regularMarketPrice":42.76499938964844,"change":0.5549993896484366,"changePct":1.3148528539408593,"range":"1d","interval":"5m","bars":[{"t":1793194200,"o":42.83000183105469,"h":42.95000076293945,"l":42.64500045776367,"c":42.709999084472656,"v":245463},{"t":1793194500,"o":42.685001373291016,"h":42.85499954223633,"l":42.68000030517578,"c":42.76499938964844,"v":100650}]}

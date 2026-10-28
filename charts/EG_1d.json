@@ -1,1 +1,1 @@
-{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"EG","range":"1d"}
+{"ticker":"EG","name":"EG","currency":"USD","regularMarketPrice":388.1300048828125,"change":-2.8599853515625,"changePct":-0.7314727801210743,"range":"1d","interval":"5m","bars":[{"t":1793194200,"o":392.0,"h":392.0,"l":390.489990234375,"c":391.5350036621094,"v":959},{"t":1793194500,"o":389.67498779296875,"h":389.67498779296875,"l":388.1300048828125,"c":388.1300048828125,"v":844}]}

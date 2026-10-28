@@ -1,1 +1,1 @@
-{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"CYPH","range":"1d"}
+{"ticker":"CYPH","name":"CYPH","currency":"USD","regularMarketPrice":3.055000066757202,"change":-0.08499993324279798,"changePct":-2.7070042434012094,"range":"1d","interval":"5m","bars":[{"t":1793194200,"o":3.0799999237060547,"h":3.0999999046325684,"l":3.0239999294281006,"c":3.0350000858306885,"v":461220},{"t":1793194500,"o":3.0350000858306885,"h":3.0850000381469727,"l":3.0350000858306885,"c":3.055000066757202,"v":126357}]}

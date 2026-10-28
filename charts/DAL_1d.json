@@ -1,1 +1,1 @@
-{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"DAL","range":"1d"}
+{"ticker":"DAL","name":"DAL","currency":"USD","regularMarketPrice":81.3499984741211,"change":-0.15000152587890625,"changePct":-0.18405095199865798,"range":"1d","interval":"5m","bars":[{"t":1793194200,"o":81.20999908447266,"h":81.69000244140625,"l":81.20999908447266,"c":81.33000183105469,"v":19422},{"t":1793194500,"o":81.29499816894531,"h":81.72000122070312,"l":81.19999694824219,"c":81.3499984741211,"v":39795}]}

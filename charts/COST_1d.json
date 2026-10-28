@@ -1,1 +1,1 @@
-{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"COST","range":"1d"}
+{"ticker":"COST","name":"COST","currency":"USD","regularMarketPrice":982.0800170898438,"change":-9.929982910156241,"changePct":-1.0009962510616064,"range":"1d","interval":"5m","bars":[{"t":1793194200,"o":983.905029296875,"h":984.72900390625,"l":982.3699951171875,"c":982.52001953125,"v":53561},{"t":1793194500,"o":982.5050048828125,"h":983.8150024414062,"l":981.7999877929688,"c":982.0800170898438,"v":20649}]}

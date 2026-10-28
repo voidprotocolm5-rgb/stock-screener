@@ -1,1 +1,1 @@
-{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"CRDO","range":"1d"}
+{"ticker":"CRDO","name":"CRDO","currency":"USD","regularMarketPrice":170.19000244140625,"change":1.69000244140625,"changePct":1.0029688079562316,"range":"1d","interval":"5m","bars":[{"t":1793194200,"o":171.41000366210938,"h":175.5,"l":170.8800048828125,"c":172.69500732421875,"v":497646},{"t":1793194500,"o":172.81039428710938,"h":173.0,"l":169.3101043701172,"c":170.19000244140625,"v":142550}]}

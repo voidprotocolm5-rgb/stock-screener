@@ -1,1 +1,1 @@
-{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"ENIC","range":"1d"}
+{"ticker":"ENIC","name":"ENIC","currency":"USD","regularMarketPrice":4.349999904632568,"change":0.022399904632568024,"changePct":0.5176057083040951,"range":"1d","interval":"5m","bars":[{"t":1793194200,"o":4.375,"h":4.375,"l":4.360000133514404,"c":4.369999885559082,"v":259},{"t":1793194500,"o":4.349999904632568,"h":4.349999904632568,"l":4.349999904632568,"c":4.349999904632568,"v":0}]}

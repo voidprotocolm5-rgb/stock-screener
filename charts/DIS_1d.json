@@ -1,1 +1,1 @@
-{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"DIS","range":"1d"}
+{"ticker":"DIS","name":"DIS","currency":"USD","regularMarketPrice":109.76000213623047,"change":-0.38999786376953693,"changePct":-0.35406070246893956,"range":"1d","interval":"5m","bars":[{"t":1793194200,"o":109.55000305175781,"h":110.1500015258789,"l":109.55000305175781,"c":109.68499755859375,"v":93774},{"t":1793194500,"o":109.7300033569336,"h":109.94999694824219,"l":109.55899810791016,"c":109.76000213623047,"v":77820}]}
