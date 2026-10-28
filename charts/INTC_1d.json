@@ -1,1 +1,1 @@
-{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"INTC","range":"1d"}
+{"ticker":"INTC","name":"INTC","currency":"USD","regularMarketPrice":95.08000183105469,"change":null,"changePct":null,"range":"1d","interval":"5m","bars":[{"t":1793194200,"o":95.12999725341797,"h":95.37000274658203,"l":94.66000366210938,"c":95.08000183105469,"v":5664887}]}

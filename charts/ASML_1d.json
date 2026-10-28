@@ -1,1 +1,1 @@
-{"ticker":"ASML","name":"ASML","currency":"USD","regularMarketPrice":1607.0400390625,"change":8.1500390624999,"changePct":0.5097310673342068,"range":"1d","interval":"5m","bars":[{"t":1793107849,"o":1607.0400390625,"h":1607.0400390625,"l":1607.0400390625,"c":1607.0400390625,"v":0}]}
+{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"ASML","range":"1d"}

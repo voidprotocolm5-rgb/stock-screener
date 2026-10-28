@@ -1,1 +1,1 @@
-{"ticker":"COST","name":"COST","currency":"USD","regularMarketPrice":1001.2999877929688,"change":-3.860012207031218,"changePct":-0.38401967915866314,"range":"1d","interval":"5m","bars":[{"t":1793107853,"o":1001.2999877929688,"h":1001.2999877929688,"l":1001.2999877929688,"c":1001.2999877929688,"v":0}]}
+{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"COST","range":"1d"}

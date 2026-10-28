@@ -1,1 +1,1 @@
-{"ticker":"CVNA","name":"CVNA","currency":"USD","regularMarketPrice":58.060001373291016,"change":1.4400013732910182,"changePct":2.5432733544525226,"range":"1d","interval":"5m","bars":[{"t":1793107857,"o":58.060001373291016,"h":58.060001373291016,"l":58.060001373291016,"c":58.060001373291016,"v":0}]}
+{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"CVNA","range":"1d"}

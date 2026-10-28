@@ -1,1 +1,1 @@
-{"ticker":"ANET","name":"ANET","currency":"USD","regularMarketPrice":180.5749969482422,"change":1.6849969482422011,"changePct":0.9419179094651469,"range":"1d","interval":"5m","bars":[{"t":1793107849,"o":180.5749969482422,"h":180.5749969482422,"l":180.5749969482422,"c":180.5749969482422,"v":0}]}
+{"ticker":"ANET","name":"ANET","currency":"USD","regularMarketPrice":190.49000549316406,"change":null,"changePct":null,"range":"1d","interval":"5m","bars":[{"t":1793194200,"o":190.97000122070312,"h":191.11000061035156,"l":190.02999877929688,"c":190.49000549316406,"v":161957}]}

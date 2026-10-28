@@ -1,1 +1,1 @@
-{"ticker":"BA","name":"BA","currency":"USD","regularMarketPrice":185.3000030517578,"change":-3.1900969482422,"changePct":-1.6924480109258788,"range":"1d","interval":"5m","bars":[{"t":1793107852,"o":185.3000030517578,"h":185.3000030517578,"l":185.3000030517578,"c":185.3000030517578,"v":0}]}
+{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"BA","range":"1d"}

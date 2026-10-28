@@ -1,1 +1,1 @@
-{"ticker":"DELL","name":"DELL","currency":"USD","regularMarketPrice":474.0,"change":4.750099999999975,"changePct":1.0122751224880333,"range":"1d","interval":"5m","bars":[{"t":1793107800,"o":474.0,"h":474.0,"l":474.0,"c":474.0,"v":0}]}
+{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"DELL","range":"1d"}

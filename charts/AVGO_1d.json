@@ -1,1 +1,1 @@
-{"ticker":"AVGO","name":"AVGO","currency":"USD","regularMarketPrice":337.9599914550781,"change":4.443491455078117,"changePct":1.3323153292500123,"range":"1d","interval":"5m","bars":[{"t":1793107852,"o":337.8622131347656,"h":337.8622131347656,"l":337.8622131347656,"c":337.8622131347656,"v":0}]}
+{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"AVGO","range":"1d"}

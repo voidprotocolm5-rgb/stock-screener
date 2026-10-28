@@ -1,1 +1,1 @@
-{"ticker":"COIN","name":"COIN","currency":"USD","regularMarketPrice":161.30499267578125,"change":1.2049926757812557,"changePct":0.7526500161032204,"range":"1d","interval":"5m","bars":[{"t":1793107855,"o":161.30499267578125,"h":161.30499267578125,"l":161.30499267578125,"c":161.30499267578125,"v":0}]}
+{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"COIN","range":"1d"}

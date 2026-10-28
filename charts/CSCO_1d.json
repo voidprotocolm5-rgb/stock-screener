@@ -1,1 +1,1 @@
-{"ticker":"CSCO","name":"CSCO","currency":"USD","regularMarketPrice":111.31999969482422,"change":0.8299996948242239,"changePct":0.7511989273456637,"range":"1d","interval":"5m","bars":[{"t":1793107856,"o":111.31999969482422,"h":111.31999969482422,"l":111.31999969482422,"c":111.31999969482422,"v":0}]}
+{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"CSCO","range":"1d"}

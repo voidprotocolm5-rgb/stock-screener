@@ -1,1 +1,1 @@
-{"ticker":"CHA","name":"CHA","currency":"USD","regularMarketPrice":12.289999961853027,"change":-0.1200000381469728,"changePct":-0.9669624347056631,"range":"1d","interval":"5m","bars":[{"t":1793107801,"o":12.289999961853027,"h":12.289999961853027,"l":12.289999961853027,"c":12.289999961853027,"v":0}]}
+{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"CHA","range":"1d"}

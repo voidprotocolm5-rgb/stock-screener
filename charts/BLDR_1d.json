@@ -1,1 +1,1 @@
-{"ticker":"BLDR","name":"BLDR","currency":"USD","regularMarketPrice":56.150001525878906,"change":-0.029998779296875,"changePct":-0.053397613267921716,"range":"1d","interval":"5m","bars":[{"t":1793107819,"o":56.150001525878906,"h":56.150001525878906,"l":56.150001525878906,"c":56.150001525878906,"v":0}]}
+{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"BLDR","range":"1d"}

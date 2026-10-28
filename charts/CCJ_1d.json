@@ -1,1 +1,1 @@
-{"ticker":"CCJ","name":"CCJ","currency":"USD","regularMarketPrice":80.55000305175781,"change":1.3500030517578097,"changePct":1.704549307775012,"range":"1d","interval":"5m","bars":[{"t":1793107852,"o":80.55000305175781,"h":80.55000305175781,"l":80.55000305175781,"c":80.55000305175781,"v":0}]}
+{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"CCJ","range":"1d"}

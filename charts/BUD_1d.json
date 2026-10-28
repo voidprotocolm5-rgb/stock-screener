@@ -1,1 +1,1 @@
-{"ticker":"BUD","name":"BUD","currency":"USD","regularMarketPrice":81.0199966430664,"change":-0.9600033569335977,"changePct":-1.1710214161180748,"range":"1d","interval":"5m","bars":[{"t":1793107846,"o":81.0199966430664,"h":81.0199966430664,"l":81.0199966430664,"c":81.0199966430664,"v":0}]}
+{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"BUD","range":"1d"}

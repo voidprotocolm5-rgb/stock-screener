@@ -1,1 +1,1 @@
-{"ticker":"BABA","name":"BABA","currency":"USD","regularMarketPrice":99.6500015258789,"change":-0.5499984741210966,"changePct":-0.5489006727755456,"range":"1d","interval":"5m","bars":[{"t":1793107852,"o":99.6500015258789,"h":99.6500015258789,"l":99.6500015258789,"c":99.6500015258789,"v":0}]}
+{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"BABA","range":"1d"}

@@ -1,1 +1,1 @@
-{"ticker":"BKSY","name":"BKSY","currency":"USD","regularMarketPrice":18.110000610351562,"change":0.2800006103515642,"changePct":1.5703904113940788,"range":"1d","interval":"5m","bars":[{"t":1793107852,"o":18.110000610351562,"h":18.110000610351562,"l":18.110000610351562,"c":18.110000610351562,"v":0}]}
+{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"BKSY","range":"1d"}
