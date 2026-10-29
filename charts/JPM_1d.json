@@ -1,1 +1,1 @@
-{"ticker":"JPM","name":"JPM","currency":"USD","regularMarketPrice":335.94500732421875,"change":0.15500732421872954,"changePct":0.046161983447609974,"range":"1d","interval":"5m","bars":[{"t":1793194200,"o":337.29400634765625,"h":337.5271911621094,"l":335.6549987792969,"c":335.67999267578125,"v":304364},{"t":1793194500,"o":335.80999755859375,"h":337.0,"l":335.510009765625,"c":335.94500732421875,"v":30693}]}
+{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"JPM","range":"1d"}

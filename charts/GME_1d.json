@@ -1,1 +1,1 @@
-{"ticker":"GME","name":"GME","currency":"USD","regularMarketPrice":23.180400848388672,"change":-0.13779915161132905,"changePct":-0.5909510665974606,"range":"1d","interval":"5m","bars":[{"t":1793194200,"o":23.260000228881836,"h":23.40999984741211,"l":23.219999313354492,"c":23.239999771118164,"v":221955},{"t":1793194500,"o":23.219999313354492,"h":23.245399475097656,"l":23.104999542236328,"c":23.184999465942383,"v":148107}]}
+{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"GME","range":"1d"}

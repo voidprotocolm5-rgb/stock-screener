@@ -1,1 +1,1 @@
-{"ticker":"FDS","name":"FDS","currency":"USD","regularMarketPrice":307.8599853515625,"change":-1.760009765625,"changePct":-0.5684418943805154,"range":"1d","interval":"5m","bars":[{"t":1793194200,"o":307.010009765625,"h":307.010009765625,"l":307.010009765625,"c":307.010009765625,"v":0},{"t":1793194500,"o":307.8599853515625,"h":307.8599853515625,"l":307.8599853515625,"c":307.8599853515625,"v":0}]}
+{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"FDS","range":"1d"}

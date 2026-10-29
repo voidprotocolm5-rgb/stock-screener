@@ -1,1 +1,1 @@
-{"ticker":"INTU","name":"INTU","currency":"USD","regularMarketPrice":327.20001220703125,"change":-0.79998779296875,"changePct":-0.24389871736852134,"range":"1d","interval":"5m","bars":[{"t":1793194200,"o":324.7799987792969,"h":327.55999755859375,"l":324.17999267578125,"c":325.80999755859375,"v":85475},{"t":1793194500,"o":326.1000061035156,"h":327.47698974609375,"l":325.42999267578125,"c":327.20001220703125,"v":18452}]}
+{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"INTU","range":"1d"}

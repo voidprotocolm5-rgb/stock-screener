@@ -1,1 +1,1 @@
-{"ticker":"IGV","name":"IGV","currency":"USD","regularMarketPrice":111.63999938964844,"change":-0.4600006103515568,"changePct":-0.4103484481280614,"range":"1d","interval":"5m","bars":[{"t":1793194200,"o":111.19000244140625,"h":111.87000274658203,"l":111.08999633789062,"c":111.64189910888672,"v":75814},{"t":1793194500,"o":111.6449966430664,"h":111.80000305175781,"l":111.33999633789062,"c":111.63999938964844,"v":112433}]}
+{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"IGV","range":"1d"}

@@ -1,1 +1,1 @@
-{"ticker":"IWM","name":"IWM","currency":"USD","regularMarketPrice":280.0,"change":-0.160000000000025,"changePct":-0.05711022272987757,"range":"1d","interval":"5m","bars":[{"t":1793194200,"o":280.32000732421875,"h":280.6499938964844,"l":280.239990234375,"c":280.4200134277344,"v":724550},{"t":1793194500,"o":280.3900146484375,"h":280.8900146484375,"l":280.0,"c":280.0,"v":290541}]}
+{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"IWM","range":"1d"}

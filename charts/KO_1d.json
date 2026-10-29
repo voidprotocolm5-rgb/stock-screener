@@ -1,1 +1,1 @@
-{"ticker":"KO","name":"KO","currency":"USD","regularMarketPrice":91.1500015258789,"change":-0.07999847412109773,"changePct":-0.08768878013931572,"range":"1d","interval":"5m","bars":[{"t":1793194200,"o":90.875,"h":91.18000030517578,"l":90.58000183105469,"c":91.18000030517578,"v":969130},{"t":1793194500,"o":91.18000030517578,"h":91.27999877929688,"l":91.09500122070312,"c":91.1500015258789,"v":242739}]}
+{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"KO","range":"1d"}

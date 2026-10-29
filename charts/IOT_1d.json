@@ -1,1 +1,1 @@
-{"ticker":"IOT","name":"IOT","currency":"USD","regularMarketPrice":43.8849983215332,"change":0.3749983215332051,"changePct":0.8618669766334294,"range":"1d","interval":"5m","bars":[{"t":1793194200,"o":43.277099609375,"h":43.84000015258789,"l":43.189998626708984,"c":43.630001068115234,"v":22170},{"t":1793194500,"o":43.630001068115234,"h":43.8849983215332,"l":43.42499923706055,"c":43.8849983215332,"v":30816}]}
+{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"IOT","range":"1d"}

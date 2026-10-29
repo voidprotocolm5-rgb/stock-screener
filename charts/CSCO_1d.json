@@ -1,1 +1,1 @@
-{"ticker":"CSCO","name":"CSCO","currency":"USD","regularMarketPrice":110.80500030517578,"change":-1.0429996948242177,"changePct":-0.932515283978451,"range":"1d","interval":"5m","bars":[{"t":1793194200,"o":111.94999694824219,"h":112.12000274658203,"l":111.19499969482422,"c":111.33999633789062,"v":316948},{"t":1793194500,"o":111.3550033569336,"h":111.40519714355469,"l":110.80000305175781,"c":110.80500030517578,"v":73580}]}
+{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"CSCO","range":"1d"}

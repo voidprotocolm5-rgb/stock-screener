@@ -1,1 +1,1 @@
-{"ticker":"EQT","name":"EQT","currency":"USD","regularMarketPrice":56.32500076293945,"change":0.3250007629394531,"changePct":0.5803585052490234,"range":"1d","interval":"5m","bars":[{"t":1793194200,"o":56.724998474121094,"h":57.29499816894531,"l":56.03499984741211,"c":56.2400016784668,"v":612912},{"t":1793194500,"o":56.290000915527344,"h":56.40999984741211,"l":55.98500061035156,"c":56.32500076293945,"v":230940}]}
+{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"EQT","range":"1d"}

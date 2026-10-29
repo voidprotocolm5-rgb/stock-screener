@@ -1,1 +1,1 @@
-{"ticker":"G","name":"G","currency":"USD","regularMarketPrice":38.97999954223633,"change":-0.22000045776367472,"changePct":-0.5612256575603947,"range":"1d","interval":"5m","bars":[{"t":1793194200,"o":38.7400016784668,"h":38.76250076293945,"l":38.59000015258789,"c":38.76250076293945,"v":46094},{"t":1793194500,"o":38.78499984741211,"h":38.97999954223633,"l":38.64400100708008,"c":38.97999954223633,"v":7734}]}
+{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"G","range":"1d"}

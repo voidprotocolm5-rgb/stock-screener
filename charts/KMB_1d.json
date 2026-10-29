@@ -1,1 +1,1 @@
-{"ticker":"KMB","name":"KMB","currency":"USD","regularMarketPrice":108.51499938964844,"change":0.5149993896484375,"changePct":0.47685128671151616,"range":"1d","interval":"5m","bars":[{"t":1793194200,"o":108.37000274658203,"h":108.72000122070312,"l":107.9000015258789,"c":108.41000366210938,"v":54295},{"t":1793194500,"o":108.43499755859375,"h":108.68000030517578,"l":108.39189910888672,"c":108.51499938964844,"v":21840}]}
+{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"KMB","range":"1d"}

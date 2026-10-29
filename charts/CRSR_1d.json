@@ -1,1 +1,1 @@
-{"ticker":"CRSR","name":"CRSR","currency":"USD","regularMarketPrice":13.529999732971191,"change":-0.6949002670288085,"changePct":-4.885097730239288,"range":"1d","interval":"5m","bars":[{"t":1793194200,"o":13.859999656677246,"h":13.869999885559082,"l":13.649999618530273,"c":13.6850004196167,"v":55211},{"t":1793194500,"o":13.640000343322754,"h":13.734800338745117,"l":13.529999732971191,"c":13.529999732971191,"v":5236}]}
+{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"CRSR","range":"1d"}

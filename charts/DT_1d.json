@@ -1,1 +1,1 @@
-{"ticker":"DT","name":"DT","currency":"USD","regularMarketPrice":63.755001068115234,"change":-0.04499893188476278,"changePct":-0.07053124119868776,"range":"1d","interval":"5m","bars":[{"t":1793194200,"o":63.38999938964844,"h":64.0,"l":63.14550018310547,"c":63.77000045776367,"v":19835},{"t":1793194500,"o":63.849998474121094,"h":63.92660140991211,"l":63.6349983215332,"c":63.755001068115234,"v":50833}]}
+{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"DT","range":"1d"}

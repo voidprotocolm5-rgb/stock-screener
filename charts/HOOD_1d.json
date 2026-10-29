@@ -1,1 +1,1 @@
-{"ticker":"HOOD","name":"HOOD","currency":"USD","regularMarketPrice":90.32499694824219,"change":2.982696948242193,"changePct":3.4149512300937728,"range":"1d","interval":"5m","bars":[{"t":1793194200,"o":89.2300033569336,"h":91.63999938964844,"l":89.1500015258789,"c":90.34500122070312,"v":6794576},{"t":1793194500,"o":90.36060333251953,"h":92.25,"l":90.23999786376953,"c":90.32499694824219,"v":1625932}]}
+{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"HOOD","range":"1d"}

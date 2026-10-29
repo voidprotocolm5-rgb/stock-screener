@@ -1,1 +1,1 @@
-{"ticker":"INSW","name":"INSW","currency":"USD","regularMarketPrice":116.06999969482422,"change":4.519999694824222,"changePct":4.051994347668509,"range":"1d","interval":"5m","bars":[{"t":1793194200,"o":114.53500366210938,"h":116.15499877929688,"l":114.53500366210938,"c":115.68499755859375,"v":58990},{"t":1793194500,"o":115.72250366210938,"h":116.7699966430664,"l":115.70500183105469,"c":116.06999969482422,"v":28356}]}
+{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"INSW","range":"1d"}

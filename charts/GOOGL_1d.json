@@ -1,1 +1,1 @@
-{"ticker":"GOOGL","name":"GOOGL","currency":"USD","regularMarketPrice":324.2099914550781,"change":0.6399914550781318,"changePct":0.19779072691477323,"range":"1d","interval":"5m","bars":[{"t":1793194200,"o":323.8399963378906,"h":326.4049987792969,"l":323.5299987792969,"c":324.1499938964844,"v":2830356},{"t":1793194500,"o":324.0899963378906,"h":325.0,"l":323.7099914550781,"c":324.2099914550781,"v":995274}]}
+{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"GOOGL","range":"1d"}
