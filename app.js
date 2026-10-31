@@ -1,3 +1,138 @@
+/* UPG-BEGIN — v32 upgrades: pack record, catalysts, books score, sectors, options, patterns, RS, table/compare, overlap, insider. Research only. */
+(function () {
+  "use strict";
+  const U = () => window.UPGRADES || null;
+  const esc = (s) => String(s == null ? "" : s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+  const na = '<span class="upg-na">n/a</span>';
+  const pct = (x, d = 2) => (x == null || isNaN(x) ? na : `<span class="${x > 0 ? "upg-pos" : x < 0 ? "upg-neg" : ""}">${x > 0 ? "+" : ""}${Number(x).toFixed(d)}%</span>`);
+  const T = (t) => (U() && U().tickers && U().tickers[t]) || null;
+  const pname = (p) => (U() && U().packNames && U().packNames[p]) || p;
+  const fmtTs = (s) => { if (!s) return "n/a"; try { return new Date(s).toLocaleString("en-US", { timeZone: "America/Chicago", month: "short", day: "numeric", hour: "numeric", minute: "2-digit" }) + " CT"; } catch (_) { return s; } };
+  const wl = () => (window.WATCHLIST && window.WATCHLIST.stocks) || [];
+  const comb = (t) => { const c = window.SCORES && window.SCORES.combined && window.SCORES.combined.scores; return c ? c[t] : null; };
+  const open = (t) => { if (window.__openChart) window.__openChart(t); };
+
+  function rowChips(t) {
+    const x = T(t); if (!x) return "";
+    const out = [];
+    if (x.overlap >= 2) out.push(`<span class="upg-chip upg-ov" title="In ${x.overlap} packs: ${esc(x.packs.map(pname).join(", "))}">×${x.overlap}</span>`);
+    const e = x.earnings, pm = x.premarket, n = (x.news || []).length;
+    let cat = "";
+    if (e) cat += `E ${e.date.slice(5)}`;
+    if (pm && pm.gapPct != null) cat += `${cat ? " · " : ""}PM ${pm.gapPct > 0 ? "+" : ""}${pm.gapPct}%`;
+    if (n) cat += `${cat ? " · " : ""}${n}📰`;
+    if (cat) out.push(`<span class="upg-chip upg-cat${e && e.within7 ? " is-hot" : ""}" title="Catalysts — earnings ${e ? esc(e.date) + (e.within7 ? " (within 7 days)" : "") : "n/a"}; pre-market ${pm && pm.gapPct != null ? pm.gapPct + "%" : "n/a"}; ${n} headline(s). Open chart for details.">${esc(cat)}</span>`);
+    if (x.books && x.books.score != null) out.push(`<span class="upg-chip upg-bk" title="Books score: ${x.books.passes} pass / ${x.books.fails} fail / ${x.books.na} n/a of ${x.books.of} cited rules">B${x.books.score}</span>`);
+    if (x.rsScore != null) out.push(`<span class="upg-chip upg-rs" title="Composite relative strength vs SPY (1/3/6/12m percentile, 0–100)">RS${x.rsScore}</span>`);
+    if (x.options && x.options.unusual) out.push(`<span class="upg-chip upg-opt" title="Unusual option volume: ${esc((x.options.unusualWhy || []).join("; "))}">OPT⚡</span>`);
+    (x.patterns || []).filter((p) => /breakout|pullback/.test(p.id)).forEach((p) => out.push(`<span class="upg-chip upg-pat" title="${esc(p.why || p.label)}">${esc(p.label)}</span>`));
+    if (x.insider && x.insider.flag) out.push(`<span class="upg-chip upg-ins" title="SEC Form 4 open-market buys (code P), last ${x.insider.windowDays}d: ${x.insider.buys} by ${x.insider.buyers} insider(s)">INS↑</span>`);
+    return out.length ? `<span class="upg-chips">${out.join("")}</span>` : "";
+  }
+
+  function detail(t) {
+    let el = document.getElementById("chart-upg");
+    if (!el) return;
+    const x = T(t);
+    if (!x) { el.innerHTML = `<p class="upg-note">No upgrade data for ${esc(t)} (not on today's board).</p>`; el.hidden = false; return; }
+    const e = x.earnings, pm = x.premarket, o = x.options, b = x.books, ins = x.insider, rs = x.rs || {};
+    const rules = (U().booksRules && U().booksRules.rules) || [];
+    const news = (x.news || []).map((n) => `<li><a href="${esc(n.link)}" target="_blank" rel="noopener">${esc(n.title)}</a> <span class="upg-dim">${esc(fmtTs(n.ts))}</span></li>`).join("");
+    el.innerHTML = `
+      <div class="upg-grid">
+        <div><h4>Catalysts</h4>
+          <p>Next earnings: ${e ? `<b class="${e.within7 ? "upg-hot" : ""}">${esc(e.date)}</b> (${e.days}d${e.within7 ? " · within 7 days" : ""}${e.estimate ? " · range/estimate" : ""})` : na}</p>
+          <p>Pre-market gap: ${pm && pm.gapPct != null ? pct(pm.gapPct) + ` <span class="upg-dim">as of ${esc(fmtTs(pm.asOf))}</span>` : `${na} <span class="upg-dim">${esc((pm && pm.note) || "")}</span>`}</p>
+          ${news ? `<ul class="upg-news">${news}</ul>` : `<p>Headlines: ${na}</p>`}</div>
+        <div><h4>Relative strength vs SPY</h4>
+          <p>1m ${pct(rs.m1)} · 3m ${pct(rs.m3)} · 6m ${pct(rs.m6)} · 12m ${pct(rs.m12)}</p><p>Composite RS: <b>${x.rsScore != null ? x.rsScore : na}</b>/100</p>
+          <h4>Patterns (${esc(U().lastBar)})</h4>
+          <p>${(x.patterns || []).length ? x.patterns.map((p) => `<span class="upg-chip upg-pat" title="${esc(p.why || "")}">${esc(p.label)}</span>`).join(" ") : "none"}</p>
+          <p class="upg-dim">${esc(U().notes.candles)}</p></div>
+        <div><h4>Options</h4>
+          ${o ? `<p>ATM IV ${o.atmIV != null ? o.atmIV + "%" : na} (${esc(o.atmExpiry)}) · ${esc(o.ivLabel)}</p><p>Volume ${o.volume.toLocaleString()} · OI ${o.openInterest.toLocaleString()} (${esc(o.expiries.join(", "))})</p><p>${o.unusual ? `<b class="upg-hot">Unusual: ${esc(o.unusualWhy.join("; "))}</b>` : "No unusual-volume flag"}${o.avgNote ? ` <span class="upg-dim">(${esc(o.avgNote)})</span>` : ""}</p>` : `<p>${na} (no listed options in yfinance)</p>`}
+          <p class="upg-dim">${esc(U().notes.options)}</p>
+          <h4>Insider buying (SEC Form 4)</h4>
+          ${ins && ins.status === "ok" ? `<p>${ins.flag ? `<b class="upg-pos">${ins.buys} open-market buy(s)</b> by ${ins.buyers} insider(s), last ${esc(ins.last || "n/a")}${ins.value ? ` · ~$${Math.round(ins.value).toLocaleString()}` : ""}` : `No open-market purchases in ${ins.form4s} Form 4 filing(s), last ${ins.windowDays}d`}</p>${(ins.detail || []).map((d) => `<p class="upg-dim">${esc(d.owner)}${d.title ? " (" + esc(d.title) + ")" : ""} · ${esc(d.date)} · ${d.shares != null ? d.shares.toLocaleString() : "n/a"} sh @ ${d.price != null ? "$" + d.price : "n/a"} · <a href="${esc(d.url)}" target="_blank" rel="noopener">filing</a></p>`).join("")}` : `<p>${na} <span class="upg-dim">${esc((ins && ins.note) || "")}</span></p>`}</div>
+        <div><h4>Books score ${b && b.score != null ? `<b>${b.score}</b>/100` : na}</h4>
+          ${b ? `<p class="upg-dim">${b.passes} pass · ${b.fails} fail · ${b.na} n/a of ${b.of} rules (n/a excluded)</p><ul class="upg-rules">${rules.map((r) => `<li class="is-${b.rules[r.id] === "n/a" ? "na" : b.rules[r.id]}" title="${esc(r.quote)}"><span>${b.rules[r.id] === "pass" ? "✓" : b.rules[r.id] === "fail" ? "✗" : "–"}</span> ${esc(r.rule)} <span class="upg-dim">— ${esc(r.book)}, ${esc(r.cite)}</span></li>`).join("")}</ul>` : ""}</div>
+      </div>
+      <p class="upg-dim">Packs: ${x.packs.length ? esc(x.packs.map(pname).join(", ")) : "none today"} · Sector (yfinance): ${esc(x.sector || "n/a")} · research only, no trades.</p>`;
+    el.hidden = false;
+  }
+
+  function viewPackRecord() {
+    const root = document.getElementById("upg-pack-root"); if (!root || !U()) return;
+    const u = U(), r = u.record, d = u.diffs;
+    const cell = (s, h) => { const v = s["d" + h]; return v.n ? `${pct(v.avgExcess)}<br><span class="upg-dim">hit ${v.hitRate}% · n=${v.n}${v.pending ? ` · ${v.pending} pending` : ""}</span>` : `<span class="upg-dim">pending${v.pending ? ` (${v.pending})` : ""}</span>`; };
+    const diffRows = u.packs.map((p) => { const x = d.packs[p] || { new: [], dropped: [] }; const lk = (a) => a.map((t) => `<a href="#" data-upg-open="${esc(t)}">${esc(t)}</a>`).join(" ") || "—";
+      return `<tr><td>${esc(pname(p))}</td><td class="upg-pos">+${x.new.length}</td><td>${lk(x.new)}</td><td class="upg-neg">−${x.dropped.length}</td><td>${lk(x.dropped)}</td></tr>`; }).join("");
+    root.innerHTML = `<h2>Pack Record</h2>
+      <p class="upg-dim">${esc(r.rankedBy)}. Forward returns over 1/5/20 trading days vs SPY, backfilled from dated Finviz captures (finviz/YYYY-MM-DD) into track-record/packs/. Last price bar ${esc(r.lastBar)}. Returns not yet elapsed are marked pending. Research only.</p>
+      <div class="upg-scroll"><table class="upg-table"><thead><tr><th>Rank</th><th>Pack</th><th>1-day excess</th><th>5-day excess</th><th>20-day excess</th></tr></thead><tbody>
+      ${r.stats.map((s) => `<tr><td>${s.rank || "—"}</td><td>${esc(pname(s.pack))}${s.v21 ? "" : ' <span class="upg-chip">TTF×Books</span>'}</td><td>${cell(s, 1)}</td><td>${cell(s, 5)}</td><td>${cell(s, 20)}</td></tr>`).join("")}</tbody></table></div>
+      <h3>New today / Dropped today <span class="upg-dim">(${esc(d.date)} vs ${esc(d.prev || "n/a")})</span></h3>${d.gapNote ? `<p class="upg-dim">${esc(d.gapNote)}</p>` : ""}
+      <div class="upg-scroll"><table class="upg-table"><thead><tr><th>Pack</th><th>New</th><th>Tickers</th><th>Dropped</th><th>Tickers</th></tr></thead><tbody>${diffRows}</tbody></table></div>`;
+  }
+
+  function viewSectors() {
+    const root = document.getElementById("upg-sector-root"); if (!root || !U()) return;
+    const s = U().sectors;
+    const heat = (v) => v == null ? "transparent" : v > 0 ? `rgba(34,197,94,${Math.min(0.15 + Math.abs(v) / 4, 0.75)})` : `rgba(239,68,68,${Math.min(0.15 + Math.abs(v) / 4, 0.75)})`;
+    root.innerHTML = `<h2>Sector heat map</h2><p class="upg-dim">${s.base} pack names (6 v2.1 + 2 TTF×Books, capture ${esc(U().captureDate)}) grouped by yfinance sector. Tile colour = average daily % move of pack names on ${esc(U().lastBar)}; SPDR sector ETF move shown for comparison.</p>
+      ${s.crowding.length ? `<div class="upg-warn"><b>Crowding warnings (${s.crowding.length})</b><ul>${s.crowding.map((c) => `<li>${esc(c.kind === "pack-sector" ? `${pname(c.pack)}: ${c.n} names in ${c.sector}` : c.msg)}</li>`).join("")}</ul></div>` : `<p>No crowding warnings.</p>`}
+      <div class="upg-heat">${s.rows.map((r) => `<div class="upg-tile${r.crowded ? " is-crowded" : ""}" style="background:${heat(r.avgChg)}"><b>${esc(r.sector)}</b><span>${r.n} names · ${r.share}%</span><span>Pack avg ${pct(r.avgChg)}</span><span>${r.etf ? esc(r.etf) + " " : ""}${r.etf ? pct(r.etfChg) : "no ETF"}</span><small>${r.tickers.map((t) => `<a href="#" data-upg-open="${esc(t)}">${esc(t)}</a>`).join(" ")}</small></div>`).join("")}</div>`;
+  }
+
+  const TS = { key: "rsScore", dir: -1, q: "", pack: "", sector: "", only: "", cmp: [] };
+  function rowsAll() {
+    return wl().map((s) => { const x = T(s.ticker) || {}; const c = comb(s.ticker) || {};
+      return { t: s.ticker, name: s.name, price: s.price, chg: s.changePct, score: c.score != null ? c.score : null, packs: (x.packs || []).length, packList: x.packs || [], rs: x.rsScore, rs3: x.rs && x.rs.m3,
+        books: x.books ? x.books.score : null, earn: x.earnings ? x.earnings.days : null, earnDate: x.earnings ? x.earnings.date : null, sector: x.sector || "n/a",
+        iv: x.options ? x.options.atmIV : null, unusual: !!(x.options && x.options.unusual), ins: !!(x.insider && x.insider.flag), pat: (x.patterns || []).map((p) => p.label).join(", ") }; });
+  }
+  function viewTable() {
+    const root = document.getElementById("upg-table-root"); if (!root || !U()) return;
+    let rows = rowsAll();
+    const q = TS.q.toUpperCase();
+    rows = rows.filter((r) => (!q || r.t.includes(q) || String(r.name || "").toUpperCase().includes(q)) && (!TS.pack || r.packList.includes(TS.pack)) && (!TS.sector || r.sector === TS.sector)
+      && (TS.only !== "earn7" || (r.earn != null && r.earn <= 7)) && (TS.only !== "unusual" || r.unusual) && (TS.only !== "ins" || r.ins) && (TS.only !== "multi" || r.packs >= 2) && (TS.only !== "pattern" || r.pat));
+    rows.sort((a, b) => { const x = a[TS.key], y = b[TS.key]; if (x == null && y == null) return 0; if (x == null) return 1; if (y == null) return -1; return (x > y ? 1 : x < y ? -1 : 0) * TS.dir; });
+    const cols = [["t", "Ticker"], ["price", "Price"], ["chg", "% Chg"], ["score", "Score"], ["packs", "Packs"], ["rs", "RS"], ["rs3", "RS 3m"], ["books", "Books"], ["earn", "Earnings (d)"], ["iv", "ATM IV"], ["sector", "Sector"], ["pat", "Patterns"]];
+    const sectors = [...new Set(rowsAll().map((r) => r.sector))].sort();
+    root.innerHTML = `<h2>Table &amp; compare</h2>
+      <div class="upg-filters"><input id="upg-q" placeholder="Search ticker / name" value="${esc(TS.q)}">
+        <select id="upg-pack"><option value="">All packs</option>${U().packs.map((p) => `<option value="${esc(p)}"${TS.pack === p ? " selected" : ""}>${esc(pname(p))}</option>`).join("")}</select>
+        <select id="upg-sector"><option value="">All sectors</option>${sectors.map((s) => `<option${TS.sector === s ? " selected" : ""}>${esc(s)}</option>`).join("")}</select>
+        <select id="upg-only"><option value="">No flag filter</option>${[["earn7", "Earnings ≤7d"], ["unusual", "Unusual options"], ["ins", "Insider buying"], ["multi", "In 2+ packs"], ["pattern", "Any pattern"]].map(([v, l]) => `<option value="${v}"${TS.only === v ? " selected" : ""}>${l}</option>`).join("")}</select>
+        <span class="upg-dim">${rows.length} rows · tick 2–4 to compare</span></div>
+      <div id="upg-cmp"></div>
+      <div class="upg-scroll"><table class="upg-table upg-sort"><thead><tr><th></th>${cols.map(([k, l]) => `<th data-k="${k}" class="${TS.key === k ? (TS.dir > 0 ? "is-asc" : "is-desc") : ""}">${l}</th>`).join("")}</tr></thead><tbody>
+      ${rows.map((r) => `<tr><td><input type="checkbox" data-cmp="${esc(r.t)}"${TS.cmp.includes(r.t) ? " checked" : ""}></td><td><a href="#" data-upg-open="${esc(r.t)}"><b>${esc(r.t)}</b></a> ${rowChips(r.t)}</td><td>${r.price != null ? "$" + Number(r.price).toFixed(2) : na}</td><td>${pct(r.chg)}</td><td>${r.score != null ? r.score : na}</td><td>${r.packs}</td><td>${r.rs != null ? r.rs : na}</td><td>${pct(r.rs3, 1)}</td><td>${r.books != null ? r.books : na}</td><td>${r.earn != null ? `${r.earn} <span class="upg-dim">${esc(r.earnDate)}</span>` : na}</td><td>${r.iv != null ? r.iv + "%" : na}</td><td>${esc(r.sector)}</td><td class="upg-dim">${esc(r.pat)}</td></tr>`).join("")}</tbody></table></div>`;
+    root.querySelector("#upg-q").addEventListener("change", (e) => { TS.q = e.target.value; viewTable(); });
+    [["#upg-pack", "pack"], ["#upg-sector", "sector"], ["#upg-only", "only"]].forEach(([s, k]) => root.querySelector(s).addEventListener("change", (e) => { TS[k] = e.target.value; viewTable(); }));
+    root.querySelectorAll("th[data-k]").forEach((th) => th.addEventListener("click", () => { const k = th.dataset.k; if (TS.key === k) TS.dir = -TS.dir; else { TS.key = k; TS.dir = ["t", "sector", "earn"].includes(k) ? 1 : -1; } viewTable(); }));
+    root.querySelectorAll("input[data-cmp]").forEach((cb) => cb.addEventListener("change", () => { const t = cb.dataset.cmp; if (cb.checked) { if (TS.cmp.length >= 4) { cb.checked = false; return; } TS.cmp.push(t); } else TS.cmp = TS.cmp.filter((x) => x !== t); renderCompare(); }));
+    renderCompare();
+  }
+  function renderCompare() {
+    const el = document.getElementById("upg-cmp"); if (!el) return;
+    if (TS.cmp.length < 2) { el.innerHTML = TS.cmp.length ? `<p class="upg-dim">Pick ${2 - TS.cmp.length} more to compare (max 4).</p>` : ""; return; }
+    const R = Object.fromEntries(rowsAll().map((r) => [r.t, r]));
+    const lines = [["Price", (t) => R[t].price != null ? "$" + Number(R[t].price).toFixed(2) : na], ["% change", (t) => pct(R[t].chg)], ["Combined score", (t) => R[t].score != null ? R[t].score : na],
+      ["Packs", (t) => { const x = T(t); return x && x.packs.length ? esc(x.packs.map(pname).join(", ")) + (x.overlap >= 2 ? ` <b>×${x.overlap}</b>` : "") : "none"; }],
+      ["RS composite", (t) => R[t].rs != null ? R[t].rs : na], ["RS 1/3/6/12m", (t) => { const r = (T(t) || {}).rs || {}; return `${pct(r.m1, 1)} / ${pct(r.m3, 1)} / ${pct(r.m6, 1)} / ${pct(r.m12, 1)}`; }],
+      ["Next earnings", (t) => { const e = (T(t) || {}).earnings; return e ? `${esc(e.date)} (${e.days}d)` : na; }], ["Latest headline", (t) => { const n = ((T(t) || {}).news || [])[0]; return n ? `<a href="${esc(n.link)}" target="_blank" rel="noopener">${esc(n.title)}</a>` : na; }],
+      ["Books score", (t) => { const b = (T(t) || {}).books; return b && b.score != null ? `${b.score} (${b.passes}/${b.passes + b.fails})` : na; }],
+      ["Options", (t) => { const o = (T(t) || {}).options; return o ? `IV ${o.atmIV != null ? o.atmIV + "%" : "n/a"} · ${esc(o.ivLabel)} · vol ${o.volume.toLocaleString()} / OI ${o.openInterest.toLocaleString()}${o.unusual ? " · ⚡unusual" : ""}` : na; }],
+      ["Insider buys (90d)", (t) => { const i = (T(t) || {}).insider; return i && i.status === "ok" ? (i.flag ? `${i.buys} buy(s)` : "none") : na; }], ["Patterns", (t) => esc(R[t].pat) || "none"], ["Sector", (t) => esc(R[t].sector)]];
+    el.innerHTML = `<div class="upg-scroll"><table class="upg-table upg-cmp"><thead><tr><th>Compare</th>${TS.cmp.map((t) => `<th><a href="#" data-upg-open="${esc(t)}">${esc(t)}</a></th>`).join("")}</tr></thead><tbody>${lines.map(([l, f]) => `<tr><td>${l}</td>${TS.cmp.map((t) => `<td>${f(t)}</td>`).join("")}</tr>`).join("")}</tbody></table></div>`;
+  }
+  function renderView(v) { if (v === "packrecord") viewPackRecord(); if (v === "sectors") viewSectors(); if (v === "table") viewTable(); }
+  document.addEventListener("click", (e) => { const a = e.target.closest && e.target.closest("[data-upg-open]"); if (a) { e.preventDefault(); open(a.dataset.upgOpen); } });
+  window.__UPG = { rowChips, detail, renderView };
+})();
+/* UPG-END */
 (() => {
   const data = window.WATCHLIST;
   if (!data || !Array.isArray(data.stocks)) {
@@ -900,7 +1035,7 @@
       if (s.hasTtg) tr.classList.add("has-ttg");
 
       tr.innerHTML = `
-        <td class="col-ticker"><span class="ticker">${escapeHtml(s.ticker)}</span>${scoreBadge(s.ticker)}${combinedChip(s.ticker)}${badgeHtml ? `<span class="ticker-badges">${badgeHtml}</span>` : ""}</td>
+        <td class="col-ticker"><span class="ticker">${escapeHtml(s.ticker)}</span>${scoreBadge(s.ticker)}${combinedChip(s.ticker)}${window.__UPG ? window.__UPG.rowChips(s.ticker) : ""}${badgeHtml ? `<span class="ticker-badges">${badgeHtml}</span>` : ""}</td>
         <td class="col-name name-cell" title="${escapeAttr(s.name || "")}">${escapeHtml(s.name || "—")}${industryTag(s.ticker)}</td>
         <td class="col-price num"><span class="price">${fmtPrice(s.price)}</span></td>
         <td class="col-chg num"><span class="chg ${chgClass(pct)}">${fmtPct(pct)}</span></td>
@@ -1114,6 +1249,8 @@
     const iv = $("#view-investors");
     if (iv) iv.hidden = view !== "investors";
     if (view === "investors") renderInvestors();
+    ["packrecord", "sectors", "table"].forEach((v) => { const p = document.getElementById("view-" + v); if (p) p.hidden = view !== v; });
+    try { if (window.__UPG) window.__UPG.renderView(view); } catch (_) {}
   }
 
   function jumpToTicker(ticker) {
@@ -1939,6 +2076,7 @@
     applyChartQuote(null, boardRow);
     renderChartMeta(boardRow);
     renderChecklist(t);
+    try { if (window.__UPG) window.__UPG.detail(t); } catch (_) {}
     destroyCharts();
     setChartStatus(null);
     if (mountTvChart(t)) { showTvMode(true); return; }
@@ -1960,6 +2098,7 @@
   }));
   window.__tvDebug = { tvSymbol, refreshLiveQuotes, liveState };
 
+  window.__openChart = openChart;
   render();
   renderDiffs();
   setQuoteStamp("Baked quotes as of " + fmtTime(data.updatedAt) + " · fetching live…", "baked");
@@ -1970,6 +2109,7 @@
   if (market) renderMarket();
 
   if (params.get("view") === "investors") setView("investors");
+  if (["packrecord", "sectors", "table"].includes(params.get("view"))) setView(params.get("view"));
   if (params.get("view") === "screens") {
     const sm = document.getElementById("screens-menu");
     const idt = document.getElementById("investor-preset-details");

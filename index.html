@@ -17,17 +17,17 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <script>(function(){try{var t=localStorage.getItem("ss-theme");if(t)document.documentElement.dataset.theme=t;}catch(e){}})();</script>
-  <link rel="stylesheet" href="styles.css?v=31">
-  <script src="data.js?v=31"></script>
-  <script src="exchanges.js?v=31"></script>
-  <script src="performance.js?v=31"></script>
-  <script src="scores.js?v=31"></script>
-  <script src="market.js?v=31"></script>
-  <script src="gate-summary.js?v=31"></script>
-  <script src="books-align.js?v=31"></script>
-  <script src="additive-packs.js?v=31"></script>
-  <script src="pack-screener-urls.js?v=31"></script>
-  <script src="profiles.js?v=31"></script>
+  <link rel="stylesheet" href="styles.css?v=32">
+  <script src="data.js?v=32"></script>
+  <script src="exchanges.js?v=32"></script>
+  <script src="performance.js?v=32"></script>
+  <script src="scores.js?v=32"></script>
+  <script src="market.js?v=32"></script>
+  <script src="gate-summary.js?v=32"></script>
+  <script src="books-align.js?v=32"></script>
+  <script src="additive-packs.js?v=32"></script>
+  <script src="pack-screener-urls.js?v=32"></script>
+  <script src="profiles.js?v=32"></script>
 </head>
 <body>
   <div class="shell">
@@ -53,6 +53,9 @@
       <button type="button" class="view-tab" data-view="market" id="tab-market">Market</button>
       <button type="button" class="view-tab" data-view="performance" id="tab-performance">Performance</button>
       <button type="button" class="view-tab" data-view="investors" id="tab-investors">Investor presets</button>
+      <button type="button" class="view-tab" data-view="packrecord" id="tab-packrecord">Pack Record</button>
+      <button type="button" class="view-tab" data-view="sectors" id="tab-sectors">Sectors</button>
+      <button type="button" class="view-tab" data-view="table" id="tab-table">Table / Compare</button>
     </nav>
 
     <div id="view-watchlist" class="view-panel">
@@ -291,6 +294,16 @@
       <section id="inv-root" class="inv-root" aria-label="Investor presets and combined score"></section>
     </div>
 
+    <div id="view-packrecord" class="view-panel" hidden>
+      <section id="upg-pack-root" class="upg-root" aria-label="Pack Record"></section>
+    </div>
+    <div id="view-sectors" class="view-panel" hidden>
+      <section id="upg-sector-root" class="upg-root" aria-label="Sector heat map"></section>
+    </div>
+    <div id="view-table" class="view-panel" hidden>
+      <section id="upg-table-root" class="upg-root" aria-label="Table and compare"></section>
+    </div>
+
     <div id="view-performance" class="view-panel" hidden>
       <section id="perf-root" class="perf-root" aria-label="Track record"></section>
     </div>
@@ -364,6 +377,7 @@
         </div>
       </header>
       <section id="chart-glance" class="chart-glance" aria-label="Company at a glance" hidden></section>
+      <section id="chart-upg" class="chart-upg" aria-label="Catalysts, options, RS, books score" hidden></section>
       <div class="chart-ranges" id="chart-ranges" role="tablist" aria-label="Chart range">
         <button type="button" class="chip chart-range-chip" data-range="1d">1D</button>
         <button type="button" class="chip chart-range-chip" data-range="5d">5D</button>
@@ -396,6 +410,6 @@
   </div>
 
   <script src="https://unpkg.com/lightweight-charts@4.2.1/dist/lightweight-charts.standalone.production.js"></script>
-  <script src="app.js?v=31"></script>
+  <script src="app.js?v=32"></script>
 </body>
 </html>
