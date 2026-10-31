@@ -104,9 +104,7 @@ window.MARKET = {
             "oil",
             "energy"
           ],
-          "offWatchlistMentions": [
-            "CVX"
-          ]
+          "offWatchlistMentions": []
         }
       ]
     },
@@ -152,15 +150,7 @@ window.MARKET = {
           "tags": [
             "earnings"
           ],
-          "offWatchlistMentions": [
-            "RBLX",
-            "TWLO",
-            "RIVN",
-            "AZN",
-            "CVX",
-            "MDLZ",
-            "CL"
-          ]
+          "offWatchlistMentions": []
         }
       ]
     },
@@ -184,12 +174,7 @@ window.MARKET = {
           "tags": [
             "watchlist"
           ],
-          "offWatchlistMentions": [
-            "MDLZ",
-            "MRK",
-            "SYK",
-            "ABBV"
-          ]
+          "offWatchlistMentions": []
         },
         {
           "id": "st-1030-cyph",
@@ -227,9 +212,7 @@ window.MARKET = {
             "watchlist",
             "semis"
           ],
-          "offWatchlistMentions": [
-            "SKHY"
-          ]
+          "offWatchlistMentions": []
         },
         {
           "id": "rt-1030-msft",
@@ -255,5 +238,5 @@ window.MARKET = {
   "itemCount": 11,
   "matchedTickerCount": 14,
   "contentDate": "2026-10-30",
-  "stale": false
+  "stale": true
 };
