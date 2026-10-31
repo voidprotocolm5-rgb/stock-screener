@@ -17,17 +17,17 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <script>(function(){try{var t=localStorage.getItem("ss-theme");if(t)document.documentElement.dataset.theme=t;}catch(e){}})();</script>
-  <link rel="stylesheet" href="styles.css?v=32">
-  <script src="data.js?v=32"></script>
-  <script src="exchanges.js?v=32"></script>
-  <script src="performance.js?v=32"></script>
-  <script src="scores.js?v=32"></script>
-  <script src="market.js?v=32"></script>
-  <script src="gate-summary.js?v=32"></script>
-  <script src="books-align.js?v=32"></script>
-  <script src="additive-packs.js?v=32"></script>
-  <script src="pack-screener-urls.js?v=32"></script>
-  <script src="profiles.js?v=32"></script>
+  <link rel="stylesheet" href="styles.css?v=33">
+  <script src="data.js?v=33"></script>
+  <script src="exchanges.js?v=33"></script>
+  <script src="performance.js?v=33"></script>
+  <script src="scores.js?v=33"></script>
+  <script src="market.js?v=33"></script>
+  <script src="gate-summary.js?v=33"></script>
+  <script src="books-align.js?v=33"></script>
+  <script src="additive-packs.js?v=33"></script>
+  <script src="pack-screener-urls.js?v=33"></script>
+  <script src="profiles.js?v=33"></script>
 </head>
 <body>
   <div class="shell">
@@ -56,6 +56,7 @@
       <button type="button" class="view-tab" data-view="packrecord" id="tab-packrecord">Pack Record</button>
       <button type="button" class="view-tab" data-view="sectors" id="tab-sectors">Sectors</button>
       <button type="button" class="view-tab" data-view="table" id="tab-table">Table / Compare</button>
+      <button type="button" class="view-tab" data-view="mywatch" id="tab-mywatch">★ My Watchlist</button>
     </nav>
 
     <div id="view-watchlist" class="view-panel">
@@ -303,6 +304,9 @@
     <div id="view-table" class="view-panel" hidden>
       <section id="upg-table-root" class="upg-root" aria-label="Table and compare"></section>
     </div>
+    <div id="view-mywatch" class="view-panel" hidden>
+      <section id="upg-mywatch-root" class="upg-root" aria-label="My Watchlist (stored in this browser only)"></section>
+    </div>
 
     <div id="view-performance" class="view-panel" hidden>
       <section id="perf-root" class="perf-root" aria-label="Track record"></section>
@@ -410,6 +414,6 @@
   </div>
 
   <script src="https://unpkg.com/lightweight-charts@4.2.1/dist/lightweight-charts.standalone.production.js"></script>
-  <script src="app.js?v=32"></script>
+  <script src="app.js?v=33"></script>
 </body>
 </html>

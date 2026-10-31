@@ -1320,3 +1320,29 @@ tbody td { padding-top: 12px; padding-bottom: 12px; }
 .chart-upg h4{margin:6px 0 4px;font-size:.85rem}.chart-upg p{margin:2px 0;font-size:.8rem}.upg-news,.upg-rules{margin:4px 0;padding-left:16px;font-size:.78rem}
 .upg-rules{list-style:none;padding-left:0}.upg-rules li.is-pass span{color:#22c55e}.upg-rules li.is-fail span{color:#ef4444}.upg-rules li.is-na{opacity:.6}
 @media (max-width:700px){.upg-warn ul{columns:1}}
+
+/* v33: stars, new chips, My Watchlist, mobile (≤480px, no sideways page scroll) */
+.upg-star{background:none;border:0;cursor:pointer;font-size:1rem;line-height:1;padding:0 3px;color:var(--muted)}.upg-star.is-on{color:#f5b301}
+.upg-eh{border-color:#3b82f6;color:#60a5fa}.upg-sqz{border-color:#f97316;color:#fb923c;font-weight:700}.upg-si{border-color:#a16207;color:#ca8a04}.upg-13f{border-color:#8b5cf6;color:#a78bfa}
+.upg-tag{display:inline-block;font:500 .62rem/1.3 "DM Mono",monospace;padding:0 4px;border-radius:4px;border:1px dashed var(--line);color:var(--muted);text-transform:uppercase}
+.upg-mini{font-size:.78rem}.upg-mini td,.upg-mini th{padding:3px 6px}
+.upg-btn{display:inline-block;padding:6px 10px;border:1px solid var(--line);border-radius:8px;background:transparent;color:inherit;cursor:pointer;font-size:.85rem}
+#mw-add{padding:6px 8px;border:1px solid var(--line);border-radius:8px;background:transparent;color:inherit;width:11em;max-width:100%}
+.mw-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px;margin-top:10px}
+.mw-card{border:1px solid var(--line);border-radius:12px;padding:10px 12px;min-width:0}.mw-card header{display:flex;flex-wrap:wrap;gap:6px;align-items:baseline}
+.mw-meta{margin:6px 0;display:flex;flex-wrap:wrap;gap:4px}.mw-card textarea{width:100%;box-sizing:border-box;background:transparent;color:inherit;border:1px solid var(--line);border-radius:8px;padding:6px;font:inherit;resize:vertical}
+.upg-chips,.upg-tcell{min-width:0}
+/* page-level guard */ body{max-width:100%}
+img,svg,canvas,video{max-width:100%}
+@media (max-width:480px){
+  .upg-grid,.upg-grid-v33{grid-template-columns:1fr}
+  .mw-list{grid-template-columns:1fr}
+  .upg-root{padding:10px 0}
+  .upg-chip{font-size:.6rem}
+  .upg-scroll,.upg-root .upg-table-wrap,.perf-root,.inv-root{max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .upg-filters{display:flex;flex-wrap:wrap;gap:6px}
+  .upg-filters select,.upg-filters input{max-width:100%}
+  main,section,.view-panel{min-width:0;max-width:100%}
+  table{max-width:100%}
+  pre,code{white-space:pre-wrap;word-break:break-word}
+}
