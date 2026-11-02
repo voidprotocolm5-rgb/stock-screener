@@ -4,7 +4,7 @@ window.MARKET = {
   "timezone": "America/Chicago",
   "disclaimer": "Research organizer only — not investment advice. Headlines are cited from live sources at fetch time; never fabricated. Does not place trades or connect to a broker.",
   "angle": "Nasdaq 100 futures ~−2.5% and S&P ~−1.1% (Dow ~flat) at 8:15–8:31 ET after Amazon (−6 to −7%) and Intel (−25%) results deepen AI-spending worries · 10-yr Treasury ~4.94% as bonds rally · Brent ~$113, WTI ~$104 on Iran risk · Q3 employment costs +0.8% in line · XOM/CVX beat",
-  "watchlistTickerCount": 166,
+  "watchlistTickerCount": 174,
   "sourceGaps": [
     {
       "source": "X / economist posts",
