@@ -4,7 +4,7 @@ window.MARKET = {
   "timezone": "America/Chicago",
   "disclaimer": "Research organizer only — not investment advice. Headlines are cited from live sources at fetch time; never fabricated. Does not place trades or connect to a broker.",
   "angle": "Nasdaq 100 futures ~−2.5% and S&P ~−1.1% (Dow ~flat) at 8:15–8:31 ET after Amazon (−6 to −7%) and Intel (−25%) results deepen AI-spending worries · 10-yr Treasury ~4.94% as bonds rally · Brent ~$113, WTI ~$104 on Iran risk · Q3 employment costs +0.8% in line · XOM/CVX beat",
-  "watchlistTickerCount": 174,
+  "watchlistTickerCount": 167,
   "sourceGaps": [
     {
       "source": "X / economist posts",
@@ -185,14 +185,14 @@ window.MARKET = {
             "url": "https://www.stocktitan.net/articles/stock-market-today-live-october-30-2026",
             "fetchedAt": "2026-10-30T08:25:00-05:00"
           },
-          "matchedTickers": [
-            "CYPH"
-          ],
+          "matchedTickers": [],
           "tags": [
             "watchlist",
             "crypto"
           ],
-          "offWatchlistMentions": []
+          "offWatchlistMentions": [
+            "CYPH"
+          ]
         },
         {
           "id": "rt-1030-chips",
@@ -236,7 +236,7 @@ window.MARKET = {
     }
   ],
   "itemCount": 11,
-  "matchedTickerCount": 14,
+  "matchedTickerCount": 13,
   "contentDate": "2026-10-30",
   "stale": true
 };

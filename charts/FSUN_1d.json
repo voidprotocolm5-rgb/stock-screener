@@ -1,1 +1,1 @@
-{"ticker":"FSUN","name":"FSUN","currency":"USD","regularMarketPrice":40.0,"change":0.8199996948242188,"changePct":2.0929037479254298,"range":"1d","interval":"5m","bars":[{"t":1793629800,"o":39.63999938964844,"h":39.720001220703125,"l":39.63999938964844,"c":39.720001220703125,"v":0},{"t":1793630700,"o":40.14500045776367,"h":40.14500045776367,"l":40.0,"c":40.0,"v":1348}]}
+{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"FSUN","range":"1d"}

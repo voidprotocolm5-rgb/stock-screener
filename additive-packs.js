@@ -2,7 +2,7 @@
 window.ADDITIVE_PACKS = {
   "id": "additive-packs",
   "version": "1.0",
-  "generatedAt": "2026-11-02T08:45:43-06:00",
+  "generatedAt": "2026-11-02T14:46:37-06:00",
   "disclaimer": "Research organizer only — not investment advice. Additive Finviz packs; never merge into v2.1 six.",
   "sourceRegistry": "finviz/additive-packs.json",
   "packs": [
@@ -11,11 +11,12 @@ window.ADDITIVE_PACKS = {
       "name": "TTF×Books Long Compounder",
       "short": "TTF×Books",
       "mode": "strict",
-      "count": 1,
+      "count": 2,
       "tickers": [
-        "GLBE"
+        "SEIC",
+        "CNS"
       ],
-      "capturedAt": "2026-11-02T08:43:57-06:00",
+      "capturedAt": "2026-11-02T14:45:13-06:00",
       "publicUrl": "https://finviz.com/screener.ashx?v=121&f=cap_smallover,fa_debteq_u1,fa_eps5years_o10,fa_estltgrowth_o10,fa_peg_u2,fa_pfcf_u30,fa_roe_o10,fa_sales5years_o5,sh_avgvol_o200,sh_insiderown_o10,ta_rsi_nob60,ta_sma200_pa,ta_sma50_pa&o=peg",
       "filterHighlight": "keeps sh_insiderown_o10 + fa_pfcf_u30",
       "companyNames": {}
@@ -27,39 +28,33 @@ window.ADDITIVE_PACKS = {
       "mode": "fcf_no_insider",
       "count": 10,
       "tickers": [
-        "GLBE",
-        "RGA",
-        "FFBC",
-        "PLMR",
-        "WSFS",
+        "OSBC",
         "SFBS",
-        "ALV",
-        "RF",
+        "SEIC",
         "TEL",
-        "KFY"
+        "KFY",
+        "FSS",
+        "WAB",
+        "ROST",
+        "MSA",
+        "CNS"
       ],
-      "capturedAt": "2026-11-02T08:43:57-06:00",
+      "capturedAt": "2026-11-02T14:45:13-06:00",
       "publicUrl": "https://finviz.com/screener.ashx?v=121&f=cap_smallover,fa_debteq_u1,fa_eps5years_o10,fa_estltgrowth_o10,fa_peg_u2,fa_pfcf_u30,fa_roe_o10,fa_sales5years_o5,sh_avgvol_o200,ta_rsi_nob60,ta_sma200_pa,ta_sma50_pa&o=peg",
       "filterHighlight": "drops sh_insiderown_o10; keeps fa_pfcf_u30",
       "companyNames": {}
     }
   ],
   "tickers": {
-    "ALV": {
-      "packIds": [
-        "ttf-books-fcf-compounder"
-      ],
-      "name": null
-    },
-    "FFBC": {
-      "packIds": [
-        "ttf-books-fcf-compounder"
-      ],
-      "name": null
-    },
-    "GLBE": {
+    "CNS": {
       "packIds": [
         "ttf-books-long-compounder",
+        "ttf-books-fcf-compounder"
+      ],
+      "name": null
+    },
+    "FSS": {
+      "packIds": [
         "ttf-books-fcf-compounder"
       ],
       "name": null
@@ -70,20 +65,27 @@ window.ADDITIVE_PACKS = {
       ],
       "name": null
     },
-    "PLMR": {
+    "MSA": {
       "packIds": [
         "ttf-books-fcf-compounder"
       ],
       "name": null
     },
-    "RF": {
+    "OSBC": {
       "packIds": [
         "ttf-books-fcf-compounder"
       ],
       "name": null
     },
-    "RGA": {
+    "ROST": {
       "packIds": [
+        "ttf-books-fcf-compounder"
+      ],
+      "name": null
+    },
+    "SEIC": {
+      "packIds": [
+        "ttf-books-long-compounder",
         "ttf-books-fcf-compounder"
       ],
       "name": null
@@ -100,7 +102,7 @@ window.ADDITIVE_PACKS = {
       ],
       "name": null
     },
-    "WSFS": {
+    "WAB": {
       "packIds": [
         "ttf-books-fcf-compounder"
       ],
@@ -108,7 +110,7 @@ window.ADDITIVE_PACKS = {
     }
   },
   "counts": {
-    "ttf-books-long-compounder": 1,
+    "ttf-books-long-compounder": 2,
     "ttf-books-fcf-compounder": 10
   }
 };
