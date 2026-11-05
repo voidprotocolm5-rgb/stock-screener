@@ -1346,3 +1346,6 @@ img,svg,canvas,video{max-width:100%}
   table{max-width:100%}
   pre,code{white-space:pre-wrap;word-break:break-word}
 }
+
+/* XSRC */
+.xsrc-card{border:1px solid var(--border,#3334);border-radius:10px;padding:10px 14px;margin:10px 0}.xsrc-post{margin:4px 0;font-size:.92em}.xsrc-rules,.xsrc-packs{font-size:.9em;opacity:.85}.xsrc-skipped{margin-top:14px}

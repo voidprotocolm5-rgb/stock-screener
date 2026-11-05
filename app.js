@@ -1321,7 +1321,7 @@
     const iv = $("#view-investors");
     if (iv) iv.hidden = view !== "investors";
     if (view === "investors") renderInvestors();
-    ["packrecord", "sectors", "table", "mywatch"].forEach((v) => { const p = document.getElementById("view-" + v); if (p) p.hidden = view !== v; });
+    ["packrecord", "sectors", "table", "mywatch", "xsources"].forEach((v) => { const p = document.getElementById("view-" + v); if (p) p.hidden = view !== v; });
     try { if (window.__UPG) window.__UPG.renderView(view); } catch (_) {}
   }
 
@@ -2194,3 +2194,25 @@
     openChart(deepTicker);
   }
 })();
+
+/* XSRC-BEGIN — X bullish sources: only names that clear the site's own bars (score_x_sources.py); research only */
+(function () {
+  "use strict";
+  const esc = (s) => String(s == null ? "" : s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+  const n = (x, d = 1, suf = "") => (x == null || isNaN(x) ? "n/a" : Number(x).toFixed(d) + suf);
+  const post = (p) => `<li class="xsrc-post"><b>${esc(p.account)}</b> · ${esc(p.date)} — “${esc(String(p.quote || "").slice(0, 220))}” ${p.url ? `<a href="${esc(p.url)}" target="_blank" rel="noopener">post ↗</a>` : ""}</li>`;
+  function render() {
+    const root = document.getElementById("xsrc-root"), X = window.X_SOURCES; if (!root) return;
+    if (!X) { root.innerHTML = '<p class="upg-na">No X-source data yet.</p>'; return; }
+    const card = (r) => `<article class="xsrc-card" data-ticker="${esc(r.ticker)}"><header><button type="button" class="ticker xsrc-open" data-t="${esc(r.ticker)}">${esc(r.ticker)}</button> <span>${esc(r.name || "")}</span></header>
+      <p class="xsrc-scores">Combined <b>${r.combined}</b> · legacy ${r.legacy ?? "n/a"} · books ${r.books ?? "n/a"}/100 · 📚 ${r.books31 ?? "n/a"}/31 · F-Score ${r.fscore ?? "n/a"} · RSI ${n(r.rsi)} · D/E ${n(r.de, 2)} · PEG ${n(r.peg, 2)} · Rev ${n(r.revYoY, 0, "%")} · EPS ${n(r.epsYoY, 0, "%")} · ROIC ${n(r.roic, 0, "%")}${r.multiPack ? ' · <span class="upg-chip">multi-pack</span>' : ""}</p>
+      <p class="xsrc-packs">Packs: ${(r.packs || []).map(esc).join(", ") || "none"} · next earnings ${esc(r.earnings || "n/a")}</p><ul>${r.posts.map(post).join("")}</ul></article>`;
+    root.innerHTML = `<p class="eyebrow">Research only · X posts are leads, not endorsements</p><h2>X bullish sources <small>${esc((X.accounts || []).join(", "))}</small></h2>
+      <p class="xsrc-rules">Shown only if: ${esc(X.rules)}. Scores file ${esc(X.scoresFile)} · built ${esc(X.generatedAt)}.</p>
+      ${X.cleared.length ? X.cleared.map(card).join("") : '<p class="upg-na">No posted names clear every bar right now.</p>'}
+      <details class="xsrc-skipped"><summary>Reviewed, skipped (${X.skipped.length})</summary><ul>${X.skipped.map((r) => `<li><b>${esc(r.ticker)}</b>${r.combined != null ? " (combined " + r.combined + ")" : ""}: ${esc(r.reasons.join("; "))} <small>— ${esc(r.posts.map((p) => p.account).join(", "))}</small></li>`).join("")}</ul></details>`;
+    root.querySelectorAll(".xsrc-open").forEach((b) => b.addEventListener("click", () => window.__openChart && window.__openChart(b.dataset.t)));
+  }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", render); else render();
+})();
+/* XSRC-END */
