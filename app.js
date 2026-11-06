@@ -75,6 +75,153 @@
     const t = b.dataset.upgStar; mwToggle(t); document.querySelectorAll(`[data-upg-star="${t}"]`).forEach((x) => { const on = isStar(t); x.classList.toggle("is-on", on); x.textContent = on ? "★" : "☆"; });
     if (!document.getElementById("view-mywatch").hidden) viewMyWatch(); }, true);
 
+  // ---------- Books score panel (plain-English; ids stable across refreshes) ----------
+  const BK_CATS = [
+    { id: "quality", label: "Business quality" },
+    { id: "strength", label: "Financial strength" },
+    { id: "value", label: "Price / valuation" },
+    { id: "growth", label: "Growth" },
+    { id: "risk", label: "Risk & momentum" },
+  ];
+  const BK_META = {
+    fsm_roc:   { cat: "quality",  title: "Earns high returns on its money",   goal: "goal ≥15%",   src: "Fundsmith Owner's Manual", srcShort: "Fundsmith", page: "p.10", metric: "roic", fmt: "pct1" },
+    nm_gpa:    { cat: "quality",  title: "Productive with its assets",        goal: "goal ≥0.33",  src: "Novy-Marx (2013)", srcShort: "Novy-Marx", page: "p.1–2", metric: "gpa", fmt: "num2" },
+    qmj_profit:{ cat: "quality",  title: "Healthy profit margins",            goal: "goal ≥10%",   src: "AQR Quality Minus Junk", srcShort: "AQR Quality Minus Junk", page: "p.1", metric: "opMargin", fmt: "pct1" },
+    pio_high:  { cat: "quality",  title: "Strong financial health score",     goal: "goal ≥8",     src: "Piotroski (2000)", srcShort: "Piotroski", page: "p.12", metric: "fscore", fmt: "fscore" },
+    fsm_lev:   { cat: "strength", title: "Doesn't need much debt",            goal: "goal <1.0",   src: "Fundsmith Owner's Manual", srcShort: "Fundsmith", page: "p.10", metric: "de", fmt: "num2" },
+    ack_fcf:   { cat: "strength", title: "Generates free cash flow",          goal: "goal >0",     src: "Bill Ackman (Pershing Square)", srcShort: "Bill Ackman", page: "p.3", metric: "pfcf", fmt: "pfcf" },
+    nomad_dil: { cat: "strength", title: "Not diluting shareholders",         goal: "goal ≤+2%",   src: "Nick Sleep (Nomad letters)", srcShort: "Nick Sleep", page: "p.12", metric: "shareChangePct", fmt: "pct1signed" },
+    marks_dyn: { cat: "strength", title: "Not both highly volatile and leveraged", goal: "avoid beta >1.5 with D/E >1", src: "Howard Marks memos", srcShort: "Howard Marks", page: "p.208", metric: "betaAndDe", fmt: "betaDe" },
+    fsm_fcfy:  { cat: "value",    title: "Cash-flow yield looks attractive",  goal: "goal ≥3%",    src: "Fundsmith Owner's Manual", srcShort: "Fundsmith", page: "p.12", metric: "fcfYield", fmt: "pct1" },
+    gb_ey:     { cat: "value",    title: "Cheap vs. what the business is worth", goal: "goal ≥5%", src: "Joel Greenblatt", srcShort: "Joel Greenblatt", page: "p.3–4", metric: "ebitEvPct", fmt: "pct1" },
+    brk_fair:  { cat: "value",    title: "Priced fairly, not for perfection", goal: "goal ≤30",    src: "Buffett / Berkshire letter", srcShort: "Buffett / Berkshire", page: "p.1", metric: "pe", fmt: "num1" },
+    lynch_peg: { cat: "value",    title: "Growth at a reasonable price",      goal: "goal <1.2",   src: "Peter Lynch, One Up on Wall Street", srcShort: "Peter Lynch", page: null, metric: "peg", fmt: "num2" },
+    qmj_growth:{ cat: "growth",   title: "Growing sales",                     goal: "goal >0%",    src: "AQR Quality Minus Junk", srcShort: "AQR Quality Minus Junk", page: "p.3", metric: "revYoY", fmt: "pct0" },
+    lynch_fast:{ cat: "growth",   title: "EPS in the fast-grower band",       goal: "goal 15–40%", src: "Peter Lynch, One Up on Wall Street", srcShort: "Peter Lynch", page: null, metric: "epsYoY", fmt: "pct0" },
+    ff_inv:    { cat: "growth",   title: "Growing assets at a steady pace",   goal: "goal ≤20%",   src: "Fama-French (2015)", srcShort: "Fama-French", page: "p.3", metric: "assetGrowthPct", fmt: "pct0" },
+    bfa_safe:  { cat: "risk",     title: "Doesn't swing wildly vs. the market", goal: "goal ≤1.2", src: "AQR Buffett's Alpha", srcShort: "AQR Buffett's Alpha", page: "p.4", metric: "beta", fmt: "num2" },
+    aqr_mom:   { cat: "risk",     title: "Price trending up over the past year", goal: "goal >0",  src: "AQR Fact, Fiction and Momentum", srcShort: "AQR Momentum", page: "p.6–7", metric: "mom121", fmt: "mom" },
+    proj_rsi:  { cat: "risk",     title: "Not chasing a parabolic spike",     goal: "goal ≤70",    src: "Project technicals", srcShort: "Project technicals", page: null, metric: "rsi", fmt: "num1" },
+  };
+  function bkVals(t) {
+    const s = comb(t) || {}, m = Object.assign({}, s.metrics || {});
+    m.fscore = s.fscore; m.shareChangePct = s.shareChangePct; m.assetGrowthPct = s.assetGrowthPct;
+    m.rsi = (s.tech || {}).rsi;
+    m.fcfYield = (m.pfcf && m.pfcf > 0) ? (100 / m.pfcf) : (m.pfcf == null ? null : -1);
+    m.ebitEvPct = m.ebitEv != null ? m.ebitEv * 100 : null;
+    const baked = ((T(t) || {}).books || {}).values;
+    if (baked && typeof baked === "object") Object.keys(baked).forEach((k) => { if (baked[k] != null && m[k] == null) m[k] = baked[k]; });
+    return m;
+  }
+  function bkFmt(fmt, m) {
+    const n = (x, d) => (x == null || isNaN(x) ? null : Number(x).toFixed(d));
+    if (fmt === "pct0") { const v = m.v; return v == null ? null : `${Math.round(v)}%`; }
+    if (fmt === "pct1") { const v = n(m.v, 1); return v == null ? null : `${v}%`; }
+    if (fmt === "pct1signed") { const v = m.v; if (v == null || isNaN(v)) return null; return `${v > 0 ? "+" : ""}${Number(v).toFixed(1)}%`; }
+    if (fmt === "num1") { return n(m.v, 1); }
+    if (fmt === "num2") { return n(m.v, 2); }
+    if (fmt === "fscore") { return m.v == null ? null : `${m.v}/9`; }
+    if (fmt === "pfcf") { const v = m.v; if (v == null || isNaN(v)) return null; return v > 0 ? "yes (positive)" : "no"; }
+    if (fmt === "mom") { const v = m.v; if (v == null || isNaN(v)) return null; return `${v > 0 ? "+" : ""}${(v * 100).toFixed(0)}%`; }
+    if (fmt === "betaDe") {
+      const b = m.beta, d = m.de;
+      if (b == null && d == null) return null;
+      return `beta ${b != null ? Number(b).toFixed(2) : "n/a"}, D/E ${d != null ? Number(d).toFixed(2) : "n/a"}`;
+    }
+    return n(m.v, 2);
+  }
+  function bkLine(meta, vals) {
+    const v = meta.metric === "betaAndDe" ? null : vals[meta.metric];
+    const shown = bkFmt(meta.fmt, { v, beta: vals.beta, de: vals.de });
+    if (meta.fmt === "betaDe") return shown ? `${shown} · ${meta.goal}` : meta.goal;
+    if (shown == null) return meta.goal;
+    const label = ({
+      roic: "ROIC", de: "Debt/Equity", fcfYield: "FCF yield", ebitEvPct: "Earnings yield", fscore: "F-Score",
+      gpa: "Gross profit / assets", opMargin: "Operating margin", revYoY: "Revenue YoY", beta: "Beta",
+      shareChangePct: "Share count", assetGrowthPct: "Asset growth", mom121: "12–1m momentum", pe: "P/E",
+      pfcf: "Free cash flow", peg: "PEG", epsYoY: "EPS YoY", rsi: "RSI",
+    })[meta.metric] || meta.metric;
+    if (meta.fmt === "pfcf") return `${label}: ${shown}`;
+    return `${label} ${shown}, ${meta.goal}`;
+  }
+  function bkVerdict(b, vals, byCat) {
+    if (!b || b.score == null) return "No books score yet";
+    const sc = b.score;
+    const catPass = (id) => { const c = byCat[id] || { p: 0, f: 0 }; return c.p + c.f ? c.p / (c.p + c.f) : 0; };
+    const bits = [];
+    if (catPass("quality") >= 0.6) bits.push("strong business");
+    else if (catPass("quality") <= 0.4 && (byCat.quality || {}).f) bits.push("uneven business quality");
+    if (catPass("value") <= 0.4 && (byCat.value || {}).f) bits.push("pricey");
+    else if (catPass("value") >= 0.75) bits.push("reasonable price");
+    if (catPass("risk") <= 0.4 && (byCat.risk || {}).f) bits.push("volatile");
+    else if (catPass("risk") >= 0.75) bits.push("steady risk profile");
+    if (catPass("growth") >= 0.6) bits.push("growing");
+    else if (catPass("growth") <= 0.34 && (byCat.growth || {}).f) bits.push("growth quirks");
+    if (catPass("strength") >= 0.75) bits.push("solid balance sheet");
+    else if (catPass("strength") <= 0.4 && (byCat.strength || {}).f) bits.push("balance-sheet flags");
+    const uniq = []; bits.forEach((x) => { if (!uniq.includes(x)) uniq.push(x); });
+    let tone;
+    if (sc >= 80) tone = "Strong fit";
+    else if (sc >= 65) tone = "Solid";
+    else if (sc >= 45) tone = "Mixed";
+    else if (sc >= 30) tone = "Weak fit";
+    else tone = "Poor fit";
+    if (!uniq.length) return `${tone}`;
+    if (sc >= 65) return `${tone} — ${uniq.slice(0, 3).join(", ")}`;
+    // "great business, but pricey and volatile" style
+    const good = uniq.filter((x) => /strong business|reasonable price|steady|growing|solid balance/.test(x));
+    const bad = uniq.filter((x) => /pricey|volatile|uneven|quirks|flags/.test(x));
+    if (good.length && bad.length) return `${tone} — ${good[0]}, but ${bad.slice(0, 2).join(" and ")}`;
+    return `${tone} — ${uniq.slice(0, 3).join(", ")}`;
+  }
+  function booksPanel(t, b) {
+    if (!b) return `<div class="bk-panel"><h4>Books score</h4><p>${na}</p></div>`;
+    const rules = ((U().booksRules && U().booksRules.rules) || []);
+    const vals = bkVals(t);
+    const rows = rules.map((r) => {
+      const meta = BK_META[r.id] || { cat: "quality", title: r.rule, goal: "", src: r.book, srcShort: r.book, page: null, metric: r.metric, fmt: "num2" };
+      const st = b.rules[r.id] === "n/a" ? "na" : (b.rules[r.id] || "na");
+      return { id: r.id, st, meta, quote: r.quote || "", line: bkLine(meta, vals) };
+    });
+    const byCat = {};
+    BK_CATS.forEach((c) => { byCat[c.id] = { p: 0, f: 0, n: 0 }; });
+    rows.forEach((r) => {
+      const c = byCat[r.meta.cat] || (byCat[r.meta.cat] = { p: 0, f: 0, n: 0 });
+      if (r.st === "pass") c.p++; else if (r.st === "fail") c.f++; else c.n++;
+    });
+    const verdict = bkVerdict(b, vals, byCat);
+    const tone = b.score >= 65 ? "good" : b.score >= 45 ? "mid" : "bad";
+    const passRows = rows.filter((r) => r.st === "pass");
+    const failRows = rows.filter((r) => r.st === "fail");
+    const naRows = rows.filter((r) => r.st === "na");
+    const item = (r) => {
+      const icon = r.st === "pass" ? "✓" : r.st === "fail" ? "✗" : "–";
+      const srcLabel = r.meta.page ? `${r.meta.srcShort} · ${r.meta.page}` : r.meta.srcShort;
+      const quote = r.quote ? `<p class="bk-quote">“${esc(r.quote)}”</p>` : "";
+      return `<li class="bk-item is-${r.st}">
+        <div class="bk-item-main"><span class="bk-icon" aria-hidden="true">${icon}</span>
+          <div class="bk-item-body"><div class="bk-title">${esc(r.meta.title)}</div>
+            <div class="bk-line">${esc(r.line)}</div>
+            <details class="bk-src"><summary>Source · ${esc(srcLabel)}</summary>${quote}<p class="bk-src-name">${esc(r.meta.src)}${r.meta.page ? ` · ${esc(r.meta.page)}` : ""}</p></details>
+          </div></div></li>`;
+    };
+    const cats = BK_CATS.map((c) => {
+      const x = byCat[c.id]; const scored = x.p + x.f;
+      const cls = !scored ? "is-na" : (x.p / scored >= 0.6 ? "is-pass" : x.p / scored <= 0.4 ? "is-fail" : "is-mid");
+      return `<span class="bk-cat ${cls}">${esc(c.label)} <b>${x.p}/${scored || x.n}</b></span>`;
+    }).join("");
+    return `<div class="bk-panel">
+      <div class="bk-head"><h4>Books score <b>${b.score != null ? b.score : "—"}</b><span class="bk-of">/100</span></h4>
+        <p class="bk-verdict">${esc(verdict)}</p>
+        <div class="bk-meter" role="img" aria-label="Books score ${b.score} of 100"><span class="bk-meter-fill is-${tone}" style="width:${Math.max(0, Math.min(100, b.score || 0))}%"></span></div>
+        <p class="bk-sum">${b.passes} pass · ${b.fails} fall short${b.na ? ` · ${b.na} n/a` : ""} <span class="bk-of-rules">of ${b.of} book checks</span></p>
+        <div class="bk-cats">${cats}</div></div>
+      ${passRows.length ? `<div class="bk-sec bk-agree"><h5>What the books agree on</h5><ul class="bk-list">${passRows.map(item).join("")}</ul></div>` : ""}
+      ${failRows.length ? `<div class="bk-sec bk-short"><h5>Where it falls short</h5><ul class="bk-list">${failRows.map(item).join("")}</ul></div>` : ""}
+      ${naRows.length ? `<div class="bk-sec bk-na"><h5>Not enough data</h5><ul class="bk-list">${naRows.map(item).join("")}</ul></div>` : ""}
+    </div>`;
+  }
+
   function rowChips(t, noStar) {
     const x = T(t); if (!x) return noStar ? "" : `<span class="upg-chips">${starBtn(t)}</span>`;
     const out = [];
@@ -86,7 +233,7 @@
     if (pm && pm.gapPct != null) cat += `${cat ? " · " : ""}PM ${pm.gapPct > 0 ? "+" : ""}${pm.gapPct}%`;
     if (n) cat += `${cat ? " · " : ""}${n}📰`;
     if (cat) out.push(`<span class="upg-chip upg-cat${e && e.within7 ? " is-hot" : ""}" title="Catalysts — earnings ${e ? esc(e.date) + (e.within7 ? " (within 7 days)" : "") : "n/a"}; pre-market ${pm && pm.gapPct != null ? pm.gapPct + "%" : "n/a"}; ${n} headline(s). Open chart for details.">${esc(cat)}</span>`);
-    if (x.books && x.books.score != null) out.push(`<span class="upg-chip upg-bk" title="Books score: ${x.books.passes} pass / ${x.books.fails} fail / ${x.books.na} n/a of ${x.books.of} cited rules">B${x.books.score}</span>`);
+    if (x.books && x.books.score != null) out.push(`<span class="upg-chip upg-bk" title="Books score ${x.books.score}/100 — ${x.books.passes} checks the investing books agree on, ${x.books.fails} where it falls short">B${x.books.score}</span>`);
     if (x.rsScore != null) out.push(`<span class="upg-chip upg-rs" title="Composite relative strength vs SPY (1/3/6/12m percentile, 0–100)">RS${x.rsScore}</span>`);
     if (x.options && x.options.unusual) out.push(`<span class="upg-chip upg-opt" title="Unusual option volume: ${esc((x.options.unusualWhy || []).join("; "))}">OPT⚡</span>`);
     (x.patterns || []).filter((p) => /breakout|pullback/.test(p.id)).forEach((p) => out.push(`<span class="upg-chip upg-pat" title="${esc(p.why || p.label)}">${esc(p.label)}</span>`));
@@ -101,7 +248,6 @@
     const x = T(t);
     if (!x) { el.innerHTML = `<p class="upg-note">No upgrade data for ${esc(t)} (not on today's board).</p>`; el.hidden = false; return; }
     const e = x.earnings, pm = x.premarket, o = x.options, b = x.books, ins = x.insider, rs = x.rs || {};
-    const rules = (U().booksRules && U().booksRules.rules) || [];
     const news = (x.news || []).map((n) => `<li><a href="${esc(n.link)}" target="_blank" rel="noopener">${esc(n.title)}</a> <span class="upg-dim">${esc(fmtTs(n.ts))}</span></li>`).join("");
     el.innerHTML = `
       <div class="upg-grid">
@@ -119,8 +265,7 @@
           <p class="upg-dim">${esc(U().notes.options)}</p>
           <h4>Insider buying (SEC Form 4)</h4>
           ${ins && ins.status === "ok" ? `<p>${ins.flag ? `<b class="upg-pos">${ins.buys} open-market buy(s)</b> by ${ins.buyers} insider(s), last ${esc(ins.last || "n/a")}${ins.value ? ` · ~$${Math.round(ins.value).toLocaleString()}` : ""}` : `No open-market purchases in ${ins.form4s} Form 4 filing(s), last ${ins.windowDays}d`}</p>${(ins.detail || []).map((d) => `<p class="upg-dim">${esc(d.owner)}${d.title ? " (" + esc(d.title) + ")" : ""} · ${esc(d.date)} · ${d.shares != null ? d.shares.toLocaleString() : "n/a"} sh @ ${d.price != null ? "$" + d.price : "n/a"} · <a href="${esc(d.url)}" target="_blank" rel="noopener">filing</a></p>`).join("")}` : `<p>${na} <span class="upg-dim">${esc((ins && ins.note) || "")}</span></p>`}</div>
-        <div><h4>Books score ${b && b.score != null ? `<b>${b.score}</b>/100` : na}</h4>
-          ${b ? `<p class="upg-dim">${b.passes} pass · ${b.fails} fail · ${b.na} n/a of ${b.of} rules (n/a excluded)</p><ul class="upg-rules">${rules.map((r) => `<li class="is-${b.rules[r.id] === "n/a" ? "na" : b.rules[r.id]}" title="${esc(r.quote)}"><span>${b.rules[r.id] === "pass" ? "✓" : b.rules[r.id] === "fail" ? "✗" : "–"}</span> ${esc(r.rule)} <span class="upg-dim">— ${esc(r.book)}, ${esc(r.cite)}</span></li>`).join("")}</ul>` : ""}</div>
+        ${booksPanel(t, b)}
       </div>
       ${v33Detail(x)}
       <p class="upg-dim">Packs: ${x.packs.length ? esc(x.packs.map(pname).join(", ")) : "none today"} · Sector (yfinance): ${esc(x.sector || "n/a")} · research only, no trades.</p>`;
