@@ -29,20 +29,161 @@
     if (fa.length) out.push(`<span class="upg-chip upg-13f" title="13F (lagged): ${esc(fa.map((f) => f.fund + " " + f.status + " (" + f.period + ")").join("; "))}">13F+${fa.length}</span>`);
     return out.join("");
   }
-  function v33Detail(x) {
-    const eh = x.earnHist, sq = x.squeeze, v = x.valuation, fa = x.fundAdds || [];
-    const ehHtml = eh && eh.n ? `<p>Beat rate <b>${eh.beatRate}%</b> (${eh.beats}/${eh.n} quarters)${eh.note ? ` <span class="upg-dim">${esc(eh.note)}</span>` : ""} · avg |1-day move| ${eh.avgAbsMove != null ? eh.avgAbsMove + "%" : na}</p>
-      <div class="upg-scroll"><table class="upg-table upg-mini"><thead><tr><th>Reported</th><th>Est</th><th>Actual</th><th>Surprise</th><th>1-day move</th><th>vs SPY</th></tr></thead><tbody>${eh.quarters.map((q) => `<tr><td>${esc(q.date)}<br><span class="upg-dim">${esc(q.timing)}</span></td><td>${q.est != null ? q.est : na}</td><td>${q.rep}</td><td>${q.beat == null ? na : `<span class="${q.beat ? "upg-pos" : "upg-neg"}">${q.beat ? "beat" : "miss"}</span> ${q.surprise != null ? pct(q.surprise, 1) : ""}`}</td><td>${pct(q.move1d, 1)}</td><td>${pct(q.move1dVsSpy, 1)}</td></tr>`).join("")}</tbody></table></div>` : `<p>${na} <span class="upg-dim">${esc((eh && eh.note) || "no earnings history in yfinance")}</span></p>`;
-    const sqHtml = sq ? `<p>Short interest ${sq.siPctFloat != null ? `<b>${sq.siPctFloat}%</b> of float` : na}${sq.siDate ? ` · report ${esc(sq.siDate)} (${sq.siAgeDays}d old)` : ""}${sq.siChgVsPrior != null ? ` · ${pct(sq.siChgVsPrior, 1)} vs prior report` : ""}</p><p>5-day / 50-day volume: ${sq.vol5over50 != null ? sq.vol5over50 + "×" : na} → ${sq.flag ? '<b class="upg-hot">Squeeze watch (SI ≥15% and vol ≥1.5×)</b>' : "no squeeze-watch flag"}</p><p class="upg-dim">${esc(sq.note)}${sq.cachedInfo ? ` Info cached ${esc(sq.cachedInfo)}.` : ""}</p>` : `<p>${na}</p>`;
-    const vHtml = v ? `<p>P/E ${v.pe != null ? `<b>${v.pe}</b>` : na} · own history median <span class="upg-tag">${esc(v.histLabel)}</span> ${v.histPeMedian != null ? v.histPeMedian : na} (${vsTxt(v.peVsHist)}) · sector median ${v.sectorPeMedian != null ? v.sectorPeMedian : na} (${vsTxt(v.peVsSector)}, n=${v.sectorN || 0})</p>
-      <p>PEG ${v.peg != null ? `<b>${v.peg}</b>` : na} · history <span class="upg-tag">${v.histPegMedian != null ? "approx" : "n/a"}</span> ${v.histPegMedian != null ? v.histPegMedian : na} (${vsTxt(v.pegVsHist)}) · sector median ${v.sectorPegMedian != null ? v.sectorPegMedian : na} (${vsTxt(v.pegVsSector)})</p>
-      ${v.hist.length ? `<p class="upg-dim">${v.hist.map((h) => `FY${esc(h.fy.slice(0, 4))}: EPS ${h.eps} · $${h.price} → P/E ${h.pe != null ? h.pe : "n/a"}${h.peg != null ? " · PEG " + h.peg : ""}`).join(" | ")}</p>` : ""}<p class="upg-dim">${esc(v.note)} Sector median = this board's names in the same yfinance sector (needs ≥3).</p>` : `<p>${na}</p>`;
-    const faHtml = fa.length ? fa.map((f) => `<p>${esc(f.fund)} <span class="upg-dim">(${esc(f.manager)})</span>: <b>${f.status === "new" ? "new position" : "added " + pct(f.chgPct, 1)}</b> · ${f.shares.toLocaleString()} sh · Q ending ${esc(f.period)}, filed ${esc(f.filed)} · <a href="${esc(f.url)}" target="_blank" rel="noopener">13F</a></p>`).join("") : `<p>No new/increased positions among the tracked funds.</p>`;
-    return `<div class="upg-grid upg-grid-v33">
-      <div><h4>Earnings surprise history</h4>${ehHtml}</div>
-      <div><h4>Valuation check</h4>${vHtml}<h4>Short-squeeze watch</h4>${sqHtml}</div>
-      <div><h4>13F fund adds <span class="upg-tag">lagged</span></h4>${faHtml}<p class="upg-dim">13F filings cover quarter-end holdings and are filed up to 45 days later, so they can be 1–4 months stale. Funds: ${esc(((U().funds13f) || []).map((f) => f.fund + (f.period ? " (" + f.period + ")" : " " + f.status)).join(", "))}. Long equity only; matched by issuer name.</p></div></div>`;
+  // ---------- Plain-English extras (earnings / valuation / short / 13F); display only ----------
+  const LINK = {
+    pe: "https://www.investopedia.com/terms/p/price-earningsratio.asp",
+    peg: "https://www.investopedia.com/terms/p/pegratio.asp",
+    earn: "https://www.investopedia.com/terms/e/earnings-surprise.asp",
+    short: "https://www.investopedia.com/terms/s/shortinterest.asp",
+    f13: "https://www.investopedia.com/terms/f/form-13f.asp",
+  };
+  function ensurePxCss() {
+    if (document.getElementById("px-plain-css")) return;
+    const st = document.createElement("style"); st.id = "px-plain-css";
+    st.textContent = `.px-panel{min-width:0}.px-grid{display:grid;grid-template-columns:1fr;gap:12px;margin-top:10px}@media(min-width:820px){.px-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}.px-card{border:1px solid var(--line-soft);border-radius:12px;padding:12px 14px;background:var(--panel,transparent);min-width:0}.px-card h4{margin:0 0 6px;font-size:.9rem}.px-take{margin:0 0 10px;font-size:.84rem;line-height:1.4;padding:8px 10px;border-radius:10px;border:1px solid var(--line-soft)}.px-take.is-good{background:rgba(34,197,94,.08);border-color:rgba(34,197,94,.35);color:#86efac}.px-take.is-mid{background:rgba(245,197,66,.08);border-color:rgba(245,197,66,.4);color:#fde68a}.px-take.is-bad{background:rgba(239,68,68,.08);border-color:rgba(239,68,68,.35);color:#fca5a5}.px-take.is-neutral{color:var(--text);background:rgba(127,127,127,.08)}.px-meta{margin:0 0 8px;font-size:.76rem;color:var(--muted)}.px-meta a,.px-how a,.px-links a{color:var(--accent,#0a84ff);text-decoration:none}.px-meta a:hover,.px-how a:hover,.px-links a:hover{text-decoration:underline}.px-table{width:100%;border-collapse:collapse;font-size:.74rem}.px-table th,.px-table td{padding:5px 6px;border-bottom:1px solid var(--line-soft);text-align:left;vertical-align:top;font-variant-numeric:tabular-nums}.px-table th{font-size:.66rem;text-transform:uppercase;letter-spacing:.03em;color:var(--muted);font-weight:600}.px-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;max-width:100%}.px-how,.px-more{margin-top:8px;font-size:.74rem;color:var(--muted)}.px-how summary,.px-more summary{cursor:pointer;list-style:none;display:inline-flex;align-items:center;gap:4px;padding:3px 9px;border-radius:999px;border:1px solid var(--line);user-select:none}.px-how summary::-webkit-details-marker,.px-more summary::-webkit-details-marker{display:none}.px-how summary::before,.px-more summary::before{content:"▸";font-size:.65rem;opacity:.7}.px-how[open] summary::before,.px-more[open] summary::before{content:"▾"}.px-how-body{margin:8px 0 0;font-size:.74rem;line-height:1.45;color:var(--muted)}.px-links{margin:6px 0 0;font-size:.74rem}.px-foot{margin:12px 0 4px;font-size:.78rem;color:var(--muted);line-height:1.4}.px-bars{display:flex;flex-direction:column;gap:8px;margin:4px 0 8px}.px-bar-row{display:grid;grid-template-columns:88px 1fr auto;gap:8px;align-items:center;font-size:.76rem}.px-bar-row>span:first-child{color:var(--muted)}.px-bar-track{height:8px;border-radius:999px;background:rgba(127,127,127,.2);overflow:hidden;min-width:0}.px-bar-fill{display:block;height:100%;border-radius:999px;background:#60a5fa}.px-bar-fill.is-cheap{background:#22c55e}.px-bar-fill.is-rich{background:#f59e0b}.px-bar-val{font-variant-numeric:tabular-nums;font-weight:600;min-width:3.2em;text-align:right}.px-gauge{margin:8px 0}.px-gauge-label{display:flex;justify-content:space-between;font-size:.72rem;color:var(--muted);margin-bottom:4px}.px-gauge-track{height:10px;border-radius:999px;background:linear-gradient(90deg,#22c55e 0%,#22c55e 33%,#f5c542 33%,#f5c542 66%,#ef4444 66%,#ef4444 100%);position:relative;opacity:.85}.px-gauge-mark{position:absolute;top:-3px;width:4px;height:16px;margin-left:-2px;background:#fff;border-radius:2px;box-shadow:0 0 0 1px rgba(0,0,0,.35)}.px-gauge-lvl{margin:6px 0 0;font-size:.8rem;font-weight:600}.px-gauge-lvl.is-low{color:#86efac}.px-gauge-lvl.is-mid{color:#fde68a}.px-gauge-lvl.is-high{color:#fca5a5}.px-def{margin:0 0 8px;font-size:.76rem;color:var(--muted);line-height:1.4}.px-fund{margin:6px 0;padding:8px 10px;border:1px solid var(--line-soft);border-radius:10px;font-size:.8rem}.px-fund b{font-weight:600}.px-chip-row{display:flex;flex-wrap:wrap;gap:5px;margin:6px 0}.px-year{margin:4px 0;font-size:.74rem;color:var(--muted);font-variant-numeric:tabular-nums}@media(max-width:480px){.px-card{padding:10px 12px}.px-bar-row{grid-template-columns:72px 1fr auto;font-size:.72rem}.px-table{font-size:.7rem}}`;
+    document.head.appendChild(st);
   }
+  function pxDate(iso) {
+    if (!iso) return "—";
+    const d = new Date(iso + (iso.length === 10 ? "T12:00:00" : ""));
+    if (isNaN(d)) return esc(iso);
+    return d.toLocaleString("en-US", { month: "short", year: "numeric", timeZone: "UTC" });
+  }
+  function pxEarnTake(eh) {
+    if (!eh || !eh.n) return { tone: "neutral", text: "No recent earnings history on file yet." };
+    const move = eh.avgAbsMove != null ? Math.round(eh.avgAbsMove) : null;
+    const qs = eh.quarters || [];
+    const beatThenDown = qs.filter((q) => q.beat && q.move1d != null && q.move1d < 0).length;
+    let text = `Beat estimates ${eh.beats} of ${eh.n} quarter${eh.n === 1 ? "" : "s"}`;
+    if (move != null) text += `, but the stock still swings about ${move}% on earnings day`;
+    if (beatThenDown >= 2) text += `, sometimes down even after a beat`;
+    text += ".";
+    const tone = eh.beatRate >= 75 && (move == null || move < 10) ? "good" : eh.beatRate >= 50 ? "mid" : "bad";
+    return { tone, text };
+  }
+  function pxValTake(v) {
+    if (!v || v.pe == null) return { tone: "neutral", text: "Not enough price-to-earnings data to compare yet." };
+    const bits = [];
+    let tone = "neutral";
+    if (v.histPeMedian != null && v.peVsHist != null) {
+      if (v.peVsHist < -10) { bits.push(`cheaper than its own history (P/E ${v.pe} vs usual ~${v.histPeMedian})`); tone = "good"; }
+      else if (v.peVsHist > 10) { bits.push(`pricier than its own history (P/E ${v.pe} vs usual ~${v.histPeMedian})`); tone = "mid"; }
+      else bits.push(`near its usual P/E (about ${v.pe}, history ~${v.histPeMedian})`);
+    } else bits.push(`P/E ${v.pe}`);
+    if (v.sectorPeMedian != null && v.peVsSector != null) {
+      if (v.peVsSector > 10) { bits.push(`pricier than its sector (~${v.sectorPeMedian})`); if (tone === "good") tone = "mid"; else if (tone === "neutral") tone = "mid"; }
+      else if (v.peVsSector < -10) { bits.push(`cheaper than its sector (~${v.sectorPeMedian})`); if (tone !== "bad") tone = "good"; }
+      else bits.push(`in line with its sector (~${v.sectorPeMedian})`);
+    }
+    const text = bits.length === 1 ? bits[0].charAt(0).toUpperCase() + bits[0].slice(1) + "."
+      : bits[0].charAt(0).toUpperCase() + bits[0].slice(1) + ", " + bits.slice(1).join(", ") + ".";
+    return { tone, text };
+  }
+  function pxShortLevel(si) {
+    if (si == null || isNaN(si)) return { lvl: "mid", label: "Unknown", pctMark: 50 };
+    if (si < 5) return { lvl: "low", label: "Low", pctMark: Math.max(4, (si / 5) * 33) };
+    if (si < 15) return { lvl: "mid", label: "Medium", pctMark: 33 + ((si - 5) / 10) * 33 };
+    return { lvl: "high", label: "High", pctMark: Math.min(96, 66 + ((si - 15) / 20) * 34) };
+  }
+  function pxShortTake(sq) {
+    if (!sq || sq.siPctFloat == null) return { tone: "neutral", text: "Short-interest data isn’t available yet." };
+    const si = sq.siPctFloat, vol = sq.vol5over50, g = pxShortLevel(si);
+    if (sq.flag) return { tone: "bad", text: `Squeeze watch: ${si}% of shares are sold short and trading volume is running hot (${vol}× normal).` };
+    if (si >= 15) return { tone: "mid", text: `Elevated short interest (${si}% of shares sold short), but volume isn’t spiking enough for a squeeze flag.` };
+    if (si < 5) return { tone: "good", text: `Not a squeeze setup: only ${si}% of shares are sold short${vol != null ? `, with normal trading volume` : ""}.` };
+    return { tone: "good", text: `Not a squeeze setup: ${si}% of shares are sold short${vol != null ? `, normal trading volume` : ""}.` };
+  }
+  function px13fTake(fa, funds) {
+    if (fa && fa.length) {
+      const names = fa.map((f) => f.fund).slice(0, 3);
+      const extra = fa.length > 3 ? ` and ${fa.length - 3} more` : "";
+      return { tone: "good", text: `${names.join(", ")}${extra} added shares recently (from filings that can be up to ~4 months old).` };
+    }
+    return { tone: "neutral", text: "No big-name funds added recently (based on filings up to ~4 months old)." };
+  }
+  function pxBar(label, value, maxRef) {
+    if (value == null || isNaN(value)) return "";
+    const max = Math.max(maxRef || 0, value, 1);
+    const w = Math.max(4, Math.min(100, (value / max) * 100));
+    const cls = value <= (maxRef || value) * 0.9 ? "is-cheap" : value >= (maxRef || value) * 1.15 ? "is-rich" : "";
+    return `<div class="px-bar-row"><span>${esc(label)}</span><div class="px-bar-track"><span class="px-bar-fill ${cls}" style="width:${w.toFixed(1)}%"></span></div><span class="px-bar-val">${Number(value).toFixed(1)}</span></div>`;
+  }
+  function v33Detail(x) {
+    ensurePxCss();
+    const eh = x.earnHist, sq = x.squeeze, v = x.valuation, fa = x.fundAdds || [];
+    const funds = (U().funds13f) || [];
+
+    // Earnings
+    const et = pxEarnTake(eh);
+    let ehHtml;
+    if (eh && eh.n && (eh.quarters || []).length) {
+      const qs = eh.quarters;
+      const row = (q) => `<tr><td>${pxDate(q.date)}${q.timing ? `<br><span class="upg-dim">${esc(q.timing)}</span>` : ""}</td><td>${q.est != null ? q.est : "—"}</td><td>${q.rep != null ? q.rep : "—"}</td><td>${q.beat == null ? "—" : `<span class="${q.beat ? "upg-pos" : "upg-neg"}">${q.beat ? "Beat" : "Miss"}</span>${q.surprise != null ? " " + pct(q.surprise, 1) : ""}`}</td><td>${pct(q.move1d, 1)}</td><td>${pct(q.move1dVsSpy, 1)}</td></tr>`;
+      const head = `<thead><tr><th>Quarter</th><th>Expected EPS</th><th>Actual EPS</th><th>Beat/Miss</th><th>Stock next day</th><th>vs S&amp;P 500</th></tr></thead>`;
+      const first = qs.slice(0, 4).map(row).join("");
+      const rest = qs.slice(4);
+      ehHtml = `<p class="px-take is-${et.tone}">${esc(et.text)}</p>
+        <div class="px-scroll"><table class="px-table">${head}<tbody>${first}</tbody></table></div>
+        ${rest.length ? `<details class="px-more"><summary>Show all ${qs.length} quarters</summary><div class="px-scroll" style="margin-top:6px"><table class="px-table">${head}<tbody>${qs.map(row).join("")}</tbody></table></div></details>` : ""}
+        <details class="px-how"><summary>How we calculate this</summary><div class="px-how-body">We compare reported EPS to the consensus estimate, then look at the stock’s next-day move versus the S&amp;P 500. A “beat” means results came in above estimates — the stock can still fall afterward.<div class="px-links">Learn more: <a href="${LINK.earn}" target="_blank" rel="noopener">Earnings surprise (Investopedia)</a></div></div></details>`;
+    } else {
+      ehHtml = `<p class="px-take is-neutral">${esc(et.text)}</p><details class="px-how"><summary>How we calculate this</summary><div class="px-how-body">Earnings history comes from public company filings via Yahoo Finance when available.<div class="px-links"><a href="${LINK.earn}" target="_blank" rel="noopener">Earnings surprise (Investopedia)</a></div></div></details>`;
+    }
+
+    // Valuation
+    const vt = pxValTake(v);
+    let vHtml;
+    if (v && v.pe != null) {
+      const maxRef = Math.max(v.pe || 0, v.histPeMedian || 0, v.sectorPeMedian || 0);
+      const bars = `<div class="px-bars">${pxBar("This stock", v.pe, maxRef)}${v.histPeMedian != null ? pxBar("Its usual", v.histPeMedian, maxRef) : ""}${v.sectorPeMedian != null ? pxBar("Its sector", v.sectorPeMedian, maxRef) : ""}</div>`;
+      const pegLine = v.peg != null ? `<p class="px-meta"><a href="${LINK.peg}" target="_blank" rel="noopener">PEG</a> ${v.peg}${v.sectorPegMedian != null ? ` · sector typical ~${v.sectorPegMedian}` : ""}</p>` : "";
+      const years = (v.hist || []).filter((h) => h && (h.eps != null || h.price != null));
+      const yearHtml = years.length ? `<details class="px-more"><summary>See the yearly numbers</summary>${years.map((h) => {
+        const fy = String(h.fy || "").slice(0, 4);
+        const pe = h.pe != null ? ` · P/E ${h.pe}` : "";
+        const peg = h.peg != null ? ` · PEG ${h.peg}` : "";
+        return `<p class="px-year">FY${esc(fy)}: EPS ${h.eps != null ? h.eps : "—"} · $${h.price != null ? h.price : "—"}${pe}${peg}</p>`;
+      }).join("")}</details>` : "";
+      vHtml = `<p class="px-take is-${vt.tone}">${esc(vt.text)}</p>${bars}${pegLine}${yearHtml}
+        <details class="px-how"><summary>How we calculate this</summary><div class="px-how-body"><a href="${LINK.pe}" target="_blank" rel="noopener">P/E</a> is price divided by earnings. “Its usual” is the median year-end P/E from recent fiscal years (approximate). “Its sector” is the median P/E of other names in the same sector on this board (needs a few peers). <a href="${LINK.peg}" target="_blank" rel="noopener">PEG</a> folds growth into the multiple; we hide it when growth data isn’t meaningful.</div></details>`;
+    } else {
+      vHtml = `<p class="px-take is-neutral">${esc(vt.text)}</p><details class="px-how"><summary>How we calculate this</summary><div class="px-how-body"><div class="px-links"><a href="${LINK.pe}" target="_blank" rel="noopener">P/E ratio (Investopedia)</a> · <a href="${LINK.peg}" target="_blank" rel="noopener">PEG ratio</a></div></div></details>`;
+    }
+
+    // Short interest
+    const st = pxShortTake(sq);
+    let sqHtml;
+    if (sq && sq.siPctFloat != null) {
+      const g = pxShortLevel(sq.siPctFloat);
+      const chg = sq.siChgVsPrior != null ? ` · ${sq.siChgVsPrior > 0 ? "+" : ""}${Number(sq.siChgVsPrior).toFixed(1)}% vs prior report` : "";
+      const when = sq.siDate ? `Report date ${esc(sq.siDate)}${chg}` : "";
+      sqHtml = `<p class="px-take is-${st.tone}">${esc(st.text)}</p>
+        <p class="px-def">Short interest = shares bet against the stock. <a href="${LINK.short}" target="_blank" rel="noopener">Learn more</a></p>
+        <div class="px-gauge"><div class="px-gauge-label"><span>Low</span><span>Medium</span><span>High</span></div>
+          <div class="px-gauge-track" role="img" aria-label="Short interest ${sq.siPctFloat}% — ${g.label}"><span class="px-gauge-mark" style="left:${g.pctMark.toFixed(1)}%"></span></div>
+          <p class="px-gauge-lvl is-${g.lvl}">${g.label} · ${sq.siPctFloat}% of float${sq.vol5over50 != null ? ` · volume ${sq.vol5over50}× average` : ""}</p></div>
+        ${when ? `<p class="px-meta">${when}</p>` : ""}
+        <details class="px-how"><summary>How we calculate this</summary><div class="px-how-body">Exchanges publish short interest about twice a month. A “squeeze watch” needs both high short interest (about 15%+ of float) and a jump in trading volume (about 1.5× the recent average). Data: Yahoo Finance / exchange reports.</div></details>`;
+    } else {
+      sqHtml = `<p class="px-take is-neutral">${esc(st.text)}</p><p class="px-def">Short interest = shares bet against the stock. <a href="${LINK.short}" target="_blank" rel="noopener">Learn more</a></p>`;
+    }
+
+    // 13F
+    const ft = px13fTake(fa, funds);
+    const faList = fa.length ? fa.map((f) => `<div class="px-fund"><b>${esc(f.fund)}</b>${f.manager ? ` <span class="upg-dim">(${esc(f.manager)})</span>` : ""}: ${f.status === "new" ? "<b>new position</b>" : `<b>added ${pct(f.chgPct, 1)}</b>`}${f.shares != null ? ` · ${Number(f.shares).toLocaleString()} shares` : ""}${f.period ? ` · quarter ending ${esc(f.period)}` : ""}${f.url ? ` · <a href="${esc(f.url)}" target="_blank" rel="noopener">SEC filing</a>` : ""}</div>`).join("") : "";
+    const tracked = funds.length ? `<details class="px-more"><summary>Tracked funds (${funds.length})</summary>${funds.map((f) => `<p class="px-year">${esc(f.fund)}${f.manager ? ` · ${esc(f.manager)}` : ""}${f.period ? ` · holdings as of ${esc(f.period)}` : ""}${f.filed ? `, filed ${esc(f.filed)}` : ""}</p>`).join("")}</details>` : "";
+    const faHtml = `<p class="px-take is-${ft.tone}">${esc(ft.text)}</p>${faList}${tracked}
+      <details class="px-how"><summary>How we calculate this</summary><div class="px-how-body">Large U.S. managers file <a href="${LINK.f13}" target="_blank" rel="noopener">Form 13F</a> with the SEC each quarter — often up to 45 days after quarter-end, so the snapshot can be 1–4 months old. We only flag new or increased long stock positions among a small watchlist of well-known funds.</div></details>`;
+
+    return `<div class="px-grid">
+      <div class="px-card"><h4>Earnings surprise history</h4>${ehHtml}</div>
+      <div class="px-card"><h4>Valuation check</h4>${vHtml}</div>
+      <div class="px-card"><h4>Short-squeeze watch</h4>${sqHtml}</div>
+      <div class="px-card"><h4>Big-fund buying (13F)</h4>${faHtml}</div>
+    </div>
+    <p class="px-meta" style="margin-top:8px">Data: Yahoo Finance, SEC</p>`;
+  }
+
   function viewMyWatch() {
     const root = document.getElementById("upg-mywatch-root"); if (!root) return;
     const m = mwLoad(), items = Object.entries(m.items).sort((a, b) => a[0].localeCompare(b[0]));
@@ -275,7 +416,7 @@
         ${booksPanel(t, b)}
       </div>
       ${v33Detail(x)}
-      <p class="upg-dim">Packs: ${x.packs.length ? esc(x.packs.map(pname).join(", ")) : "none today"} · Sector (yfinance): ${esc(x.sector || "n/a")} · research only, no trades.</p>`;
+      <p class="px-foot">Screener packs: ${x.packs.length ? esc(x.packs.map(pname).join(", ")) : "none today"} · Sector: ${esc(x.sector || "—")} · research only, no trades.</p>`;
     el.hidden = false;
   }
 
