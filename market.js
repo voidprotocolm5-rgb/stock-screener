@@ -4,7 +4,7 @@ window.MARKET = {
   "timezone": "America/Chicago",
   "disclaimer": "Research organizer only — not investment advice. Headlines are cited from live sources at fetch time; never fabricated. Does not place trades or connect to a broker.",
   "angle": "Friday post-payrolls bounce: Dow e-minis ~−1.1%, S&P ~flat/+0.1%, Nasdaq 100 ~+1.3% as chips rebound after Thursday's AI rout · NFP +165K vs ~65K expected, U-rate 4.1% · 10-yr ~4.87% · Fed Dec hike ~76–78% · Brent ~$98 / WTI ~$91 · MU +6–9% premarket after −17% Thursday",
-  "watchlistTickerCount": 176,
+  "watchlistTickerCount": 180,
   "sourceGaps": [
     {
       "source": "X / economist posts",
@@ -133,14 +133,14 @@ window.MARKET = {
             "url": "https://thaler.sh/earnings/day/2026-11-06",
             "fetchedAt": "2026-11-06T09:10:00-06:00"
           },
-          "matchedTickers": [
-            "ESNT"
-          ],
+          "matchedTickers": [],
           "tags": [
             "earnings",
             "calendar"
           ],
-          "offWatchlistMentions": []
+          "offWatchlistMentions": [
+            "ESNT"
+          ]
         }
       ]
     },
@@ -214,7 +214,7 @@ window.MARKET = {
     }
   ],
   "itemCount": 11,
-  "matchedTickerCount": 1,
+  "matchedTickerCount": 0,
   "contentDate": "2026-11-06",
-  "stale": false
+  "stale": true
 };
