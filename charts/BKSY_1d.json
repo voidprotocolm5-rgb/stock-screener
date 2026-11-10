@@ -1,1 +1,1 @@
-{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"BKSY","range":"1d"}
+{"ticker":"BKSY","name":"BKSY","currency":"USD","regularMarketPrice":24.163000106811523,"change":0.6130001068115227,"changePct":2.6029728527028566,"range":"1d","interval":"5m","bars":[{"t":1794321000,"o":23.020000457763672,"h":24.225000381469727,"l":23.010000228881836,"c":24.225000381469727,"v":121310},{"t":1794321300,"o":24.280000686645508,"h":24.499900817871094,"l":24.010000228881836,"c":24.163000106811523,"v":38258}]}

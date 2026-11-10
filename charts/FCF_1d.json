@@ -1,1 +1,1 @@
-{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"FCF","range":"1d"}
+{"ticker":"FCF","name":"FCF","currency":"USD","regularMarketPrice":21.155000686645508,"change":0.02500152587890625,"changePct":0.1183224177563062,"range":"1d","interval":"5m","bars":[{"t":1794321000,"o":21.549999237060547,"h":21.549999237060547,"l":21.110000610351562,"c":21.1299991607666,"v":1039},{"t":1794321300,"o":21.149999618530273,"h":21.155000686645508,"l":21.1299991607666,"c":21.155000686645508,"v":1257}]}

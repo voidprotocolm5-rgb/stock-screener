@@ -1,1 +1,1 @@
-{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"LEU","range":"1d"}
+{"ticker":"LEU","name":"LEU","currency":"USD","regularMarketPrice":112.68499755859375,"change":-3.81500244140625,"changePct":-3.2746802072156656,"range":"1d","interval":"5m","bars":[{"t":1794321000,"o":112.20999908447266,"h":113.7499008178711,"l":110.44999694824219,"c":112.68499755859375,"v":39142},{"t":1794321300,"o":113.0,"h":113.66000366210938,"l":112.66500091552734,"c":112.68499755859375,"v":5924}]}

@@ -1,1 +1,1 @@
-{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"CARG","range":"1d"}
+{"ticker":"CARG","name":"CARG","currency":"USD","regularMarketPrice":34.33000183105469,"change":-0.21999816894530966,"changePct":-0.6367530215493767,"range":"1d","interval":"5m","bars":[{"t":1794321000,"o":34.720001220703125,"h":34.720001220703125,"l":34.084999084472656,"c":34.349998474121094,"v":43852},{"t":1794321300,"o":34.415000915527344,"h":34.83000183105469,"l":34.33000183105469,"c":34.33000183105469,"v":7060}]}

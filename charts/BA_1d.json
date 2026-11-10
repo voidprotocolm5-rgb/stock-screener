@@ -1,1 +1,1 @@
-{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"BA","range":"1d"}
+{"ticker":"BA","name":"BA","currency":"USD","regularMarketPrice":172.09959411621094,"change":-0.35040588378905113,"changePct":-0.20319274212180408,"range":"1d","interval":"5m","bars":[{"t":1794321000,"o":171.15499877929688,"h":172.8784942626953,"l":170.50120544433594,"c":172.30999755859375,"v":332755},{"t":1794321300,"o":172.26010131835938,"h":172.89990234375,"l":171.92999267578125,"c":172.09959411621094,"v":62622}]}

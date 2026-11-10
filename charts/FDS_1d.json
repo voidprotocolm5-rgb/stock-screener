@@ -1,1 +1,1 @@
-{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"FDS","range":"1d"}
+{"ticker":"FDS","name":"FDS","currency":"USD","regularMarketPrice":316.4501037597656,"change":-9.91989624023438,"changePct":-3.0394632595625763,"range":"1d","interval":"5m","bars":[{"t":1794321000,"o":321.33099365234375,"h":322.79998779296875,"l":316.7149963378906,"c":317.0400085449219,"v":12399},{"t":1794321300,"o":318.5299987792969,"h":318.6700134277344,"l":315.7699890136719,"c":316.4501037597656,"v":4942}]}

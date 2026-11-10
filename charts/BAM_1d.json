@@ -1,1 +1,1 @@
-{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"BAM","range":"1d"}
+{"ticker":"BAM","name":"BAM","currency":"USD","regularMarketPrice":54.26499938964844,"change":0.08918338964843997,"changePct":0.1646184519831505,"range":"1d","interval":"5m","bars":[{"t":1794321000,"o":53.869998931884766,"h":54.40999984741211,"l":53.86000061035156,"c":54.16999816894531,"v":35207},{"t":1794321300,"o":54.25,"h":54.45000076293945,"l":54.220001220703125,"c":54.26499938964844,"v":12969}]}

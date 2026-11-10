@@ -1,1 +1,1 @@
-{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"GCT","range":"1d"}
+{"ticker":"GCT","name":"GCT","currency":"USD","regularMarketPrice":59.380001068115234,"change":0.05000106811523608,"changePct":0.08427619773341662,"range":"1d","interval":"5m","bars":[{"t":1794321000,"o":58.5,"h":59.630001068115234,"l":58.459999084472656,"c":59.47999954223633,"v":54818},{"t":1794321300,"o":59.209999084472656,"h":59.5,"l":59.0099983215332,"c":59.380001068115234,"v":3350}]}

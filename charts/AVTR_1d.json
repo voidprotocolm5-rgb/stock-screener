@@ -1,1 +1,1 @@
-{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"AVTR","range":"1d"}
+{"ticker":"AVTR","name":"AVTR","currency":"USD","regularMarketPrice":15.65999984741211,"change":-0.26000015258789055,"changePct":-1.6331667876123779,"range":"1d","interval":"5m","bars":[{"t":1794321000,"o":15.880000114440918,"h":15.880000114440918,"l":15.680000305175781,"c":15.6850004196167,"v":28081},{"t":1794321300,"o":15.6850004196167,"h":15.699999809265137,"l":15.65999984741211,"c":15.65999984741211,"v":13747}]}

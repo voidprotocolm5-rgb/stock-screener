@@ -1,1 +1,1 @@
-{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"CHA","range":"1d"}
+{"ticker":"CHA","name":"CHA","currency":"USD","regularMarketPrice":12.454999923706055,"change":-0.1150000762939456,"changePct":-0.9148772974856452,"range":"1d","interval":"5m","bars":[{"t":1794321000,"o":12.449999809265137,"h":12.449999809265137,"l":12.319999694824219,"c":12.329999923706055,"v":6189},{"t":1794321300,"o":12.399999618530273,"h":12.454999923706055,"l":12.399999618530273,"c":12.454999923706055,"v":2092}]}

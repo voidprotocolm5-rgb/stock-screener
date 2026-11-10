@@ -1,1 +1,1 @@
-{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"ALAB","range":"1d"}
+{"ticker":"ALAB","name":"ALAB","currency":"USD","regularMarketPrice":212.7899932861328,"change":-6.190006713867177,"changePct":-2.8267452342073147,"range":"1d","interval":"5m","bars":[{"t":1794321000,"o":213.36000061035156,"h":214.57000732421875,"l":207.3603973388672,"c":213.25,"v":403529},{"t":1794321300,"o":213.78530883789062,"h":216.81649780273438,"l":212.27749633789062,"c":213.15989685058594,"v":46390}]}

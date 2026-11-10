@@ -1,1 +1,1 @@
-{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"GRMN","range":"1d"}
+{"ticker":"GRMN","name":"GRMN","currency":"USD","regularMarketPrice":288.0050048828125,"change":-3.7949951171875114,"changePct":-1.3005466474254666,"range":"1d","interval":"5m","bars":[{"t":1794321000,"o":289.7149963378906,"h":289.92999267578125,"l":288.7550048828125,"c":288.8299865722656,"v":7082},{"t":1794321300,"o":289.3900146484375,"h":289.3949890136719,"l":287.2699890136719,"c":288.0050048828125,"v":3499}]}

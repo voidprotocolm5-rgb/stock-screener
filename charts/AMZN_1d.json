@@ -1,1 +1,1 @@
-{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"AMZN","range":"1d"}
+{"ticker":"AMZN","name":"AMZN","currency":"USD","regularMarketPrice":270.8599853515625,"change":2.705685351562522,"changePct":1.0090031566014501,"range":"1d","interval":"5m","bars":[{"t":1794321000,"o":267.0950012207031,"h":270.1700134277344,"l":266.14019775390625,"c":270.05999755859375,"v":2649539},{"t":1794321300,"o":270.1098937988281,"h":271.6099853515625,"l":269.8800048828125,"c":270.8599853515625,"v":980222}]}

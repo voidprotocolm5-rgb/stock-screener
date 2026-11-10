@@ -1,1 +1,1 @@
-{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"NVO","range":"1d"}
+{"ticker":"NVO","name":"NVO","currency":"USD","regularMarketPrice":40.619998931884766,"change":-0.8700010681152364,"changePct":-2.096893391456342,"range":"1d","interval":"5m","bars":[{"t":1794321000,"o":40.720001220703125,"h":40.720001220703125,"l":40.470001220703125,"c":40.619998931884766,"v":671111},{"t":1794321300,"o":40.61000061035156,"h":40.65999984741211,"l":40.560001373291016,"c":40.619998931884766,"v":83933}]}

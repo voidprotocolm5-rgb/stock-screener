@@ -1,1 +1,1 @@
-{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"JPM","range":"1d"}
+{"ticker":"JPM","name":"JPM","currency":"USD","regularMarketPrice":343.510009765625,"change":1.4500097656249977,"changePct":0.4239050943182476,"range":"1d","interval":"5m","bars":[{"t":1794321000,"o":344.3078918457031,"h":344.8500061035156,"l":343.0201110839844,"c":343.6449890136719,"v":220186},{"t":1794321300,"o":343.7200012207031,"h":344.5,"l":342.7804870605469,"c":343.510009765625,"v":62909}]}

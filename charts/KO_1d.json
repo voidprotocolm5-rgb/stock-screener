@@ -1,1 +1,1 @@
-{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"KO","range":"1d"}
+{"ticker":"KO","name":"KO","currency":"USD","regularMarketPrice":96.23999786376953,"change":0.33109786376952854,"changePct":0.34522120863603745,"range":"1d","interval":"5m","bars":[{"t":1794321000,"o":96.30000305175781,"h":96.7300033569336,"l":96.04000091552734,"c":96.4800033569336,"v":1566364},{"t":1794321300,"o":96.5,"h":96.5,"l":96.22000122070312,"c":96.23999786376953,"v":94526}]}

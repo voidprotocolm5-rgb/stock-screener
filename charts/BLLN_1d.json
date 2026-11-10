@@ -1,1 +1,1 @@
-{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"BLLN","range":"1d"}
+{"ticker":"BLLN","name":"BLLN","currency":"USD","regularMarketPrice":109.83499908447266,"change":-5.06500244140625,"changePct":-4.408183093248663,"range":"1d","interval":"5m","bars":[{"t":1794321000,"o":113.36000061035156,"h":113.36000061035156,"l":108.91259765625,"c":109.86000061035156,"v":8074},{"t":1794321300,"o":110.36000061035156,"h":110.36000061035156,"l":109.36000061035156,"c":109.83499908447266,"v":2659}]}

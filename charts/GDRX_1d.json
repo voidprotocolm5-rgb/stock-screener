@@ -1,1 +1,1 @@
-{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"GDRX","range":"1d"}
+{"ticker":"GDRX","name":"GDRX","currency":"USD","regularMarketPrice":3.5799999237060547,"change":-7.629394538355427e-08,"changePct":-2.1311157928367113e-06,"range":"1d","interval":"5m","bars":[{"t":1794321000,"o":3.640000104904175,"h":3.640000104904175,"l":3.5850000381469727,"c":3.5999999046325684,"v":119522},{"t":1794321300,"o":3.5924999713897705,"h":3.609999895095825,"l":3.5799999237060547,"c":3.5799999237060547,"v":629}]}

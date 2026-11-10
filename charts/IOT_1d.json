@@ -1,1 +1,1 @@
-{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"IOT","range":"1d"}
+{"ticker":"IOT","name":"IOT","currency":"USD","regularMarketPrice":41.9900016784668,"change":-0.19999832153320085,"changePct":-0.4740420041080845,"range":"1d","interval":"5m","bars":[{"t":1794321000,"o":41.72999954223633,"h":41.927398681640625,"l":40.77000045776367,"c":41.57500076293945,"v":91708},{"t":1794321300,"o":41.57500076293945,"h":41.9900016784668,"l":41.52000045776367,"c":41.9900016784668,"v":14852}]}

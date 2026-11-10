@@ -1,1 +1,1 @@
-{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"ATEN","range":"1d"}
+{"ticker":"ATEN","name":"ATEN","currency":"USD","regularMarketPrice":26.985000610351562,"change":-0.07499938964843622,"changePct":-0.2771596069787,"range":"1d","interval":"5m","bars":[{"t":1794321000,"o":26.969999313354492,"h":27.059999465942383,"l":26.565000534057617,"c":26.829999923706055,"v":33187},{"t":1794321300,"o":26.924999237060547,"h":27.010000228881836,"l":26.860000610351562,"c":26.985000610351562,"v":3941}]}

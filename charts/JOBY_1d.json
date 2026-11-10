@@ -1,1 +1,1 @@
-{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"JOBY","range":"1d"}
+{"ticker":"JOBY","name":"JOBY","currency":"USD","regularMarketPrice":5.985000133514404,"change":-0.1449998664855956,"changePct":-2.3654138089004175,"range":"1d","interval":"5m","bars":[{"t":1794321000,"o":6.019999980926514,"h":6.079999923706055,"l":5.85290002822876,"c":6.014999866485596,"v":1324767},{"t":1794321300,"o":6.019999980926514,"h":6.025000095367432,"l":5.96999979019165,"c":5.985000133514404,"v":204850}]}

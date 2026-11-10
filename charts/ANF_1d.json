@@ -1,1 +1,1 @@
-{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"ANF","range":"1d"}
+{"ticker":"ANF","name":"ANF","currency":"USD","regularMarketPrice":150.0449981689453,"change":-3.3538018310546818,"changePct":-2.186328596478383,"range":"1d","interval":"5m","bars":[{"t":1794321000,"o":151.58999633789062,"h":152.25999450683594,"l":151.47979736328125,"c":152.25999450683594,"v":36837},{"t":1794321300,"o":152.0500030517578,"h":152.77499389648438,"l":150.0449981689453,"c":150.0449981689453,"v":2712}]}

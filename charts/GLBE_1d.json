@@ -1,1 +1,1 @@
-{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"GLBE","range":"1d"}
+{"ticker":"GLBE","name":"GLBE","currency":"USD","regularMarketPrice":42.30500030517578,"change":-0.154998779296875,"changePct":-0.3650465912364022,"range":"1d","interval":"5m","bars":[{"t":1794321000,"o":42.0099983215332,"h":42.209999084472656,"l":41.70000076293945,"c":41.915000915527344,"v":4574},{"t":1794321300,"o":42.15999984741211,"h":42.560001373291016,"l":42.150001525878906,"c":42.30500030517578,"v":1660}]}

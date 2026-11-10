@@ -1,1 +1,1 @@
-{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"ABNB","range":"1d"}
+{"ticker":"ABNB","name":"ABNB","currency":"USD","regularMarketPrice":189.02000427246094,"change":-1.609995727539058,"changePct":-0.8445657700986507,"range":"1d","interval":"5m","bars":[{"t":1794321000,"o":188.0,"h":190.0500030517578,"l":188.0,"c":189.05999755859375,"v":222950},{"t":1794321300,"o":189.1750030517578,"h":189.67349243164062,"l":188.89999389648438,"c":189.02000427246094,"v":31871}]}

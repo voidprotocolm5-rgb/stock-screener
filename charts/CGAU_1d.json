@@ -1,1 +1,1 @@
-{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"CGAU","range":"1d"}
+{"ticker":"CGAU","name":"CGAU","currency":"USD","regularMarketPrice":22.25,"change":-0.8999999999999986,"changePct":-3.887688984881204,"range":"1d","interval":"5m","bars":[{"t":1794321000,"o":22.049999237060547,"h":22.610000610351562,"l":22.049999237060547,"c":22.290000915527344,"v":29767},{"t":1794321300,"o":22.299999237060547,"h":22.327999114990234,"l":22.229999542236328,"c":22.25,"v":14632}]}

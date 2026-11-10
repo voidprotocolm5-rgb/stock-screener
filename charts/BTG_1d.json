@@ -1,1 +1,1 @@
-{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"BTG","range":"1d"}
+{"ticker":"BTG","name":"BTG","currency":"USD","regularMarketPrice":5.414999961853027,"change":-0.2550000381469726,"changePct":-4.49735517014061,"range":"1d","interval":"5m","bars":[{"t":1794321000,"o":5.474999904632568,"h":5.554999828338623,"l":5.440000057220459,"c":5.454999923706055,"v":932864},{"t":1794321300,"o":5.449999809265137,"h":5.460000038146973,"l":5.394999980926514,"c":5.414999961853027,"v":690828}]}

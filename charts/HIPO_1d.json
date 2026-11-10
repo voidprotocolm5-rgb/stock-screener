@@ -1,1 +1,1 @@
-{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"HIPO","range":"1d"}
+{"ticker":"HIPO","name":"HIPO","currency":"USD","regularMarketPrice":36.560001373291016,"change":0.4500007629394531,"changePct":1.24619428228548,"range":"1d","interval":"5m","bars":[{"t":1794321000,"o":36.04999923706055,"h":36.189998626708984,"l":36.04999923706055,"c":36.189998626708984,"v":2038},{"t":1794321300,"o":36.18000030517578,"h":36.560001373291016,"l":36.095001220703125,"c":36.560001373291016,"v":5460}]}

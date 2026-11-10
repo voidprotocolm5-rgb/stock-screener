@@ -1,1 +1,1 @@
-{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"ANET","range":"1d"}
+{"ticker":"ANET","name":"ANET","currency":"USD","regularMarketPrice":186.22000122070312,"change":-0.029998779296875,"changePct":-0.016106727139261746,"range":"1d","interval":"5m","bars":[{"t":1794321000,"o":186.843994140625,"h":186.91000366210938,"l":182.4499969482422,"c":186.39999389648438,"v":331926},{"t":1794321300,"o":185.88499450683594,"h":187.59500122070312,"l":185.38499450683594,"c":186.22000122070312,"v":141345}]}

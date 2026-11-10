@@ -1,1 +1,1 @@
-{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"FSS","range":"1d"}
+{"ticker":"FSS","name":"FSS","currency":"USD","regularMarketPrice":117.59500122070312,"change":0.37000274658203125,"changePct":0.31563467809616913,"range":"1d","interval":"5m","bars":[{"t":1794321000,"o":117.30000305175781,"h":117.72000122070312,"l":116.52899932861328,"c":116.8499984741211,"v":821},{"t":1794321300,"o":117.83499908447266,"h":117.83499908447266,"l":117.59500122070312,"c":117.59500122070312,"v":1074}]}

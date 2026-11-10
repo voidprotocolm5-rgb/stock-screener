@@ -1,1 +1,1 @@
-{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"NFLX","range":"1d"}
+{"ticker":"NFLX","name":"NFLX","currency":"USD","regularMarketPrice":63.0,"change":-0.7100000000000009,"changePct":-1.11442473708994,"range":"1d","interval":"5m","bars":[{"t":1794321000,"o":63.45000076293945,"h":63.75,"l":63.13999938964844,"c":63.209999084472656,"v":1690297},{"t":1794321300,"o":63.209999084472656,"h":63.34000015258789,"l":62.915000915527344,"c":63.0,"v":483171}]}

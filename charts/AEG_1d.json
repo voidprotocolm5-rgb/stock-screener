@@ -1,1 +1,1 @@
-{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"AEG","range":"1d"}
+{"ticker":"AEG","name":"AEG","currency":"USD","regularMarketPrice":8.630000114440918,"change":0.04000011444091811,"changePct":0.4656590738174402,"range":"1d","interval":"5m","bars":[{"t":1794321000,"o":8.654999732971191,"h":8.654999732971191,"l":8.635000228881836,"c":8.635000228881836,"v":662},{"t":1794321300,"o":8.630000114440918,"h":8.640000343322754,"l":8.630000114440918,"c":8.630000114440918,"v":30065}]}

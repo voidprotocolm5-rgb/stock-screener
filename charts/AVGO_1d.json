@@ -1,1 +1,1 @@
-{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"AVGO","range":"1d"}
+{"ticker":"AVGO","name":"AVGO","currency":"USD","regularMarketPrice":321.1600036621094,"change":-1.339996337890625,"changePct":-0.41550274043120156,"range":"1d","interval":"5m","bars":[{"t":1794321000,"o":316.82000732421875,"h":320.6416931152344,"l":316.69000244140625,"c":320.5400085449219,"v":1598326},{"t":1794321300,"o":320.618896484375,"h":321.67999267578125,"l":318.82000732421875,"c":321.1600036621094,"v":352395}]}

@@ -1,1 +1,1 @@
-{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"EQT","range":"1d"}
+{"ticker":"EQT","name":"EQT","currency":"USD","regularMarketPrice":49.90999984741211,"change":-0.03000015258788835,"changePct":-0.06007239204623219,"range":"1d","interval":"5m","bars":[{"t":1794321000,"o":49.4900016784668,"h":49.83000183105469,"l":49.40999984741211,"c":49.5,"v":43095},{"t":1794321300,"o":49.5,"h":49.91999816894531,"l":49.5,"c":49.90999984741211,"v":74614}]}

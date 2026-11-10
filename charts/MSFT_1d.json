@@ -1,1 +1,1 @@
-{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"MSFT","range":"1d"}
+{"ticker":"MSFT","name":"MSFT","currency":"USD","regularMarketPrice":543.0399780273438,"change":-1.4800219726562318,"changePct":-0.27180305088081835,"range":"1d","interval":"5m","bars":[{"t":1794321000,"o":543.4099731445312,"h":544.1500244140625,"l":538.8400268554688,"c":541.47998046875,"v":1130434},{"t":1794321300,"o":541.5349731445312,"h":543.409912109375,"l":541.1300048828125,"c":543.0399780273438,"v":199532}]}

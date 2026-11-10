@@ -1,1 +1,1 @@
-{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"BABA","range":"1d"}
+{"ticker":"BABA","name":"BABA","currency":"USD","regularMarketPrice":104.76499938964844,"change":-0.7850006103515597,"changePct":-0.7437239321189575,"range":"1d","interval":"5m","bars":[{"t":1794321000,"o":105.13500213623047,"h":105.16000366210938,"l":104.40010070800781,"c":104.88999938964844,"v":1063317},{"t":1794321300,"o":104.91000366210938,"h":105.37999725341797,"l":104.62000274658203,"c":104.76499938964844,"v":288343}]}

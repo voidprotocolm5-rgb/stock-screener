@@ -1,1 +1,1 @@
-{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"CRM","range":"1d"}
+{"ticker":"CRM","name":"CRM","currency":"USD","regularMarketPrice":214.1999969482422,"change":-0.3000030517578125,"changePct":-0.13986156259105478,"range":"1d","interval":"5m","bars":[{"t":1794321000,"o":213.2740020751953,"h":214.77000427246094,"l":211.2899932861328,"c":212.60499572753906,"v":233284},{"t":1794321300,"o":212.63999938964844,"h":214.4550018310547,"l":212.60000610351562,"c":214.1999969482422,"v":56780}]}

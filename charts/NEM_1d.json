@@ -1,1 +1,1 @@
-{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"NEM","range":"1d"}
+{"ticker":"NEM","name":"NEM","currency":"USD","regularMarketPrice":120.83999633789062,"change":-4.410003662109375,"changePct":-3.5209610076721556,"range":"1d","interval":"5m","bars":[{"t":1794321000,"o":120.4124984741211,"h":123.01000213623047,"l":120.4124984741211,"c":121.46820068359375,"v":456280},{"t":1794321300,"o":121.31999969482422,"h":121.45500183105469,"l":120.62000274658203,"c":120.83999633789062,"v":79912}]}

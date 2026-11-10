@@ -1,1 +1,1 @@
-{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"BY","range":"1d"}
+{"ticker":"BY","name":"BY","currency":"USD","regularMarketPrice":38.93000030517578,"change":0.09999847412109375,"changePct":0.2575288936533579,"range":"1d","interval":"5m","bars":[{"t":1794321001,"o":38.93000030517578,"h":38.93000030517578,"l":38.93000030517578,"c":38.93000030517578,"v":0}]}

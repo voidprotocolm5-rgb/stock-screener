@@ -1,1 +1,1 @@
-{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"BLDR","range":"1d"}
+{"ticker":"BLDR","name":"BLDR","currency":"USD","regularMarketPrice":64.26000213623047,"change":-1.7399978637695312,"changePct":-2.6363603996508047,"range":"1d","interval":"5m","bars":[{"t":1794321000,"o":64.56500244140625,"h":64.58999633789062,"l":64.05010223388672,"c":64.37999725341797,"v":37337},{"t":1794321300,"o":64.38500213623047,"h":64.38500213623047,"l":63.959999084472656,"c":64.20999908447266,"v":18143}]}

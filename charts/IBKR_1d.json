@@ -1,1 +1,1 @@
-{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"IBKR","range":"1d"}
+{"ticker":"IBKR","name":"IBKR","currency":"USD","regularMarketPrice":77.56999969482422,"change":-0.3200003051757818,"changePct":-0.410836185872104,"range":"1d","interval":"5m","bars":[{"t":1794321000,"o":77.97000122070312,"h":78.43000030517578,"l":77.40499877929688,"c":77.76000213623047,"v":200869},{"t":1794321300,"o":77.75,"h":78.0,"l":77.56999969482422,"c":77.56999969482422,"v":19564}]}

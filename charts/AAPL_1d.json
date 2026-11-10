@@ -1,1 +1,1 @@
-{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"AAPL","range":"1d"}
+{"ticker":"AAPL","name":"AAPL","currency":"USD","regularMarketPrice":350.8949890136719,"change":0.2347890136719002,"changePct":0.06695627666667053,"range":"1d","interval":"5m","bars":[{"t":1794321000,"o":351.5450134277344,"h":353.8699951171875,"l":350.44000244140625,"c":351.1700134277344,"v":2398742},{"t":1794321300,"o":351.1700134277344,"h":351.510009765625,"l":350.3999938964844,"c":350.8949890136719,"v":337706}]}

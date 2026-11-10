@@ -1,1 +1,1 @@
-{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"MKTX","range":"1d"}
+{"ticker":"MKTX","name":"MKTX","currency":"USD","regularMarketPrice":164.92999267578125,"change":-0.7400073242187375,"changePct":-0.446675514105594,"range":"1d","interval":"5m","bars":[{"t":1794321000,"o":164.85000610351562,"h":165.02000427246094,"l":164.77999877929688,"c":165.02000427246094,"v":5704},{"t":1794321300,"o":164.94000244140625,"h":164.94000244140625,"l":164.92999267578125,"c":164.92999267578125,"v":1234}]}

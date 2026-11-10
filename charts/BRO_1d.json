@@ -1,1 +1,1 @@
-{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"BRO","range":"1d"}
+{"ticker":"BRO","name":"BRO","currency":"USD","regularMarketPrice":70.8550033569336,"change":-0.2976966430664021,"changePct":-0.4183912108274206,"range":"1d","interval":"5m","bars":[{"t":1794321000,"o":70.86000061035156,"h":71.08999633789062,"l":70.51000213623047,"c":71.08999633789062,"v":15344},{"t":1794321300,"o":71.04000091552734,"h":71.06999969482422,"l":70.76000213623047,"c":70.8550033569336,"v":6005}]}

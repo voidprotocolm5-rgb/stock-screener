@@ -1,1 +1,1 @@
-{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"AMD","range":"1d"}
+{"ticker":"AMD","name":"AMD","currency":"USD","regularMarketPrice":508.1600036621094,"change":-5.939996337890648,"changePct":-1.1554165216671168,"range":"1d","interval":"5m","bars":[{"t":1794321000,"o":503.0,"h":509.88848876953125,"l":500.25,"c":509.82000732421875,"v":3719726},{"t":1794321300,"o":509.8111877441406,"h":512.6300048828125,"l":506.5,"c":508.1099853515625,"v":658712}]}

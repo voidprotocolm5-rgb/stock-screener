@@ -1,1 +1,1 @@
-{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"LSPD","range":"1d"}
+{"ticker":"LSPD","name":"LSPD","currency":"USD","regularMarketPrice":10.354999542236328,"change":-0.008392457763671146,"changePct":-0.08098176507914731,"range":"1d","interval":"5m","bars":[{"t":1794321000,"o":10.335000038146973,"h":10.449999809265137,"l":10.295000076293945,"c":10.295000076293945,"v":2445},{"t":1794321300,"o":10.354999542236328,"h":10.354999542236328,"l":10.354999542236328,"c":10.354999542236328,"v":0}]}

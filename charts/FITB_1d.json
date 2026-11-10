@@ -1,1 +1,1 @@
-{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"FITB","range":"1d"}
+{"ticker":"FITB","name":"FITB","currency":"USD","regularMarketPrice":54.16999816894531,"change":-0.19000183105468693,"changePct":-0.34952507552370665,"range":"1d","interval":"5m","bars":[{"t":1794321000,"o":54.685001373291016,"h":54.685001373291016,"l":54.380001068115234,"c":54.41999816894531,"v":11156},{"t":1794321300,"o":54.45000076293945,"h":54.4900016784668,"l":54.125,"c":54.16999816894531,"v":21968}]}

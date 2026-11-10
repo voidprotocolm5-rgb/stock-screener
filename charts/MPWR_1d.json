@@ -1,1 +1,1 @@
-{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"MPWR","range":"1d"}
+{"ticker":"MPWR","name":"MPWR","currency":"USD","regularMarketPrice":1360.9649658203125,"change":-26.555034179687482,"changePct":-1.9138487502657606,"range":"1d","interval":"5m","bars":[{"t":1794321000,"o":1359.9300537109375,"h":1369.06494140625,"l":1347.02001953125,"c":1367.0,"v":88111},{"t":1794321300,"o":1361.2900390625,"h":1368.989990234375,"l":1355.22998046875,"c":1360.9649658203125,"v":7165}]}

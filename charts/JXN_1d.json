@@ -1,1 +1,1 @@
-{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"JXN","range":"1d"}
+{"ticker":"JXN","name":"JXN","currency":"USD","regularMarketPrice":134.77999877929688,"change":-0.7300012207031159,"changePct":-0.5387065314021962,"range":"1d","interval":"5m","bars":[{"t":1794321000,"o":136.75,"h":137.61500549316406,"l":136.2050018310547,"c":136.2050018310547,"v":241},{"t":1794321300,"o":136.22500610351562,"h":136.72799682617188,"l":134.77999877929688,"c":134.77999877929688,"v":1027}]}

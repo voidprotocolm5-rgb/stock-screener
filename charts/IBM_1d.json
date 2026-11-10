@@ -1,1 +1,1 @@
-{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"IBM","range":"1d"}
+{"ticker":"IBM","name":"IBM","currency":"USD","regularMarketPrice":245.68930053710938,"change":-1.060699462890625,"changePct":-0.4298680700671226,"range":"1d","interval":"5m","bars":[{"t":1794321000,"o":243.52000427246094,"h":245.02000427246094,"l":243.0,"c":245.02000427246094,"v":195312},{"t":1794321300,"o":244.97705078125,"h":245.68930053710938,"l":244.57000732421875,"c":245.68930053710938,"v":45607}]}

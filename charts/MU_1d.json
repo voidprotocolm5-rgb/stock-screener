@@ -1,1 +1,1 @@
-{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"MU","range":"1d"}
+{"ticker":"MU","name":"MU","currency":"USD","regularMarketPrice":712.2631225585938,"change":-27.598977441406305,"changePct":-3.7302866901016154,"range":"1d","interval":"5m","bars":[{"t":1794321000,"o":717.3699951171875,"h":721.5,"l":702.3599853515625,"c":713.1699829101562,"v":2785863},{"t":1794321300,"o":713.1799926757812,"h":718.0,"l":708.75,"c":712.2631225585938,"v":524155}]}
