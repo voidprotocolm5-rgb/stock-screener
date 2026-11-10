@@ -1,1 +1,1 @@
-{"error":"quote unavailable","detail":"no bars returned from Yahoo","ticker":"MPWR","range":"1mo","interval":"1d"}
+{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"MPWR","range":"1mo"}
