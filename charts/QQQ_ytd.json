@@ -1,1 +1,1 @@
-{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"QQQ","range":"ytd"}
+{"error":"quote unavailable","detail":"no bars returned from Yahoo","ticker":"QQQ","range":"ytd","interval":"1d"}

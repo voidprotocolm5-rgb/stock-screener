@@ -1,1 +1,1 @@
-{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"TCBI","range":"1y"}
+{"ticker":"TCBI","name":"TCBI","currency":"USD","regularMarketPrice":101.03,"change":-1.7099978637695301,"changePct":-1.6643935169601047,"range":"1y","interval":"1d","bars":[{"t":1794200400,"o":104.0,"h":104.0,"l":100.0,"c":101.26000213623047,"v":57291}]}
