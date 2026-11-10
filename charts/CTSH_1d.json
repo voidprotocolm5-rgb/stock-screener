@@ -1,1 +1,1 @@
-{"ticker":"CTSH","name":"CTSH","currency":"USD","regularMarketPrice":64.16999816894531,"change":0.55999755859375,"changePct":0.8803608759950537,"range":"1d","interval":"5m","bars":[{"t":1794321000,"o":63.7400016784668,"h":63.849998474121094,"l":63.20000076293945,"c":63.68000030517578,"v":117023},{"t":1794321300,"o":63.76499938964844,"h":64.16999816894531,"l":63.76499938964844,"c":64.16999816894531,"v":27534}]}
+{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"CTSH","range":"1d"}

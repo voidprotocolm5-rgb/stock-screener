@@ -1,1 +1,1 @@
-{"ticker":"NTR","name":"NTR","currency":"USD","regularMarketPrice":70.27999877929688,"change":-2.001651220703124,"changePct":-2.769238417638673,"range":"1d","interval":"5m","bars":[{"t":1794321000,"o":71.62000274658203,"h":72.0,"l":70.5999984741211,"c":71.01499938964844,"v":25430},{"t":1794321300,"o":70.97859954833984,"h":71.0250015258789,"l":70.27999877929688,"c":70.27999877929688,"v":6917}]}
+{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"NTR","range":"1d"}

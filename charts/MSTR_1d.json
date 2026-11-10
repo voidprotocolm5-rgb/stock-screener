@@ -1,1 +1,1 @@
-{"ticker":"MSTR","name":"MSTR","currency":"USD","regularMarketPrice":123.19619750976562,"change":-3.44650249023438,"changePct":-2.721437943311679,"range":"1d","interval":"5m","bars":[{"t":1794321000,"o":121.9520034790039,"h":122.66000366210938,"l":119.69999694824219,"c":122.66000366210938,"v":1513020},{"t":1794321300,"o":122.65922546386719,"h":123.66999816894531,"l":122.25,"c":123.19619750976562,"v":311405}]}
+{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"MSTR","range":"1d"}

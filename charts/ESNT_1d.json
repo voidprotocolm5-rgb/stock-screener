@@ -1,1 +1,1 @@
-{"ticker":"ESNT","name":"ESNT","currency":"USD","regularMarketPrice":65.44999694824219,"change":-0.3100030517578176,"changePct":-0.471415832965051,"range":"1d","interval":"5m","bars":[{"t":1794321000,"o":65.5250015258789,"h":65.55000305175781,"l":65.5250015258789,"c":65.5250015258789,"v":0},{"t":1794321300,"o":65.44999694824219,"h":65.44999694824219,"l":65.44999694824219,"c":65.44999694824219,"v":0}]}
+{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"ESNT","range":"1d"}

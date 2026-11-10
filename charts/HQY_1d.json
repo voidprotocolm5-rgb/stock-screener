@@ -1,1 +1,1 @@
-{"ticker":"HQY","name":"HQY","currency":"USD","regularMarketPrice":101.98999786376953,"change":-0.1100006103515625,"changePct":-0.1077381116508478,"range":"1d","interval":"5m","bars":[{"t":1794321000,"o":102.25,"h":102.25,"l":102.25,"c":102.25,"v":0},{"t":1794321300,"o":102.5199966430664,"h":102.5199966430664,"l":101.98999786376953,"c":101.98999786376953,"v":334}]}
+{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"HQY","range":"1d"}

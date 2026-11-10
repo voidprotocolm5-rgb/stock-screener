@@ -1,1 +1,1 @@
-{"ticker":"NBIS","name":"NBIS","currency":"USD","regularMarketPrice":140.6999969482422,"change":-2.8044030517578165,"changePct":-1.9542279203688642,"range":"1d","interval":"5m","bars":[{"t":1794321000,"o":137.02499389648438,"h":139.49000549316406,"l":135.3000030517578,"c":139.49000549316406,"v":1680484},{"t":1794321300,"o":139.60000610351562,"h":141.2899932861328,"l":138.21009826660156,"c":140.6999969482422,"v":384530}]}
+{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"NBIS","range":"1d"}

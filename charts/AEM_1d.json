@@ -1,1 +1,1 @@
-{"ticker":"AEM","name":"AEM","currency":"USD","regularMarketPrice":193.40499877929688,"change":-7.595001220703125,"changePct":-3.778607572489117,"range":"1d","interval":"5m","bars":[{"t":1794321000,"o":193.9199981689453,"h":196.58999633789062,"l":192.75,"c":194.13499450683594,"v":91558},{"t":1794321300,"o":194.05999755859375,"h":194.44000244140625,"l":193.40499877929688,"c":193.40499877929688,"v":20194}]}
+{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"AEM","range":"1d"}

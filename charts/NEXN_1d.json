@@ -1,1 +1,1 @@
-{"ticker":"NEXN","name":"NEXN","currency":"USD","regularMarketPrice":8.920000076293945,"change":-0.13000011444091797,"changePct":-1.436465322663843,"range":"1d","interval":"5m","bars":[{"t":1794321000,"o":9.029999732971191,"h":9.029999732971191,"l":8.859999656677246,"c":8.864999771118164,"v":1140},{"t":1794321300,"o":8.920000076293945,"h":8.920000076293945,"l":8.920000076293945,"c":8.920000076293945,"v":0}]}
+{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"NEXN","range":"1d"}

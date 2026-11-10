@@ -1,1 +1,1 @@
-{"ticker":"CLOV","name":"CLOV","currency":"USD","regularMarketPrice":4.769999980926514,"change":-0.10780001907348602,"changePct":-2.2100131016746487,"range":"1d","interval":"5m","bars":[{"t":1794321000,"o":4.820000171661377,"h":4.820000171661377,"l":4.699999809265137,"c":4.758699893951416,"v":188846},{"t":1794321300,"o":4.760000228881836,"h":4.78000020980835,"l":4.75,"c":4.769999980926514,"v":79780}]}
+{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"CLOV","range":"1d"}

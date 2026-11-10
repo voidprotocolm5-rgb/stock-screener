@@ -1,1 +1,1 @@
-{"ticker":"AMAL","name":"AMAL","currency":"USD","regularMarketPrice":50.48500061035156,"change":-0.11499786376953125,"changePct":-0.22726851232682518,"range":"1d","interval":"5m","bars":[{"t":1794321000,"o":50.290000915527344,"h":50.48500061035156,"l":50.290000915527344,"c":50.48500061035156,"v":0}]}
+{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"AMAL","range":"1d"}

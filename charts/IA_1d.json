@@ -1,1 +1,1 @@
-{"ticker":"IA","name":"IA","currency":"USD","regularMarketPrice":21.649999618530273,"change":0.039999618530274006,"changePct":0.18509772573009722,"range":"1d","interval":"5m","bars":[{"t":1794321000,"o":21.25,"h":21.940000534057617,"l":20.804800033569336,"c":21.940000534057617,"v":33681},{"t":1794321300,"o":21.7450008392334,"h":21.950000762939453,"l":21.649999618530273,"c":21.649999618530273,"v":3358}]}
+{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"IA","range":"1d"}

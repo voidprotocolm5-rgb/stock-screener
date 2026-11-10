@@ -1,1 +1,1 @@
-{"ticker":"DV","name":"DV","currency":"USD","regularMarketPrice":13.551300048828125,"change":-0.008699951171875497,"changePct":-0.06415893194598449,"range":"1d","interval":"5m","bars":[{"t":1794321000,"o":13.5600004196167,"h":13.5600004196167,"l":13.550000190734863,"c":13.5600004196167,"v":2497},{"t":1794321300,"o":13.555000305175781,"h":13.5600004196167,"l":13.551300048828125,"c":13.551300048828125,"v":1535}]}
+{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"DV","range":"1d"}

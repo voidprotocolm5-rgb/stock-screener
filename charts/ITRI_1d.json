@@ -1,1 +1,1 @@
-{"ticker":"ITRI","name":"ITRI","currency":"USD","regularMarketPrice":98.83999633789062,"change":-1.160003662109375,"changePct":-1.160003662109375,"range":"1d","interval":"5m","bars":[{"t":1794321000,"o":98.91999816894531,"h":99.30000305175781,"l":98.91999816894531,"c":99.30000305175781,"v":0},{"t":1794321300,"o":98.83999633789062,"h":98.83999633789062,"l":98.83999633789062,"c":98.83999633789062,"v":0}]}
+{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"ITRI","range":"1d"}

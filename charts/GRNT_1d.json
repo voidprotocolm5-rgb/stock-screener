@@ -1,1 +1,1 @@
-{"ticker":"GRNT","name":"GRNT","currency":"USD","regularMarketPrice":5.489999771118164,"change":-0.2300002288818357,"changePct":-4.020983022409715,"range":"1d","interval":"5m","bars":[{"t":1794321000,"o":5.554999828338623,"h":5.570000171661377,"l":5.440000057220459,"c":5.440000057220459,"v":5185},{"t":1794321300,"o":5.485000133514404,"h":5.510000228881836,"l":5.485000133514404,"c":5.489999771118164,"v":696}]}
+{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"GRNT","range":"1d"}

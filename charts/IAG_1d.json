@@ -1,1 +1,1 @@
-{"ticker":"IAG","name":"IAG","currency":"USD","regularMarketPrice":18.8700008392334,"change":-0.9199991607666007,"changePct":-4.64880829088732,"range":"1d","interval":"5m","bars":[{"t":1794321000,"o":19.030000686645508,"h":19.260000228881836,"l":18.8799991607666,"c":18.90999984741211,"v":173357},{"t":1794321300,"o":18.889999389648438,"h":18.93000030517578,"l":18.770000457763672,"c":18.8700008392334,"v":122098}]}
+{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"IAG","range":"1d"}

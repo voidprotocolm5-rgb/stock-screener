@@ -1,1 +1,1 @@
-{"ticker":"MRNA","name":"MRNA","currency":"USD","regularMarketPrice":266.6499938964844,"change":-4.339906103515602,"changePct":-1.6015010535505576,"range":"1d","interval":"5m","bars":[{"t":1794321000,"o":265.8575134277344,"h":272.9999084472656,"l":262.54998779296875,"c":268.0452880859375,"v":1160844},{"t":1794321300,"o":268.29998779296875,"h":268.4490966796875,"l":265.3800048828125,"c":266.6499938964844,"v":131722}]}
+{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"MRNA","range":"1d"}

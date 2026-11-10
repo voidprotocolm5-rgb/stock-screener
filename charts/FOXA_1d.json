@@ -1,1 +1,1 @@
-{"ticker":"FOXA","name":"FOXA","currency":"USD","regularMarketPrice":66.55999755859375,"change":-1.1200024414062568,"changePct":-1.6548499429761478,"range":"1d","interval":"5m","bars":[{"t":1794321000,"o":67.1500015258789,"h":67.56999969482422,"l":66.66500091552734,"c":66.69999694824219,"v":497731},{"t":1794321300,"o":66.7074966430664,"h":66.7699966430664,"l":65.98999786376953,"c":66.55999755859375,"v":103098}]}
+{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"FOXA","range":"1d"}

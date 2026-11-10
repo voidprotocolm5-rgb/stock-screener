@@ -1,1 +1,1 @@
-{"ticker":"NABL","name":"NABL","currency":"USD","regularMarketPrice":4.735000133514404,"change":-0.07499980926513672,"changePct":-1.5592476124188226,"range":"1d","interval":"5m","bars":[{"t":1794321000,"o":4.699999809265137,"h":4.704999923706055,"l":4.619999885559082,"c":4.704999923706055,"v":35205},{"t":1794321300,"o":4.739999771118164,"h":4.739999771118164,"l":4.730000019073486,"c":4.735000133514404,"v":10472}]}
+{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"NABL","range":"1d"}

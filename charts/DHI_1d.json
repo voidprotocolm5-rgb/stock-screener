@@ -1,1 +1,1 @@
-{"ticker":"DHI","name":"DHI","currency":"USD","regularMarketPrice":150.83999633789062,"change":-4.770003662109389,"changePct":-3.065358050324136,"range":"1d","interval":"5m","bars":[{"t":1794321000,"o":152.125,"h":152.52499389648438,"l":151.22999572753906,"c":151.8000030517578,"v":80796},{"t":1794321300,"o":151.25,"h":151.2899932861328,"l":150.3699951171875,"c":150.83999633789062,"v":20575}]}
+{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"DHI","range":"1d"}

@@ -1,1 +1,1 @@
-{"ticker":"BEKE","name":"BEKE","currency":"USD","regularMarketPrice":18.325000762939453,"change":-0.07499923706054545,"changePct":-0.4076045492420949,"range":"1d","interval":"5m","bars":[{"t":1794321000,"o":18.270000457763672,"h":18.405000686645508,"l":18.209999084472656,"c":18.389999389648438,"v":25615},{"t":1794321300,"o":18.385000228881836,"h":18.389999389648438,"l":18.325000762939453,"c":18.325000762939453,"v":20031}]}
+{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"BEKE","range":"1d"}

@@ -1,1 +1,1 @@
-{"ticker":"HNST","name":"HNST","currency":"USD","regularMarketPrice":5.114999771118164,"change":-0.055000228881835866,"changePct":-1.0638342143488562,"range":"1d","interval":"5m","bars":[{"t":1794321000,"o":5.070000171661377,"h":5.167699813842773,"l":5.062099933624268,"c":5.079999923706055,"v":64838},{"t":1794321300,"o":5.104869842529297,"h":5.114999771118164,"l":5.08050012588501,"c":5.114999771118164,"v":2358}]}
+{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"HNST","range":"1d"}

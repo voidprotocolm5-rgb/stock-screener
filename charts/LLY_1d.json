@@ -1,1 +1,1 @@
-{"ticker":"LLY","name":"LLY","currency":"USD","regularMarketPrice":1410.8800048828125,"change":-2.109995117187509,"changePct":-0.14932838287514483,"range":"1d","interval":"5m","bars":[{"t":1794321000,"o":1406.1600341796875,"h":1416.510009765625,"l":1400.0,"c":1413.4000244140625,"v":110882},{"t":1794321300,"o":1413.5,"h":1414.564697265625,"l":1407.19677734375,"c":1410.8800048828125,"v":21220}]}
+{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"LLY","range":"1d"}

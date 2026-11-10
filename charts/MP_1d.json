@@ -1,1 +1,1 @@
-{"ticker":"MP","name":"MP","currency":"USD","regularMarketPrice":36.59000015258789,"change":-1.1285998474121115,"changePct":-2.992157310748839,"range":"1d","interval":"5m","bars":[{"t":1794321000,"o":36.50189971923828,"h":37.209999084472656,"l":36.230098724365234,"c":36.81999969482422,"v":212116},{"t":1794321300,"o":36.790000915527344,"h":36.900001525878906,"l":36.430999755859375,"c":36.59000015258789,"v":48759}]}
+{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"MP","range":"1d"}

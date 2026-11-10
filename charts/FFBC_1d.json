@@ -1,1 +1,1 @@
-{"ticker":"FFBC","name":"FFBC","currency":"USD","regularMarketPrice":32.97999954223633,"change":-0.029998779296875,"changePct":-0.09087785768624558,"range":"1d","interval":"5m","bars":[{"t":1794321000,"o":32.97999954223633,"h":33.130001068115234,"l":32.97999954223633,"c":33.130001068115234,"v":433},{"t":1794321300,"o":32.97999954223633,"h":32.97999954223633,"l":32.97999954223633,"c":32.97999954223633,"v":0}]}
+{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"FFBC","range":"1d"}

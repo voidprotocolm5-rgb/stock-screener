@@ -1,1 +1,1 @@
-{"ticker":"EWBC","name":"EWBC","currency":"USD","regularMarketPrice":131.0800018310547,"change":0.11000183105468864,"changePct":0.08399009777406172,"range":"1d","interval":"5m","bars":[{"t":1794321000,"o":131.32000732421875,"h":131.32000732421875,"l":130.82000732421875,"c":131.03500366210938,"v":18176},{"t":1794321300,"o":131.1300048828125,"h":131.2899932861328,"l":131.0800018310547,"c":131.0800018310547,"v":1772}]}
+{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"EWBC","range":"1d"}

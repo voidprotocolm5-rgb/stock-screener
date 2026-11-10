@@ -1,1 +1,1 @@
-{"ticker":"ENSG","name":"ENSG","currency":"USD","regularMarketPrice":184.03500366210938,"change":2.0749969482421875,"changePct":1.1403587995603497,"range":"1d","interval":"5m","bars":[{"t":1794321000,"o":182.49000549316406,"h":183.50999450683594,"l":182.49000549316406,"c":183.50999450683594,"v":2911},{"t":1794321300,"o":184.03500366210938,"h":184.03500366210938,"l":184.03500366210938,"c":184.03500366210938,"v":0}]}
+{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"ENSG","range":"1d"}

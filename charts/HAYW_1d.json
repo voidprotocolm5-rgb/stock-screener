@@ -1,1 +1,1 @@
-{"ticker":"HAYW","name":"HAYW","currency":"USD","regularMarketPrice":16.75,"change":-0.14000000000000057,"changePct":-0.828892835997635,"range":"1d","interval":"5m","bars":[{"t":1794321000,"o":16.790000915527344,"h":16.790000915527344,"l":16.56999969482422,"c":16.760000228881836,"v":2453},{"t":1794321300,"o":16.75,"h":16.75,"l":16.75,"c":16.75,"v":0}]}
+{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"HAYW","range":"1d"}

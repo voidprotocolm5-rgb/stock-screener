@@ -1,1 +1,1 @@
-{"ticker":"HAFC","name":"HAFC","currency":"USD","regularMarketPrice":32.77000045776367,"change":0.09000045776367216,"changePct":0.2753991975632563,"range":"1d","interval":"5m","bars":[{"t":1794321000,"o":32.689998626708984,"h":32.76499938964844,"l":32.459999084472656,"c":32.61000061035156,"v":290},{"t":1794321300,"o":32.77000045776367,"h":32.77000045776367,"l":32.77000045776367,"c":32.77000045776367,"v":0}]}
+{"error":"quote unavailable","detail":"Too Many Requests. Rate limited. Try after a while.","ticker":"HAFC","range":"1d"}
