@@ -585,5 +585,7 @@ window.TV_SYMBOLS = {
 "KKR": "NYSE:KKR",
 "GPRE": "NASDAQ:GPRE",
 "MFP": "NASDAQ:MFP",
-"CF": "NYSE:CF"
+"CF": "NYSE:CF",
+"GLOB": "NYSE:GLOB",
+"TRGP": "NYSE:TRGP"
 };
