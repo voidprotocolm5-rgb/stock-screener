@@ -2,7 +2,7 @@
 window.ADDITIVE_PACKS = {
   "id": "additive-packs",
   "version": "1.0",
-  "generatedAt": "2026-11-10T14:42:37-06:00",
+  "generatedAt": "2026-11-11T08:19:05-06:00",
   "disclaimer": "Research organizer only — not investment advice. Additive Finviz packs; never merge into v2.1 six.",
   "sourceRegistry": "finviz/additive-packs.json",
   "packs": [
@@ -13,14 +13,14 @@ window.ADDITIVE_PACKS = {
       "mode": "strict",
       "count": 6,
       "tickers": [
-        "GLBE",
+        "RJF",
         "CARG",
         "AMAL",
         "URBN",
         "PAY",
         "CNS"
       ],
-      "capturedAt": "2026-11-10T14:40:35-06:00",
+      "capturedAt": "2026-11-11T08:16:52-06:00",
       "publicUrl": "https://finviz.com/screener.ashx?v=121&f=cap_smallover,fa_debteq_u1,fa_eps5years_o10,fa_estltgrowth_o10,fa_peg_u2,fa_pfcf_u30,fa_roe_o10,fa_sales5years_o5,sh_avgvol_o200,sh_insiderown_o10,ta_rsi_nob60,ta_sma200_pa,ta_sma50_pa&o=peg",
       "filterHighlight": "keeps sh_insiderown_o10 + fa_pfcf_u30",
       "companyNames": {}
@@ -30,12 +30,12 @@ window.ADDITIVE_PACKS = {
       "name": "TTF×Books FCF Compounder",
       "short": "TTF×FCF",
       "mode": "fcf_no_insider",
-      "count": 30,
+      "count": 31,
       "tickers": [
-        "GLBE",
         "NUE",
+        "IAG",
         "QNST",
-        "NXPI",
+        "RJF",
         "OSBC",
         "NEM",
         "CARG",
@@ -43,9 +43,10 @@ window.ADDITIVE_PACKS = {
         "HAFC",
         "FCF",
         "FFBC",
-        "WSFS",
         "SSB",
+        "WSFS",
         "SFBS",
+        "QCOM",
         "ALV",
         "RF",
         "TEL",
@@ -53,7 +54,7 @@ window.ADDITIVE_PACKS = {
         "TCBI",
         "URBN",
         "KFY",
-        "ATEN",
+        "NTES",
         "PAY",
         "HQY",
         "AEM",
@@ -63,7 +64,7 @@ window.ADDITIVE_PACKS = {
         "ROST",
         "CNS"
       ],
-      "capturedAt": "2026-11-10T14:40:35-06:00",
+      "capturedAt": "2026-11-11T08:16:52-06:00",
       "publicUrl": "https://finviz.com/screener.ashx?v=121&f=cap_smallover,fa_debteq_u1,fa_eps5years_o10,fa_estltgrowth_o10,fa_peg_u2,fa_pfcf_u30,fa_roe_o10,fa_sales5years_o5,sh_avgvol_o200,ta_rsi_nob60,ta_sma200_pa,ta_sma50_pa&o=peg",
       "filterHighlight": "drops sh_insiderown_o10; keeps fa_pfcf_u30",
       "companyNames": {}
@@ -85,12 +86,6 @@ window.ADDITIVE_PACKS = {
     "AMAL": {
       "packIds": [
         "ttf-books-long-compounder",
-        "ttf-books-fcf-compounder"
-      ],
-      "name": null
-    },
-    "ATEN": {
-      "packIds": [
         "ttf-books-fcf-compounder"
       ],
       "name": null
@@ -133,13 +128,6 @@ window.ADDITIVE_PACKS = {
       ],
       "name": null
     },
-    "GLBE": {
-      "packIds": [
-        "ttf-books-long-compounder",
-        "ttf-books-fcf-compounder"
-      ],
-      "name": null
-    },
     "HAFC": {
       "packIds": [
         "ttf-books-fcf-compounder"
@@ -158,6 +146,12 @@ window.ADDITIVE_PACKS = {
       ],
       "name": null
     },
+    "IAG": {
+      "packIds": [
+        "ttf-books-fcf-compounder"
+      ],
+      "name": null
+    },
     "KFY": {
       "packIds": [
         "ttf-books-fcf-compounder"
@@ -170,13 +164,13 @@ window.ADDITIVE_PACKS = {
       ],
       "name": null
     },
-    "NUE": {
+    "NTES": {
       "packIds": [
         "ttf-books-fcf-compounder"
       ],
       "name": null
     },
-    "NXPI": {
+    "NUE": {
       "packIds": [
         "ttf-books-fcf-compounder"
       ],
@@ -195,6 +189,12 @@ window.ADDITIVE_PACKS = {
       ],
       "name": null
     },
+    "QCOM": {
+      "packIds": [
+        "ttf-books-fcf-compounder"
+      ],
+      "name": null
+    },
     "QNST": {
       "packIds": [
         "ttf-books-fcf-compounder"
@@ -203,6 +203,13 @@ window.ADDITIVE_PACKS = {
     },
     "RF": {
       "packIds": [
+        "ttf-books-fcf-compounder"
+      ],
+      "name": null
+    },
+    "RJF": {
+      "packIds": [
+        "ttf-books-long-compounder",
         "ttf-books-fcf-compounder"
       ],
       "name": null
@@ -259,6 +266,6 @@ window.ADDITIVE_PACKS = {
   },
   "counts": {
     "ttf-books-long-compounder": 6,
-    "ttf-books-fcf-compounder": 30
+    "ttf-books-fcf-compounder": 31
   }
 };
