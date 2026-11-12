@@ -587,5 +587,9 @@ window.TV_SYMBOLS = {
 "MFP": "NASDAQ:MFP",
 "CF": "NYSE:CF",
 "GLOB": "NYSE:GLOB",
-"TRGP": "NYSE:TRGP"
+"TRGP": "NYSE:TRGP",
+"HLI": "NYSE:HLI",
+"JLL": "NYSE:JLL",
+"SKM": "NYSE:SKM",
+"LQDA": "NASDAQ:LQDA"
 };
