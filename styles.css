@@ -1650,3 +1650,27 @@ body.chart-open { overflow: hidden; }
   .nav-wrap { padding: 6px 6px; }
 }
 @media (max-width: 360px) { .view-nav .view-tab { font-size: 12px; padding: 0 4px; } }
+
+/* ---- Options picks (v42, real delayed chains) ---- */
+.op-grid { grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); }
+.op-status { flex: none; margin-left: auto; font-size: 12px; font-weight: 700; padding: 3px 9px; border-radius: 999px; white-space: nowrap; }
+.op-status.is-pass { color: #248a3d; background: rgba(52,199,89,.14); }
+.op-status.is-na { color: var(--accent, #0a84ff); background: rgba(10,132,255,.12); }
+.op-status.is-warn { color: #b25000; background: rgba(255,159,10,.16); }
+:root[data-theme="dark"] .op-status.is-pass { color: #63e08a; } :root[data-theme="dark"] .op-status.is-warn { color: #ffc266; }
+.op-buy { padding: 10px 12px; border-radius: 12px; background: var(--bg); border: 1px solid var(--line-soft); }
+.op-buy-what { font-weight: 700; font-size: 16px; line-height: 1.3; }
+.op-buy-cost { margin-top: 2px; font-size: 14px; }
+.op-buy-cost b { font-size: 18px; font-variant-numeric: tabular-nums; }
+.op-dl > div { grid-template-columns: 86px minmax(0, 1fr); }
+.op-more { margin-top: 2px; }
+.op-more > summary { cursor: pointer; font-weight: 600; font-size: 14px; color: var(--accent, #0a84ff); padding: 4px 0; }
+.op-more-body { font-size: 13.5px; line-height: 1.45; }
+.op-more-body p { margin: 6px 0; }
+.op-table-wrap { overflow-x: auto; max-width: 100%; }
+.op-table { border-collapse: collapse; font-size: 12.5px; font-variant-numeric: tabular-nums; width: 100%; }
+.op-table th, .op-table td { padding: 4px 6px; text-align: right; white-space: nowrap; border-bottom: 1px solid var(--line-soft); }
+.op-table th:nth-child(-n+2), .op-table td:nth-child(-n+2) { text-align: left; }
+.op-dropped { margin-top: 22px; background: var(--panel); border-radius: 14px; padding: 10px 14px; }
+.op-dropped ul { margin: 6px 0; padding-left: 18px; display: grid; gap: 4px; }
+@media (max-width: 640px) { .op-grid { grid-template-columns: minmax(0, 1fr); } .op-dl > div { grid-template-columns: 74px minmax(0, 1fr); } }

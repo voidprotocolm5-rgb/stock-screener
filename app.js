@@ -656,8 +656,83 @@ window.OPT_RULES = {"built": "2026-11-13", "options": [{"id": "A1", "sec": "(a) 
       ${warn.length ? `<ul class="nx-warn">${warn.map((w) => `<li>${esc(w)}</li>`).join("")}</ul>` : ""}
     </article>`;
   }
+  // ---------- Options picks (real delayed chains, built by build_options_picks.py) ----------
+  const OP = () => window.OPTION_PICKS || null;
+  const fmtCT = (x, opt) => { try { return new Date(x).toLocaleString("en-US", Object.assign({ timeZone: "America/Chicago", hour: "numeric", minute: "2-digit" }, opt || {})); } catch (_) { return x; } };
+  const dollars = (x) => (x == null || isNaN(x) ? "n/a" : "$" + Math.round(Number(x)).toLocaleString("en-US"));
+  const shortDate = (iso) => { if (!iso) return ""; const d = new Date(iso + "T12:00:00"); return isNaN(d) ? iso : d.toLocaleDateString("en-US", { month: "short", day: "numeric" }); };
+  const STATUS = { near: ["is-pass", "Near the trigger"], alert: ["is-na", "Set an alert"], wait: ["is-warn", "Wait"] };
+  function pickHeadline(p) {
+    const L = p.legs[0], kind = p.side === "put" ? "put" : "call";
+    if (p.structure === "debit spread") {
+      const S2 = p.legs[1];
+      return `Buy the ${money(L.strike).replace(".00", "")}/${money(S2.strike).replace(".00", "")} ${kind} spread, ${shortDate(L.exp)} ’${L.exp.slice(2, 4)}`;
+    }
+    return `Buy ${p.qty > 1 ? p.qty + " × " : ""}the ${shortDate(L.exp)} ’${L.exp.slice(2, 4)} ${money(L.strike).replace(".00", "")} ${kind}`;
+  }
+  function pickCard(p, i) {
+    const pr = p.premium, pl = p.plan, st = STATUS[p.status] || STATUS.alert, L = p.legs[0];
+    const limit = p.structure === "debit spread" ? `${money(p.cost / 100)} net debit` : `${money(L.mid)} each`;
+    const tp2Lvl = pl.target != null ? ` or the stock ${p.side === "put" ? "falls to" : "reaches"} ${money(pl.target)} (${esc(pl.targetWhy)})` : "";
+    const maxLine = p.structure === "debit spread" ? `<p class="nx-dim">Max value ${dollars(p.maxValue)} if the stock is past ${money(p.legs[1].strike)} at expiry. Close it before expiry ${chip("C14")}</p>` : "";
+    const earn = p.earnings && p.earnings.date
+      ? (p.earnings.spansExpiry ? `<span class="nx-flag is-warn">⚠ Earnings ${esc(shortDate(p.earnings.date))}, before this expiry</span>` : `<span class="nx-dim">Earnings ${esc(shortDate(p.earnings.date))} (after expiry)</span>`)
+      : `<span class="nx-dim">No earnings date published yet</span>`;
+    const legRows = p.legs.map((l) => `<tr><td>${l.action === "buy" ? "Buy" : "Sell"}</td><td>${esc(l.label)}</td><td>${money(l.bid)}</td><td>${money(l.ask)}</td><td>${money(l.mid)}</td><td>${num(l.sprPct, 0)}%</td><td>${Number(l.oi).toLocaleString("en-US")}</td><td>${l.iv != null ? l.iv + "%" : "n/a"}</td><td>${num(l.delta, 2)}</td></tr>`).join("");
+    const xc = (p.crossCheck || []).map((x) => x.na ? `${money(x.strike)}: no Nasdaq quote` : `${money(x.strike)}: ${money(x.bid)}/${money(x.ask)} (${x.diffPct > 0 ? "+" : ""}${num(x.diffPct, 1)}% vs mid)`).join(" · ");
+    const a = p.alt;
+    const altLine = a ? `${esc(a.contract)} · ${dollars(a.cost)}${a.structure === "debit spread" ? " net" : ""} · delta ${num(a.delta, 2)} · OI ${Number(a.oi).toLocaleString("en-US")}${a.spansEarnings ? " · spans earnings" : ""}${a.cost > 400 ? " · over $400" : ""}${a.note ? " · " + esc(a.note) : ""}` : "No liquid 7–14 day contract";
+    const iv = p.iv || {};
+    const ivTxt = iv.ratio != null ? `Options are <b>${esc(iv.label)}</b>: 30-day IV ${num(iv.iv30, 0)}% vs ${num(iv.hv30, 0)}% realized (${num(iv.ratio, 2)}×)` : "IV check unavailable";
+    return `<article class="nx-card nx-opt-card op-card">
+      <header class="nx-card-head"><span class="nx-rank">${i + 1}</span>${link(p.t, `<b>${esc(p.t)}</b>`)}<span class="nx-name">${esc(p.name)}</span><span class="op-status ${st[0]}">${st[1]}</span></header>
+      <div class="nx-row"><span class="nx-price">${money(p.price)}</span><span class="nx-dim">${signPct(pl.ext50)} vs 50-day</span>${p.score != null ? `<span class="nx-dim">· score ${p.score}</span>` : ""}</div>
+      <div class="op-buy"><div class="op-buy-what">${esc(pickHeadline(p))}</div>
+        <div class="op-buy-cost"><b>${dollars(p.cost)}</b> <span class="nx-dim">${p.qty > 1 ? `for ${p.qty} contracts · ` : ""}limit at ${limit}</span></div></div>
+      <dl class="nx-dl op-dl">
+        <div><dt>Entry</dt><dd>${esc(pl.entry)}</dd></div>
+        <div><dt>Stop</dt><dd>${esc(pl.stop)}, or the option down 35% (about −${dollars(pr.riskDollars)}). Whichever comes first ${chip("D1 D2")}</dd></div>
+        <div><dt>Take profit</dt><dd><b>TP1</b> at +${pr.tp1Pct}% (worth ~${dollars(pr.tp1Value)}): sell 1/3 to 1/2 and move the stop to breakeven. <b>TP2</b> at +${pr.tp2Pct}% (~${dollars(pr.tp2Value)})${tp2Lvl}: sell the rest ${chip("D3 D5 D7")}</dd></div>
+        <div><dt>Time stop</dt><dd>Out if it hasn’t moved your way in ${pr.timeStopDays} trading days, and no later than ${esc(shortDate(pr.exitBy))} (21 days before expiry) ${chip("D6 C4")}</dd></div>
+      </dl>
+      <div class="nx-row">${earn}</div>
+      ${p.flags && p.flags.length ? `<ul class="nx-warn">${p.flags.map((w) => `<li>${esc(w)}</li>`).join("")}</ul>` : ""}
+      <details class="op-more"><summary>Learn more</summary><div class="op-more-body">
+        <div class="op-table-wrap"><table class="op-table"><thead><tr><th></th><th>Contract</th><th>Bid</th><th>Ask</th><th>Mid</th><th>Spread</th><th>OI</th><th>IV</th><th>Delta</th></tr></thead><tbody>${legRows}</tbody></table></div>
+        ${maxLine}
+        <p>${ivTxt}, so the rule says <b>${p.structure === "debit spread" ? "debit spread" : "buy it outright"}</b>${p.structure === "debit spread" && iv.label !== "rich" ? " (the outright costs more than $400)" : ""}. Net delta ${num(p.netDelta, 2)}. ${chip("A1 C1 C8")}</p>
+        <p><b>Setup:</b> ${esc(pl.setup || "")}. Stop level ${money(pl.stopLevel)}, first target ${money(pl.target)}${pl.rr != null ? `, about ${num(pl.rr, 1)}:1 reward to risk on the stock from the entry level` : ""}. ${chip("B3 D4")}</p>
+        <p><b>Shorter swing (7–14 days):</b> ${altLine}. Since today is ${new Date().toLocaleDateString("en-US", { weekday: "long", timeZone: "America/Chicago" })}, don’t carry short-dated longs over a weekend. ${chip("C5 C6")}</p>
+        <p class="nx-dim">Quotes: ${esc(p.quoteSource)}, ${esc(fmtCT(p.quoteTime, { month: "short", day: "numeric" }))} CT. Nasdaq cross-check: ${xc || "n/a"}. Earnings date: ${esc((p.earnings && p.earnings.source) || "")}.</p>
+      </div></details>
+    </article>`;
+  }
+  function viewOptionPicks(root, d) {
+    const from = d.quotesFrom ? fmtCT(d.quotesFrom, { weekday: "short", month: "short", day: "numeric" }) : "n/a";
+    const to = d.quotesTo ? fmtCT(d.quotesTo) : "";
+    const groups = {};
+    (d.dropped || []).forEach((x) => { const k = x.why.replace(/\(.*$/, "").replace(/:.*$/, "").trim(); (groups[k] = groups[k] || []).push(x.t); });
+    const dropHtml = Object.keys(groups).map((k) => `<li><b>${esc(k)}:</b> ${esc([...new Set(groups[k])].join(", "))}</li>`).join("");
+    root.innerHTML = `
+      <header class="nx-head"><p class="eyebrow">Research only · not a trade instruction</p><h2>Options watchlist</h2>
+        <p class="nx-lead">One specific contract for each name, with entry, stop, and take-profit. Calls come from stocks that pass all three buy gates. Puts come from weak, liquid names. Each list keeps only options that trade well.</p></header>
+      <div class="nx-banner is-warn op-stamp"><b>Delayed snapshot, ${esc(from)}${to ? `–${esc(to)}` : ""} CT.</b> These are real quotes from CBOE and Nasdaq, delayed about 15 minutes, not live. They refresh when you ask for the options watchlist. Check the price in your broker and use a limit order.</div>
+      <section class="nx-rules-strip" aria-label="Rules that apply to every idea">
+        <div class="nx-mini"><h4>Budget</h4><p>$250–400 per trade. If one contract costs more, the card gives a spread that fits.</p></div>
+        <div class="nx-mini"><h4>Contract</h4><p>Delta 0.50–0.70, 30–90 days, avoiding earnings where possible. Open interest 500+ and a tight bid/ask. ${chip("C1 C4 C12")}</p></div>
+        <div class="nx-mini"><h4>Exits</h4><p>Stop at −35% or the stop level. TP1 at +1R (+35%): sell 1/3 to 1/2 and move the stop to breakeven. TP2: the rest. ${chip("D1 D3 D7")}</p></div>
+      </section>
+      <section class="nx-sec"><div class="nx-sec-head"><h3>Calls <span class="nx-count">${d.calls.length} picks</span></h3><p class="nx-dim">Best score first. “Wait” means stretched, earnings too close, or in a don’t-chase zone.</p></div>
+        ${d.calls.length ? `<div class="nx-grid op-grid">${d.calls.map(pickCard).join("")}</div>` : `<p class="nx-empty">No call passes the filters today.</p>`}</section>
+      <section class="nx-sec"><div class="nx-sec-head"><h3>Puts <span class="nx-count">${d.puts.length} picks</span></h3><p class="nx-dim">Weakest first. Wait for a failed bounce or a breakdown. A weak chart alone isn’t a trade. ${chip("B3 B16")}</p></div>
+        ${d.puts.length ? `<div class="nx-grid op-grid">${d.puts.map(pickCard).join("")}</div>` : `<p class="nx-empty">No put passes the filters today.</p>`}</section>
+      <details class="op-more op-dropped"><summary>Names left off and why (${(d.dropped || []).length})</summary><div class="op-more-body"><ul>${dropHtml}</ul>
+        <p class="nx-dim">IV method: ${esc((d.rules && d.rules.ivMethod) || "")}. There isn’t a year of IV history yet, so this uses 30-day IV against 30-day realized volatility as a stand-in for IV rank.</p></div></details>
+      <p class="nx-foot">${esc(d.disclaimer || "")} Built ${esc(fmtCT(d.generatedAt, { month: "short", day: "numeric" }))} CT.</p>`;
+  }
   function viewOptions() {
     const root = document.getElementById("opt-root"); if (!root) return;
+    const d = OP(); if (d && (d.calls || d.puts)) return viewOptionPicks(root, d);
     const { longs, puts, n } = optionsLists();
     const top = longs.slice(0, 24), ptop = puts.slice(0, 12);
     root.innerHTML = `
