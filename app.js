@@ -604,10 +604,16 @@ window.OPT_RULES = {"built": "2026-11-13", "options": [{"id": "A1", "sec": "(a) 
     const p = (ok, label) => `<span class="nx-gate ${ok == null ? "is-na" : ok ? "is-pass" : "is-fail"}">${ok == null ? "–" : ok ? "✓" : "✗"} ${label}</span>`;
     return `<span class="nx-gates">${p(f.gates.rsi, `RSI ${num(f.rsi, 0)}`)}${p(f.gates.above50, "50-day")}${p(f.gates.above200, "200-day")}</span>`;
   }
-  function earnBadge(f) {
-    if (!f.earn) return `<span class="nx-dim" title="This name isn’t on today’s board, so its earnings date wasn’t fetched">Earnings date not on file, so check it before buying</span>`;
-    const d = new Date(f.earn.date + "T12:00:00"); const lbl = isNaN(d) ? f.earn.date : d.toLocaleDateString("en-US", { month: "short", day: "numeric" });
-    return f.earnSoon ? `<span class="nx-flag is-warn" title="Earnings within 10 trading days">⚠ Earnings ${esc(lbl)} (${f.earnTd} trading days)</span>` : `<span class="nx-dim">Earnings ${esc(lbl)}${f.earnTd != null ? ` · ${f.earnTd} trading days` : ""}</span>`;
+  function earnBadge(f, note) {
+    const date = (f.earn && f.earn.date) || (note && note.date) || null;
+    const timing = (note && note.timing) || (f.earn && f.earn.timing) || null;
+    const estimate = !!(note && note.estimate) || !!(f.earn && f.earn.estimate);
+    if (!date) return `<span class="nx-dim" title="This name isn’t on today’s board, so its earnings date wasn’t fetched">Earnings date not on file, so check it before buying</span>`;
+    const d = new Date(date + "T12:00:00"); const lbl = isNaN(d) ? date : d.toLocaleDateString("en-US", { month: "short", day: "numeric" });
+    const td = f.earnTd != null ? f.earnTd : tradingDaysUntil(date);
+    const soon = td != null && td <= 10;
+    const extra = `${timing ? ` ${esc(timing)}` : ""}${estimate ? " (estimate)" : ""}`;
+    return soon ? `<span class="nx-flag is-warn" title="Earnings within 10 trading days">⚠ Earnings ${esc(lbl)}${extra} (${td} trading days)</span>` : `<span class="nx-dim">Earnings ${esc(lbl)}${extra}${td != null ? ` · ${td} trading days` : ""}</span>`;
   }
   function stamp() {
     const s = window.SCORES || {}, u = window.UPGRADES || {};
@@ -676,15 +682,34 @@ window.OPT_RULES = {"built": "2026-11-13", "options": [{"id": "A1", "sec": "(a) 
   // ---------- Holdings ----------
   const BOOKS = [
     { name: "Book 1", tickers: ["SEZL", "MU", "CRDO"] },
-    { name: "Book 2", tickers: ["PLTR", "TSM"] },
+    { name: "Book 2", tickers: ["PLTR", "MU", "CRDO"] },
   ];
-  // Add zones from the portfolio watchdog notes (Nov 11–12, 2026). Update here when zones change.
+  // Add zones from the portfolio watchdog notes (Nov 11–13, 2026). Update here when zones change.
   const ZONES = {
     SEZL: [{ label: "Starter zone", lo: 148, hi: 150 }, { label: "Don’t chase", lo: 160, hi: 178, avoid: true }],
-    MU: [{ label: "First-slice zone", lo: 700, hi: 711 }],
-    CRDO: [{ label: "Light-starter zone", lo: 128, hi: 131 }, { label: "Next add only on a retest", lo: 111, hi: 111 }],
+    MU: [
+      { label: "First-slice zone", lo: 700, hi: 711 },
+      { label: "Second-slice zone", lo: 650, hi: 675 },
+      { label: "Stand aside if $650 breaks", lo: 650, floor: true },
+    ],
+    CRDO: [
+      { label: "Light-starter zone", lo: 128, hi: 131 },
+      { label: "Second add only on a $111 retest", lo: 111, hi: 111 },
+    ],
+  };
+  // Holdings earnings notes. Dates for MU/CRDO are also in upgrades.js; timing and PLTR (not on the board) are recorded here.
+  const EARN_NOTES = {
+    MU: { date: "2026-12-23" },
+    CRDO: { date: "2026-12-01", timing: "after close" },
+    PLTR: { date: "2027-02-01", timing: "after close", estimate: true },
   };
   function zoneLine(z, p) {
+    if (z.floor) {
+      const lvl = money(z.lo);
+      if (p == null) return `<li><b>${esc(z.label)}</b> ${lvl}</li>`;
+      if (p < z.lo) return `<li class="is-warn"><b>${esc(z.label)}</b> ${lvl} <span class="nx-dim">· price is below this floor, so stand aside</span></li>`;
+      return `<li class="is-pass"><b>${esc(z.label)}</b> ${lvl} <span class="nx-dim">· still above the floor</span></li>`;
+    }
     const rng = z.lo === z.hi ? money(z.lo) : `${money(z.lo)}–${money(z.hi)}`;
     if (p == null) return `<li><b>${esc(z.label)}</b> ${rng}</li>`;
     let st, cls;
@@ -704,7 +729,7 @@ window.OPT_RULES = {"built": "2026-11-13", "options": [{"id": "A1", "sec": "(a) 
       <div class="nx-row"><span class="nx-price">${money(f.price)}</span>${f.chg != null ? `<span class="chg ${f.chg > 0 ? "up" : f.chg < 0 ? "down" : "flat"}">${signPct(f.chg, 2)}</span>` : ""}</div>
       <p class="nx-verdict ${f.pass ? "is-pass" : "is-fail"}">${f.pass ? "Buy gates pass" : f.known < 3 ? "Gates: not enough data" : "Buy gates fail: " + esc(f.fails.join(", "))}</p>
       <div class="nx-row">${gatePills(f)}</div>
-      <div class="nx-row">${earnBadge(f)}</div>
+      <div class="nx-row">${earnBadge(f, EARN_NOTES[t])}</div>
       ${zs.length ? `<ul class="nx-zones">${zs.map((z) => zoneLine(z, f.price)).join("")}</ul>` : `<p class="nx-dim">No add zone saved for this name.</p>`}
       <p class="nx-dim">Levels: 50-day ${money(f.sma50)} · 200-day ${money(f.sma200)} · options: ${esc(st.label)}</p>
       <a class="nx-open" href="#/stock/${encodeURIComponent(t)}">Full details →</a>
@@ -715,7 +740,7 @@ window.OPT_RULES = {"built": "2026-11-13", "options": [{"id": "A1", "sec": "(a) 
     root.innerHTML = `<header class="nx-head"><p class="eyebrow">Research only</p><h2>Holdings</h2>
         <p class="nx-lead">Your two books at a glance: buy gates, add zones and earnings. Tap a name for the full detail page.</p><p class="nx-stamp">${stamp()} · prices refresh from TradingView when the page is open (about 15 minutes delayed)</p></header>
       ${BOOKS.map((b) => `<section class="nx-sec"><div class="nx-sec-head"><h3>${esc(b.name)} <span class="nx-count">${b.tickers.join(" · ")}</span></h3></div><div class="nx-grid nx-grid-hold">${b.tickers.map(holdCard).join("")}</div></section>`).join("")}
-      <p class="nx-foot">Add zones come from the portfolio watchdog notes from Nov 11–12. Gates: RSI 70 or below, above the 50-day and above the 200-day (from today’s capture).</p>`;
+      <p class="nx-foot">Add zones come from the portfolio watchdog notes from Nov 11–13, including Book 2’s MU and CRDO levels. Gates: RSI 70 or below, above the 50-day and above the 200-day (from today’s capture).</p>`;
   }
 
   // ---------- SPY playbook ----------
