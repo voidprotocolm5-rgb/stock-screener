@@ -3992,8 +3992,1203 @@
     "ret": 0.0,
     "days": 0
    }
+  },
+  {
+   "id": "2026-11-17|screen-S2|FIVE",
+   "date": "2026-11-17",
+   "t": "FIVE",
+   "rule": "screen-S2",
+   "price": 232.07,
+   "detail": "Earnings momentum",
+   "returns": {},
+   "seeded": true,
+   "last": {
+    "date": "2026-11-17",
+    "ret": 0.0,
+    "days": 0
+   }
+  },
+  {
+   "id": "2026-11-17|screen-S2|PCTY",
+   "date": "2026-11-17",
+   "t": "PCTY",
+   "rule": "screen-S2",
+   "price": 177.5,
+   "detail": "Earnings momentum",
+   "returns": {},
+   "seeded": true,
+   "last": {
+    "date": "2026-11-17",
+    "ret": 0.0,
+    "days": 0
+   }
+  },
+  {
+   "id": "2026-11-17|screen-S2|EXLS",
+   "date": "2026-11-17",
+   "t": "EXLS",
+   "rule": "screen-S2",
+   "price": 42.83,
+   "detail": "Earnings momentum",
+   "returns": {},
+   "seeded": true,
+   "last": {
+    "date": "2026-11-17",
+    "ret": 0.0,
+    "days": 0
+   }
+  },
+  {
+   "id": "2026-11-17|screen-S6|A",
+   "date": "2026-11-17",
+   "t": "A",
+   "rule": "screen-S6",
+   "price": 172.22,
+   "detail": "Sector rotation",
+   "returns": {},
+   "seeded": true,
+   "last": {
+    "date": "2026-11-17",
+    "ret": 0.0,
+    "days": 0
+   }
+  },
+  {
+   "id": "2026-11-17|screen-S6|ABBV",
+   "date": "2026-11-17",
+   "t": "ABBV",
+   "rule": "screen-S6",
+   "price": 292.82,
+   "detail": "Sector rotation",
+   "returns": {},
+   "seeded": true,
+   "last": {
+    "date": "2026-11-17",
+    "ret": 0.0,
+    "days": 0
+   }
+  },
+  {
+   "id": "2026-11-17|screen-S6|ACHC",
+   "date": "2026-11-17",
+   "t": "ACHC",
+   "rule": "screen-S6",
+   "price": 37.94,
+   "detail": "Sector rotation",
+   "returns": {},
+   "seeded": true,
+   "last": {
+    "date": "2026-11-17",
+    "ret": 0.0,
+    "days": 0
+   }
+  },
+  {
+   "id": "2026-11-17|screen-S6|ADPT",
+   "date": "2026-11-17",
+   "t": "ADPT",
+   "rule": "screen-S6",
+   "price": 28.49,
+   "detail": "Sector rotation",
+   "returns": {},
+   "seeded": true,
+   "last": {
+    "date": "2026-11-17",
+    "ret": 0.0,
+    "days": 0
+   }
+  },
+  {
+   "id": "2026-11-17|screen-S6|AMRX",
+   "date": "2026-11-17",
+   "t": "AMRX",
+   "rule": "screen-S6",
+   "price": 21.12,
+   "detail": "Sector rotation",
+   "returns": {},
+   "seeded": true,
+   "last": {
+    "date": "2026-11-17",
+    "ret": 0.0,
+    "days": 0
+   }
+  },
+  {
+   "id": "2026-11-17|screen-S6|ARDT",
+   "date": "2026-11-17",
+   "t": "ARDT",
+   "rule": "screen-S6",
+   "price": 17.75,
+   "detail": "Sector rotation",
+   "returns": {},
+   "seeded": true,
+   "last": {
+    "date": "2026-11-17",
+    "ret": 0.0,
+    "days": 0
+   }
+  },
+  {
+   "id": "2026-11-17|screen-S6|AXGN",
+   "date": "2026-11-17",
+   "t": "AXGN",
+   "rule": "screen-S6",
+   "price": 55.37,
+   "detail": "Sector rotation",
+   "returns": {},
+   "seeded": true,
+   "last": {
+    "date": "2026-11-17",
+    "ret": 0.0,
+    "days": 0
+   }
+  },
+  {
+   "id": "2026-11-17|screen-S6|AZTA",
+   "date": "2026-11-17",
+   "t": "AZTA",
+   "rule": "screen-S6",
+   "price": 45.81,
+   "detail": "Sector rotation",
+   "returns": {},
+   "seeded": true,
+   "last": {
+    "date": "2026-11-17",
+    "ret": 0.0,
+    "days": 0
+   }
+  },
+  {
+   "id": "2026-11-17|screen-S6|BHC",
+   "date": "2026-11-17",
+   "t": "BHC",
+   "rule": "screen-S6",
+   "price": 8.47,
+   "detail": "Sector rotation",
+   "returns": {},
+   "seeded": true,
+   "last": {
+    "date": "2026-11-17",
+    "ret": 0.0,
+    "days": 0
+   }
+  },
+  {
+   "id": "2026-11-17|screen-S6|BIIB",
+   "date": "2026-11-17",
+   "t": "BIIB",
+   "rule": "screen-S6",
+   "price": 250.79,
+   "detail": "Sector rotation",
+   "returns": {},
+   "seeded": true,
+   "last": {
+    "date": "2026-11-17",
+    "ret": 0.0,
+    "days": 0
+   }
+  },
+  {
+   "id": "2026-11-17|screen-S6|BIP",
+   "date": "2026-11-17",
+   "t": "BIP",
+   "rule": "screen-S6",
+   "price": 40.21,
+   "detail": "Sector rotation",
+   "returns": {},
+   "seeded": true,
+   "last": {
+    "date": "2026-11-17",
+    "ret": 0.0,
+    "days": 0
+   }
+  },
+  {
+   "id": "2026-11-17|screen-S6|BJ",
+   "date": "2026-11-17",
+   "t": "BJ",
+   "rule": "screen-S6",
+   "price": 111.43,
+   "detail": "Sector rotation",
+   "returns": {},
+   "seeded": true,
+   "last": {
+    "date": "2026-11-17",
+    "ret": 0.0,
+    "days": 0
+   }
+  },
+  {
+   "id": "2026-11-17|screen-S6|BTSG",
+   "date": "2026-11-17",
+   "t": "BTSG",
+   "rule": "screen-S6",
+   "price": 69.83,
+   "detail": "Sector rotation",
+   "returns": {},
+   "seeded": true,
+   "last": {
+    "date": "2026-11-17",
+    "ret": 0.0,
+    "days": 0
+   }
+  },
+  {
+   "id": "2026-11-17|screen-S6|CAH",
+   "date": "2026-11-17",
+   "t": "CAH",
+   "rule": "screen-S6",
+   "price": 279.25,
+   "detail": "Sector rotation",
+   "returns": {},
+   "seeded": true,
+   "last": {
+    "date": "2026-11-17",
+    "ret": 0.0,
+    "days": 0
+   }
+  },
+  {
+   "id": "2026-11-17|screen-S6|CCEP",
+   "date": "2026-11-17",
+   "t": "CCEP",
+   "rule": "screen-S6",
+   "price": 118.42,
+   "detail": "Sector rotation",
+   "returns": {},
+   "seeded": true,
+   "last": {
+    "date": "2026-11-17",
+    "ret": 0.0,
+    "days": 0
+   }
+  },
+  {
+   "id": "2026-11-17|screen-S6|CERT",
+   "date": "2026-11-17",
+   "t": "CERT",
+   "rule": "screen-S6",
+   "price": 11.06,
+   "detail": "Sector rotation",
+   "returns": {},
+   "seeded": true,
+   "last": {
+    "date": "2026-11-17",
+    "ret": 0.0,
+    "days": 0
+   }
+  },
+  {
+   "id": "2026-11-17|screen-S6|CI",
+   "date": "2026-11-17",
+   "t": "CI",
+   "rule": "screen-S6",
+   "price": 294.06,
+   "detail": "Sector rotation",
+   "returns": {},
+   "seeded": true,
+   "last": {
+    "date": "2026-11-17",
+    "ret": 0.0,
+    "days": 0
+   }
+  },
+  {
+   "id": "2026-11-17|screen-S6|CNC",
+   "date": "2026-11-17",
+   "t": "CNC",
+   "rule": "screen-S6",
+   "price": 72.55,
+   "detail": "Sector rotation",
+   "returns": {},
+   "seeded": true,
+   "last": {
+    "date": "2026-11-17",
+    "ret": 0.0,
+    "days": 0
+   }
+  },
+  {
+   "id": "2026-11-17|screen-S6|COKE",
+   "date": "2026-11-17",
+   "t": "COKE",
+   "rule": "screen-S6",
+   "price": 205.77,
+   "detail": "Sector rotation",
+   "returns": {},
+   "seeded": true,
+   "last": {
+    "date": "2026-11-17",
+    "ret": 0.0,
+    "days": 0
+   }
+  },
+  {
+   "id": "2026-11-17|screen-S6|CON",
+   "date": "2026-11-17",
+   "t": "CON",
+   "rule": "screen-S6",
+   "price": 42.38,
+   "detail": "Sector rotation",
+   "returns": {},
+   "seeded": true,
+   "last": {
+    "date": "2026-11-17",
+    "ret": 0.0,
+    "days": 0
+   }
+  },
+  {
+   "id": "2026-11-17|screen-S6|COR",
+   "date": "2026-11-17",
+   "t": "COR",
+   "rule": "screen-S6",
+   "price": 350.56,
+   "detail": "Sector rotation",
+   "returns": {},
+   "seeded": true,
+   "last": {
+    "date": "2026-11-17",
+    "ret": 0.0,
+    "days": 0
+   }
+  },
+  {
+   "id": "2026-11-17|screen-S6|COTY",
+   "date": "2026-11-17",
+   "t": "COTY",
+   "rule": "screen-S6",
+   "price": 4.08,
+   "detail": "Sector rotation",
+   "returns": {},
+   "seeded": true,
+   "last": {
+    "date": "2026-11-17",
+    "ret": 0.0,
+    "days": 0
+   }
+  },
+  {
+   "id": "2026-11-17|screen-S6|CRL",
+   "date": "2026-11-17",
+   "t": "CRL",
+   "rule": "screen-S6",
+   "price": 332.16,
+   "detail": "Sector rotation",
+   "returns": {},
+   "seeded": true,
+   "last": {
+    "date": "2026-11-17",
+    "ret": 0.0,
+    "days": 0
+   }
+  },
+  {
+   "id": "2026-11-17|screen-S6|CTKB",
+   "date": "2026-11-17",
+   "t": "CTKB",
+   "rule": "screen-S6",
+   "price": 5.7,
+   "detail": "Sector rotation",
+   "returns": {},
+   "seeded": true,
+   "last": {
+    "date": "2026-11-17",
+    "ret": 0.0,
+    "days": 0
+   }
+  },
+  {
+   "id": "2026-11-17|screen-S6|DG",
+   "date": "2026-11-17",
+   "t": "DG",
+   "rule": "screen-S6",
+   "price": 133.53,
+   "detail": "Sector rotation",
+   "returns": {},
+   "seeded": true,
+   "last": {
+    "date": "2026-11-17",
+    "ret": 0.0,
+    "days": 0
+   }
+  },
+  {
+   "id": "2026-11-17|screen-S6|DHR",
+   "date": "2026-11-17",
+   "t": "DHR",
+   "rule": "screen-S6",
+   "price": 225.77,
+   "detail": "Sector rotation",
+   "returns": {},
+   "seeded": true,
+   "last": {
+    "date": "2026-11-17",
+    "ret": 0.0,
+    "days": 0
+   }
+  },
+  {
+   "id": "2026-11-17|screen-S6|DOCS",
+   "date": "2026-11-17",
+   "t": "DOCS",
+   "rule": "screen-S6",
+   "price": 31.11,
+   "detail": "Sector rotation",
+   "returns": {},
+   "seeded": true,
+   "last": {
+    "date": "2026-11-17",
+    "ret": 0.0,
+    "days": 0
+   }
+  },
+  {
+   "id": "2026-11-17|screen-S6|EHC",
+   "date": "2026-11-17",
+   "t": "EHC",
+   "rule": "screen-S6",
+   "price": 137.88,
+   "detail": "Sector rotation",
+   "returns": {},
+   "seeded": true,
+   "last": {
+    "date": "2026-11-17",
+    "ret": 0.0,
+    "days": 0
+   }
+  },
+  {
+   "id": "2026-11-17|screen-S6|EL",
+   "date": "2026-11-17",
+   "t": "EL",
+   "rule": "screen-S6",
+   "price": 104.52,
+   "detail": "Sector rotation",
+   "returns": {},
+   "seeded": true,
+   "last": {
+    "date": "2026-11-17",
+    "ret": 0.0,
+    "days": 0
+   }
+  },
+  {
+   "id": "2026-11-17|screen-S6|ELAN",
+   "date": "2026-11-17",
+   "t": "ELAN",
+   "rule": "screen-S6",
+   "price": 25.85,
+   "detail": "Sector rotation",
+   "returns": {},
+   "seeded": true,
+   "last": {
+    "date": "2026-11-17",
+    "ret": 0.0,
+    "days": 0
+   }
+  },
+  {
+   "id": "2026-11-17|screen-S6|EMBC",
+   "date": "2026-11-17",
+   "t": "EMBC",
+   "rule": "screen-S6",
+   "price": 6.15,
+   "detail": "Sector rotation",
+   "returns": {},
+   "seeded": true,
+   "last": {
+    "date": "2026-11-17",
+    "ret": 0.0,
+    "days": 0
+   }
+  },
+  {
+   "id": "2026-11-17|screen-S6|GILD",
+   "date": "2026-11-17",
+   "t": "GILD",
+   "rule": "screen-S6",
+   "price": 170.26,
+   "detail": "Sector rotation",
+   "returns": {},
+   "seeded": true,
+   "last": {
+    "date": "2026-11-17",
+    "ret": 0.0,
+    "days": 0
+   }
+  },
+  {
+   "id": "2026-11-17|screen-S6|HAE",
+   "date": "2026-11-17",
+   "t": "HAE",
+   "rule": "screen-S6",
+   "price": 120.92,
+   "detail": "Sector rotation",
+   "returns": {},
+   "seeded": true,
+   "last": {
+    "date": "2026-11-17",
+    "ret": 0.0,
+    "days": 0
+   }
+  },
+  {
+   "id": "2026-11-17|screen-S6|HCA",
+   "date": "2026-11-17",
+   "t": "HCA",
+   "rule": "screen-S6",
+   "price": 501.19,
+   "detail": "Sector rotation",
+   "returns": {},
+   "seeded": true,
+   "last": {
+    "date": "2026-11-17",
+    "ret": 0.0,
+    "days": 0
+   }
+  },
+  {
+   "id": "2026-11-17|screen-S6|HCSG",
+   "date": "2026-11-17",
+   "t": "HCSG",
+   "rule": "screen-S6",
+   "price": 24.69,
+   "detail": "Sector rotation",
+   "returns": {},
+   "seeded": true,
+   "last": {
+    "date": "2026-11-17",
+    "ret": 0.0,
+    "days": 0
+   }
+  },
+  {
+   "id": "2026-11-17|screen-S6|HELE",
+   "date": "2026-11-17",
+   "t": "HELE",
+   "rule": "screen-S6",
+   "price": 37.13,
+   "detail": "Sector rotation",
+   "returns": {},
+   "seeded": true,
+   "last": {
+    "date": "2026-11-17",
+    "ret": 0.0,
+    "days": 0
+   }
+  },
+  {
+   "id": "2026-11-17|screen-S6|HLF",
+   "date": "2026-11-17",
+   "t": "HLF",
+   "rule": "screen-S6",
+   "price": 15.57,
+   "detail": "Sector rotation",
+   "returns": {},
+   "seeded": true,
+   "last": {
+    "date": "2026-11-17",
+    "ret": 0.0,
+    "days": 0
+   }
+  },
+  {
+   "id": "2026-11-17|screen-S6|HUM",
+   "date": "2026-11-17",
+   "t": "HUM",
+   "rule": "screen-S6",
+   "price": 443.34,
+   "detail": "Sector rotation",
+   "returns": {},
+   "seeded": true,
+   "last": {
+    "date": "2026-11-17",
+    "ret": 0.0,
+    "days": 0
+   }
+  },
+  {
+   "id": "2026-11-17|screen-S6|ICLR",
+   "date": "2026-11-17",
+   "t": "ICLR",
+   "rule": "screen-S6",
+   "price": 195.02,
+   "detail": "Sector rotation",
+   "returns": {},
+   "seeded": true,
+   "last": {
+    "date": "2026-11-17",
+    "ret": 0.0,
+    "days": 0
+   }
+  },
+  {
+   "id": "2026-11-17|screen-S6|IDXX",
+   "date": "2026-11-17",
+   "t": "IDXX",
+   "rule": "screen-S6",
+   "price": 690.24,
+   "detail": "Sector rotation",
+   "returns": {},
+   "seeded": true,
+   "last": {
+    "date": "2026-11-17",
+    "ret": 0.0,
+    "days": 0
+   }
+  },
+  {
+   "id": "2026-11-17|screen-S6|INDP",
+   "date": "2026-11-17",
+   "t": "INDP",
+   "rule": "screen-S6",
+   "price": 3.32,
+   "detail": "Sector rotation",
+   "returns": {},
+   "seeded": true,
+   "last": {
+    "date": "2026-11-17",
+    "ret": 0.0,
+    "days": 0
+   }
+  },
+  {
+   "id": "2026-11-17|screen-S6|INO",
+   "date": "2026-11-17",
+   "t": "INO",
+   "rule": "screen-S6",
+   "price": 1.63,
+   "detail": "Sector rotation",
+   "returns": {},
+   "seeded": true,
+   "last": {
+    "date": "2026-11-17",
+    "ret": 0.0,
+    "days": 0
+   }
+  },
+  {
+   "id": "2026-11-17|screen-S6|KOD",
+   "date": "2026-11-17",
+   "t": "KOD",
+   "rule": "screen-S6",
+   "price": 96.8,
+   "detail": "Sector rotation",
+   "returns": {},
+   "seeded": true,
+   "last": {
+    "date": "2026-11-17",
+    "ret": 0.0,
+    "days": 0
+   }
+  },
+  {
+   "id": "2026-11-17|screen-S6|KR",
+   "date": "2026-11-17",
+   "t": "KR",
+   "rule": "screen-S6",
+   "price": 70.88,
+   "detail": "Sector rotation",
+   "returns": {},
+   "seeded": true,
+   "last": {
+    "date": "2026-11-17",
+    "ret": 0.0,
+    "days": 0
+   }
+  },
+  {
+   "id": "2026-11-17|screen-S6|LFST",
+   "date": "2026-11-17",
+   "t": "LFST",
+   "rule": "screen-S6",
+   "price": 14.17,
+   "detail": "Sector rotation",
+   "returns": {},
+   "seeded": true,
+   "last": {
+    "date": "2026-11-17",
+    "ret": 0.0,
+    "days": 0
+   }
+  },
+  {
+   "id": "2026-11-17|screen-S6|MAZE",
+   "date": "2026-11-17",
+   "t": "MAZE",
+   "rule": "screen-S6",
+   "price": 32.87,
+   "detail": "Sector rotation",
+   "returns": {},
+   "seeded": true,
+   "last": {
+    "date": "2026-11-17",
+    "ret": 0.0,
+    "days": 0
+   }
+  },
+  {
+   "id": "2026-11-17|screen-S6|MCK",
+   "date": "2026-11-17",
+   "t": "MCK",
+   "rule": "screen-S6",
+   "price": 1091.67,
+   "detail": "Sector rotation",
+   "returns": {},
+   "seeded": true,
+   "last": {
+    "date": "2026-11-17",
+    "ret": 0.0,
+    "days": 0
+   }
+  },
+  {
+   "id": "2026-11-17|screen-S6|MYGN",
+   "date": "2026-11-17",
+   "t": "MYGN",
+   "rule": "screen-S6",
+   "price": 5.54,
+   "detail": "Sector rotation",
+   "returns": {},
+   "seeded": true,
+   "last": {
+    "date": "2026-11-17",
+    "ret": 0.0,
+    "days": 0
+   }
+  },
+  {
+   "id": "2026-11-17|screen-S6|NAUT",
+   "date": "2026-11-17",
+   "t": "NAUT",
+   "rule": "screen-S6",
+   "price": 2.36,
+   "detail": "Sector rotation",
+   "returns": {},
+   "seeded": true,
+   "last": {
+    "date": "2026-11-17",
+    "ret": 0.0,
+    "days": 0
+   }
+  },
+  {
+   "id": "2026-11-17|screen-S6|NWE",
+   "date": "2026-11-17",
+   "t": "NWE",
+   "rule": "screen-S6",
+   "price": 84.91,
+   "detail": "Sector rotation",
+   "returns": {},
+   "seeded": true
+  },
+  {
+   "id": "2026-11-17|screen-S6|OABI",
+   "date": "2026-11-17",
+   "t": "OABI",
+   "rule": "screen-S6",
+   "price": 5.05,
+   "detail": "Sector rotation",
+   "returns": {},
+   "seeded": true,
+   "last": {
+    "date": "2026-11-17",
+    "ret": 0.0,
+    "days": 0
+   }
+  },
+  {
+   "id": "2026-11-17|screen-S6|OLLI",
+   "date": "2026-11-17",
+   "t": "OLLI",
+   "rule": "screen-S6",
+   "price": 94.38,
+   "detail": "Sector rotation",
+   "returns": {},
+   "seeded": true,
+   "last": {
+    "date": "2026-11-17",
+    "ret": 0.0,
+    "days": 0
+   }
+  },
+  {
+   "id": "2026-11-17|screen-S6|OPCH",
+   "date": "2026-11-17",
+   "t": "OPCH",
+   "rule": "screen-S6",
+   "price": 31.63,
+   "detail": "Sector rotation",
+   "returns": {},
+   "seeded": true,
+   "last": {
+    "date": "2026-11-17",
+    "ret": 0.0,
+    "days": 0
+   }
+  },
+  {
+   "id": "2026-11-17|screen-S6|OPK",
+   "date": "2026-11-17",
+   "t": "OPK",
+   "rule": "screen-S6",
+   "price": 1.62,
+   "detail": "Sector rotation",
+   "returns": {},
+   "seeded": true,
+   "last": {
+    "date": "2026-11-17",
+    "ret": 0.0,
+    "days": 0
+   }
+  },
+  {
+   "id": "2026-11-17|screen-S6|PCRX",
+   "date": "2026-11-17",
+   "t": "PCRX",
+   "rule": "screen-S6",
+   "price": 36.48,
+   "detail": "Sector rotation",
+   "returns": {},
+   "seeded": true,
+   "last": {
+    "date": "2026-11-17",
+    "ret": 0.0,
+    "days": 0
+   }
+  },
+  {
+   "id": "2026-11-17|screen-S6|PFGC",
+   "date": "2026-11-17",
+   "t": "PFGC",
+   "rule": "screen-S6",
+   "price": 110.38,
+   "detail": "Sector rotation",
+   "returns": {},
+   "seeded": true,
+   "last": {
+    "date": "2026-11-17",
+    "ret": 0.0,
+    "days": 0
+   }
+  },
+  {
+   "id": "2026-11-17|screen-S6|PRGO",
+   "date": "2026-11-17",
+   "t": "PRGO",
+   "rule": "screen-S6",
+   "price": 15.76,
+   "detail": "Sector rotation",
+   "returns": {},
+   "seeded": true,
+   "last": {
+    "date": "2026-11-17",
+    "ret": 0.0,
+    "days": 0
+   }
+  },
+  {
+   "id": "2026-11-17|screen-S6|PRME",
+   "date": "2026-11-17",
+   "t": "PRME",
+   "rule": "screen-S6",
+   "price": 3.84,
+   "detail": "Sector rotation",
+   "returns": {},
+   "seeded": true,
+   "last": {
+    "date": "2026-11-17",
+    "ret": 0.0,
+    "days": 0
+   }
+  },
+  {
+   "id": "2026-11-17|screen-S6|PRVA",
+   "date": "2026-11-17",
+   "t": "PRVA",
+   "rule": "screen-S6",
+   "price": 24.99,
+   "detail": "Sector rotation",
+   "returns": {},
+   "seeded": true,
+   "last": {
+    "date": "2026-11-17",
+    "ret": 0.0,
+    "days": 0
+   }
+  },
+  {
+   "id": "2026-11-17|screen-S6|RDY",
+   "date": "2026-11-17",
+   "t": "RDY",
+   "rule": "screen-S6",
+   "price": 14.79,
+   "detail": "Sector rotation",
+   "returns": {},
+   "seeded": true,
+   "last": {
+    "date": "2026-11-17",
+    "ret": 0.0,
+    "days": 0
+   }
+  },
+  {
+   "id": "2026-11-17|screen-S6|REPL",
+   "date": "2026-11-17",
+   "t": "REPL",
+   "rule": "screen-S6",
+   "price": 19.69,
+   "detail": "Sector rotation",
+   "returns": {},
+   "seeded": true,
+   "last": {
+    "date": "2026-11-17",
+    "ret": 0.0,
+    "days": 0
+   }
+  },
+  {
+   "id": "2026-11-17|screen-S6|RPRX",
+   "date": "2026-11-17",
+   "t": "RPRX",
+   "rule": "screen-S6",
+   "price": 68.68,
+   "detail": "Sector rotation",
+   "returns": {},
+   "seeded": true,
+   "last": {
+    "date": "2026-11-17",
+    "ret": 0.0,
+    "days": 0
+   }
+  },
+  {
+   "id": "2026-11-17|screen-S6|SGRY",
+   "date": "2026-11-17",
+   "t": "SGRY",
+   "rule": "screen-S6",
+   "price": 26.85,
+   "detail": "Sector rotation",
+   "returns": {},
+   "seeded": true,
+   "last": {
+    "date": "2026-11-17",
+    "ret": 0.0,
+    "days": 0
+   }
+  },
+  {
+   "id": "2026-11-17|screen-S6|SIBN",
+   "date": "2026-11-17",
+   "t": "SIBN",
+   "rule": "screen-S6",
+   "price": 23.16,
+   "detail": "Sector rotation",
+   "returns": {},
+   "seeded": true,
+   "last": {
+    "date": "2026-11-17",
+    "ret": 0.0,
+    "days": 0
+   }
+  },
+  {
+   "id": "2026-11-17|screen-S6|SLN",
+   "date": "2026-11-17",
+   "t": "SLN",
+   "rule": "screen-S6",
+   "price": 19.8,
+   "detail": "Sector rotation",
+   "returns": {},
+   "seeded": true,
+   "last": {
+    "date": "2026-11-17",
+    "ret": 0.0,
+    "days": 0
+   }
+  },
+  {
+   "id": "2026-11-17|screen-S6|SLS",
+   "date": "2026-11-17",
+   "t": "SLS",
+   "rule": "screen-S6",
+   "price": 19.15,
+   "detail": "Sector rotation",
+   "returns": {},
+   "seeded": true,
+   "last": {
+    "date": "2026-11-17",
+    "ret": 0.0,
+    "days": 0
+   }
+  },
+  {
+   "id": "2026-11-17|screen-S6|SRZN",
+   "date": "2026-11-17",
+   "t": "SRZN",
+   "rule": "screen-S6",
+   "price": 29.98,
+   "detail": "Sector rotation",
+   "returns": {},
+   "seeded": true,
+   "last": {
+    "date": "2026-11-17",
+    "ret": 0.0,
+    "days": 0
+   }
+  },
+  {
+   "id": "2026-11-17|screen-S6|TBBB",
+   "date": "2026-11-17",
+   "t": "TBBB",
+   "rule": "screen-S6",
+   "price": 67.76,
+   "detail": "Sector rotation",
+   "returns": {},
+   "seeded": true,
+   "last": {
+    "date": "2026-11-17",
+    "ret": 0.0,
+    "days": 0
+   }
+  },
+  {
+   "id": "2026-11-17|screen-S6|TDOC",
+   "date": "2026-11-17",
+   "t": "TDOC",
+   "rule": "screen-S6",
+   "price": 8.49,
+   "detail": "Sector rotation",
+   "returns": {},
+   "seeded": true,
+   "last": {
+    "date": "2026-11-17",
+    "ret": 0.0,
+    "days": 0
+   }
+  },
+  {
+   "id": "2026-11-17|screen-S6|TEVA",
+   "date": "2026-11-17",
+   "t": "TEVA",
+   "rule": "screen-S6",
+   "price": 42.62,
+   "detail": "Sector rotation",
+   "returns": {},
+   "seeded": true,
+   "last": {
+    "date": "2026-11-17",
+    "ret": 0.0,
+    "days": 0
+   }
+  },
+  {
+   "id": "2026-11-17|screen-S6|TFX",
+   "date": "2026-11-17",
+   "t": "TFX",
+   "rule": "screen-S6",
+   "price": 159.55,
+   "detail": "Sector rotation",
+   "returns": {},
+   "seeded": true,
+   "last": {
+    "date": "2026-11-17",
+    "ret": 0.0,
+    "days": 0
+   }
+  },
+  {
+   "id": "2026-11-17|screen-S6|TMO",
+   "date": "2026-11-17",
+   "t": "TMO",
+   "rule": "screen-S6",
+   "price": 686.79,
+   "detail": "Sector rotation",
+   "returns": {},
+   "seeded": true,
+   "last": {
+    "date": "2026-11-17",
+    "ret": 0.0,
+    "days": 0
+   }
+  },
+  {
+   "id": "2026-11-17|screen-S6|VTRS",
+   "date": "2026-11-17",
+   "t": "VTRS",
+   "rule": "screen-S6",
+   "price": 20.45,
+   "detail": "Sector rotation",
+   "returns": {},
+   "seeded": true,
+   "last": {
+    "date": "2026-11-17",
+    "ret": 0.0,
+    "days": 0
+   }
+  },
+  {
+   "id": "2026-11-17|screen-S6|WAT",
+   "date": "2026-11-17",
+   "t": "WAT",
+   "rule": "screen-S6",
+   "price": 449.78,
+   "detail": "Sector rotation",
+   "returns": {},
+   "seeded": true,
+   "last": {
+    "date": "2026-11-17",
+    "ret": 0.0,
+    "days": 0
+   }
+  },
+  {
+   "id": "2026-11-17|screen-S6|WAY",
+   "date": "2026-11-17",
+   "t": "WAY",
+   "rule": "screen-S6",
+   "price": 27.67,
+   "detail": "Sector rotation",
+   "returns": {},
+   "seeded": true,
+   "last": {
+    "date": "2026-11-17",
+    "ret": 0.0,
+    "days": 0
+   }
+  },
+  {
+   "id": "2026-11-17|screen-S6|WST",
+   "date": "2026-11-17",
+   "t": "WST",
+   "rule": "screen-S6",
+   "price": 414.12,
+   "detail": "Sector rotation",
+   "returns": {},
+   "seeded": true,
+   "last": {
+    "date": "2026-11-17",
+    "ret": 0.0,
+    "days": 0
+   }
+  },
+  {
+   "id": "2026-11-17|screen-S6|XNCR",
+   "date": "2026-11-17",
+   "t": "XNCR",
+   "rule": "screen-S6",
+   "price": 34.5,
+   "detail": "Sector rotation",
+   "returns": {},
+   "seeded": true,
+   "last": {
+    "date": "2026-11-17",
+    "ret": 0.0,
+    "days": 0
+   }
   }
  ],
- "updatedAt": "2026-11-17T21:19:45-06:00",
+ "updatedAt": "2026-11-17T21:39:59-06:00",
  "dataAsOf": "2026-11-17"
 }

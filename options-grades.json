@@ -993,8 +993,631 @@
     "underlying": 155.46,
     "trigger": null
    }
+  },
+  {
+   "id": "2026-11-17|CXW|call|CXW Jan 15 '27 $31 C",
+   "date": "2026-11-17",
+   "t": "CXW",
+   "name": "CoreCivic, Inc.",
+   "side": "call",
+   "contract": "CXW Jan 15 '27 $31 C",
+   "structure": "outright",
+   "setup": "Pullback to 20-day or base breakout (B1/B4)",
+   "setupType": "Pullback or base breakout",
+   "entryUnderlying": 32.4,
+   "entryPremium": 3.2,
+   "cost": 320,
+   "quoteTime": "2026-11-17T19:34-06:00",
+   "legs": [
+    {
+     "sym": "CXW270115C00031000",
+     "action": "buy",
+     "exp": "2027-01-15",
+     "strike": 31.0,
+     "entryMid": 3.2
+    }
+   ],
+   "stopLevel": 26.45,
+   "target": 36.87,
+   "stopPct": -35,
+   "tp1Pct": 35,
+   "exitBy": "2026-12-24",
+   "score": 72,
+   "marks": [],
+   "status": "open",
+   "final": null,
+   "last": {
+    "date": "2026-11-17",
+    "retPct": null,
+    "underlying": 32.46,
+    "trigger": null
+   }
+  },
+  {
+   "id": "2026-11-17|APA|call|APA Jan 15 '27 $47.5 C",
+   "date": "2026-11-17",
+   "t": "APA",
+   "name": "APA Corporation",
+   "side": "call",
+   "contract": "APA Jan 15 '27 $47.5 C",
+   "structure": "outright",
+   "setup": "20-day reclaim or 50-day failure test (B3)",
+   "setupType": "20-day reclaim or 50-day failure test",
+   "entryUnderlying": 47.3,
+   "entryPremium": 3.08,
+   "cost": 308,
+   "quoteTime": "2026-11-17T21:39-06:00",
+   "legs": [
+    {
+     "sym": "APA270115C00047500",
+     "action": "buy",
+     "exp": "2027-01-15",
+     "strike": 47.5,
+     "entryMid": 3.08
+    }
+   ],
+   "stopLevel": 42.37,
+   "target": 57.37,
+   "stopPct": -35,
+   "tp1Pct": 35,
+   "exitBy": "2026-12-24",
+   "score": 66,
+   "marks": [],
+   "status": "open",
+   "final": null,
+   "last": {
+    "date": "2026-11-17",
+    "retPct": null,
+    "underlying": 46.88,
+    "trigger": null
+   }
+  },
+  {
+   "id": "2026-11-17|ABNB|call|ABNB Dec 18 '26 $185 C / Dec 18 '26 $195 C",
+   "date": "2026-11-17",
+   "t": "ABNB",
+   "name": "Airbnb, Inc. Class A",
+   "side": "call",
+   "contract": "ABNB Dec 18 '26 $185 C / Dec 18 '26 $195 C",
+   "structure": "debit spread",
+   "setup": "Pullback to 20-day or base breakout (B1/B4)",
+   "setupType": "Pullback or base breakout",
+   "entryUnderlying": 186.19,
+   "entryPremium": 3.42,
+   "cost": 342,
+   "quoteTime": "2026-11-17T21:39-06:00",
+   "legs": [
+    {
+     "sym": "ABNB261218C00185000",
+     "action": "buy",
+     "exp": "2026-12-18",
+     "strike": 185.0,
+     "entryMid": 5.9
+    },
+    {
+     "sym": "ABNB261218C00195000",
+     "action": "sell",
+     "exp": "2026-12-18",
+     "strike": 195.0,
+     "entryMid": 2.48
+    }
+   ],
+   "stopLevel": 162.08,
+   "target": 210.08,
+   "stopPct": -35,
+   "tp1Pct": 35,
+   "exitBy": "2026-11-27",
+   "score": 60,
+   "marks": [],
+   "status": "open",
+   "final": null,
+   "last": {
+    "date": "2026-11-17",
+    "retPct": null,
+    "underlying": 180.94,
+    "trigger": null
+   }
+  },
+  {
+   "id": "2026-11-17|COP|call|COP Jan 15 '27 $140 C / Jan 15 '27 $150 C",
+   "date": "2026-11-17",
+   "t": "COP",
+   "name": "ConocoPhillips",
+   "side": "call",
+   "contract": "COP Jan 15 '27 $140 C / Jan 15 '27 $150 C",
+   "structure": "debit spread",
+   "setup": "20-day reclaim or 50-day failure test (B3)",
+   "setupType": "20-day reclaim or 50-day failure test",
+   "entryUnderlying": 139.48,
+   "entryPremium": 3.95,
+   "cost": 395,
+   "quoteTime": "2026-11-17T19:33-06:00",
+   "legs": [
+    {
+     "sym": "COP270115C00140000",
+     "action": "buy",
+     "exp": "2027-01-15",
+     "strike": 140.0,
+     "entryMid": 7.15
+    },
+    {
+     "sym": "COP270115C00150000",
+     "action": "sell",
+     "exp": "2027-01-15",
+     "strike": 150.0,
+     "entryMid": 3.2
+    }
+   ],
+   "stopLevel": 129.19,
+   "target": 162.49,
+   "stopPct": -35,
+   "tp1Pct": 35,
+   "exitBy": "2026-12-24",
+   "score": 57,
+   "marks": [],
+   "status": "open",
+   "final": null,
+   "last": {
+    "date": "2026-11-17",
+    "retPct": null,
+    "underlying": 139.48,
+    "trigger": null
+   }
+  },
+  {
+   "id": "2026-11-17|V|call|V Dec 18 '26 $415 C / Dec 18 '26 $420 C",
+   "date": "2026-11-17",
+   "t": "V",
+   "name": "Visa Inc. Class A",
+   "side": "call",
+   "contract": "V Dec 18 '26 $415 C / Dec 18 '26 $420 C",
+   "structure": "debit spread",
+   "setup": "20-day reclaim or 50-day failure test (B3)",
+   "setupType": "20-day reclaim or 50-day failure test",
+   "entryUnderlying": 415.9,
+   "entryPremium": 2.78,
+   "cost": 278,
+   "quoteTime": "2026-11-17T21:21-06:00",
+   "legs": [
+    {
+     "sym": "V261218C00415000",
+     "action": "buy",
+     "exp": "2026-12-18",
+     "strike": 415.0,
+     "entryMid": 13.55
+    },
+    {
+     "sym": "V261218C00420000",
+     "action": "sell",
+     "exp": "2026-12-18",
+     "strike": 420.0,
+     "entryMid": 10.78
+    }
+   ],
+   "stopLevel": 389.16,
+   "target": 464.04,
+   "stopPct": -35,
+   "tp1Pct": 35,
+   "exitBy": "2026-11-27",
+   "score": 57,
+   "marks": [],
+   "status": "open",
+   "final": null,
+   "last": {
+    "date": "2026-11-17",
+    "retPct": null,
+    "underlying": 416.77,
+    "trigger": null
+   }
+  },
+  {
+   "id": "2026-11-17|AMZN|call|AMZN Jan 15 '27 $260 C / Jan 15 '27 $265 C",
+   "date": "2026-11-17",
+   "t": "AMZN",
+   "name": "Amazon.com, Inc.",
+   "side": "call",
+   "contract": "AMZN Jan 15 '27 $260 C / Jan 15 '27 $265 C",
+   "structure": "debit spread",
+   "setup": "Pullback to 20-day or base breakout (B1/B4)",
+   "setupType": "Pullback or base breakout",
+   "entryUnderlying": 260.21,
+   "entryPremium": 2.3,
+   "cost": 230,
+   "quoteTime": "2026-11-17T19:04-06:00",
+   "legs": [
+    {
+     "sym": "AMZN270115C00260000",
+     "action": "buy",
+     "exp": "2027-01-15",
+     "strike": 260.0,
+     "entryMid": 14.75
+    },
+    {
+     "sym": "AMZN270115C00265000",
+     "action": "sell",
+     "exp": "2027-01-15",
+     "strike": 265.0,
+     "entryMid": 12.45
+    }
+   ],
+   "stopLevel": 226.56,
+   "target": 302.84,
+   "stopPct": -35,
+   "tp1Pct": 35,
+   "exitBy": "2026-12-24",
+   "score": 56,
+   "marks": [],
+   "status": "open",
+   "final": null,
+   "last": {
+    "date": "2026-11-17",
+    "retPct": null,
+    "underlying": 257.89,
+    "trigger": null
+   }
+  },
+  {
+   "id": "2026-11-17|LUV|call|LUV Dec 18 '26 $45 C",
+   "date": "2026-11-17",
+   "t": "LUV",
+   "name": "Southwest Airlines Co.",
+   "side": "call",
+   "contract": "LUV Dec 18 '26 $45 C",
+   "structure": "outright",
+   "setup": "Pullback to 20-day or base breakout (B1/B4)",
+   "setupType": "Pullback or base breakout",
+   "entryUnderlying": 45.59,
+   "entryPremium": 2.72,
+   "cost": 272,
+   "quoteTime": "2026-11-17T20:54-06:00",
+   "legs": [
+    {
+     "sym": "LUV261218C00045000",
+     "action": "buy",
+     "exp": "2026-12-18",
+     "strike": 45.0,
+     "entryMid": 2.71
+    }
+   ],
+   "stopLevel": 38.22,
+   "target": 54.38,
+   "stopPct": -35,
+   "tp1Pct": 35,
+   "exitBy": "2026-11-27",
+   "score": 56,
+   "marks": [],
+   "status": "open",
+   "final": null,
+   "last": {
+    "date": "2026-11-17",
+    "retPct": null,
+    "underlying": 45.59,
+    "trigger": null
+   }
+  },
+  {
+   "id": "2026-11-17|INTC|put|INTC Dec 18 '26 $60 P / Dec 18 '26 $52.5 P",
+   "date": "2026-11-17",
+   "t": "INTC",
+   "name": "Intel Corporation",
+   "side": "put",
+   "contract": "INTC Dec 18 '26 $60 P / Dec 18 '26 $52.5 P",
+   "structure": "debit spread",
+   "setup": "Failed bounce at the 3-day high or breakdown (B3)",
+   "setupType": "Failed bounce or breakdown",
+   "entryUnderlying": 56.58,
+   "entryPremium": 4.0,
+   "cost": 400,
+   "quoteTime": "2026-11-17T19:04-06:00",
+   "legs": [
+    {
+     "sym": "INTC261218P00060000",
+     "action": "buy",
+     "exp": "2026-12-18",
+     "strike": 60.0,
+     "entryMid": 7.67
+    },
+    {
+     "sym": "INTC261218P00052500",
+     "action": "sell",
+     "exp": "2026-12-18",
+     "strike": 52.5,
+     "entryMid": 3.67
+    }
+   ],
+   "stopLevel": 65.97,
+   "target": 51.51,
+   "stopPct": -35,
+   "tp1Pct": 35,
+   "exitBy": "2026-11-27",
+   "score": 26,
+   "marks": [],
+   "status": "open",
+   "final": null,
+   "last": {
+    "date": "2026-11-17",
+    "retPct": null,
+    "underlying": 55.17,
+    "trigger": null
+   }
+  },
+  {
+   "id": "2026-11-17|SMCI|put|SMCI Jan 15 '27 $27 P / Jan 15 '27 $19 P",
+   "date": "2026-11-17",
+   "t": "SMCI",
+   "name": "Super Micro Computer, Inc.",
+   "side": "put",
+   "contract": "SMCI Jan 15 '27 $27 P / Jan 15 '27 $19 P",
+   "structure": "debit spread",
+   "setup": "Failed bounce at the 3-day high or breakdown (B3)",
+   "setupType": "Failed bounce or breakdown",
+   "entryUnderlying": 25.43,
+   "entryPremium": 3.76,
+   "cost": 376,
+   "quoteTime": "2026-11-17T21:05-06:00",
+   "legs": [
+    {
+     "sym": "SMCI270115P00027000",
+     "action": "buy",
+     "exp": "2027-01-15",
+     "strike": 27.0,
+     "entryMid": 5.15
+    },
+    {
+     "sym": "SMCI270115P00019000",
+     "action": "sell",
+     "exp": "2027-01-15",
+     "strike": 19.0,
+     "entryMid": 1.39
+    }
+   ],
+   "stopLevel": 29.42,
+   "target": 19.48,
+   "stopPct": -35,
+   "tp1Pct": 35,
+   "exitBy": "2026-12-24",
+   "score": 54,
+   "marks": [],
+   "status": "open",
+   "final": null,
+   "last": {
+    "date": "2026-11-17",
+    "retPct": null,
+    "underlying": 24.14,
+    "trigger": null
+   }
+  },
+  {
+   "id": "2026-11-17|MSTR|put|MSTR Jan 15 '27 $105 P / Jan 15 '27 $100 P",
+   "date": "2026-11-17",
+   "t": "MSTR",
+   "name": "Strategy Inc Class A",
+   "side": "put",
+   "contract": "MSTR Jan 15 '27 $105 P / Jan 15 '27 $100 P",
+   "structure": "debit spread",
+   "setup": "Failed bounce at the 3-day high or breakdown (B3)",
+   "setupType": "Failed bounce or breakdown",
+   "entryUnderlying": 100.35,
+   "entryPremium": 3.0,
+   "cost": 300,
+   "quoteTime": "2026-11-17T21:03-06:00",
+   "legs": [
+    {
+     "sym": "MSTR270115P00105000",
+     "action": "buy",
+     "exp": "2027-01-15",
+     "strike": 105.0,
+     "entryMid": 17.15
+    },
+    {
+     "sym": "MSTR270115P00100000",
+     "action": "sell",
+     "exp": "2027-01-15",
+     "strike": 100.0,
+     "entryMid": 14.15
+    }
+   ],
+   "stopLevel": 117.58,
+   "target": 96.35,
+   "stopPct": -35,
+   "tp1Pct": 35,
+   "exitBy": "2026-12-24",
+   "score": 22,
+   "marks": [],
+   "status": "open",
+   "final": null,
+   "last": {
+    "date": "2026-11-17",
+    "retPct": null,
+    "underlying": 96.5,
+    "trigger": null
+   }
+  },
+  {
+   "id": "2026-11-17|HOOD|put|HOOD Dec 18 '26 $75 P / Dec 18 '26 $65 P",
+   "date": "2026-11-17",
+   "t": "HOOD",
+   "name": "Robinhood Markets, Inc. Class A",
+   "side": "put",
+   "contract": "HOOD Dec 18 '26 $75 P / Dec 18 '26 $65 P",
+   "structure": "debit spread",
+   "setup": "Failed bounce at the 3-day high or breakdown (B3)",
+   "setupType": "Failed bounce or breakdown",
+   "entryUnderlying": 71.0,
+   "entryPremium": 5.25,
+   "cost": 525,
+   "quoteTime": "2026-11-17T19:04-06:00",
+   "legs": [
+    {
+     "sym": "HOOD261218P00075000",
+     "action": "buy",
+     "exp": "2026-12-18",
+     "strike": 75.0,
+     "entryMid": 9.22
+    },
+    {
+     "sym": "HOOD261218P00065000",
+     "action": "sell",
+     "exp": "2026-12-18",
+     "strike": 65.0,
+     "entryMid": 3.98
+    }
+   ],
+   "stopLevel": 82.59,
+   "target": 67.25,
+   "stopPct": -35,
+   "tp1Pct": 35,
+   "exitBy": "2026-11-27",
+   "score": 28,
+   "marks": [],
+   "status": "open",
+   "final": null,
+   "last": {
+    "date": "2026-11-17",
+    "retPct": null,
+    "underlying": 69.19,
+    "trigger": null
+   }
+  },
+  {
+   "id": "2026-11-17|COIN|put|COIN Dec 18 '26 $120 P / Dec 18 '26 $115 P",
+   "date": "2026-11-17",
+   "t": "COIN",
+   "name": "Coinbase Global, Inc. Class A",
+   "side": "put",
+   "contract": "COIN Dec 18 '26 $120 P / Dec 18 '26 $115 P",
+   "structure": "debit spread",
+   "setup": "Failed bounce at the 3-day high or breakdown (B3)",
+   "setupType": "Failed bounce or breakdown",
+   "entryUnderlying": 117.9,
+   "entryPremium": 2.88,
+   "cost": 288,
+   "quoteTime": "2026-11-17T19:04-06:00",
+   "legs": [
+    {
+     "sym": "COIN261218P00120000",
+     "action": "buy",
+     "exp": "2026-12-18",
+     "strike": 120.0,
+     "entryMid": 12.53
+    },
+    {
+     "sym": "COIN261218P00115000",
+     "action": "sell",
+     "exp": "2026-12-18",
+     "strike": 115.0,
+     "entryMid": 9.65
+    }
+   ],
+   "stopLevel": 135.6,
+   "target": 114.11,
+   "stopPct": -35,
+   "tp1Pct": 35,
+   "exitBy": "2026-11-27",
+   "score": 24,
+   "marks": [],
+   "status": "open",
+   "final": null,
+   "last": {
+    "date": "2026-11-17",
+    "retPct": null,
+    "underlying": 115.02,
+    "trigger": null
+   }
+  },
+  {
+   "id": "2026-11-17|NVDA|put|NVDA Dec 18 '26 $162 P / Dec 18 '26 $155 P",
+   "date": "2026-11-17",
+   "t": "NVDA",
+   "name": "NVIDIA Corporation",
+   "side": "put",
+   "contract": "NVDA Dec 18 '26 $162 P / Dec 18 '26 $155 P",
+   "structure": "debit spread",
+   "setup": "Failed bounce at the 3-day high or breakdown (B3)",
+   "setupType": "Failed bounce or breakdown",
+   "entryUnderlying": 162.95,
+   "entryPremium": 3.8,
+   "cost": 380,
+   "quoteTime": "2026-11-17T20:26-06:00",
+   "legs": [
+    {
+     "sym": "NVDA261218P00162000",
+     "action": "buy",
+     "exp": "2026-12-18",
+     "strike": 162.0,
+     "entryMid": 15.07
+    },
+    {
+     "sym": "NVDA261218P00155000",
+     "action": "sell",
+     "exp": "2026-12-18",
+     "strike": 155.0,
+     "entryMid": 11.28
+    }
+   ],
+   "stopLevel": 180.2,
+   "target": 148.8,
+   "stopPct": -35,
+   "tp1Pct": 35,
+   "exitBy": "2026-11-27",
+   "score": 62,
+   "marks": [],
+   "status": "open",
+   "final": null,
+   "last": {
+    "date": "2026-11-17",
+    "retPct": null,
+    "underlying": 155.46,
+    "trigger": null
+   }
+  },
+  {
+   "id": "2026-11-17|ARM|put|ARM Dec 18 '26 $180 P / Dec 18 '26 $175 P",
+   "date": "2026-11-17",
+   "t": "ARM",
+   "name": "ARM Holdings PLC Sponsored ADR",
+   "side": "put",
+   "contract": "ARM Dec 18 '26 $180 P / Dec 18 '26 $175 P",
+   "structure": "debit spread",
+   "setup": "Failed bounce at the 3-day high or breakdown (B3)",
+   "setupType": "Failed bounce or breakdown",
+   "entryUnderlying": 175.05,
+   "entryPremium": 2.32,
+   "cost": 232,
+   "quoteTime": "2026-11-17T21:39-06:00",
+   "legs": [
+    {
+     "sym": "ARM261218P00180000",
+     "action": "buy",
+     "exp": "2026-12-18",
+     "strike": 180.0,
+     "entryMid": 15.82
+    },
+    {
+     "sym": "ARM261218P00175000",
+     "action": "sell",
+     "exp": "2026-12-18",
+     "strike": 175.0,
+     "entryMid": 13.5
+    }
+   ],
+   "stopLevel": 207.8,
+   "target": 163.13,
+   "stopPct": -35,
+   "tp1Pct": 35,
+   "exitBy": "2026-11-27",
+   "score": 39,
+   "marks": [],
+   "status": "open",
+   "final": null,
+   "last": {
+    "date": "2026-11-17",
+    "retPct": null,
+    "underlying": 183.39,
+    "trigger": null
+   }
   }
  ],
- "updatedAt": "2026-11-17T21:19:45-06:00",
+ "updatedAt": "2026-11-17T21:39:59-06:00",
  "dataAsOf": "2026-11-17"
 }
