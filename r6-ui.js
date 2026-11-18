@@ -117,7 +117,7 @@
     if (sid === "S6") extra = '<div class="r6-card"><h3>Leading sectors</h3>' + R.sectors.filter(function (x) { return x.leading; }).map(function (x) { return '<a class="r6-chip ok" href="' + esc(x.fvUrl) + '" target="_blank" rel="noopener">' + esc(x.sector) + " (" + x.etf + ") Finviz →</a>"; }).join("") + '<p class="r6-note">See the <a href="#/rotation">Sector rotation</a> tab for the full ranking.</p></div>';
     return head("screens", "Six screens built from real daily bars and the Finviz presets, each with the exact criteria. A name matches only when every criterion is ✓; near misses are one or two criteria short. The match counts are post-filtered from the broader Finviz candidate lists.")
       + subnavSc(nav) + '<h3 style="margin:.6em 0 .2em">' + esc(S.name) + ' <span class="nx-count">' + S.matchCount + " match · " + S.nearOne + " one criterion short · " + S.nearCount + " within two · Finviz candidates " + S.finvizCandidates + "</span></h3>"
-      + (S.risk ? '<div class="r6-box">' + esc(S.risk) + "</div>" : "") + (S.note ? '<p class="r6-note">' + esc(S.note) + "</p>" : "") + fv + extra
+      + (S.risk ? '<div class="r6-box">' + esc(S.risk) + "</div>" : "") + (window.QUANTUI ? window.QUANTUI.screenTrust(sid) : "") + (S.note ? '<p class="r6-note">' + esc(S.note) + "</p>" : "") + fv + extra
       + "<h4>Matches (" + S.matchCount + ")</h4>" + tbl(S.matches.slice(0, 80), false) + (S.matchCount > 80 ? '<p class="r6-note">Showing the top 80 of ' + S.matchCount + " by the screen's ranking.</p>" : "")
       + "<h4>Near misses: one or two criteria short (" + S.nearCount + (S.nearCount > S.near.length ? ", top " + S.near.length : "") + ")</h4>" + tbl(S.near, true);
   }
@@ -210,5 +210,5 @@
       cq.addEventListener("input", function () { cState.q = cq.value; var pos = cq.selectionStart; renderView("catalysts"); var n = document.getElementById("r6-cq"); n.focus(); n.setSelectionRange(pos, pos); });
       cf.addEventListener("change", function () { cState.f = cf.value; renderView("catalysts"); }); }
   }
-  window.R6UI = { renderView: renderView, holdingsExtra: holdingsExtra, badges: badges, VIEWS: VIEWS };
+  window.R6UI = { css: css, renderView: renderView, holdingsExtra: holdingsExtra, badges: badges, VIEWS: VIEWS };
 })();
