@@ -194,6 +194,34 @@
     Object.keys(s.tables || {}).slice(0, 4).forEach(function (k) { var t = s.tables[k]; var cols = Object.keys(t[0] || {}).filter(function (c) { return typeof t[0][c] !== "object"; }).slice(0, 9); out += "<h4>" + esc(k) + "</h4>" + tbl(cols.map(esc), t.slice(0, 40).map(function (r) { return "<tr>" + cols.map(function (c) { return "<td>" + esc(r[c] == null ? ID : (typeof r[c] === "number" ? Number(r[c].toFixed ? r[c].toFixed(2) : r[c]) : r[c])) + "</td>"; }).join("") + "</tr>"; })); });
     return out + "</div>";
   }
+  function sd(c) { return c && c.status === "ok" ? '<span class="' + cls(c.mdm) + '">' + pc(c.mdm, 1) + '</span> <span class=r6-dim>±' + nn(c.se, 1) + " · " + c.dates + " dates · n=" + c.n + "</span>" : '<span class=r6-dim>' + ID + "</span>"; }
+  function decay(D) {
+    var H = ["1d", "5d", "10d", "15d", "20d", "30d", "40d", "60d"];
+    var rows = ["pooled", "rs", "mom"].map(function (k) { return "<tr><td><b>" + ({ pooled: "All pack members (pooled)", rs: "RS leaders (top decile 6-month return)", mom: "12-1 momentum (top decile)" })[k] + "</b></td>" + H.map(function (h) { return "<td>" + sd(D[k][h]) + "</td>"; }).join("") + "</tr>"; });
+    rows.push("<tr><td>Rest of captured names (RS / momentum)</td>" + H.map(function (h) { return "<td>" + sd(D.restRs[h]) + '<div class="r6-dim">' + (D.restMom[h].status === "ok" ? pc(D.restMom[h].mdm, 1) : ID) + "</div></td>"; }).join("") + "</tr>");
+    var pk = tbl(["Screen / pack", "5d vs SPY", "10d", "20d", "20d vs captured universe", "Obs at 20d"], D.packs.map(function (r) { var f = function (x) { return typeof x === "number" ? '<span class="' + cls(x) + '">' + pc(x, 2) + "</span>" : '<span class=r6-dim>' + ID + "</span>"; }; return "<tr><td>" + esc(r.pack) + "</td><td>" + f(r.d5) + "</td><td>" + f(r.d10) + "</td><td>" + f(r.d20) + "</td><td>" + f(r.rel20) + "</td><td class=n>" + (r.n20 != null ? r.n20 : ID) + "</td></tr>"; }));
+    var lq = Object.keys(D.liquidity).map(function (k) { var v = D.liquidity[k]; return "<tr><td>" + esc(k) + "</td><td>" + sd(v["5d"]) + "</td><td>" + sd(v["20d"]) + "</td></tr>"; }).join("");
+    return '<div class="e-card"><h3 style="margin-top:0">Per-screen edge decay and capacity ' + chip("live", "ok") + '</h3><p class="r6-note">Scout edge_decay.json · generated ' + esc(D.generated) + ". " + esc(D.availability || "") + "</p>"
+      + "<h4>Mean excess return vs SPY by holding horizon (mean of date means ± standard error across dates)</h4>" + tbl(["Cohort"].concat(H), rows)
+      + '<p class="r6-note"><b>Live point-in-time result:</b> RS leaders ' + sd(D.rs["20d"]) + " and 12-1 momentum " + sd(D.mom["20d"]) + " at 20 trading days: this is the survivorship-free read of the same rules that look excellent in the 15-year survivor backtest (see Backtests tab).</p>"
+      + "<h4>By screen (mean of date means, excess vs SPY)</h4>" + pk + "<h4>By liquidity tercile (all packs)</h4>" + tbl(["Tercile", "5d", "20d"], [lq]).replace("<tbody><tr>", "<tbody><tr>") 
+      + '<ul class=r6-note>' + (D.caveats || []).map(function (c) { return "<li>" + esc(c) + "</li>"; }).join("") + "</ul></div>";
+  }
+  function dilution(D) {
+    var cnt = Object.keys(D.categories || {}).map(function (k) { return esc(k) + ": " + D.categories[k]; }).join(" · ");
+    function row(r) {
+      var y = r.yoyStatus === "ok" ? '<span class="' + (r.yoy >= 10 ? "r6-fail" : "") + '">' + pc(r.yoy, 1) + "</span>" : '<span class=r6-dim>' + esc(r.yoyStatus.indexOf("data error") === 0 ? "data error, excluded" : r.yoyStatus) + "</span>";
+      var f = typeof r.flag === "string" ? chip("none in 90d", "ok") : (r.flag || []).map(function (x) { return chip(x, "bad"); }).join("");
+      var fl = (r.filings || []).map(function (x) { return '<div class="r6-dim"><a href="' + esc(x.url) + '" target="_blank" rel="noopener">' + esc(x.form) + " " + esc(x.date) + "</a> " + esc(x.basis || "") + (x.txt && x.txt.length ? " · text: " + x.txt.map(esc).join(", ") : "") + "</div>"; }).join("");
+      return "<tr" + (r.holding ? ' class="hold"' : "") + "><td>" + tk(r.t) + (r.holding ? " " + chip("holding", "sc") : "") + '<div class="r6-dim">' + esc(r.entity || "") + "</div></td><td>" + f + fl + "</td><td class=n>" + y + '</td><td class=n>' + (r.tv != null ? pc(r.tv, 1) : ID) + "</td></tr>";
+    }
+    var H = ["Ticker", "Offering / debt filings, last 90 days", "Shares YoY (Yahoo)", "TradingView share change"];
+    return '<div class="e-card"><h3 style="margin-top:0">Dilution / corporate-action tape ' + chip("live", "ok") + '</h3><p class="r6-note">Scout dilution_tape.json · generated ' + esc(D.generated) + " · " + D.checked + " tickers checked, " + D.anyFlag + " with a flag in the last 90 days · holdings flagged: " + ((D.holdingsFlagged || []).length ? D.holdingsFlagged.join(", ") : "none") + "</p>"
+      + '<p class="r6-note">' + cnt + "</p><h4>Holdings and top setups</h4>" + tbl(H, D.focus.map(row))
+      + "<details class=e-d><summary>Other flagged names (top " + D.flagged.length + " of " + D.flaggedTotal + ")</summary>" + tbl(H, D.flagged.map(row)) + "</details>"
+      + '<p class="r6-note"><b>Share-count data errors:</b> ' + D.dataErrorN + " tickers showed a one-year share-count change above +100% or below -50% in the free feed (splits or unit changes) and are excluded from any dilution reading. Largest plausible increases (10-100%): " + (D.dilutiveShares || []).map(function (x) { return esc(x[0]) + " " + pc(x[1], 0); }).join(", ") + ".</p>"
+      + '<ul class=r6-note>' + (D.caveats || []).map(function (c) { return "<li>" + esc(c) + "</li>"; }).join("") + "</ul></div>";
+  }
   function scout() {
     var S = SO.sources, hd = S.holdings_drift, pt = S.pack_turnover, rb = S.replacement_bar, out = "";
     if (hd.present) {
@@ -210,15 +238,14 @@
         + "<h4>By pack</h4>" + tbl(["Pack", "Pairs", "Avg turnover", "5d exited − stayed", "20d exited − stayed"], pt.byPack.map(function (r) { return "<tr><td>" + esc(r.pack) + "</td><td class=n>" + r.pairs + "</td><td class=n>" + nn(r.turnover, 0) + "%</td><td>" + sm(r.diff5) + "</td><td>" + sm(r.diff20) + "</td></tr>"; }))
         + '<ul class=r6-note>' + (pt.caveats || []).map(function (c) { return "<li>" + esc(c) + "</li>"; }).join("") + "</ul></div>";
     } else out += waiting(pt, "Pack turnover");
-    out += S.exit_reason.present ? genericBlock(S.exit_reason) : waiting(S.exit_reason, S.exit_reason.label + " (separate script)");
     if (rb.present) {
       out += '<div class="e-card"><h3 style="margin-top:0">2x replacement-bar scorer ' + chip("live", "ok") + '</h3><p class="r6-note">' + esc(rb.rule || "") + " · generated " + esc(rb.generated) + "</p>"
         + tbl(["Holding", "Fwd revenue growth", "Fwd EPS growth", "Q (ROIC×FCF margin)", "2x bar (rev / Q)", "Strict verdict", "Relaxed (revenue only)", "Nearest misses"], rb.holdings.map(function (h) { var m = h.metrics || {}, b = h.bar || {}; return "<tr><td>" + tk(h.t) + '<div class="r6-dim">composite ' + nn(h.composite, 0) + "</div></td><td class=n>" + nn(m.fwd_rev_growth_pct, 0) + "%</td><td class=n>" + (m.fwd_eps_growth_pct != null ? nn(m.fwd_eps_growth_pct, 0) + "%" : ID) + "</td><td class=n>" + nn(m.Q_geomean, 1) + "</td><td class=n>" + nn(b.fwd_rev_growth_2x_threshold_pct, 0) + "% / " + nn(b.Q_2x_threshold, 0) + "</td><td>" + chip(h.strict || ID, /none/.test(h.strict || "") ? "sc" : "ok") + "</td><td>" + chip(h.relaxed || ID, /none/.test(h.relaxed || "") ? "sc" : "ok") + '</td><td class="r6-note">' + (h.near || []).slice(0, 3).map(function (n) { return esc(n.ticker) + " (" + esc((n.ratios_vs_holding || {}).fwd_rev_growth_x) + "x growth, " + esc((n.ratios_vs_holding || {}).Q_x) + "x Q)"; }).join(" · ") + "</td></tr>"; }))
         + '<p class="r6-note">Inputs missing (' + ID + ", never imputed): " + Object.keys(rb.missing || {}).map(function (k) { return esc(k) + " " + rb.missing[k]; }).join(", ") + '.</p><ul class=r6-note>' + (rb.caveats || []).map(function (c) { return "<li>" + esc(c) + "</li>"; }).join("") + "</ul></div>";
     } else out += waiting(rb, "2x replacement-bar scorer");
-    out += S.dilution_tape.present ? genericBlock(S.dilution_tape) : waiting(S.dilution_tape, S.dilution_tape.label);
-    out += S.edge_decay.present ? genericBlock(S.edge_decay) : waiting(S.edge_decay, S.edge_decay.label);
-    return head("scout", "Thesis Scout's analytics scripts, summarised here read-only. Live now: holdings drift, pack turnover / exit reasons, replacement bar. Dilution tape, per-screen decay and a separate exit-reason report are wired in as hooks and appear when their JSON exists.", SO) + out;
+    out += S.dilution_tape.present ? dilution(S.dilution_tape) : waiting(S.dilution_tape, S.dilution_tape.label);
+    out += S.edge_decay.present ? decay(S.edge_decay) : waiting(S.edge_decay, S.edge_decay.label);
+    return head("scout", "Thesis Scout's analytics scripts, summarised here read-only. All five scripts are live: exit-reason analysis and pack turnover, holdings drift, 2x replacement bar, dilution tape and per-screen decay.", SO) + out;
   }
   /* ---------- point-in-time validation (appended to Quant > Backtests) ---------- */
   function pitSection() {
@@ -229,8 +256,9 @@
       return order.map(function (h) { var x = R[h]; return "<tr><td><b>" + (r === "S3" ? "S3 RS leaders" : "12-1 momentum, top quintile") + "</b></td><td>" + h + " trading days</td><td>" + cell(x.pit.exSpy[r]) + "</td><td>" + cell((x.pitInSurvivor.exSpy || {})[r]) + "</td><td>" + cell(x.survivor.exSpy[r]) + "</td><td>" + cell(x.pit.exUniv[r]) + "</td></tr>"; }).join("");
     }).join("");
     var lr = PT.longRunSurvivor || {}, lrr = ["S3", "MOM", "UNIVERSE_EW", "SPY"].filter(function (k) { return lr[k]; }).map(function (k) { var a = lr[k].inSample || {}, o = lr[k].oos || {}; return "<tr><td>" + esc((lr[k].label || k).split(" (")[0]) + "</td><td class=n>" + nn(a.cagr) + "%</td><td class=n>" + nn(a.sharpe, 2) + "</td><td class=n>" + (o.cagr != null ? nn(o.cagr) + "%" : ID) + "</td><td class=n>" + (o.sharpe != null ? nn(o.sharpe, 2) : ID) + "</td></tr>"; }).join("");
-    var c = PT.captures;
-    return "<h3>Point-in-time validation (S3 and 12-1 momentum)</h3>"
+    var c = PT.captures, lv = window.SCOUT && window.SCOUT.livePit;
+    var liveBox = lv && lv.present ? '<div class="r6-box"><b>Live point-in-time deciles (Thesis Scout, edge_decay.json):</b> within names that actually appeared in Finviz captures, the top decile of 6-month return (RS leaders) returned ' + sd(lv.rs["20d"]) + " versus SPY over 20 trading days, and the top decile of 12-1 momentum returned " + sd(lv.mom["20d"]) + " (5 days: RS " + sd(lv.rs["5d"]) + ", momentum " + sd(lv.mom["5d"]) + "). Compare with the 15-year survivor backtest above (S3 CAGR 40%, 12-1 momentum 30%): the survivorship-free live read is the opposite sign so far, over a window of about 7 weeks with heavily overlapping cohorts.</div>" : "";
+    return "<h3>Point-in-time validation (S3 and 12-1 momentum)</h3>" + liveBox
       + '<div class="r6-box" style="border-color:#c55"><b>Survivorship bias, labelled.</b> The 15-year backtests above rank today\'s 298 scored names, which are survivors and winners. The table below applies the same two rules inside the universe of names that were actually in the Finviz captures on each date since ' + esc(c.first) + " (" + c.count + " capture dates, " + c.tickersUnion + " tickers, " + c.missingTradingDays.length + " trading days with no capture: " + esc(c.missingTradingDays.join(", ")) + "). It is point-in-time for membership, but only about two months long, so read it as a sanity check on the bias, not as proof.</div>"
       + "<div class=r6-tbl-wrap><table class=r6-tbl><thead><tr><th>Rule</th><th>Forward window</th><th>Point-in-time Finviz universe<div class=r6-dim>mean excess vs SPY, 90% interval</div></th><th>Point-in-time ∩ today's survivors</th><th>Survivor universe (same dates)</th><th>Point-in-time vs its own universe</th></tr></thead><tbody>" + rows + "</tbody></table></div>"
       + '<p class="r6-note">Matured outcomes: 5-day windows for ' + PT.matured["5"].dates + " capture dates (to " + esc(PT.matured["5"].last) + "), 20-day for " + PT.matured["20"].dates + " (to " + esc(PT.matured["20"].last) + "). Consecutive dates overlap heavily, so intervals are block-bootstrapped and still understate the uncertainty.</p>"
@@ -238,6 +266,12 @@
       + '<details class="e-d"><summary>Method and limits of the point-in-time test</summary><p class="r6-note">' + esc(PT.method) + "</p><ul class=r6-note>" + PT.limitations.map(function (l) { return "<li>" + esc(l) + "</li>"; }).join("") + "</ul></details>";
   }
   /* ---------- game plan block ---------- */
+  function concLine() {
+    try {
+      var c = window.SCOUT.sources.holdings_drift.concentration, a = c.as_of_nov11, m = c.marked_to_latest_close;
+      return "<li><b>Semiconductor concentration:</b> " + chip(nn(a.semiconductors_pct_of_known, 1) + "% of known dollars", "warn") + " (MU + CRDO, $" + Math.round(a.semiconductors_usd / 1000) + "k of $" + Math.round(a.total_known_usd / 1000) + "k known as of Nov 11; " + nn(m.semiconductors_pct_of_known, 1) + "% marked to the latest close). SEZL size is " + ID + " and excluded; PLTR trades in the same AI-capex theme (60-day correlation with MU " + nn(c.corr_60d_daily_returns.MU.PLTR, 2) + ", CRDO " + nn(c.corr_60d_daily_returns.CRDO.PLTR, 2) + "). Source: Thesis Scout holdings drift.</li>";
+    } catch (e) { return ""; }
+  }
   function gameplanExtra() {
     try {
       if (!EV || !E) return "";
@@ -247,7 +281,7 @@
       var bp = hold.filter(function (t) { return E.beat.current[t]; }).map(function (t) { var b = E.beat.current[t]["63"]; return tk(t) + " " + pp(b[0], 1) + " (" + pp(b[1]) + "–" + pp(b[2]) + ")"; }).join(" · ");
       var sbd = window.PLAN && window.PLAN.scoreboard;
       out += "<h4>Edge signals <a class=\"r6-dim\" href=\"#/earnfc\" style=\"font-weight:400;font-size:12px\">earnings forecaster</a> · <a class=\"r6-dim\" href=\"#/supply\" style=\"font-weight:400;font-size:12px\">supply chain</a> · <a class=\"r6-dim\" href=\"#/beat\" style=\"font-weight:400;font-size:12px\">beat-SPY</a> · <a class=\"r6-dim\" href=\"#/score\" style=\"font-weight:400;font-size:12px\">scoreboard</a></h4><ul class=\"r6-note\" style=\"margin-top:0\">"
-        + (er ? "<li><b>Earnings, holdings:</b> " + er + "</li>" : "") + (kn ? "<li><b>Knock-on:</b> " + kn + "</li>" : "<li><b>Knock-on:</b> no mapped source reports near today.</li>")
+        + concLine() + (er ? "<li><b>Earnings, holdings:</b> " + er + "</li>" : "") + (kn ? "<li><b>Knock-on:</b> " + kn + "</li>" : "<li><b>Knock-on:</b> no mapped source reports near today.</li>")
         + "<li><b>Beat-SPY, 3 months</b> " + chip("model estimate", "warn") + " (no demonstrated skill out-of-sample): " + bp + "</li>"
         + "<li><b>ML ensemble:</b> " + (E.ml.survived ? "kept" : "retired") + " (" + E.ml.variantsTried + " variants tried). <b>Scoreboard:</b> " + (sbd ? (sbd.downweighted.length ? sbd.downweighted.length + " family(ies) downweighted" : "no family downweighted yet") + ", " + sbd.insufficient + " of " + sbd.families + " still " + ID : ID) + ".</li></ul>";
       return out;
