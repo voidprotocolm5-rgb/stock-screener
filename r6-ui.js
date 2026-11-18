@@ -165,11 +165,11 @@
       + '<p class="r6-note"><b>Method:</b> ' + esc(O.method) + ' Raw log: <a href="options-grades.json">options-grades.json</a>.</p>';
   }
   /* ---------- holdings extras ---------- */
-  function holdingsExtra() {
+  function holdingsExtra(only) {
     if (!R) return "";
     css();
     var links = '<div class="r6-hl">' + VIEWS.map(function (v) { return '<a href="#/' + v + '">' + TITLES[v] + "</a>"; }).join("") + "</div>";
-    var cards = R.cards.map(function (c) {
+    var cards = R.cards.filter(function (c) { var gr = (c.books || [])[0] === "Graduated"; return only === "grad" ? gr : !gr; }).map(function (c) {
       var g = c.gate, z = (c.zones || []).map(function (q) { return esc(q.label) + " $" + q.lo + (q.hi !== q.lo ? "–" + q.hi : ""); }).join(" · ");
       var cur = (c.targets.curated || []).map(function (x) { return esc(x.who) + " (" + esc(x.date) + "): " + esc(x.text); }).join("; ");
       return '<article class="r6-card"><h3>' + tk(c.t) + " · " + esc(c.name) + " " + badges(c.t) + " " + dl(c.t) + '</h3><p class="r6-note">' + esc(c.books.join(" + ")) + " · close " + money(c.close) + " as of " + esc(c.asOf || "") + '</p><div class="r6-hc"><img loading="lazy" src="' + esc(c.img) + '?v=' + esc(R.generatedAt.replace(/\D/g, "")) + '" alt="' + esc(c.t) + ' chart with 50 and 200 day averages, add zones and targets">'
@@ -178,6 +178,7 @@
         + (z ? "<p><b>Add zones:</b> " + z + "</p>" : "") + "<p><b>Earnings:</b> " + (c.earnings.next ? esc(c.earnings.next) + (c.earnings.timing ? " " + esc(c.earnings.timing) : "") + (c.earnings.estimate ? " (estimate)" : "") : "n/a") + "</p>"
         + (cur ? "<p><b>Analyst note:</b> " + cur + "</p>" : "") + '<b class="r6-pass">Bull case</b><ul>' + c.bull.map(function (b) { return "<li>" + esc(b) + "</li>"; }).join("") + '</ul><b class="r6-fail">Bear case</b><ul>' + c.bear.map(function (b) { return "<li>" + esc(b) + "</li>"; }).join("") + "</ul></div></div></article>";
     }).join("");
+    if (only === "grad") return cards;
     return '<section class="nx-sec"><div class="nx-sec-head"><h3>Research tools</h3></div>' + links + '</section><section class="nx-sec"><div class="nx-sec-head"><h3>Holding cards <span class="nx-count">rebuilt on every refresh</span></h3><p class="nx-dim">Charts use real daily closes; bull and bear points come from today\'s files and cited analyst notes only.</p></div>' + cards + "</section>";
   }
   /* ---------- coverage ---------- */

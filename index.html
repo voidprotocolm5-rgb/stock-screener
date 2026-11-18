@@ -29,11 +29,14 @@
   <script src="additive-packs.js?v=41"></script>
   <script src="pack-screener-urls.js?v=41"></script>
   <script src="profiles.js?v=41"></script>
-  <script src="options-picks.js?v=202611172139"></script>
+  <script src="options-picks.js?v=202611172218"></script>
   <script src="research6.js?v=202611172204"></script>
   <script src="r6-ui.js?v=202611172204"></script>
   <script src="quant.js?v=202611172158"></script>
   <script src="quant-ui.js?v=202611172158"></script>
+  <script src="plan.js?v=202611172211"></script>
+  <script src="optbt.js?v=202611172211"></script>
+  <script src="plan-ui.js?v=202611172211"></script>
 </head>
 <body>
   <div class="shell">
@@ -52,6 +55,8 @@
         <button class="ghost-button icon-btn" id="refresh-btn" type="button" title="Reload page" aria-label="Reload page">↻</button>
       </div>
     </header>
+
+    <section id="gameplan-root" aria-label="Morning game plan"></section>
 
     <div class="nav-wrap" id="nav-wrap">
       <nav class="view-nav primary-nav" aria-label="Primary">
@@ -84,7 +89,14 @@
         <button type="button" class="view-tab sub-tab" data-view="qportfolio" id="tab-qportfolio">Quant: portfolio &amp; MC</button>
         <button type="button" class="view-tab sub-tab" data-view="qpead" id="tab-qpead">Quant: earnings drift</button>
         <button type="button" class="view-tab sub-tab" data-view="qalt" id="tab-qalt">Quant: alt-data</button>
+        <button type="button" class="view-tab sub-tab" data-view="graduated" id="tab-graduated">Graduated list</button>
+        <button type="button" class="view-tab sub-tab" data-view="optbt" id="tab-optbt">Options backtest (modeled)</button>
+        <button type="button" class="view-tab sub-tab" data-view="valuation" id="tab-valuation">Valuation check</button>
       </div>
+    </div>
+
+    <div id="view-plan" class="view-panel" hidden>
+      <section id="plan-root" class="nx-root" aria-label="Plan tools"></section>
     </div>
 
     <div id="view-quant" class="view-panel" hidden>
@@ -470,6 +482,6 @@
   </div>
 
   <script src="https://unpkg.com/lightweight-charts@4.2.1/dist/lightweight-charts.standalone.production.js"></script>
-  <script src="app.js?v=44"></script>
+  <script src="app.js?v=45"></script>
 </body>
 </html>
