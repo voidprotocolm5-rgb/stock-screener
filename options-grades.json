@@ -1616,8 +1616,54 @@
     "underlying": 183.39,
     "trigger": null
    }
+  },
+  {
+   "id": "2026-11-17|COIN|put|COIN Dec 18 '26 $125 P / Dec 18 '26 $120 P",
+   "date": "2026-11-17",
+   "t": "COIN",
+   "name": "Coinbase Global, Inc. Class A",
+   "side": "put",
+   "contract": "COIN Dec 18 '26 $125 P / Dec 18 '26 $120 P",
+   "structure": "debit spread",
+   "setup": "Failed bounce at the 3-day high or breakdown (B3)",
+   "setupType": "Failed bounce or breakdown",
+   "entryUnderlying": 119.84,
+   "entryPremium": 2.82,
+   "cost": 282,
+   "quoteTime": "2026-11-17T22:17-06:00",
+   "legs": [
+    {
+     "sym": "COIN261218P00125000",
+     "action": "buy",
+     "exp": "2026-12-18",
+     "strike": 125.0,
+     "entryMid": 15.35
+    },
+    {
+     "sym": "COIN261218P00120000",
+     "action": "sell",
+     "exp": "2026-12-18",
+     "strike": 120.0,
+     "entryMid": 12.53
+    }
+   ],
+   "stopLevel": 135.6,
+   "target": 114.11,
+   "stopPct": -35,
+   "tp1Pct": 35,
+   "exitBy": "2026-11-27",
+   "score": 24,
+   "marks": [],
+   "status": "open",
+   "final": null,
+   "last": {
+    "date": "2026-11-17",
+    "retPct": null,
+    "underlying": 115.02,
+    "trigger": null
+   }
   }
  ],
- "updatedAt": "2026-11-17T22:04:55-06:00",
+ "updatedAt": "2026-11-17T22:18:08-06:00",
  "dataAsOf": "2026-11-17"
 }
