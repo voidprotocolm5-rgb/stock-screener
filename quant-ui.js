@@ -21,7 +21,7 @@
   function chip(t, k) { return '<span class="r6-chip ' + (k || "") + '">' + esc(t) + "</span>"; }
   function nav(view) { return '<nav class="r6-nav">' + VIEWS.map(function (v) { return '<a href="#/' + v + '" class="' + (v === view ? "on" : "") + '">' + TITLES[v] + "</a>"; }).join("") + "</nav>"; }
   function head(view, lead) {
-    return nav(view) + '<header class="r6-head"><p class="eyebrow">Research only · no trades · data as of ' + esc(Q.dataAsOf) + " · built " + esc(Q.generatedAt.replace("T", " ").slice(0, 16)) + ' Central</p><h2>' + TITLES[view] + '</h2><p class="r6-lead">' + lead + "</p></header>";
+    return nav(view) + '<header class="r6-head"><p class="eyebrow">Research only · no trades · data as of ' + esc(Q.dataAsOfLabel || Q.dataAsOf) + " · built " + esc(Q.generatedAt.replace("T", " ").slice(0, 16)) + ' Central</p><h2>' + TITLES[view] + '</h2><p class="r6-lead">' + lead + "</p></header>";
   }
   function heat(v) { if (v == null) return '<td class="q-heat r6-dim">–</td>'; var a = Math.abs(v - 50) / 50 * 0.45; var c = v >= 50 ? "46,160,110" : "220,80,90"; return '<td class="q-heat" style="background:rgba(' + c + "," + a.toFixed(2) + ')">' + v + "</td>"; }
   function limits() { return '<details class="q-d"><summary>Limitations (read before trusting any number here)</summary><ul class="r6-note">' + Q.limitations.map(function (l) { return "<li>" + esc(l) + "</li>"; }).join("") + "</ul></details>"; }

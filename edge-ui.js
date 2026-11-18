@@ -23,10 +23,10 @@
   function tk(t) { return '<a href="#/stock/' + encodeURIComponent(t) + '"><b>' + esc(t) + "</b></a>"; }
   function chip(t, k, title) { return '<span class="r6-chip ' + (k || "") + '"' + (title ? ' title="' + esc(title) + '"' : "") + ">" + esc(t) + "</span>"; }
   function nav(view) { return '<nav class="r6-nav">' + VIEWS.concat(EXTORDER).map(function (v) { return '<a href="#/' + v + '" class="' + (v === view ? "on" : "") + '">' + TITLES[v] + "</a>"; }).join("") + "</nav>"; }
-  function asof(v) { return (window[v] && window[v].dataAsOf) || (window[v] && window[v].generatedAt && window[v].generatedAt.slice(0, 10)) || ""; }
+  function asof(v) { var d = window[v]; return (d && (d.dataAsOfLabel || d.dataAsOf)) || (d && d.generatedAt && d.generatedAt.slice(0, 10)) || ""; }
   function head(view, lead, d) {
     var g = (d && d.generatedAt) || "";
-    return nav(view) + '<header class="r6-head"><p class="eyebrow">Research only · no trades · data as of ' + esc((d && (d.dataAsOf || (d.generatedAt || "").slice(0, 10))) || "") + " · built " + esc(g.replace("T", " ").slice(0, 16)) + ' Central</p><h2>' + TITLES[view] + '</h2><p class="r6-lead">' + lead + "</p></header>";
+    return nav(view) + '<header class="r6-head"><p class="eyebrow">Research only · no trades · data as of ' + esc((d && (d.dataAsOfLabel || d.dataAsOf || (d.generatedAt || "").slice(0, 10))) || "") + " · built " + esc(g.replace("T", " ").slice(0, 16)) + ' Central</p><h2>' + TITLES[view] + '</h2><p class="r6-lead">' + lead + "</p></header>";
   }
   function lims(arr, title) { return '<details class="e-d"><summary>' + (title || "Limitations (read before trusting any number here)") + '</summary><ul class="r6-note">' + (arr || []).map(function (l) { return "<li>" + esc(l) + "</li>"; }).join("") + "</ul></details>"; }
   function probBar(p, lo, hi) {

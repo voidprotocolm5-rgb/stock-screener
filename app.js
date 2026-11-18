@@ -1131,14 +1131,28 @@ window.OPT_RULES = {"built": "2026-11-13", "options": [{"id": "A1", "sec": "(a) 
     try {
       const d = new Date(iso);
       if (Number.isNaN(d.getTime())) return iso;
-      return d.toLocaleString("en-US", {
+      const parts = d.toLocaleString("en-US", {
         timeZone: "America/Chicago",
+        year: "numeric",
         month: "short",
         day: "numeric",
         hour: "numeric",
         minute: "2-digit",
         hour12: true,
-      }) + " CT";
+        weekday: "short",
+        hourCycle: "h12",
+      });
+      // "Wed, Nov 18, 2026, 9:11 AM"
+      const ct = new Date(d.toLocaleString("en-US", { timeZone: "America/Chicago" }));
+      const day = new Intl.DateTimeFormat("en-US", { timeZone: "America/Chicago", weekday: "short", month: "short", day: "numeric", year: "numeric", hour: "numeric", minute: "2-digit", hour12: true }).format(d);
+      // Detect regular-session hours in Chicago (8:30–3:00)
+      const hm = new Intl.DateTimeFormat("en-US", { timeZone: "America/Chicago", hour: "2-digit", minute: "2-digit", hour12: false }).format(d);
+      const [hh, mm] = hm.split(":").map(Number);
+      const mins = hh * 60 + mm;
+      const dow = new Intl.DateTimeFormat("en-US", { timeZone: "America/Chicago", weekday: "short" }).format(d);
+      const isRTH = !["Sat", "Sun"].includes(dow) && mins >= 8 * 60 + 30 && mins < 15 * 60;
+      const dateBit = new Intl.DateTimeFormat("en-US", { timeZone: "America/Chicago", month: "short", day: "numeric", year: "numeric", hour: "numeric", minute: "2-digit", hour12: true }).format(d);
+      return dateBit + " CT" + (isRTH ? " (intraday)" : "");
     } catch {
       return iso;
     }

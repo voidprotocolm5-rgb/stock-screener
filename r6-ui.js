@@ -37,7 +37,7 @@
     return '<nav class="r6-nav">' + VIEWS.map(function (v) { return '<a href="#/' + v + '" class="' + (v === view ? "on" : "") + '">' + TITLES[v] + "</a>"; }).join("") + "</nav>";
   }
   function head(view, lead) {
-    return '<header class="r6-head"><p class="eyebrow">Research only · data as of ' + esc(R.dataAsOf) + " · built " + esc(R.generatedAt.replace("T", " ").slice(0, 16)) + ' Central</p><h2>' + TITLES[view] + '</h2><p class="r6-lead">' + lead + "</p></header>" + subnav(view);
+    return '<header class="r6-head"><p class="eyebrow">Research only · data as of ' + esc(R.dataAsOfLabel || R.dataAsOf) + " · built " + esc(R.generatedAt.replace("T", " ").slice(0, 16)) + ' Central</p><h2>' + TITLES[view] + '</h2><p class="r6-lead">' + lead + "</p></header>" + subnav(view);
   }
   /* ---------- distance to pass ---------- */
   var dState = { q: "", f: "all", flash: null };
@@ -67,7 +67,7 @@
     }
     var pass = rows.filter(function (x) { return x.pass_; }).length;
     return head("distance", "For every holding and every scored name: the price it must close above to clear <b>both</b> the 50-day and 200-day averages (the higher of the two), how far away that is, RSI against the 70 cap, the combined score against 70, and which gates fail. Holdings are pinned at the top. The averages move every day, so the needed price drifts.")
-      + '<div class="r6-box"><b>' + pass + " of " + rows.length + "</b> names pass every gate today (RSI ≤ 70, above both averages, not a broken chart, score ≥ 70). Gate math uses daily closes through " + esc(R.dataAsOf) + ".</div>"
+      + '<div class="r6-box"><b>' + pass + " of " + rows.length + "</b> names pass every gate today (RSI ≤ 70, above both averages, not a broken chart, score ≥ 70). Gate math uses the latest daily bar as of " + esc(R.dataAsOfLabel || R.dataAsOf) + ". Today's bar is the live/intraday print, not the official close, until the session ends.</div>"
       + '<div class="r6-bar"><input id="r6-q" placeholder="Search ticker or name" value="' + esc(dState.q) + '"><select id="r6-f"><option value="all">All names</option><option value="pass">Passing all gates</option><option value="near">Within 10% and ≤ 2 gates failing</option><option value="screen">Matching a new screen</option><option value="tilt">In a leading sector</option></select><span class="r6-dim">' + shown.length + " rows</span></div>"
       + '<div class="r6-tbl-wrap"><table class="r6-tbl"><thead><tr><th>Ticker</th><th>Sector</th><th class=n>Close</th><th class=n>Price needed</th><th class=n>Away</th><th class=n>RSI</th><th class=n>Score</th><th>Gates failing</th><th>Screens</th></tr></thead><tbody>' + shown.map(row).join("") + "</tbody></table></div>"
       + '<p class="r6-note">Price needed = max(50-day, 200-day). "Clear" means the close is already above both. A name can still fail on RSI, a broken chart or the score, so check the gate chips. S1–S6 are the six new screens; "near" means one criterion short.</p>'
@@ -174,7 +174,7 @@
     var cards = R.cards.filter(function (c) { var gr = (c.books || [])[0] === "Graduated"; return only === "grad" ? gr : !gr; }).map(function (c) {
       var g = c.gate, z = (c.zones || []).map(function (q) { return esc(q.label) + " $" + q.lo + (q.hi !== q.lo ? "–" + q.hi : ""); }).join(" · ");
       var cur = (c.targets.curated || []).map(function (x) { return esc(x.who) + " (" + esc(x.date) + "): " + esc(x.text); }).join("; ");
-      return '<article class="r6-card"><h3>' + tk(c.t) + " · " + esc(c.name) + " " + badges(c.t) + " " + dl(c.t) + '</h3><p class="r6-note">' + esc(c.books.join(" + ")) + " · close " + money(c.close) + " as of " + esc(c.asOf || "") + '</p><div class="r6-hc"><img loading="lazy" src="' + esc(c.img) + '?v=' + esc(R.generatedAt.replace(/\D/g, "")) + '" alt="' + esc(c.t) + ' chart with 50 and 200 day averages, add zones and targets">'
+      return '<article class="r6-card"><h3>' + tk(c.t) + " · " + esc(c.name) + " " + badges(c.t) + " " + dl(c.t) + '</h3><p class="r6-note">' + esc(c.books.join(" + ")) + " · close " + money(c.close) + " as of " + esc(c.asOfLabel || R.dataAsOfLabel || c.asOf || "") + '</p><div class="r6-hc"><img loading="lazy" src="' + esc(c.img) + '?v=' + esc(R.generatedAt.replace(/\D/g, "")) + '" alt="' + esc(c.t) + ' chart with 50 and 200 day averages, add zones and targets">'
         + '<div><p><b>Gate status:</b> ' + (g.pass_ ? '<span class="r6-pass">passes every gate</span>' : '<span class="r6-fail">fails: ' + esc((g.fails || []).join(", ")) + "</span>") + "</p>"
         + "<p><b>Levels:</b> 50-day " + money(g.sma50) + " · 200-day " + money(g.sma200) + (g.needPx && g.awayPct ? " · needs " + money(g.needPx) + " (+" + g.awayPct.toFixed(0) + "%)" : "") + " · RSI " + (g.rsi == null ? "insufficient data" : g.rsi) + " · score " + (g.score == null ? "insufficient data" : g.score) + "</p>"
         + (z ? "<p><b>Add zones:</b> " + z + "</p>" : "") + "<p><b>Earnings:</b> " + (c.earnings.next ? esc(c.earnings.next) + (c.earnings.timing ? " " + esc(c.earnings.timing) : "") + (c.earnings.estimate ? " (estimate)" : "") : "insufficient data") + "</p>"
