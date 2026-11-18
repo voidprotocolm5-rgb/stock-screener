@@ -2341,7 +2341,7 @@ window.OPT_RULES = {"built": "2026-11-13", "options": [{"id": "A1", "sec": "(a) 
 
     $("#market-angle").textContent = market.angle || "Lynch/GARP · TTF · TSM";
     $("#market-disclaimer").textContent = market.disclaimer || "";
-    $("#market-updated-at").textContent = fmtTime(market.updatedAt) + (market.stale ? ` · STALE: content from ${market.contentDate}` : "");
+    $("#market-updated-at").textContent = fmtTime(market.updatedAt) + " · briefing text from pre-open (~8:04 AM CT)" + (market.stale ? ` · STALE: content from ${market.contentDate}` : "");
     const itemCount = market.itemCount ?? market.sections.reduce((n, s) => n + (s.items || []).length, 0);
     const matchCount =
       market.matchedTickerCount ??

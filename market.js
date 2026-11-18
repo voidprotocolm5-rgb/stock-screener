@@ -2,8 +2,8 @@
 window.MARKET = {
   "updatedAt": "2026-11-18T09:14:08-06:00",
   "timezone": "America/Chicago",
-  "disclaimer": "Research organizer only — not investment advice. Headlines are cited from live sources at fetch time; never fabricated. Does not place trades or connect to a broker.",
-  "angle": "Wednesday premarket (Nov 18, ~8:04 AM CT): Nasdaq 100 futures +0.8% and S&P 500 futures +0.4% after Nvidia beat and raised its outlook · NVDA ~$160 (+3%) · VIX ~23.9 · 10-yr ~5.10% · QQQ still below its 50- and 200-day averages · MU +1.9%, CRDO +3.3%, SEZL +1.3% (thin), PLTR +0.7% vs Tuesday's close",
+  "disclaimer": "Research organizer only \u2014 not investment advice. Headlines are cited from live sources at fetch time; never fabricated. Does not place trades or connect to a broker.",
+  "angle": "Live session underway \u2014 board, scores and research use Nov 18 intraday prices. The briefing text below was written pre-open (quotes ~8:04 AM CT). Wednesday premarket (Nov 18, ~8:04 AM CT): Nasdaq 100 futures +0.8% and S&P 500 futures +0.4% after Nvidia beat and raised its outlook \u00b7 NVDA ~$160 (+3%) \u00b7 VIX ~23.9 \u00b7 10-yr ~5.10% \u00b7 QQQ still below its 50- and 200-day averages \u00b7 MU +1.9%, CRDO +3.3%, SEZL +1.3% (thin), PLTR +0.7% vs Tuesday's close",
   "watchlistTickerCount": 184,
   "sourceGaps": [
     {
@@ -171,7 +171,7 @@ window.MARKET = {
         {
           "id": "1118-mu",
           "title": "Micron closed Tuesday at $712.42 (-0.9%, day range well below the midday low near $667 seen in Tuesday's earlier briefing) and was about $725.80 in premarket at 8:03 AM CT, up about 1.9% from that close. It remains well below its 50-day (~$932) and 200-day (~$769) averages. No Nov 18 Micron company press release was found; the premarket bounce follows Nvidia's beat. Micron itself reports in late December (Dec 23).",
-          "whyItMatters": "MU is in both books. Tuesday's close sat at the top of the $700–$711 first-slice add zone, and the premarket print is above it; the stock is still a stand-aside only below $650, and it does not clear the moving-average gate.",
+          "whyItMatters": "MU is in both books. Tuesday's close sat at the top of the $700\u2013$711 first-slice add zone, and the premarket print is above it; the stock is still a stand-aside only below $650, and it does not clear the moving-average gate.",
           "source": {
             "name": "Yahoo Finance quotes (query1 v8 chart, includePrePost)",
             "url": "https://finance.yahoo.com/markets/live/stock-market-today-wednesday-november-18-dow-sp-500-nasdaq-nvidia-anthropic-ipo-090613569.html",
@@ -189,7 +189,7 @@ window.MARKET = {
         {
           "id": "1118-sezl",
           "title": "Sezzle closed Tuesday at $154.25 (-4.7%) and had a thin premarket print near $156.25 at 7:21 AM CT (only a couple of premarket bars). It remains above its 50-day (~$127) and 200-day (~$113) averages. No Nov 18 company press release was found; Sezzle's latest IR note, a Sezzle Up credit-reporting study, is dated Nov 16.",
-          "whyItMatters": "SEZL is the Book 1-only name. Tuesday's close is above the $148–$150 starter zone and below the $160–$178 do-not-chase band; the premarket bid is too thin to treat as a confirmed move.",
+          "whyItMatters": "SEZL is the Book 1-only name. Tuesday's close is above the $148\u2013$150 starter zone and below the $160\u2013$178 do-not-chase band; the premarket bid is too thin to treat as a confirmed move.",
           "source": {
             "name": "Yahoo Finance quotes; Sezzle IR (Nov 16, no Nov 18 release found)",
             "url": "https://sezzle.com/news/Sezzle-Up-Users-Without-a-Credit-Score-Had-One-Within-Four-Months/",
@@ -204,7 +204,7 @@ window.MARKET = {
         {
           "id": "1118-crdo-pltr",
           "title": "Credo closed Tuesday at $123.95 (+2.7%) and was about $128.00 in premarket at 8:03 AM CT, up about 3.3% from that close, still well below its 50-day (~$170) and 200-day (~$181) averages. No Nov 18 company press release was found; Monday's TD Cowen target cut to $175 from $300 (Buy maintained) remains the last noted analyst item. Palantir closed Tuesday at $156.56 (-2.4%) and was about $157.68 in premarket at 8:02 AM CT, below its 50-day (~$184) and a little above its 200-day (~$154). No Nov 18 Palantir company press release was found.",
-          "whyItMatters": "CRDO's premarket print is at the bottom of the $128–$131 light-starter zone and still well above the $111 second-add retest; it reports Dec 1 after the close. PLTR has no saved add zone.",
+          "whyItMatters": "CRDO's premarket print is at the bottom of the $128\u2013$131 light-starter zone and still well above the $111 second-add retest; it reports Dec 1 after the close. PLTR has no saved add zone.",
           "source": {
             "name": "Yahoo Finance quotes (query1 v8 chart, includePrePost)",
             "url": "https://finance.yahoo.com/markets/live/stock-market-today-wednesday-november-18-dow-sp-500-nasdaq-nvidia-anthropic-ipo-090613569.html",
