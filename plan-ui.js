@@ -6,9 +6,9 @@
   var VIEWS = ["graduated", "optbt", "valuation"];
   var TITLES = { graduated: "Graduated list", optbt: "Options strategy backtest", valuation: "Valuation check" };
   var esc = function (s) { return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]; }); };
-  var money = function (x) { return x == null ? "n/a" : "$" + Number(x).toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 }); };
-  var pc = function (x, d) { return x == null ? "n/a" : (x > 0 ? "+" : "") + Number(x).toFixed(d == null ? 1 : d) + "%"; };
-  var nn = function (x, d) { return x == null ? "n/a" : Number(x).toFixed(d == null ? 1 : d); };
+  var money = function (x) { return x == null ? "insufficient data" : "$" + Number(x).toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 }); };
+  var pc = function (x, d) { return x == null ? "insufficient data" : (x > 0 ? "+" : "") + Number(x).toFixed(d == null ? 1 : d) + "%"; };
+  var nn = function (x, d) { return x == null ? "insufficient data" : Number(x).toFixed(d == null ? 1 : d); };
   var cls = function (x) { return x == null ? "" : x >= 0 ? "r6-pass" : "r6-fail"; };
   function chip(t, k, title) { return '<span class="r6-chip ' + (k || "") + '"' + (title ? ' title="' + esc(title) + '"' : "") + ">" + esc(t) + "</span>"; }
   function tk(t) { return '<a href="#/stock/' + encodeURIComponent(t) + '"><b>' + esc(t) + "</b></a>"; }
@@ -23,7 +23,7 @@
   }
   /* ---------- game plan ---------- */
   function zoneChip(z) { var k = z.level === "in" ? "ok" : z.level === "near" ? "warn" : z.level === "avoid" ? "bad" : ""; var t = z.level === "in" ? "IN ZONE" : z.level === "near" ? "NEAR ZONE" : z.level === "avoid" ? "AVOID" : z.level === "none" ? "NO ZONE" : "WATCH"; return chip(t, k); }
-  function valChip(f) { var k = f === "big premium" ? "bad" : f === "rich on one measure" ? "warn" : f === "discount to peers" ? "ok" : ""; return chip(f || "n/a", k); }
+  function valChip(f) { var k = f === "big premium" ? "bad" : f === "rich on one measure" ? "warn" : f === "discount to peers" ? "ok" : ""; return chip(f || "insufficient data", k); }
   function trustChip(m) { var k = m.trust === "trusted" ? "ok" : (m.trust === "not trusted" ? "bad" : "warn"); return chip(m.id + (m.trust === "trusted" ? " ✓ trusted now" : m.trust === "not trusted" ? " · low trust now" : " · " + m.trust), k, "Historical trust in the current regime (see Quant: regime tab)"); }
   function gameplan() {
     if (!P) return "";
@@ -31,13 +31,13 @@
     var hold = P.holdings.map(function (h) {
       var g = h.gate, e = h.earnings;
       return "<tr><td>" + tk(h.t) + '<div class="r6-dim">' + esc((h.books || []).join(" + ")) + "</div></td><td class=n>" + money(h.close) + "</td><td>" + (g.pass_ ? chip("passes gate", "ok") : (g.fails || []).map(function (f) { return chip(f, "bad"); }).join("")) + '<div class="r6-dim">' + (g.pass_ ? "score " + g.score + " · RSI " + nn(g.rsi, 0) : (g.needPx ? "needs " + money(g.needPx) + " (+" + nn(g.awayPct, 0) + "% to clear the " + esc(g.binder || "") + ")" : "")) + "</div></td>"
-        + "<td>" + zoneChip(h.zone) + '<div class="r6-dim">' + esc(h.zone.text) + "</div></td><td>" + (e.next ? esc(e.next) + (e.days != null ? " (" + e.days + " trading days)" : "") + (e.within10 ? " " + chip("within 10 days", "warn") : "") : "n/a") + "</td><td>" + valChip(h.valuation && h.valuation.flag) + (h.alt.length ? '<div class="r6-dim">' + h.alt.map(esc).join(" · ") + "</div>" : "") + "</td></tr>";
+        + "<td>" + zoneChip(h.zone) + '<div class="r6-dim">' + esc(h.zone.text) + "</div></td><td>" + (e.next ? esc(e.next) + (e.days != null ? " (" + e.days + " trading days)" : "") + (e.within10 ? " " + chip("within 10 days", "warn") : "") : "insufficient data") + "</td><td>" + valChip(h.valuation && h.valuation.flag) + (h.alt.length ? '<div class="r6-dim">' + h.alt.map(esc).join(" · ") + "</div>" : "") + "</td></tr>";
     }).join("");
     var soon = P.earningsSoon.length ? P.earningsSoon.map(function (e) { return tk(e.t) + " " + esc(e.next) + " (" + e.days + " trading day" + (e.days === 1 ? "" : "s") + (e.timing ? ", " + esc(e.timing) : "") + (e.avgAbsMove ? ", avg move " + nn(e.avgAbsMove, 0) + "%" : "") + ")" + (e.holding ? " " + chip("holding", "sc") : "") + (e.estimate ? " " + chip("estimate", "") : ""); }).join(" · ") : "None for holdings, graduated names or the top setups.";
     var top = P.top3.map(function (s, i) {
       return '<div class="gp-card"><b>#' + (i + 1) + " " + tk(s.t) + "</b> " + chip("tier " + s.tier, s.tier === "A" ? "ok" : "sc") + (s.holding ? " " + chip("holding", "sc") : "") + (s.extended ? " " + chip("extended RSI", "warn") : "") + '<div class="r6-dim">' + esc((s.name || "").slice(0, 36)) + " · " + esc(s.sector || "") + " · " + money(s.close) + "</div><ul>" + s.why.map(function (w) { return "<li>" + esc(w) + "</li>"; }).join("") + "</ul>"
         + "<div>" + s.marks.filter(function (m) { return m.on; }).map(trustChip).join("") + "</div>"
-        + '<div class="r6-dim" style="margin-top:4px">Levels: 20-day ' + money(s.sma20) + " · 50-day " + money(s.sma50) + " · 200-day " + money(s.sma200) + " · RSI " + nn(s.rsi, 0) + " · score " + s.score + " · 12m risk rank #" + (s.riskRank || "n/a") + "</div>"
+        + '<div class="r6-dim" style="margin-top:4px">Levels: 20-day ' + money(s.sma20) + " · 50-day " + money(s.sma50) + " · 200-day " + money(s.sma200) + " · RSI " + nn(s.rsi, 0) + " · score " + s.score + " · 12m risk rank #" + (s.riskRank || "insufficient data") + "</div>"
         + '<div style="margin-top:4px">' + valChip(s.valFlag) + (s.earnings.next ? " " + chip("earnings " + s.earnings.next + (s.earnings.days != null ? " (" + s.earnings.days + "d)" : ""), s.nearEarnings ? "bad" : "") : "") + s.alt.map(function (b) { return chip(b, "ok"); }).join("") + s.altWarn.map(function (b) { return chip(b, "warn"); }).join("") + "</div></div>";
     }).join("");
     return '<details class="gp" id="gp-details" open><summary>Morning game plan <span class="r6-dim" style="font-weight:400">· data as of ' + esc(P.dataAsOf) + "</span> " + chip(rg.label.toUpperCase() + " " + rg.total + "/8", rk) + ' <span class="r6-dim" style="font-weight:400">VIX ' + nn(rg.vix, 1) + " · SPY " + nn(rg.spy, 0) + " vs 200-day " + nn(rg.spy200, 0) + "</span></summary>"
@@ -66,8 +66,8 @@
   function graduated() {
     var G = R.graduation, grad = G.graduated.map(function (x) { return "<tr><td>" + tk(x.t) + '<div class="r6-dim">' + esc((x.name || "").slice(0, 30)) + "</div></td><td>" + esc(x.sector || "") + "</td><td class=n>" + money(x.close) + "</td><td class=n>" + x.score + "</td><td class=n>" + nn(x.rsi, 0) + "</td><td>" + esc(x.since) + "</td><td class=n>" + x.streak + "</td></tr>"; }).join("");
     var cand = G.candidates.slice(0, 60).map(function (x) { return "<tr><td>" + tk(x.t) + '<div class="r6-dim">' + esc((x.name || "").slice(0, 30)) + "</div></td><td>" + esc(x.sector || "") + "</td><td class=n>" + money(x.close) + "</td><td class=n>" + x.score + "</td><td class=n>" + nn(x.rsi, 0) + "</td><td class=n><b>" + x.streak + "</b> of " + G.n + "</td><td>" + (x.needs ? x.needs + " more refresh day" + (x.needs === 1 ? "" : "s") : "ready") + "</td></tr>"; }).join("");
-    var dem = G.demotions.map(function (x) { return "<tr><td>" + tk(x.t) + "</td><td>" + esc(x.date) + "</td><td>" + esc(x.since) + "</td><td class=n>" + x.streakWas + "</td><td>" + ((x.fails || []).map(function (f) { return chip(f, "bad"); }).join("") || '<span class="r6-dim">n/a</span>') + "</td></tr>"; }).join("");
-    var rs = (G.resets || []).map(function (x) { return tk(x.t) + " (was " + x.prevStreak + ", now failing: " + esc((x.fails || []).join(", ") || "n/a") + ")"; }).join(" · ");
+    var dem = G.demotions.map(function (x) { return "<tr><td>" + tk(x.t) + "</td><td>" + esc(x.date) + "</td><td>" + esc(x.since) + "</td><td class=n>" + x.streakWas + "</td><td>" + ((x.fails || []).map(function (f) { return chip(f, "bad"); }).join("") || '<span class="r6-dim">insufficient data</span>') + "</td></tr>"; }).join("");
+    var rs = (G.resets || []).map(function (x) { return tk(x.t) + " (was " + x.prevStreak + ", now failing: " + esc((x.fails || []).join(", ") || "insufficient data") + ")"; }).join(" · ");
     var cards = window.R6UI ? window.R6UI.holdingsExtra("grad") : "";
     return head("graduated", "A name <b>graduates</b> after passing the <b>full gate</b> (score ≥ 70, RSI ≤ 70, above the 50- and 200-day, not broken) on " + G.n + " consecutive recorded refresh days. Graduated names get the same bull / bear / levels / chart card as holdings, and are demoted the first refresh they fail.", R.dataAsOf, R.generatedAt)
       + '<div class="r6-box">' + esc(G.note) + " Refresh days recorded so far: <b>" + G.refreshDays + "</b> (" + esc(G.dates.join(", ")) + "). Passing the gate today: <b>" + G.passToday + "</b> names. Graduated: <b>" + G.graduated.length + "</b>. Building a streak: <b>" + G.candidates.length + "</b>.</div>"
@@ -78,14 +78,28 @@
       + (G.graduated.length ? "<h3>Graduated cards</h3>" + cards : "");
   }
   /* ---------- options backtest ---------- */
-  function mcell(m, k, d, suf) { return "<td class=n>" + (m && m[k] != null ? nn(m[k], d) + (suf || "") : "n/a") + "</td>"; }
+  function mcell(m, k, d, suf) { return "<td class=n>" + (m && m[k] != null ? nn(m[k], d) + (suf || "") : "insufficient data") + "</td>"; }
   function rowOpt(r) {
     var a = r.m, b = r.m2; if (!a.n) return "";
     var ind = r.label.charAt(0) === " ";
     return "<tr><td style=\"min-width:300px;white-space:normal;" + (ind ? "padding-left:22px" : "") + "\"><b>" + esc(r.label.trim()) + "</b>" + (r.note ? '<div class="r6-dim" style="font-size:11px;max-width:430px;white-space:normal">' + esc(r.note) + "</div>" : "") + "</td><td class=n>" + a.n + "</td>"
       + mcell(a, "win", 0, "%") + '<td class="n ' + cls(a.avg) + '">' + pc(a.avg) + "</td>" + mcell(a, "tstat", 1) + '<td class="n r6-fail">$' + Math.abs(a.maxDD).toLocaleString() + '</td><td class="n ' + cls(a.totalPnl) + '">' + (a.totalPnl < 0 ? "−" : "") + "$" + Math.abs(a.totalPnl).toLocaleString() + "</td><td>" + chip(r.verdict, r.verdictClass) + "</td>"
-      + '<td class=n style="border-left:2px solid var(--line)">' + (b.win != null ? nn(b.win, 0) + "%" : "n/a") + '</td><td class="n ' + cls(b.avg) + '">' + pc(b.avg) + "</td>" + mcell(b, "tstat", 1) + '<td class="n r6-fail">$' + Math.abs(b.maxDD).toLocaleString() + "</td><td>" + chip(r.verdict2, r.verdictClass2) + "</td>"
-      + '<td class=n>' + (a.affordable != null ? a.affordable + "%" : "n/a") + "</td></tr>";
+      + '<td class=n style="border-left:2px solid var(--line)">' + (b.win != null ? nn(b.win, 0) + "%" : "insufficient data") + '</td><td class="n ' + cls(b.avg) + '">' + pc(b.avg) + "</td>" + mcell(b, "tstat", 1) + '<td class="n r6-fail">$' + Math.abs(b.maxDD).toLocaleString() + "</td><td>" + chip(r.verdict2, r.verdictClass2) + "</td>"
+      + '<td class=n>' + (a.affordable != null ? a.affordable + "%" : "insufficient data") + "</td></tr>";
+  }
+  function ivRangeTable() {
+    var ms = O.ivMults || [0.8, 1, 1.3];
+    function f(x) { return x == null ? "insufficient data" : (x > 0 ? "+" : "") + Number(x).toFixed(0) + "%"; }
+    function robust(x, s) { var ok = ms.every(function (m) { var v = x[String(m)]; return v && v["avg" + s] > 0 && (v["tstat" + s] == null ? false : v["tstat" + s] >= 2); }); var any = ms.some(function (m) { var v = x[String(m)]; return v && v["avg" + s] > 0; }); return ok ? chip("pays at every IV level", "ok") : any ? chip("pays only at some IV levels", "warn") : chip("loses at every IV level", "bad"); }
+    var rows = O.results.filter(function (r) { return r.ivRange && !r.key.match(/^(orb|vwap)_/); }).map(function (r) {
+      var x = r.ivRange, a = ms.map(function (m) { return x[String(m)] ? f(x[String(m)].avg) : "insufficient data"; }).join(" / "), b = ms.map(function (m) { return x[String(m)] ? f(x[String(m)].avg2) : "insufficient data"; }).join(" / ");
+      var w = ms.map(function (m) { var v = x[String(m)]; return v && v.win != null ? Math.round(v.win) + "%" : "insufficient data"; }).join(" / ");
+      var tOnly = ms.some(function (m) { return x[String(m)] && x[String(m)].windowOnly; });
+      var baseline = /^(random|spy_base)/.test(r.key);
+      return "<tr><td style=\"min-width:260px;white-space:normal\"><b>" + esc(r.label.trim()) + "</b>" + (tOnly ? '<div class="r6-dim" style="font-size:11px">current ~60-day window only</div>' : "") + "</td><td class=n>" + a + "</td><td class=n>" + w + "</td><td class=n>" + b + "</td><td>" + (baseline ? '<span class="r6-dim">baseline</span>' : robust(x, "") + " " + '<span class="r6-dim">(A)</span>') + "</td><td>" + (baseline ? "" : robust(x, "2") + ' <span class="r6-dim">(B)</span>') + "</td></tr>";
+    }).join("");
+    return "<h3>IV-sensitivity range (the numbers to read)</h3><p class=r6-note>Every option price here is modeled from a volatility proxy, so a single number overstates precision. Each setup is rerun with the volatility used for pricing scaled to " + ms.map(function (m) { return m + "×"; }).join(" / ") + " (stocks: 1.1× realized vol; SPY: VIX; intraday: VIX/VXN). Lower IV makes calls cheaper; higher IV makes them dearer. Values are listed in that order. \"Pays\" needs a positive average and t-stat ≥ 2 at <b>every</b> level.</p>"
+      + '<div class="r6-tbl-wrap"><table class="r6-tbl p-sub"><thead><tr><th>Setup</th><th class=n>Style A avg return / trade</th><th class=n>Win rate (A)</th><th class=n>Style B avg return / trade</th><th>Robust, style A</th><th>Robust, style B</th></tr></thead><tbody>' + rows + "</tbody></table></div>";
   }
   function optbt() {
     var groups = {}, order = []; O.results.forEach(function (r) { if (!groups[r.group]) { groups[r.group] = []; order.push(r.group); } groups[r.group].push(r); });
@@ -99,7 +113,8 @@
     var best = O.results.filter(function (r) { return r.verdict === "pays in the model" || r.verdict2 === "pays in the model"; });
     return head("optbt", "Atlas's option setups replayed on real underlying history, with every option price <b>modeled</b> (Black-Scholes plus a volatility proxy), because free historical option chains do not exist. Each trade stakes about $" + O.stake + " of premium. <b>Style A</b> exits at +100% / −50% of premium or the time limit; <b>style B</b> has no stop or target, only the time limit.", O.dataAsOf, O.generatedAt)
       + '<div class="r6-box"><b>Modeled, not observed.</b> ' + (best.length ? "Setups that pay in the model: <b>" + best.map(function (r) { return esc(r.label.split(" →")[0]) + " (" + (r.verdict === "pays in the model" ? "style A" : "style B") + ")"; }).join(", ") + "</b>. " : "No setup pays in the model. ") + "A setup only counts as paying when its average return is positive, the t-stat is at least 2, and it beats the random-entry baseline. Every 0–7 DTE SPY/QQQ setup loses money here.</div>"
-      + '<div class="r6-tbl-wrap"><table class="r6-tbl"><thead><tr><th rowspan=2>Setup</th><th colspan=7>Style A: stop −50% / target +100%</th><th colspan=5 style="border-left:2px solid var(--line)">Style B: time exit only</th><th rowspan=2 class=n>1 contract ≤ $400 ATM</th></tr><tr><th class=n>Trades</th><th class=n>Win rate</th><th class=n>Avg return</th><th class=n>t-stat</th><th class=n>Max drawdown</th><th class=n>Total P&amp;L</th><th>Verdict</th><th class=n style="border-left:2px solid var(--line)">Win rate</th><th class=n>Avg return</th><th class=n>t-stat</th><th class=n>Max drawdown</th><th>Verdict</th></tr></thead><tbody>' + rows + "</tbody></table></div>"
+      + ivRangeTable()
+      + '<h3>Detail at 1.0× IV</h3><div class="r6-tbl-wrap"><table class="r6-tbl"><thead><tr><th rowspan=2>Setup</th><th colspan=7>Style A: stop −50% / target +100%</th><th colspan=5 style="border-left:2px solid var(--line)">Style B: time exit only</th><th rowspan=2 class=n>1 contract ≤ $400 ATM</th></tr><tr><th class=n>Trades</th><th class=n>Win rate</th><th class=n>Avg return</th><th class=n>t-stat</th><th class=n>Max drawdown</th><th class=n>Total P&amp;L</th><th>Verdict</th><th class=n style="border-left:2px solid var(--line)">Win rate</th><th class=n>Avg return</th><th class=n>t-stat</th><th class=n>Max drawdown</th><th>Verdict</th></tr></thead><tbody>' + rows + "</tbody></table></div>"
       + '<p class="r6-note">Avg return is per trade on premium paid; P&amp;L and drawdown assume one $' + O.stake + " stake per trade in exit order. Baselines are random entries run through the same model; a setup must beat its baseline.</p>"
       + "<h3>Real graded results (options-grades.json)</h3><div class=r6-box>" + rg.total + " ideas logged from the Options tab: " + rg.open + " open, " + rg.closed + " closed. Real outcomes only appear as ideas mature, so none of the modeled results above are confirmed by them yet.</div>"
       + '<div class="r6-tbl-wrap"><table class="r6-tbl"><thead><tr><th>Group</th><th>Name</th><th class=n>Ideas</th><th class=n>Open</th><th class=n>Closed</th><th class=n>Win rate</th><th class=n>Avg closed return</th></tr></thead><tbody>' + rt + '</tbody></table></div><p class="r6-note"><a href="#/optgrades">Full idea log</a></p>'
@@ -108,13 +123,13 @@
   }
   /* ---------- valuation ---------- */
   var vq = "";
-  function premCell(p) { if (p == null) return '<span class="r6-dim">n/a</span>'; if (typeof p === "string") return chip(p, "bad"); return '<span class="' + (p >= 50 ? "r6-fail" : p <= -15 ? "r6-pass" : "") + '">' + (p > 0 ? "+" : "") + p + "%</span>"; }
+  function premCell(p) { if (p == null) return '<span class="r6-dim">insufficient data</span>'; if (typeof p === "string") return chip(p, "bad"); return '<span class="' + (p >= 50 ? "r6-fail" : p <= -15 ? "r6-pass" : "") + '">' + (p > 0 ? "+" : "") + p + "%</span>"; }
   function valuation() {
     var V = P.valuation, q = vq.trim().toUpperCase();
     var list = q ? V.all.filter(function (v) { return v.t.indexOf(q) >= 0 || String(v.name || "").toUpperCase().indexOf(q) >= 0; }).slice(0, 40).map(function (v) { return Object.assign({ tag: "search" }, v); }) : V.rows;
     var rows = list.map(function (v) {
-      return "<tr><td>" + tk(v.t) + '<div class="r6-dim">' + esc((v.name || "").slice(0, 28)) + "</div></td><td>" + chip(v.tag || "", v.tag === "holding" ? "sc" : "") + "</td><td>" + valChip(v.flag) + '<div class="r6-dim">' + esc(v.peerGroup ? "vs " + v.peerGroup[1] + " peers in " + (v.peerGroup[0] === "industry" ? (v.industry || "industry") : v.peerGroup[0]) : "") + "</div></td>"
-        + "<td class=n>" + nn(v.peg, 2) + "<div>" + premCell(v.premium && v.premium.peg) + "</div></td><td class=n>" + nn(v.evs, 1) + 'x<div class="r6-dim">' + (v.revg == null ? "growth n/a" : "growth " + pc(v.revg, 0)) + "</div></td><td class=n>" + nn(v.evg, 3) + "<div>" + premCell(v.premium && v.premium.evg) + "</div></td><td class=n>" + (v.fcfy == null ? "n/a" : nn(v.fcfy, 1) + "%") + "<div>" + premCell(v.premium && v.premium.fcfy) + '</div></td><td class="r6-note" style="max-width:260px;white-space:normal">' + esc((v.notes || []).join("; ")) + "</td></tr>";
+      return "<tr><td>" + tk(v.t) + '<div class="r6-dim">' + esc((v.name || "").slice(0, 28)) + "</div></td><td>" + chip(v.tag || "", v.tag === "holding" ? "sc" : "") + "</td><td>" + valChip(v.flag) + (v.cyclicalPeak ? " " + chip("cyclical peak? (Lynch)", "warn") : "") + '<div class="r6-dim">' + esc(v.peerGroup ? "vs " + v.peerGroup[1] + " peers in " + (v.peerGroup[0] === "industry" ? (v.industry || "industry") : v.peerGroup[0]) : "") + "</div></td>"
+        + "<td class=n>" + nn(v.peg, 2) + "<div>" + premCell(v.premium && v.premium.peg) + "</div></td><td class=n>" + nn(v.evs, 1) + 'x<div class="r6-dim">' + (v.revg == null ? "growth insufficient data" : "growth " + pc(v.revg, 0)) + "</div></td><td class=n>" + nn(v.evg, 3) + "<div>" + premCell(v.premium && v.premium.evg) + "</div></td><td class=n>" + (v.fcfy == null ? "insufficient data" : nn(v.fcfy, 1) + "%") + "<div>" + premCell(v.premium && v.premium.fcfy) + '</div></td><td class="r6-note" style="max-width:260px;white-space:normal">' + esc((v.notes || []).join("; ")) + "</td></tr>";
     }).join("");
     var big = V.rows.filter(function (v) { return v.flag === "big premium"; }).map(function (v) { return tk(v.t) + " (" + esc(v.tag) + ")"; }).join(", ");
     return head("valuation", "Growth-adjusted valuation (PEG, EV/Sales per point of growth, FCF yield) for holdings, graduated names and the top setups, each compared with peers in the scored universe. Premium = percent above the peer median (for FCF yield, how much lower the yield is).", P.dataAsOf, P.generatedAt)

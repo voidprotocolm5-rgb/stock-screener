@@ -6,8 +6,8 @@
   var VIEWS = ["distance", "catalysts", "screens", "rotation", "signals", "optgrades"];
   var TITLES = { distance: "Distance to pass", catalysts: "Earnings & catalysts", screens: "Six screens", rotation: "Sector rotation", signals: "Signal tracker", optgrades: "Option idea grades" };
   var esc = function (s) { return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]; }); };
-  var money = function (x) { return x == null ? "n/a" : "$" + Number(x).toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 }); };
-  var pct = function (x, d) { return x == null ? "n/a" : (x > 0 ? "+" : "") + Number(x).toFixed(d == null ? 1 : d) + "%"; };
+  var money = function (x) { return x == null ? "insufficient data" : "$" + Number(x).toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 }); };
+  var pct = function (x, d) { return x == null ? "insufficient data" : (x > 0 ? "+" : "") + Number(x).toFixed(d == null ? 1 : d) + "%"; };
   var SID = ["S1", "S2", "S3", "S4", "S5", "S6"];
   function css() {
     if (document.getElementById("r6-css")) return;
@@ -29,6 +29,8 @@
     cs.forEach(function (s) { out += '<a class="r6-chip sc" href="#/screens/' + s + '" title="Matches screen ' + s + ': ' + esc(R.screens[s].name) + '">' + s + " ✓</a>"; });
     near.forEach(function (s) { out += '<a class="r6-chip warn" href="#/screens/' + s + '" title="One criterion short of screen ' + s + ': ' + esc(R.screens[s].name) + '">' + s + " near</a>"; });
     if (d && d.tilt) out += '<span class="r6-chip ok" title="Sector is among the top 3 in the rotation ranking">sector tilt</span>';
+    var cy = window.PLAN && window.PLAN.cyclical && window.PLAN.cyclical[t];
+    if (cy) out += '<a class="r6-chip warn" href="#/valuation" title="' + esc(cy.why) + '">cyclical peak?</a>';
     return out;
   }
   function subnav(view, extra) {
@@ -59,8 +61,8 @@
       return '<tr id="r6d-' + esc(x.t) + '" class="' + (x.holding ? "hold" : "") + (dState.flash === x.t ? " flash" : "") + '"><td>' + tk(x.t) + (x.holding ? ' <span class="r6-chip sc">' + esc(x.holding.join("+")) + "</span>" : "") + '<div class="r6-dim">' + esc((x.name || "").slice(0, 28)) + "</div></td>"
         + "<td>" + esc(x.sector || "") + "</td><td class=n>" + money(x.close) + "</td><td class=n>" + money(x.needPx) + '<div class="r6-dim">' + esc(x.binder || "") + "</div></td>"
         + '<td class="n ' + (x.awayPct > 0 ? "r6-fail" : "r6-pass") + '">' + (x.awayPct > 0 ? "+" + x.awayPct.toFixed(1) + "%" : "clear") + "</td>"
-        + '<td class="n ' + (x.rsiOk ? "" : "r6-fail") + '">' + (x.rsi == null ? "n/a" : x.rsi.toFixed(1)) + ' <span class="r6-dim">/ 70</span></td>'
-        + '<td class="n ' + (x.scoreOk ? "" : "r6-fail") + '">' + (x.score == null ? "n/a" : x.score) + ' <span class="r6-dim">/ 70</span></td>'
+        + '<td class="n ' + (x.rsiOk ? "" : "r6-fail") + '">' + (x.rsi == null ? "insufficient data" : x.rsi.toFixed(1)) + ' <span class="r6-dim">/ 70</span></td>'
+        + '<td class="n ' + (x.scoreOk ? "" : "r6-fail") + '">' + (x.score == null ? "insufficient data" : x.score) + ' <span class="r6-dim">/ 70</span></td>'
         + "<td>" + (x.pass_ ? '<span class="r6-chip ok">passes all gates</span>' : x.fails.map(function (f) { return '<span class="r6-chip bad">' + esc(f) + "</span>"; }).join("")) + "</td><td>" + badges(x.t) + "</td></tr>";
     }
     var pass = rows.filter(function (x) { return x.pass_; }).length;
@@ -82,11 +84,11 @@
     function row(x) {
       var l = x.last;
       return '<tr class="' + (x.holding ? "hold" : "") + '"><td>' + tk(x.t) + (x.holding ? ' <span class="r6-chip sc">' + esc(x.holding.join("+")) + "</span>" : "") + '<div class="r6-dim">' + esc((x.name || "").slice(0, 26)) + "</div></td>"
-        + "<td>" + (x.next ? esc(x.next) + (x.timing ? '<div class="r6-dim">' + esc(x.timing) + "</div>" : "") + (x.estimate ? '<div class="r6-dim">estimate</div>' : "") : '<span class="r6-dim">n/a</span>') + "</td>"
+        + "<td>" + (x.next ? esc(x.next) + (x.timing ? '<div class="r6-dim">' + esc(x.timing) + "</div>" : "") + (x.estimate ? '<div class="r6-dim">estimate</div>' : "") : '<span class="r6-dim">insufficient data</span>') + "</td>"
         + '<td class="n">' + (x.tradingDays == null ? "" : x.tradingDays + " d") + (x.within10 ? ' <span class="r6-chip warn">≤ 10 days</span>' : "") + "</td>"
-        + '<td class="n">' + (x.n ? x.beats + "/" + x.n + (x.beatRate != null ? ' <span class="r6-dim">(' + x.beatRate + "%)</span>" : "") : "n/a") + "</td>"
-        + '<td class="n">' + (x.avgAbsMove == null ? "n/a" : "±" + x.avgAbsMove + "%") + '<div class="r6-dim">' + (x.avgMove == null ? "" : "mean " + pct(x.avgMove)) + "</div></td>"
-        + "<td>" + (l ? esc(l.date) + ": " + (l.move1d == null ? "move n/a" : '<span class="' + (l.move1d >= 0 ? "r6-pass" : "r6-fail") + '">' + pct(l.move1d) + "</span>") + (l.beat == null ? "" : l.beat ? " after a beat" : " after a miss") : '<span class="r6-dim">n/a</span>') + "</td><td>" + badges(x.t) + "</td></tr>";
+        + '<td class="n">' + (x.n ? x.beats + "/" + x.n + (x.beatRate != null ? ' <span class="r6-dim">(' + x.beatRate + "%)</span>" : "") : "insufficient data") + "</td>"
+        + '<td class="n">' + (x.avgAbsMove == null ? "insufficient data" : "±" + x.avgAbsMove + "%") + '<div class="r6-dim">' + (x.avgMove == null ? "" : "mean " + pct(x.avgMove)) + "</div></td>"
+        + "<td>" + (l ? esc(l.date) + ": " + (l.move1d == null ? "move insufficient data" : '<span class="' + (l.move1d >= 0 ? "r6-pass" : "r6-fail") + '">' + pct(l.move1d) + "</span>") + (l.beat == null ? "" : l.beat ? " after a beat" : " after a miss") : '<span class="r6-dim">insufficient data</span>') + "</td><td>" + badges(x.t) + "</td></tr>";
     }
     var ev = R.events.map(function (e) { return '<div class="r6-card"><b>' + esc(e.date) + " · " + esc(e.title) + "</b><p>" + esc(e.detail) + '</p><p class="r6-note">Affects: ' + e.tickers.map(tk).join(", ") + " · Source: " + esc(e.src) + "</p></div>"; }).join("");
     var big = R.bigEarnings.length ? '<p class="r6-note">Largest names reporting within 10 trading days: ' + R.bigEarnings.map(function (b) { return tk(b.t) + " " + esc(b.date); }).join(" · ") + "</p>" : "";
@@ -101,10 +103,10 @@
     var sid = SID.indexOf(sub) >= 0 ? sub : "S1";
     var S = R.screens[sid], F = S.finviz || {};
     var nav = '<div class="r6-nav">' + SID.map(function (s) { var x = R.screens[s]; return '<a class="' + (s === sid ? "on" : "") + '" href="#/screens/' + s + '">' + s + " " + esc(x.name) + " (" + x.matchCount + ")</a>"; }).join("") + "</div>";
-    function crit(c) { return c.ok === true ? '<span class="r6-pass" title="' + esc(c.label) + '">✓</span>' : c.ok === false ? '<span class="r6-fail" title="' + esc(c.label) + '">✗</span>' : '<span class="r6-dim" title="' + esc(c.label) + '">n/a</span>'; }
+    function crit(c) { return c.ok === true ? '<span class="r6-pass" title="' + esc(c.label) + '">✓</span>' : c.ok === false ? '<span class="r6-fail" title="' + esc(c.label) + '">✗</span>' : '<span class="r6-dim" title="' + esc(c.label) + '">insufficient data</span>'; }
     var cols = (S.matches[0] || S.near[0] || { criteria: [] }).criteria;
     function row(x, near) {
-      return '<tr class="' + (x.holding ? "hold" : "") + '"><td>' + tk(x.t) + (x.holding ? ' <span class="r6-chip sc">' + esc(x.holding.join("+")) + "</span>" : "") + ' <span class="r6-dim">' + dl(x.t) + '</span><div class="r6-dim">' + esc((x.name || "").slice(0, 26)) + "</div></td><td>" + esc(x.sector || "") + "</td><td class=n>" + money(x.close) + "</td><td class=n>" + (x.rsi == null ? "n/a" : x.rsi) + "</td><td class=n>" + (x.score == null ? '<span class="r6-dim">n/a</span>' : x.score) + "</td><td class=n>" + pct(x.perf3m) + "</td>"
+      return '<tr class="' + (x.holding ? "hold" : "") + '"><td>' + tk(x.t) + (x.holding ? ' <span class="r6-chip sc">' + esc(x.holding.join("+")) + "</span>" : "") + ' <span class="r6-dim">' + dl(x.t) + '</span><div class="r6-dim">' + esc((x.name || "").slice(0, 26)) + "</div></td><td>" + esc(x.sector || "") + "</td><td class=n>" + money(x.close) + "</td><td class=n>" + (x.rsi == null ? "insufficient data" : x.rsi) + "</td><td class=n>" + (x.score == null ? '<span class="r6-dim">insufficient data</span>' : x.score) + "</td><td class=n>" + pct(x.perf3m) + "</td>"
         + x.criteria.map(function (c) { return "<td>" + crit(c) + (c.val ? '<div class="r6-dim">' + esc(c.val) + "</div>" : "") + "</td>"; }).join("")
         + (near ? '<td><span class="r6-chip warn">' + esc(x.missing) + "</span></td>" : "") + "<td>" + (x.finviz ? '<span class="r6-chip ok">Finviz hit</span>' : '<span class="r6-dim">site data</span>') + "</td></tr>";
     }
@@ -125,7 +127,7 @@
   /* ---------- rotation ---------- */
   function rotation() {
     var rows = R.sectors.map(function (x) {
-      return "<tr><td class=n>" + x.rank + '</td><td><b>' + esc(x.sector) + '</b> <span class="r6-dim">' + x.etf + "</span>" + (x.leading ? ' <span class="r6-chip ok">leading</span>' : "") + "</td><td class=n>" + pct(x.perf1m) + '</td><td class="n ' + (x.rel1m >= 0 ? "r6-pass" : "r6-fail") + '">' + pct(x.rel1m) + "</td><td class=n>" + pct(x.perf3m) + '</td><td class="n ' + (x.rel3m >= 0 ? "r6-pass" : "r6-fail") + '">' + pct(x.rel3m) + '</td><td class=n title="Chaikin money flow, 20 days: above 0 means closes near the high on volume">' + (x.cmf20 == null ? "n/a" : x.cmf20.toFixed(3)) + "</td><td>" + (x.above50 ? "yes" : "no") + '</td><td><a href="' + esc(x.fvUrl) + '" target="_blank" rel="noopener">Finviz →</a></td></tr>';
+      return "<tr><td class=n>" + x.rank + '</td><td><b>' + esc(x.sector) + '</b> <span class="r6-dim">' + x.etf + "</span>" + (x.leading ? ' <span class="r6-chip ok">leading</span>' : "") + "</td><td class=n>" + pct(x.perf1m) + '</td><td class="n ' + (x.rel1m >= 0 ? "r6-pass" : "r6-fail") + '">' + pct(x.rel1m) + "</td><td class=n>" + pct(x.perf3m) + '</td><td class="n ' + (x.rel3m >= 0 ? "r6-pass" : "r6-fail") + '">' + pct(x.rel3m) + '</td><td class=n title="Chaikin money flow, 20 days: above 0 means closes near the high on volume">' + (x.cmf20 == null ? "insufficient data" : x.cmf20.toFixed(3)) + "</td><td>" + (x.above50 ? "yes" : "no") + '</td><td><a href="' + esc(x.fvUrl) + '" target="_blank" rel="noopener">Finviz →</a></td></tr>';
     }).join("");
     var tilt = R.distance.filter(function (x) { return x.tilt && !x.noData; }).sort(function (a, b) { return (b.score || 0) - (a.score || 0); }).slice(0, 40);
     return head("rotation", "The 11 SPDR sector ETFs ranked against SPY over 1 and 3 months plus 20-day money flow. The top three are flagged as leading, and screener names in those sectors get a \"sector tilt\" flag.")
@@ -137,7 +139,7 @@
   /* ---------- signals ---------- */
   function signals() {
     var S = R.signals;
-    function cell(h) { return h.matured ? '<span title="' + h.matured + ' matured">' + (h.hit == null ? "n/a" : h.hit + "% hit") + " · avg " + pct(h.avg) + " · vs SPY " + pct(h.avgExcess) + "</span>" : '<span class="r6-dim">0 matured</span>'; }
+    function cell(h) { return h.matured ? '<span title="' + h.matured + ' matured">' + (h.hit == null ? "insufficient data" : h.hit + "% hit") + " · avg " + pct(h.avg) + " · vs SPY " + pct(h.avgExcess) + "</span>" : '<span class="r6-dim">0 matured</span>'; }
     var tbl = S.table.map(function (t) { return "<tr><td><b>" + esc(t.rule) + '</b></td><td class=n>' + t.n + "</td><td>" + cell(t["1w"]) + "</td><td>" + cell(t["4w"]) + "</td><td>" + cell(t["12w"]) + "</td></tr>"; }).join("");
     var last = S.rows.slice().sort(function (a, b) { return a.date < b.date ? 1 : -1; }).slice(0, 250);
     function rr(z, k) { var x = z.returns[k]; return x ? '<span class="' + (x.ret >= 0 ? "r6-pass" : "r6-fail") + '">' + pct(x.ret) + '</span> <span class="r6-dim">(SPY ' + pct(x.spy) + ")</span>" : '<span class="r6-dim">pending</span>'; }
@@ -152,7 +154,7 @@
   /* ---------- option grades ---------- */
   function optgrades() {
     var O = R.optionGrades;
-    var tbl = O.table.map(function (t) { return "<tr><td>" + esc(t.kind) + "</td><td><b>" + esc(t.name) + "</b></td><td class=n>" + t.n + "</td><td class=n>" + t.open + "</td><td class=n>" + t.closed + "</td><td class=n>" + (t.winRate == null ? '<span class="r6-dim">n/a</span>' : t.winRate + "%") + "</td><td class=n>" + (t.avgClosed == null ? '<span class="r6-dim">n/a</span>' : pct(t.avgClosed)) + "</td><td class=n>" + (t.avgOpenMark == null ? "n/a" : pct(t.avgOpenMark)) + "</td></tr>"; }).join("");
+    var tbl = O.table.map(function (t) { return "<tr><td>" + esc(t.kind) + "</td><td><b>" + esc(t.name) + "</b></td><td class=n>" + t.n + "</td><td class=n>" + t.open + "</td><td class=n>" + t.closed + "</td><td class=n>" + (t.winRate == null ? '<span class="r6-dim">insufficient data</span>' : t.winRate + "%") + "</td><td class=n>" + (t.avgClosed == null ? '<span class="r6-dim">insufficient data</span>' : pct(t.avgClosed)) + "</td><td class=n>" + (t.avgOpenMark == null ? "insufficient data" : pct(t.avgOpenMark)) + "</td></tr>"; }).join("");
     var rows = O.ideas.slice().sort(function (a, b) { return a.date < b.date ? 1 : a.date > b.date ? -1 : a.t < b.t ? -1 : 1; }).slice(0, 200).map(function (z) {
       var st = z.status === "open" ? '<span class="r6-chip">open</span>' : z.status === "win" ? '<span class="r6-chip ok">win</span>' : '<span class="r6-chip bad">loss</span>';
       var l = z.last || {};
@@ -174,8 +176,8 @@
       var cur = (c.targets.curated || []).map(function (x) { return esc(x.who) + " (" + esc(x.date) + "): " + esc(x.text); }).join("; ");
       return '<article class="r6-card"><h3>' + tk(c.t) + " · " + esc(c.name) + " " + badges(c.t) + " " + dl(c.t) + '</h3><p class="r6-note">' + esc(c.books.join(" + ")) + " · close " + money(c.close) + " as of " + esc(c.asOf || "") + '</p><div class="r6-hc"><img loading="lazy" src="' + esc(c.img) + '?v=' + esc(R.generatedAt.replace(/\D/g, "")) + '" alt="' + esc(c.t) + ' chart with 50 and 200 day averages, add zones and targets">'
         + '<div><p><b>Gate status:</b> ' + (g.pass_ ? '<span class="r6-pass">passes every gate</span>' : '<span class="r6-fail">fails: ' + esc((g.fails || []).join(", ")) + "</span>") + "</p>"
-        + "<p><b>Levels:</b> 50-day " + money(g.sma50) + " · 200-day " + money(g.sma200) + (g.needPx && g.awayPct ? " · needs " + money(g.needPx) + " (+" + g.awayPct.toFixed(0) + "%)" : "") + " · RSI " + (g.rsi == null ? "n/a" : g.rsi) + " · score " + (g.score == null ? "n/a" : g.score) + "</p>"
-        + (z ? "<p><b>Add zones:</b> " + z + "</p>" : "") + "<p><b>Earnings:</b> " + (c.earnings.next ? esc(c.earnings.next) + (c.earnings.timing ? " " + esc(c.earnings.timing) : "") + (c.earnings.estimate ? " (estimate)" : "") : "n/a") + "</p>"
+        + "<p><b>Levels:</b> 50-day " + money(g.sma50) + " · 200-day " + money(g.sma200) + (g.needPx && g.awayPct ? " · needs " + money(g.needPx) + " (+" + g.awayPct.toFixed(0) + "%)" : "") + " · RSI " + (g.rsi == null ? "insufficient data" : g.rsi) + " · score " + (g.score == null ? "insufficient data" : g.score) + "</p>"
+        + (z ? "<p><b>Add zones:</b> " + z + "</p>" : "") + "<p><b>Earnings:</b> " + (c.earnings.next ? esc(c.earnings.next) + (c.earnings.timing ? " " + esc(c.earnings.timing) : "") + (c.earnings.estimate ? " (estimate)" : "") : "insufficient data") + "</p>"
         + (cur ? "<p><b>Analyst note:</b> " + cur + "</p>" : "") + '<b class="r6-pass">Bull case</b><ul>' + c.bull.map(function (b) { return "<li>" + esc(b) + "</li>"; }).join("") + '</ul><b class="r6-fail">Bear case</b><ul>' + c.bear.map(function (b) { return "<li>" + esc(b) + "</li>"; }).join("") + "</ul></div></div></article>";
     }).join("");
     if (only === "grad") return cards;
