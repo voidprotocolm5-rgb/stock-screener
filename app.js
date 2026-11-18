@@ -805,6 +805,7 @@ window.OPT_RULES = {"built": "2026-11-13", "options": [{"id": "A1", "sec": "(a) 
       <p class="nx-verdict ${f.pass ? "is-pass" : "is-fail"}">${f.pass ? "Buy gates pass" : f.known < 3 ? "Gates: not enough data" : "Buy gates fail: " + esc(f.fails.join(", "))}</p>
       <div class="nx-row">${gatePills(f)}</div>
       <div class="nx-row">${earnBadge(f, EARN_NOTES[t])}</div>
+      ${window.R6UI ? `<div class="nx-row">${window.R6UI.badges(t)}</div>` : ""}
       ${zs.length ? `<ul class="nx-zones">${zs.map((z) => zoneLine(z, f.price)).join("")}</ul>` : `<p class="nx-dim">No add zone saved for this name.</p>`}
       <p class="nx-dim">Levels: 50-day ${money(f.sma50)} · 200-day ${money(f.sma200)} · options: ${esc(st.label)}</p>
       <a class="nx-open" href="#/stock/${encodeURIComponent(t)}">Full details →</a>
@@ -815,6 +816,7 @@ window.OPT_RULES = {"built": "2026-11-13", "options": [{"id": "A1", "sec": "(a) 
     root.innerHTML = `<header class="nx-head"><p class="eyebrow">Research only</p><h2>Holdings</h2>
         <p class="nx-lead">Your two books at a glance: buy gates, add zones and earnings. Tap a name for the full detail page.</p><p class="nx-stamp">${stamp()} · prices refresh from TradingView when the page is open (about 15 minutes delayed)</p></header>
       ${BOOKS.map((b) => `<section class="nx-sec"><div class="nx-sec-head"><h3>${esc(b.name)} <span class="nx-count">${b.tickers.join(" · ")}</span></h3></div><div class="nx-grid nx-grid-hold">${b.tickers.map(holdCard).join("")}</div></section>`).join("")}
+      ${window.R6UI ? window.R6UI.holdingsExtra() : ""}
       <p class="nx-foot">Add zones come from the portfolio watchdog notes from Nov 11–13, including Book 2’s MU and CRDO levels. Gates: RSI 70 or below, above the 50-day and above the 200-day (from today’s capture).</p>`;
   }
 
@@ -2079,7 +2081,7 @@ window.OPT_RULES = {"built": "2026-11-13", "options": [{"id": "A1", "sec": "(a) 
     });
   }
 
-  const NX_VIEWS = ["holdings", "watchlist", "options", "spy", "books", "gate", "market", "performance", "investors", "packrecord", "sectors", "table", "mywatch", "xsources"];
+  const NX_VIEWS = ["holdings", "watchlist", "options", "spy", "books", "gate", "market", "performance", "investors", "packrecord", "sectors", "table", "mywatch", "xsources", "distance", "catalysts", "screens", "rotation", "signals", "optgrades"];
   function setView(view, fromRouter) {
     if (!NX_VIEWS.includes(view)) view = "holdings";
     const changed = state.view !== view;
@@ -2112,6 +2114,7 @@ window.OPT_RULES = {"built": "2026-11-13", "options": [{"id": "A1", "sec": "(a) 
     if (view === "investors") renderInvestors();
     ["packrecord", "sectors", "table", "mywatch", "xsources"].forEach((v) => { const p = document.getElementById("view-" + v); if (p) p.hidden = view !== v; });
     try { if (window.__UPG) window.__UPG.renderView(view); } catch (_) {}
+    try { if (window.R6UI) window.R6UI.renderView(view); } catch (err) { console.warn("R6 render", err); }
   }
 
   function jumpToTicker(ticker) {

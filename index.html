@@ -30,6 +30,8 @@
   <script src="pack-screener-urls.js?v=41"></script>
   <script src="profiles.js?v=41"></script>
   <script src="options-picks.js?v=202611171317"></script>
+  <script src="research6.js?v=1"></script>
+  <script src="r6-ui.js?v=1"></script>
 </head>
 <body>
   <div class="shell">
@@ -68,9 +70,18 @@
         <button type="button" class="view-tab sub-tab" data-view="table" id="tab-table">Table / compare</button>
         <button type="button" class="view-tab sub-tab" data-view="mywatch" id="tab-mywatch">★ My watchlist</button>
         <button type="button" class="view-tab sub-tab" data-view="xsources" id="tab-xsources">X sources</button>
+        <button type="button" class="view-tab sub-tab" data-view="distance" id="tab-distance">Distance to pass</button>
+        <button type="button" class="view-tab sub-tab" data-view="catalysts" id="tab-catalysts">Earnings &amp; catalysts</button>
+        <button type="button" class="view-tab sub-tab" data-view="screens" id="tab-screens">Six screens (S1–S6)</button>
+        <button type="button" class="view-tab sub-tab" data-view="rotation" id="tab-rotation">Sector rotation</button>
+        <button type="button" class="view-tab sub-tab" data-view="signals" id="tab-signals">Signal tracker</button>
+        <button type="button" class="view-tab sub-tab" data-view="optgrades" id="tab-optgrades">Option grades</button>
       </div>
     </div>
 
+    <div id="view-r6" class="view-panel" hidden>
+      <section id="r6-root" class="nx-root" aria-label="Research tools"></section>
+    </div>
     <div id="view-holdings" class="view-panel" hidden>
       <section id="hold-root" class="nx-root" aria-label="Holdings"></section>
     </div>
@@ -447,6 +458,6 @@
   </div>
 
   <script src="https://unpkg.com/lightweight-charts@4.2.1/dist/lightweight-charts.standalone.production.js"></script>
-  <script src="app.js?v=42"></script>
+  <script src="app.js?v=43"></script>
 </body>
 </html>
