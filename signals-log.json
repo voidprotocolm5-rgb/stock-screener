@@ -5187,8 +5187,413 @@
     "ret": 0.0,
     "days": 0
    }
+  },
+  {
+   "id": "2026-11-17|gate-pass|KNSA",
+   "date": "2026-11-17",
+   "t": "KNSA",
+   "rule": "gate-pass",
+   "price": 95.11,
+   "detail": "All gates pass: RSI 58.0, above both averages, score 70",
+   "returns": {},
+   "seeded": true,
+   "last": {
+    "date": "2026-11-17",
+    "ret": 0.0,
+    "days": 0
+   }
+  },
+  {
+   "id": "2026-11-17|gate-pass|RGA",
+   "date": "2026-11-17",
+   "t": "RGA",
+   "rule": "gate-pass",
+   "price": 268.29,
+   "detail": "All gates pass: RSI 54.4, above both averages, score 70",
+   "returns": {},
+   "seeded": true,
+   "last": {
+    "date": "2026-11-17",
+    "ret": 0.0,
+    "days": 0
+   }
+  },
+  {
+   "id": "2026-11-17|screen-S1|APD",
+   "date": "2026-11-17",
+   "t": "APD",
+   "rule": "screen-S1",
+   "price": 306.92,
+   "detail": "Pullback to trend",
+   "returns": {},
+   "seeded": true,
+   "last": {
+    "date": "2026-11-17",
+    "ret": 0.0,
+    "days": 0
+   }
+  },
+  {
+   "id": "2026-11-17|screen-S1|ASTL",
+   "date": "2026-11-17",
+   "t": "ASTL",
+   "rule": "screen-S1",
+   "price": 5.05,
+   "detail": "Pullback to trend",
+   "returns": {},
+   "seeded": true,
+   "last": {
+    "date": "2026-11-17",
+    "ret": 0.0,
+    "days": 0
+   }
+  },
+  {
+   "id": "2026-11-17|screen-S1|CCK",
+   "date": "2026-11-17",
+   "t": "CCK",
+   "rule": "screen-S1",
+   "price": 120.31,
+   "detail": "Pullback to trend",
+   "returns": {},
+   "seeded": true,
+   "last": {
+    "date": "2026-11-17",
+    "ret": 0.0,
+    "days": 0
+   }
+  },
+  {
+   "id": "2026-11-17|screen-S1|HBNC",
+   "date": "2026-11-17",
+   "t": "HBNC",
+   "rule": "screen-S1",
+   "price": 20.45,
+   "detail": "Pullback to trend",
+   "returns": {},
+   "seeded": true,
+   "last": {
+    "date": "2026-11-17",
+    "ret": 0.0,
+    "days": 0
+   }
+  },
+  {
+   "id": "2026-11-17|screen-S1|M",
+   "date": "2026-11-17",
+   "t": "M",
+   "rule": "screen-S1",
+   "price": 23.39,
+   "detail": "Pullback to trend",
+   "returns": {},
+   "seeded": true,
+   "last": {
+    "date": "2026-11-17",
+    "ret": 0.0,
+    "days": 0
+   }
+  },
+  {
+   "id": "2026-11-17|screen-S1|MMM",
+   "date": "2026-11-17",
+   "t": "MMM",
+   "rule": "screen-S1",
+   "price": 180.88,
+   "detail": "Pullback to trend",
+   "returns": {},
+   "seeded": true,
+   "last": {
+    "date": "2026-11-17",
+    "ret": 0.0,
+    "days": 0
+   }
+  },
+  {
+   "id": "2026-11-17|screen-S1|MSCI",
+   "date": "2026-11-17",
+   "t": "MSCI",
+   "rule": "screen-S1",
+   "price": 636.58,
+   "detail": "Pullback to trend",
+   "returns": {},
+   "seeded": true,
+   "last": {
+    "date": "2026-11-17",
+    "ret": 0.0,
+    "days": 0
+   }
+  },
+  {
+   "id": "2026-11-17|screen-S1|PACS",
+   "date": "2026-11-17",
+   "t": "PACS",
+   "rule": "screen-S1",
+   "price": 48.55,
+   "detail": "Pullback to trend",
+   "returns": {},
+   "seeded": true,
+   "last": {
+    "date": "2026-11-17",
+    "ret": 0.0,
+    "days": 0
+   }
+  },
+  {
+   "id": "2026-11-17|screen-S1|VRSN",
+   "date": "2026-11-17",
+   "t": "VRSN",
+   "rule": "screen-S1",
+   "price": 305.7,
+   "detail": "Pullback to trend",
+   "returns": {},
+   "seeded": true,
+   "last": {
+    "date": "2026-11-17",
+    "ret": 0.0,
+    "days": 0
+   }
+  },
+  {
+   "id": "2026-11-17|screen-S2|NEXN",
+   "date": "2026-11-17",
+   "t": "NEXN",
+   "rule": "screen-S2",
+   "price": 9.97,
+   "detail": "Earnings momentum",
+   "returns": {},
+   "seeded": true,
+   "last": {
+    "date": "2026-11-17",
+    "ret": 0.0,
+    "days": 0
+   }
+  },
+  {
+   "id": "2026-11-17|screen-S2|CB",
+   "date": "2026-11-17",
+   "t": "CB",
+   "rule": "screen-S2",
+   "price": 375.64,
+   "detail": "Earnings momentum",
+   "returns": {},
+   "seeded": true,
+   "last": {
+    "date": "2026-11-17",
+    "ret": 0.0,
+    "days": 0
+   }
+  },
+  {
+   "id": "2026-11-17|screen-S2|WTS",
+   "date": "2026-11-17",
+   "t": "WTS",
+   "rule": "screen-S2",
+   "price": 356.57,
+   "detail": "Earnings momentum",
+   "returns": {},
+   "seeded": true,
+   "last": {
+    "date": "2026-11-17",
+    "ret": 0.0,
+    "days": 0
+   }
+  },
+  {
+   "id": "2026-11-17|screen-S2|EPAM",
+   "date": "2026-11-17",
+   "t": "EPAM",
+   "rule": "screen-S2",
+   "price": 154.14,
+   "detail": "Earnings momentum",
+   "returns": {},
+   "seeded": true,
+   "last": {
+    "date": "2026-11-17",
+    "ret": 0.0,
+    "days": 0
+   }
+  },
+  {
+   "id": "2026-11-17|screen-S2|MPWR",
+   "date": "2026-11-17",
+   "t": "MPWR",
+   "rule": "screen-S2",
+   "price": 1317.37,
+   "detail": "Earnings momentum",
+   "returns": {},
+   "seeded": true,
+   "last": {
+    "date": "2026-11-17",
+    "ret": 0.0,
+    "days": 0
+   }
+  },
+  {
+   "id": "2026-11-17|screen-S2|MD",
+   "date": "2026-11-17",
+   "t": "MD",
+   "rule": "screen-S2",
+   "price": 31.13,
+   "detail": "Earnings momentum",
+   "returns": {},
+   "seeded": true,
+   "last": {
+    "date": "2026-11-17",
+    "ret": 0.0,
+    "days": 0
+   }
+  },
+  {
+   "id": "2026-11-17|screen-S2|GEHC",
+   "date": "2026-11-17",
+   "t": "GEHC",
+   "rule": "screen-S2",
+   "price": 81.84,
+   "detail": "Earnings momentum",
+   "returns": {},
+   "seeded": true,
+   "last": {
+    "date": "2026-11-17",
+    "ret": 0.0,
+    "days": 0
+   }
+  },
+  {
+   "id": "2026-11-17|screen-S2|INGM",
+   "date": "2026-11-17",
+   "t": "INGM",
+   "rule": "screen-S2",
+   "price": 27.2,
+   "detail": "Earnings momentum",
+   "returns": {},
+   "seeded": true,
+   "last": {
+    "date": "2026-11-17",
+    "ret": 0.0,
+    "days": 0
+   }
+  },
+  {
+   "id": "2026-11-17|screen-S2|TYL",
+   "date": "2026-11-17",
+   "t": "TYL",
+   "rule": "screen-S2",
+   "price": 409.43,
+   "detail": "Earnings momentum",
+   "returns": {},
+   "seeded": true,
+   "last": {
+    "date": "2026-11-17",
+    "ret": 0.0,
+    "days": 0
+   }
+  },
+  {
+   "id": "2026-11-17|screen-S6|GEHC",
+   "date": "2026-11-17",
+   "t": "GEHC",
+   "rule": "screen-S6",
+   "price": 81.84,
+   "detail": "Sector rotation",
+   "returns": {},
+   "seeded": true,
+   "last": {
+    "date": "2026-11-17",
+    "ret": 0.0,
+    "days": 0
+   }
+  },
+  {
+   "id": "2026-11-17|screen-S6|ED",
+   "date": "2026-11-17",
+   "t": "ED",
+   "rule": "screen-S6",
+   "price": 119.23,
+   "detail": "Sector rotation",
+   "returns": {},
+   "seeded": true,
+   "last": {
+    "date": "2026-11-17",
+    "ret": 0.0,
+    "days": 0
+   }
+  },
+  {
+   "id": "2026-11-17|screen-S6|HZN",
+   "date": "2026-11-17",
+   "t": "HZN",
+   "rule": "screen-S6",
+   "price": 80.72,
+   "detail": "Sector rotation",
+   "returns": {},
+   "seeded": true,
+   "last": {
+    "date": "2026-11-17",
+    "ret": 0.0,
+    "days": 0
+   }
+  },
+  {
+   "id": "2026-11-17|screen-S6|KDP",
+   "date": "2026-11-17",
+   "t": "KDP",
+   "rule": "screen-S6",
+   "price": 34.79,
+   "detail": "Sector rotation",
+   "returns": {},
+   "seeded": true,
+   "last": {
+    "date": "2026-11-17",
+    "ret": 0.0,
+    "days": 0
+   }
+  },
+  {
+   "id": "2026-11-17|screen-S6|LIVN",
+   "date": "2026-11-17",
+   "t": "LIVN",
+   "rule": "screen-S6",
+   "price": 91.92,
+   "detail": "Sector rotation",
+   "returns": {},
+   "seeded": true,
+   "last": {
+    "date": "2026-11-17",
+    "ret": 0.0,
+    "days": 0
+   }
+  },
+  {
+   "id": "2026-11-17|screen-S6|PACS",
+   "date": "2026-11-17",
+   "t": "PACS",
+   "rule": "screen-S6",
+   "price": 48.55,
+   "detail": "Sector rotation",
+   "returns": {},
+   "seeded": true,
+   "last": {
+    "date": "2026-11-17",
+    "ret": 0.0,
+    "days": 0
+   }
+  },
+  {
+   "id": "2026-11-17|screen-S6|RNW",
+   "date": "2026-11-17",
+   "t": "RNW",
+   "rule": "screen-S6",
+   "price": 6.95,
+   "detail": "Sector rotation",
+   "returns": {},
+   "seeded": true,
+   "last": {
+    "date": "2026-11-17",
+    "ret": 0.0,
+    "days": 0
+   }
   }
  ],
- "updatedAt": "2026-11-17T23:43:59-06:00",
+ "updatedAt": "2026-11-18T08:11:36-06:00",
  "dataAsOf": "2026-11-17"
 }

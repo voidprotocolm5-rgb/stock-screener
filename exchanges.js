@@ -601,5 +601,8 @@ window.TV_SYMBOLS = {
 "SKY": "NYSE:SKY",
 "V": "NYSE:V",
 "WIT": "NYSE:WIT",
-"AGO": "NYSE:AGO"
+"AGO": "NYSE:AGO",
+"CARS": "NYSE:CARS",
+"GEHC": "NASDAQ:GEHC",
+"LEVI": "NYSE:LEVI"
 };
