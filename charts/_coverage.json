@@ -1,0 +1,23 @@
+{
+ "updatedAt": "2026-11-17T21:26:54-0600",
+ "tickers": 301,
+ "files": 1806,
+ "good": 1800,
+ "coveragePct": 99.7,
+ "tickersFull": 300,
+ "tickersWithAnyChart": 300,
+ "misses": [
+  {
+   "ticker": "MPW",
+   "missingRanges": [
+    "1d",
+    "5d",
+    "1mo",
+    "3mo",
+    "1y",
+    "ytd"
+   ],
+   "reason": "no data from Yahoo chart API (both hosts) or Nasdaq API \u2014 symbol has no price history"
+  }
+ ]
+}

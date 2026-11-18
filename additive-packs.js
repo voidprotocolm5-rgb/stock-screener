@@ -2,7 +2,7 @@
 window.ADDITIVE_PACKS = {
   "id": "additive-packs",
   "version": "1.0",
-  "generatedAt": "2026-11-17T13:09:17-06:00",
+  "generatedAt": "2026-11-17T21:21:26-06:00",
   "disclaimer": "Research organizer only — not investment advice. Additive Finviz packs; never merge into v2.1 six.",
   "sourceRegistry": "finviz/additive-packs.json",
   "packs": [
@@ -19,10 +19,10 @@ window.ADDITIVE_PACKS = {
         "AMAL",
         "SEIC",
         "COCO",
-        "PAY",
-        "NDAQ"
+        "NDAQ",
+        "PCTY"
       ],
-      "capturedAt": "2026-11-17T13:05:20-06:00",
+      "capturedAt": "2026-11-17T21:03:53-06:00",
       "publicUrl": "https://finviz.com/screener.ashx?v=121&f=cap_smallover,fa_debteq_u1,fa_eps5years_o10,fa_estltgrowth_o10,fa_peg_u2,fa_pfcf_u30,fa_roe_o10,fa_sales5years_o5,sh_avgvol_o200,sh_insiderown_o10,ta_rsi_nob60,ta_sma200_pa,ta_sma50_pa&o=peg",
       "filterHighlight": "keeps sh_insiderown_o10 + fa_pfcf_u30",
       "companyNames": {}
@@ -32,29 +32,25 @@ window.ADDITIVE_PACKS = {
       "name": "TTF×Books FCF Compounder",
       "short": "TTF×FCF",
       "mode": "fcf_no_insider",
-      "count": 30,
+      "count": 28,
       "tickers": [
         "QNST",
         "GCT",
         "NXPI",
-        "RJF",
         "JLL",
+        "RJF",
         "RGA",
         "CARG",
         "AMAL",
-        "FCF",
-        "WSFS",
-        "SSB",
         "EXEL",
         "RGLD",
+        "FIVE",
         "SEIC",
         "ALV",
         "COCO",
-        "WTFC",
+        "EXLS",
         "KFY",
         "ITT",
-        "ATEN",
-        "PAY",
         "HQY",
         "ACIW",
         "WAB",
@@ -62,10 +58,12 @@ window.ADDITIVE_PACKS = {
         "AZN",
         "ENSG",
         "LECO",
+        "PCTY",
         "ULTA",
-        "SKY"
+        "SKY",
+        "DSGX"
       ],
-      "capturedAt": "2026-11-17T13:05:20-06:00",
+      "capturedAt": "2026-11-17T21:03:53-06:00",
       "publicUrl": "https://finviz.com/screener.ashx?v=121&f=cap_smallover,fa_debteq_u1,fa_eps5years_o10,fa_estltgrowth_o10,fa_peg_u2,fa_pfcf_u30,fa_roe_o10,fa_sales5years_o5,sh_avgvol_o200,ta_rsi_nob60,ta_sma200_pa,ta_sma50_pa&o=peg",
       "filterHighlight": "drops sh_insiderown_o10; keeps fa_pfcf_u30",
       "companyNames": {}
@@ -91,12 +89,6 @@ window.ADDITIVE_PACKS = {
       ],
       "name": null
     },
-    "ATEN": {
-      "packIds": [
-        "ttf-books-fcf-compounder"
-      ],
-      "name": null
-    },
     "AZN": {
       "packIds": [
         "ttf-books-fcf-compounder"
@@ -117,6 +109,12 @@ window.ADDITIVE_PACKS = {
       ],
       "name": null
     },
+    "DSGX": {
+      "packIds": [
+        "ttf-books-fcf-compounder"
+      ],
+      "name": null
+    },
     "ENSG": {
       "packIds": [
         "ttf-books-fcf-compounder"
@@ -129,7 +127,13 @@ window.ADDITIVE_PACKS = {
       ],
       "name": null
     },
-    "FCF": {
+    "EXLS": {
+      "packIds": [
+        "ttf-books-fcf-compounder"
+      ],
+      "name": null
+    },
+    "FIVE": {
       "packIds": [
         "ttf-books-fcf-compounder"
       ],
@@ -185,7 +189,7 @@ window.ADDITIVE_PACKS = {
       ],
       "name": null
     },
-    "PAY": {
+    "PCTY": {
       "packIds": [
         "ttf-books-long-compounder",
         "ttf-books-fcf-compounder"
@@ -230,12 +234,6 @@ window.ADDITIVE_PACKS = {
       ],
       "name": null
     },
-    "SSB": {
-      "packIds": [
-        "ttf-books-fcf-compounder"
-      ],
-      "name": null
-    },
     "ULTA": {
       "packIds": [
         "ttf-books-fcf-compounder"
@@ -247,22 +245,10 @@ window.ADDITIVE_PACKS = {
         "ttf-books-fcf-compounder"
       ],
       "name": null
-    },
-    "WSFS": {
-      "packIds": [
-        "ttf-books-fcf-compounder"
-      ],
-      "name": null
-    },
-    "WTFC": {
-      "packIds": [
-        "ttf-books-fcf-compounder"
-      ],
-      "name": null
     }
   },
   "counts": {
     "ttf-books-long-compounder": 8,
-    "ttf-books-fcf-compounder": 30
+    "ttf-books-fcf-compounder": 28
   }
 };
