@@ -2,7 +2,7 @@
 window.ADDITIVE_PACKS = {
   "id": "additive-packs",
   "version": "1.0",
-  "generatedAt": "2026-11-17T22:12:15-06:00",
+  "generatedAt": "2026-11-17T23:20:42-06:00",
   "disclaimer": "Research organizer only — not investment advice. Additive Finviz packs; never merge into v2.1 six.",
   "sourceRegistry": "finviz/additive-packs.json",
   "packs": [

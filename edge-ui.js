@@ -13,7 +13,7 @@
   var cls = function (x) { return x == null ? "" : x >= 0 ? "r6-pass" : "r6-fail"; };
   var st = { bq: "", bs: "focus", sq: "", sf: "all" };
   var EXT = {}, EXTORDER = [];
-  function register(view, title, fn, need) { EXT[view] = { fn: fn, need: need }; TITLES[view] = title; if (EXTORDER.indexOf(view) < 0) EXTORDER.push(view); }
+  function register(view, title, fn, need, after) { EXT[view] = { fn: fn, need: need, after: after }; TITLES[view] = title; if (EXTORDER.indexOf(view) < 0) EXTORDER.push(view); }
   function css() {
     if (document.getElementById("e-css")) return;
     var s = document.createElement("style"); s.id = "e-css";

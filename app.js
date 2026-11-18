@@ -2081,7 +2081,7 @@ window.OPT_RULES = {"built": "2026-11-13", "options": [{"id": "A1", "sec": "(a) 
     });
   }
 
-  const NX_VIEWS = ["holdings", "watchlist", "options", "spy", "books", "gate", "market", "performance", "investors", "packrecord", "sectors", "table", "mywatch", "xsources", "distance", "catalysts", "screens", "rotation", "signals", "optgrades", "qfactors", "qbacktest", "qregime", "qportfolio", "qpead", "qalt", "graduated", "optbt", "valuation", "beat", "mlens", "earnfc", "tone", "supply", "score", "scout"];
+  const NX_VIEWS = ["holdings", "watchlist", "options", "spy", "books", "gate", "market", "performance", "investors", "packrecord", "sectors", "table", "mywatch", "xsources", "distance", "catalysts", "screens", "rotation", "signals", "optgrades", "qfactors", "qbacktest", "qregime", "qportfolio", "qpead", "qalt", "graduated", "optbt", "valuation", "beat", "mlens", "earnfc", "tone", "supply", "score", "scout", "scen", "crowd", "analyst", "demand", "filings", "analog", "intra"];
   function setView(view, fromRouter) {
     if (!NX_VIEWS.includes(view)) view = "holdings";
     const changed = state.view !== view;
