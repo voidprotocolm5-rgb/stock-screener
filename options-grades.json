@@ -36,9 +36,9 @@
    "status": "open",
    "final": null,
    "last": {
-    "date": "2026-11-17",
+    "date": "2026-11-18",
     "retPct": null,
-    "underlying": 77.46,
+    "underlying": 76.75,
     "trigger": null
    }
   },
@@ -82,9 +82,9 @@
    "status": "open",
    "final": null,
    "last": {
-    "date": "2026-11-17",
+    "date": "2026-11-18",
     "retPct": null,
-    "underlying": 154.91,
+    "underlying": 152.17,
     "trigger": null
    }
   },
@@ -128,9 +128,9 @@
    "status": "open",
    "final": null,
    "last": {
-    "date": "2026-11-17",
+    "date": "2026-11-18",
     "retPct": null,
-    "underlying": 63.55,
+    "underlying": 65.07,
     "trigger": null
    }
   },
@@ -167,9 +167,9 @@
    "status": "open",
    "final": null,
    "last": {
-    "date": "2026-11-17",
+    "date": "2026-11-18",
     "retPct": null,
-    "underlying": 46.88,
+    "underlying": 45.72,
     "trigger": null
    }
   },
@@ -213,9 +213,9 @@
    "status": "open",
    "final": null,
    "last": {
-    "date": "2026-11-17",
+    "date": "2026-11-18",
     "retPct": null,
-    "underlying": 216.13,
+    "underlying": 208.42,
     "trigger": null
    }
   },
@@ -252,7 +252,7 @@
    "status": "open",
    "final": null,
    "last": {
-    "date": "2026-11-17",
+    "date": "2026-11-18",
     "retPct": null,
     "underlying": null,
     "trigger": null
@@ -298,9 +298,9 @@
    "status": "open",
    "final": null,
    "last": {
-    "date": "2026-11-17",
+    "date": "2026-11-18",
     "retPct": null,
-    "underlying": 180.94,
+    "underlying": 180.69,
     "trigger": null
    }
   },
@@ -344,9 +344,9 @@
    "status": "open",
    "final": null,
    "last": {
-    "date": "2026-11-17",
+    "date": "2026-11-18",
     "retPct": null,
-    "underlying": 139.48,
+    "underlying": 136.88,
     "trigger": null
    }
   },
@@ -390,9 +390,9 @@
    "status": "open",
    "final": null,
    "last": {
-    "date": "2026-11-17",
+    "date": "2026-11-18",
     "retPct": null,
-    "underlying": 351.91,
+    "underlying": 353.3,
     "trigger": null
    }
   },
@@ -436,9 +436,9 @@
    "status": "open",
    "final": null,
    "last": {
-    "date": "2026-11-17",
+    "date": "2026-11-18",
     "retPct": null,
-    "underlying": 108.15,
+    "underlying": 107.27,
     "trigger": null
    }
   },
@@ -482,9 +482,9 @@
    "status": "open",
    "final": null,
    "last": {
-    "date": "2026-11-17",
+    "date": "2026-11-18",
     "retPct": null,
-    "underlying": 416.77,
+    "underlying": 414.58,
     "trigger": null
    }
   },
@@ -528,9 +528,9 @@
    "status": "open",
    "final": null,
    "last": {
-    "date": "2026-11-17",
+    "date": "2026-11-18",
     "retPct": null,
-    "underlying": 257.89,
+    "underlying": 264.24,
     "trigger": null
    }
   },
@@ -574,9 +574,9 @@
    "status": "open",
    "final": null,
    "last": {
-    "date": "2026-11-17",
+    "date": "2026-11-18",
     "retPct": null,
-    "underlying": 106.04,
+    "underlying": 106.33,
     "trigger": null
    }
   },
@@ -620,9 +620,9 @@
    "status": "open",
    "final": null,
    "last": {
-    "date": "2026-11-17",
+    "date": "2026-11-18",
     "retPct": null,
-    "underlying": 55.17,
+    "underlying": 54.25,
     "trigger": null
    }
   },
@@ -666,9 +666,9 @@
    "status": "open",
    "final": null,
    "last": {
-    "date": "2026-11-17",
+    "date": "2026-11-18",
     "retPct": null,
-    "underlying": 24.14,
+    "underlying": 24.41,
     "trigger": null
    }
   },
@@ -712,9 +712,9 @@
    "status": "open",
    "final": null,
    "last": {
-    "date": "2026-11-17",
+    "date": "2026-11-18",
     "retPct": null,
-    "underlying": 69.19,
+    "underlying": 68.32,
     "trigger": null
    }
   },
@@ -758,10 +758,13 @@
    "status": "open",
    "final": null,
    "last": {
-    "date": "2026-11-17",
+    "date": "2026-11-18",
     "retPct": null,
-    "underlying": 96.5,
-    "trigger": null
+    "underlying": 92.7,
+    "trigger": {
+     "kind": "target",
+     "date": "2026-11-18"
+    }
    }
   },
   {
@@ -804,10 +807,13 @@
    "status": "open",
    "final": null,
    "last": {
-    "date": "2026-11-17",
+    "date": "2026-11-18",
     "retPct": null,
-    "underlying": 115.02,
-    "trigger": null
+    "underlying": 111.82,
+    "trigger": {
+     "kind": "target",
+     "date": "2026-11-18"
+    }
    }
   },
   {
@@ -850,9 +856,9 @@
    "status": "open",
    "final": null,
    "last": {
-    "date": "2026-11-17",
+    "date": "2026-11-18",
     "retPct": null,
-    "underlying": 94.48,
+    "underlying": 95.9,
     "trigger": null
    }
   },
@@ -896,9 +902,9 @@
    "status": "open",
    "final": null,
    "last": {
-    "date": "2026-11-17",
+    "date": "2026-11-18",
     "retPct": null,
-    "underlying": 123.95,
+    "underlying": 123.46,
     "trigger": null
    }
   },
@@ -942,10 +948,13 @@
    "status": "open",
    "final": null,
    "last": {
-    "date": "2026-11-17",
+    "date": "2026-11-18",
     "retPct": null,
-    "underlying": 92.9,
-    "trigger": null
+    "underlying": 90.79,
+    "trigger": {
+     "kind": "target",
+     "date": "2026-11-18"
+    }
    }
   },
   {
@@ -988,9 +997,9 @@
    "status": "open",
    "final": null,
    "last": {
-    "date": "2026-11-17",
+    "date": "2026-11-18",
     "retPct": null,
-    "underlying": 155.46,
+    "underlying": 153.24,
     "trigger": null
    }
   },
@@ -1027,9 +1036,9 @@
    "status": "open",
    "final": null,
    "last": {
-    "date": "2026-11-17",
+    "date": "2026-11-18",
     "retPct": null,
-    "underlying": 32.46,
+    "underlying": 32.89,
     "trigger": null
    }
   },
@@ -1066,9 +1075,9 @@
    "status": "open",
    "final": null,
    "last": {
-    "date": "2026-11-17",
+    "date": "2026-11-18",
     "retPct": null,
-    "underlying": 46.88,
+    "underlying": 45.72,
     "trigger": null
    }
   },
@@ -1112,9 +1121,9 @@
    "status": "open",
    "final": null,
    "last": {
-    "date": "2026-11-17",
+    "date": "2026-11-18",
     "retPct": null,
-    "underlying": 180.94,
+    "underlying": 180.69,
     "trigger": null
    }
   },
@@ -1158,9 +1167,9 @@
    "status": "open",
    "final": null,
    "last": {
-    "date": "2026-11-17",
+    "date": "2026-11-18",
     "retPct": null,
-    "underlying": 139.48,
+    "underlying": 136.88,
     "trigger": null
    }
   },
@@ -1204,9 +1213,9 @@
    "status": "open",
    "final": null,
    "last": {
-    "date": "2026-11-17",
+    "date": "2026-11-18",
     "retPct": null,
-    "underlying": 416.77,
+    "underlying": 414.58,
     "trigger": null
    }
   },
@@ -1250,9 +1259,9 @@
    "status": "open",
    "final": null,
    "last": {
-    "date": "2026-11-17",
+    "date": "2026-11-18",
     "retPct": null,
-    "underlying": 257.89,
+    "underlying": 264.24,
     "trigger": null
    }
   },
@@ -1289,9 +1298,9 @@
    "status": "open",
    "final": null,
    "last": {
-    "date": "2026-11-17",
+    "date": "2026-11-18",
     "retPct": null,
-    "underlying": 45.59,
+    "underlying": 47.11,
     "trigger": null
    }
   },
@@ -1335,9 +1344,9 @@
    "status": "open",
    "final": null,
    "last": {
-    "date": "2026-11-17",
+    "date": "2026-11-18",
     "retPct": null,
-    "underlying": 55.17,
+    "underlying": 54.25,
     "trigger": null
    }
   },
@@ -1381,9 +1390,9 @@
    "status": "open",
    "final": null,
    "last": {
-    "date": "2026-11-17",
+    "date": "2026-11-18",
     "retPct": null,
-    "underlying": 24.14,
+    "underlying": 24.41,
     "trigger": null
    }
   },
@@ -1427,10 +1436,13 @@
    "status": "open",
    "final": null,
    "last": {
-    "date": "2026-11-17",
+    "date": "2026-11-18",
     "retPct": null,
-    "underlying": 96.5,
-    "trigger": null
+    "underlying": 92.7,
+    "trigger": {
+     "kind": "target",
+     "date": "2026-11-18"
+    }
    }
   },
   {
@@ -1473,9 +1485,9 @@
    "status": "open",
    "final": null,
    "last": {
-    "date": "2026-11-17",
+    "date": "2026-11-18",
     "retPct": null,
-    "underlying": 69.19,
+    "underlying": 68.32,
     "trigger": null
    }
   },
@@ -1519,10 +1531,13 @@
    "status": "open",
    "final": null,
    "last": {
-    "date": "2026-11-17",
+    "date": "2026-11-18",
     "retPct": null,
-    "underlying": 115.02,
-    "trigger": null
+    "underlying": 111.82,
+    "trigger": {
+     "kind": "target",
+     "date": "2026-11-18"
+    }
    }
   },
   {
@@ -1565,9 +1580,9 @@
    "status": "open",
    "final": null,
    "last": {
-    "date": "2026-11-17",
+    "date": "2026-11-18",
     "retPct": null,
-    "underlying": 155.46,
+    "underlying": 153.24,
     "trigger": null
    }
   },
@@ -1611,9 +1626,9 @@
    "status": "open",
    "final": null,
    "last": {
-    "date": "2026-11-17",
+    "date": "2026-11-18",
     "retPct": null,
-    "underlying": 183.39,
+    "underlying": 186.97,
     "trigger": null
    }
   },
@@ -1657,10 +1672,13 @@
    "status": "open",
    "final": null,
    "last": {
-    "date": "2026-11-17",
+    "date": "2026-11-18",
     "retPct": null,
-    "underlying": 115.02,
-    "trigger": null
+    "underlying": 111.82,
+    "trigger": {
+     "kind": "target",
+     "date": "2026-11-18"
+    }
    }
   },
   {
@@ -1696,9 +1714,9 @@
    "status": "open",
    "final": null,
    "last": {
-    "date": "2026-11-17",
+    "date": "2026-11-18",
     "retPct": null,
-    "underlying": 108.15,
+    "underlying": 107.27,
     "trigger": null
    }
   },
@@ -1735,9 +1753,9 @@
    "status": "open",
    "final": null,
    "last": {
-    "date": "2026-11-17",
+    "date": "2026-11-18",
     "retPct": null,
-    "underlying": 32.46,
+    "underlying": 32.89,
     "trigger": null
    }
   },
@@ -1774,9 +1792,9 @@
    "status": "open",
    "final": null,
    "last": {
-    "date": "2026-11-17",
+    "date": "2026-11-18",
     "retPct": null,
-    "underlying": 77.46,
+    "underlying": 76.75,
     "trigger": null
    }
   },
@@ -1820,9 +1838,9 @@
    "status": "open",
    "final": null,
    "last": {
-    "date": "2026-11-17",
+    "date": "2026-11-18",
     "retPct": null,
-    "underlying": 351.91,
+    "underlying": 353.3,
     "trigger": null
    }
   },
@@ -1866,9 +1884,9 @@
    "status": "open",
    "final": null,
    "last": {
-    "date": "2026-11-17",
+    "date": "2026-11-18",
     "retPct": null,
-    "underlying": 257.89,
+    "underlying": 264.24,
     "trigger": null
    }
   },
@@ -1912,9 +1930,9 @@
    "status": "open",
    "final": null,
    "last": {
-    "date": "2026-11-17",
+    "date": "2026-11-18",
     "retPct": null,
-    "underlying": 106.04,
+    "underlying": 106.33,
     "trigger": null
    }
   },
@@ -1958,9 +1976,9 @@
    "status": "open",
    "final": null,
    "last": {
-    "date": "2026-11-17",
+    "date": "2026-11-18",
     "retPct": null,
-    "underlying": 55.17,
+    "underlying": 54.25,
     "trigger": null
    }
   },
@@ -2004,9 +2022,9 @@
    "status": "open",
    "final": null,
    "last": {
-    "date": "2026-11-17",
+    "date": "2026-11-18",
     "retPct": null,
-    "underlying": 24.14,
+    "underlying": 24.41,
     "trigger": null
    }
   },
@@ -2050,9 +2068,9 @@
    "status": "open",
    "final": null,
    "last": {
-    "date": "2026-11-17",
+    "date": "2026-11-18",
     "retPct": null,
-    "underlying": 96.5,
+    "underlying": 92.7,
     "trigger": null
    }
   },
@@ -2096,9 +2114,9 @@
    "status": "open",
    "final": null,
    "last": {
-    "date": "2026-11-17",
+    "date": "2026-11-18",
     "retPct": null,
-    "underlying": 115.02,
+    "underlying": 111.82,
     "trigger": null
    }
   },
@@ -2142,9 +2160,9 @@
    "status": "open",
    "final": null,
    "last": {
-    "date": "2026-11-17",
+    "date": "2026-11-18",
     "retPct": null,
-    "underlying": 92.9,
+    "underlying": 90.79,
     "trigger": null
    }
   },
@@ -2188,9 +2206,9 @@
    "status": "open",
    "final": null,
    "last": {
-    "date": "2026-11-17",
+    "date": "2026-11-18",
     "retPct": null,
-    "underlying": 155.46,
+    "underlying": 153.24,
     "trigger": null
    }
   },
@@ -2234,9 +2252,9 @@
    "status": "open",
    "final": null,
    "last": {
-    "date": "2026-11-17",
+    "date": "2026-11-18",
     "retPct": null,
-    "underlying": 183.39,
+    "underlying": 186.97,
     "trigger": null
    }
   },
@@ -2280,13 +2298,604 @@
    "status": "open",
    "final": null,
    "last": {
-    "date": "2026-11-17",
+    "date": "2026-11-18",
     "retPct": null,
-    "underlying": 194.52,
+    "underlying": 188.29,
+    "trigger": null
+   }
+  },
+  {
+   "id": "2026-11-18|ABNB|call|ABNB Dec 18 '26 $180 C / Dec 18 '26 $185 C",
+   "date": "2026-11-18",
+   "t": "ABNB",
+   "name": "Airbnb, Inc. Class A",
+   "side": "call",
+   "contract": "ABNB Dec 18 '26 $180 C / Dec 18 '26 $185 C",
+   "structure": "debit spread",
+   "setup": "Pullback to 20-day or base breakout (B1/B4)",
+   "setupType": "Pullback or base breakout",
+   "entryUnderlying": 179.88,
+   "entryPremium": 2.6,
+   "cost": 260,
+   "quoteTime": "2026-11-18T09:10-06:00",
+   "legs": [
+    {
+     "sym": "ABNB261218C00180000",
+     "action": "buy",
+     "exp": "2026-12-18",
+     "strike": 180.0,
+     "entryMid": 7.92
+    },
+    {
+     "sym": "ABNB261218C00185000",
+     "action": "sell",
+     "exp": "2026-12-18",
+     "strike": 185.0,
+     "entryMid": 5.33
+    }
+   ],
+   "stopLevel": 162.07,
+   "target": 210.42,
+   "stopPct": -35,
+   "tp1Pct": 35,
+   "exitBy": "2026-11-27",
+   "score": 61,
+   "marks": [],
+   "status": "open",
+   "final": null,
+   "last": {
+    "date": "2026-11-18",
+    "retPct": null,
+    "underlying": 180.69,
+    "trigger": null
+   }
+  },
+  {
+   "id": "2026-11-18|AAPL|call|AAPL Dec 18 '26 $355 C / Dec 18 '26 $360 C",
+   "date": "2026-11-18",
+   "t": "AAPL",
+   "name": "Apple Inc.",
+   "side": "call",
+   "contract": "AAPL Dec 18 '26 $355 C / Dec 18 '26 $360 C",
+   "structure": "debit spread",
+   "setup": "Pullback to 20-day or base breakout (B1/B4)",
+   "setupType": "Pullback or base breakout",
+   "entryUnderlying": 354.64,
+   "entryPremium": 2.77,
+   "cost": 277,
+   "quoteTime": "2026-11-18T09:19-06:00",
+   "legs": [
+    {
+     "sym": "AAPL261218C00355000",
+     "action": "buy",
+     "exp": "2026-12-18",
+     "strike": 355.0,
+     "entryMid": 10.7
+    },
+    {
+     "sym": "AAPL261218C00360000",
+     "action": "sell",
+     "exp": "2026-12-18",
+     "strike": 360.0,
+     "entryMid": 7.92
+    }
+   ],
+   "stopLevel": 322.73,
+   "target": 383.3,
+   "stopPct": -35,
+   "tp1Pct": 35,
+   "exitBy": "2026-11-27",
+   "score": 59,
+   "marks": [],
+   "status": "open",
+   "final": null,
+   "last": {
+    "date": "2026-11-18",
+    "retPct": null,
+    "underlying": 353.3,
+    "trigger": null
+   }
+  },
+  {
+   "id": "2026-11-18|V|call|V Jan 15 '27 $415 C / Jan 15 '27 $420 C",
+   "date": "2026-11-18",
+   "t": "V",
+   "name": "Visa Inc. Class A",
+   "side": "call",
+   "contract": "V Jan 15 '27 $415 C / Jan 15 '27 $420 C",
+   "structure": "debit spread",
+   "setup": "20-day reclaim or 50-day failure test (B3)",
+   "setupType": "20-day reclaim or 50-day failure test",
+   "entryUnderlying": 413.23,
+   "entryPremium": 2.45,
+   "cost": 245,
+   "quoteTime": "2026-11-18T09:18-06:00",
+   "legs": [
+    {
+     "sym": "V270115C00415000",
+     "action": "buy",
+     "exp": "2027-01-15",
+     "strike": 415.0,
+     "entryMid": 16.73
+    },
+    {
+     "sym": "V270115C00420000",
+     "action": "sell",
+     "exp": "2027-01-15",
+     "strike": 420.0,
+     "entryMid": 14.28
+    }
+   ],
+   "stopLevel": 390.19,
+   "target": 461.37,
+   "stopPct": -35,
+   "tp1Pct": 35,
+   "exitBy": "2026-12-24",
+   "score": 58,
+   "marks": [],
+   "status": "open",
+   "final": null,
+   "last": {
+    "date": "2026-11-18",
+    "retPct": null,
+    "underlying": 414.58,
+    "trigger": null
+   }
+  },
+  {
+   "id": "2026-11-18|LEVI|call|LEVI Jan 15 '27 $23 C",
+   "date": "2026-11-18",
+   "t": "LEVI",
+   "name": "Levi Strauss & Co. Class A",
+   "side": "call",
+   "contract": "LEVI Jan 15 '27 $23 C",
+   "structure": "outright",
+   "setup": "Pullback to 20-day (B1)",
+   "setupType": "Pullback",
+   "entryUnderlying": 24.29,
+   "entryPremium": 4.0,
+   "cost": 400,
+   "quoteTime": "2026-11-18T09:19-06:00",
+   "legs": [
+    {
+     "sym": "LEVI270115C00023000",
+     "action": "buy",
+     "exp": "2027-01-15",
+     "strike": 23.0,
+     "entryMid": 2.0
+    }
+   ],
+   "stopLevel": 20.57,
+   "target": 26.99,
+   "stopPct": -35,
+   "tp1Pct": 35,
+   "exitBy": "2026-12-24",
+   "score": 57,
+   "marks": [],
+   "status": "open",
+   "final": null,
+   "last": {
+    "date": "2026-11-18",
+    "retPct": null,
+    "underlying": 24.45,
+    "trigger": null
+   }
+  },
+  {
+   "id": "2026-11-18|AMZN|call|AMZN Jan 15 '27 $265 C / Jan 15 '27 $270 C",
+   "date": "2026-11-18",
+   "t": "AMZN",
+   "name": "Amazon.com, Inc.",
+   "side": "call",
+   "contract": "AMZN Jan 15 '27 $265 C / Jan 15 '27 $270 C",
+   "structure": "debit spread",
+   "setup": "Pullback to 20-day or base breakout (B1/B4)",
+   "setupType": "Pullback or base breakout",
+   "entryUnderlying": 263.66,
+   "entryPremium": 2.58,
+   "cost": 258,
+   "quoteTime": "2026-11-18T09:18-06:00",
+   "legs": [
+    {
+     "sym": "AMZN270115C00265000",
+     "action": "buy",
+     "exp": "2027-01-15",
+     "strike": 265.0,
+     "entryMid": 15.3
+    },
+    {
+     "sym": "AMZN270115C00270000",
+     "action": "sell",
+     "exp": "2027-01-15",
+     "strike": 270.0,
+     "entryMid": 12.72
+    }
+   ],
+   "stopLevel": 226.68,
+   "target": 302.93,
+   "stopPct": -35,
+   "tp1Pct": 35,
+   "exitBy": "2026-12-24",
+   "score": 56,
+   "marks": [],
+   "status": "open",
+   "final": null,
+   "last": {
+    "date": "2026-11-18",
+    "retPct": null,
+    "underlying": 264.24,
+    "trigger": null
+   }
+  },
+  {
+   "id": "2026-11-18|INTC|put|INTC Dec 18 '26 $57.5 P / Dec 18 '26 $50 P",
+   "date": "2026-11-18",
+   "t": "INTC",
+   "name": "Intel Corporation",
+   "side": "put",
+   "contract": "INTC Dec 18 '26 $57.5 P / Dec 18 '26 $50 P",
+   "structure": "debit spread",
+   "setup": "Failed bounce at the 3-day high or breakdown (B3)",
+   "setupType": "Failed bounce or breakdown",
+   "entryUnderlying": 55.04,
+   "entryPremium": 3.38,
+   "cost": 338,
+   "quoteTime": "2026-11-18T09:18-06:00",
+   "legs": [
+    {
+     "sym": "INTC261218P00057500",
+     "action": "buy",
+     "exp": "2026-12-18",
+     "strike": 57.5,
+     "entryMid": 5.95
+    },
+    {
+     "sym": "INTC261218P00050000",
+     "action": "sell",
+     "exp": "2026-12-18",
+     "strike": 50.0,
+     "entryMid": 2.56
+    }
+   ],
+   "stopLevel": 64.2,
+   "target": 32.89,
+   "stopPct": -35,
+   "tp1Pct": 35,
+   "exitBy": "2026-11-27",
+   "score": 26,
+   "marks": [],
+   "status": "open",
+   "final": null,
+   "last": {
+    "date": "2026-11-18",
+    "retPct": null,
+    "underlying": 54.25,
+    "trigger": null
+   }
+  },
+  {
+   "id": "2026-11-18|MSTR|put|MSTR Dec 18 '26 $100 P / Dec 18 '26 $95 P",
+   "date": "2026-11-18",
+   "t": "MSTR",
+   "name": "Strategy Inc Class A",
+   "side": "put",
+   "contract": "MSTR Dec 18 '26 $100 P / Dec 18 '26 $95 P",
+   "structure": "debit spread",
+   "setup": "Failed bounce at the 3-day high or breakdown (B3)",
+   "setupType": "Failed bounce or breakdown",
+   "entryUnderlying": 94.93,
+   "entryPremium": 2.7,
+   "cost": 270,
+   "quoteTime": "2026-11-18T09:19-06:00",
+   "legs": [
+    {
+     "sym": "MSTR261218P00100000",
+     "action": "buy",
+     "exp": "2026-12-18",
+     "strike": 100.0,
+     "entryMid": 12.12
+    },
+    {
+     "sym": "MSTR261218P00095000",
+     "action": "sell",
+     "exp": "2026-12-18",
+     "strike": 95.0,
+     "entryMid": 9.43
+    }
+   ],
+   "stopLevel": 110.25,
+   "target": 91.2,
+   "stopPct": -35,
+   "tp1Pct": 35,
+   "exitBy": "2026-11-27",
+   "score": 22,
+   "marks": [],
+   "status": "open",
+   "final": null,
+   "last": {
+    "date": "2026-11-18",
+    "retPct": null,
+    "underlying": 92.7,
+    "trigger": null
+   }
+  },
+  {
+   "id": "2026-11-18|HOOD|put|HOOD Dec 18 '26 $75 P / Dec 18 '26 $70 P",
+   "date": "2026-11-18",
+   "t": "HOOD",
+   "name": "Robinhood Markets, Inc. Class A",
+   "side": "put",
+   "contract": "HOOD Dec 18 '26 $75 P / Dec 18 '26 $70 P",
+   "structure": "debit spread",
+   "setup": "Failed bounce at the 3-day high or breakdown (B3)",
+   "setupType": "Failed bounce or breakdown",
+   "entryUnderlying": 69.28,
+   "entryPremium": 2.92,
+   "cost": 292,
+   "quoteTime": "2026-11-18T09:19-06:00",
+   "legs": [
+    {
+     "sym": "HOOD261218P00075000",
+     "action": "buy",
+     "exp": "2026-12-18",
+     "strike": 75.0,
+     "entryMid": 8.85
+    },
+    {
+     "sym": "HOOD261218P00070000",
+     "action": "sell",
+     "exp": "2026-12-18",
+     "strike": 70.0,
+     "entryMid": 5.92
+    }
+   ],
+   "stopLevel": 78.12,
+   "target": 67.25,
+   "stopPct": -35,
+   "tp1Pct": 35,
+   "exitBy": "2026-11-27",
+   "score": 28,
+   "marks": [],
+   "status": "open",
+   "final": null,
+   "last": {
+    "date": "2026-11-18",
+    "retPct": null,
+    "underlying": 68.32,
+    "trigger": null
+   }
+  },
+  {
+   "id": "2026-11-18|SMCI|put|SMCI Dec 18 '26 $28 P / Dec 18 '26 $20 P",
+   "date": "2026-11-18",
+   "t": "SMCI",
+   "name": "Super Micro Computer, Inc.",
+   "side": "put",
+   "contract": "SMCI Dec 18 '26 $28 P / Dec 18 '26 $20 P",
+   "structure": "debit spread",
+   "setup": "Failed bounce at the 3-day high or breakdown (B3)",
+   "setupType": "Failed bounce or breakdown",
+   "entryUnderlying": 24.64,
+   "entryPremium": 3.69,
+   "cost": 369,
+   "quoteTime": "2026-11-18T09:19-06:00",
+   "legs": [
+    {
+     "sym": "SMCI261218P00028000",
+     "action": "buy",
+     "exp": "2026-12-18",
+     "strike": 28.0,
+     "entryMid": 4.53
+    },
+    {
+     "sym": "SMCI261218P00020000",
+     "action": "sell",
+     "exp": "2026-12-18",
+     "strike": 20.0,
+     "entryMid": 0.83
+    }
+   ],
+   "stopLevel": 28.57,
+   "target": 19.48,
+   "stopPct": -35,
+   "tp1Pct": 35,
+   "exitBy": "2026-11-27",
+   "score": 55,
+   "marks": [],
+   "status": "open",
+   "final": null,
+   "last": {
+    "date": "2026-11-18",
+    "retPct": null,
+    "underlying": 24.41,
+    "trigger": null
+   }
+  },
+  {
+   "id": "2026-11-18|NOW|put|NOW Dec 18 '26 $94 P / Dec 18 '26 $85 P",
+   "date": "2026-11-18",
+   "t": "NOW",
+   "name": "ServiceNow, Inc.",
+   "side": "put",
+   "contract": "NOW Dec 18 '26 $94 P / Dec 18 '26 $85 P",
+   "structure": "debit spread",
+   "setup": "Failed bounce at the 3-day high or breakdown (B3)",
+   "setupType": "Failed bounce or breakdown",
+   "entryUnderlying": 91.53,
+   "entryPremium": 3.92,
+   "cost": 392,
+   "quoteTime": "2026-11-18T09:19-06:00",
+   "legs": [
+    {
+     "sym": "NOW261218P00094000",
+     "action": "buy",
+     "exp": "2026-12-18",
+     "strike": 94.0,
+     "entryMid": 6.83
+    },
+    {
+     "sym": "NOW261218P00085000",
+     "action": "sell",
+     "exp": "2026-12-18",
+     "strike": 85.0,
+     "entryMid": 2.91
+    }
+   ],
+   "stopLevel": 104.22,
+   "target": 90.82,
+   "stopPct": -35,
+   "tp1Pct": 35,
+   "exitBy": "2026-11-27",
+   "score": 36,
+   "marks": [],
+   "status": "open",
+   "final": null,
+   "last": {
+    "date": "2026-11-18",
+    "retPct": null,
+    "underlying": 90.79,
+    "trigger": null
+   }
+  },
+  {
+   "id": "2026-11-18|RDDT|put|RDDT Dec 18 '26 $100 P / Dec 18 '26 $95 P",
+   "date": "2026-11-18",
+   "t": "RDDT",
+   "name": "Reddit, Inc. Class A",
+   "side": "put",
+   "contract": "RDDT Dec 18 '26 $100 P / Dec 18 '26 $95 P",
+   "structure": "debit spread",
+   "setup": "Failed bounce at the 5-day high or breakdown (B3)",
+   "setupType": "Failed bounce or breakdown",
+   "entryUnderlying": 97.22,
+   "entryPremium": 2.45,
+   "cost": 245,
+   "quoteTime": "2026-11-18T09:18-06:00",
+   "legs": [
+    {
+     "sym": "RDDT261218P00100000",
+     "action": "buy",
+     "exp": "2026-12-18",
+     "strike": 100.0,
+     "entryMid": 8.55
+    },
+    {
+     "sym": "RDDT261218P00095000",
+     "action": "sell",
+     "exp": "2026-12-18",
+     "strike": 95.0,
+     "entryMid": 6.1
+    }
+   ],
+   "stopLevel": 109.98,
+   "target": 89.28,
+   "stopPct": -35,
+   "tp1Pct": 35,
+   "exitBy": "2026-11-27",
+   "score": 57,
+   "marks": [],
+   "status": "open",
+   "final": null,
+   "last": {
+    "date": "2026-11-18",
+    "retPct": null,
+    "underlying": 95.9,
+    "trigger": null
+   }
+  },
+  {
+   "id": "2026-11-18|NVDA|put|NVDA Dec 18 '26 $158 P / Dec 18 '26 $150 P",
+   "date": "2026-11-18",
+   "t": "NVDA",
+   "name": "NVIDIA Corporation",
+   "side": "put",
+   "contract": "NVDA Dec 18 '26 $158 P / Dec 18 '26 $150 P",
+   "structure": "debit spread",
+   "setup": "Failed bounce at the 3-day high or breakdown (B3)",
+   "setupType": "Failed bounce or breakdown",
+   "entryUnderlying": 155.02,
+   "entryPremium": 3.82,
+   "cost": 382,
+   "quoteTime": "2026-11-18T09:19-06:00",
+   "legs": [
+    {
+     "sym": "NVDA261218P00158000",
+     "action": "buy",
+     "exp": "2026-12-18",
+     "strike": 158.0,
+     "entryMid": 10.97
+    },
+    {
+     "sym": "NVDA261218P00150000",
+     "action": "sell",
+     "exp": "2026-12-18",
+     "strike": 150.0,
+     "entryMid": 7.15
+    }
+   ],
+   "stopLevel": 172.6,
+   "target": 92.01,
+   "stopPct": -35,
+   "tp1Pct": 35,
+   "exitBy": "2026-11-27",
+   "score": 68,
+   "marks": [],
+   "status": "open",
+   "final": null,
+   "last": {
+    "date": "2026-11-18",
+    "retPct": null,
+    "underlying": 153.24,
+    "trigger": null
+   }
+  },
+  {
+   "id": "2026-11-18|CCJ|put|CCJ Jan 15 '27 $70 P / Jan 15 '27 $60 P",
+   "date": "2026-11-18",
+   "t": "CCJ",
+   "name": "Cameco Corporation",
+   "side": "put",
+   "contract": "CCJ Jan 15 '27 $70 P / Jan 15 '27 $60 P",
+   "structure": "debit spread",
+   "setup": "Failed bounce at the 3-day high or breakdown (B3)",
+   "setupType": "Failed bounce or breakdown",
+   "entryUnderlying": 63.44,
+   "entryPremium": 5.67,
+   "cost": 567,
+   "quoteTime": "2026-11-18T09:03-06:00",
+   "legs": [
+    {
+     "sym": "CCJ270115P00070000",
+     "action": "buy",
+     "exp": "2027-01-15",
+     "strike": 70.0,
+     "entryMid": 9.32
+    },
+    {
+     "sym": "CCJ270115P00060000",
+     "action": "sell",
+     "exp": "2027-01-15",
+     "strike": 60.0,
+     "entryMid": 3.65
+    }
+   ],
+   "stopLevel": 71.77,
+   "target": 62.79,
+   "stopPct": -35,
+   "tp1Pct": 35,
+   "exitBy": "2026-12-24",
+   "score": 27,
+   "marks": [],
+   "status": "open",
+   "final": null,
+   "last": {
+    "date": "2026-11-18",
+    "retPct": null,
+    "underlying": 63.55,
     "trigger": null
    }
   }
  ],
- "updatedAt": "2026-11-18T08:11:36-06:00",
- "dataAsOf": "2026-11-17"
+ "updatedAt": "2026-11-18T09:19:46-06:00",
+ "dataAsOf": "2026-11-18"
 }
