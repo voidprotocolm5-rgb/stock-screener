@@ -1662,8 +1662,47 @@
     "underlying": 115.02,
     "trigger": null
    }
+  },
+  {
+   "id": "2026-11-17|KMB|call|KMB Jan 15 '27 $110 C",
+   "date": "2026-11-17",
+   "t": "KMB",
+   "name": "Kimberly-Clark Corporation",
+   "side": "call",
+   "contract": "KMB Jan 15 '27 $110 C",
+   "structure": "outright",
+   "setup": "Pullback to 20-day or base breakout (B1/B4)",
+   "setupType": "Pullback or base breakout",
+   "entryUnderlying": 111.34,
+   "entryPremium": 3.4,
+   "cost": 340,
+   "quoteTime": "2026-11-17T23:26-06:00",
+   "legs": [
+    {
+     "sym": "KMB270115C00110000",
+     "action": "buy",
+     "exp": "2027-01-15",
+     "strike": 110.0,
+     "entryMid": 3.4
+    }
+   ],
+   "stopLevel": 102.0,
+   "target": 117.6,
+   "stopPct": -35,
+   "tp1Pct": 35,
+   "exitBy": "2026-12-24",
+   "score": 56,
+   "marks": [],
+   "status": "open",
+   "final": null,
+   "last": {
+    "date": "2026-11-17",
+    "retPct": null,
+    "underlying": 108.15,
+    "trigger": null
+   }
   }
  ],
- "updatedAt": "2026-11-17T22:18:08-06:00",
+ "updatedAt": "2026-11-17T23:43:59-06:00",
  "dataAsOf": "2026-11-17"
 }
