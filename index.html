@@ -32,11 +32,18 @@
   <script src="options-picks.js?v=202611172218"></script>
   <script src="research6.js?v=202611172218"></script>
   <script src="r6-ui.js?v=202611172218"></script>
-  <script src="quant.js?v=202611172218"></script>
-  <script src="quant-ui.js?v=202611172218"></script>
-  <script src="plan.js?v=202611172219"></script>
-  <script src="optbt.js?v=202611172219"></script>
-  <script src="plan-ui.js?v=202611172219"></script>
+  <script src="quant.js?v=202611172256"></script>
+  <script src="quant-ui.js?v=202611172256"></script>
+  <script src="plan.js?v=202611172256"></script>
+  <script src="optbt.js?v=202611172256"></script>
+  <script src="edge.js?v=202611172255"></script>
+  <script src="events.js?v=202611172255"></script>
+  <script src="sentiment.js?v=202611172255"></script>
+  <script src="scoreboard.js?v=202611172255"></script>
+  <script src="pit.js?v=202611172255"></script>
+  <script src="scout.js?v=202611172255"></script>
+  <script src="edge-ui.js?v=1"></script>
+  <script src="plan-ui.js?v=202611172256"></script>
 </head>
 <body>
   <div class="shell">
@@ -92,11 +99,22 @@
         <button type="button" class="view-tab sub-tab" data-view="graduated" id="tab-graduated">Graduated list</button>
         <button type="button" class="view-tab sub-tab" data-view="optbt" id="tab-optbt">Options backtest (modeled)</button>
         <button type="button" class="view-tab sub-tab" data-view="valuation" id="tab-valuation">Valuation check</button>
+        <button type="button" class="view-tab sub-tab" data-view="beat" id="tab-beat">Beat-SPY probability</button>
+        <button type="button" class="view-tab sub-tab" data-view="mlens" id="tab-mlens">ML ensemble (walk-forward)</button>
+        <button type="button" class="view-tab sub-tab" data-view="earnfc" id="tab-earnfc">Earnings move forecaster</button>
+        <button type="button" class="view-tab sub-tab" data-view="tone" id="tab-tone">News &amp; call tone</button>
+        <button type="button" class="view-tab sub-tab" data-view="supply" id="tab-supply">Supply-chain map</button>
+        <button type="button" class="view-tab sub-tab" data-view="score" id="tab-score">Scoreboard (self-grading)</button>
+        <button type="button" class="view-tab sub-tab" data-view="scout" id="tab-scout">Scout analytics</button>
       </div>
     </div>
 
     <div id="view-plan" class="view-panel" hidden>
       <section id="plan-root" class="nx-root" aria-label="Plan tools"></section>
+    </div>
+
+    <div id="view-edge" class="view-panel" hidden>
+      <section id="edge-root" class="nx-root" aria-label="Edge tools"></section>
     </div>
 
     <div id="view-quant" class="view-panel" hidden>
@@ -482,6 +500,6 @@
   </div>
 
   <script src="https://unpkg.com/lightweight-charts@4.2.1/dist/lightweight-charts.standalone.production.js"></script>
-  <script src="app.js?v=45"></script>
+  <script src="app.js?v=46"></script>
 </body>
 </html>

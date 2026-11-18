@@ -2081,7 +2081,7 @@ window.OPT_RULES = {"built": "2026-11-13", "options": [{"id": "A1", "sec": "(a) 
     });
   }
 
-  const NX_VIEWS = ["holdings", "watchlist", "options", "spy", "books", "gate", "market", "performance", "investors", "packrecord", "sectors", "table", "mywatch", "xsources", "distance", "catalysts", "screens", "rotation", "signals", "optgrades", "qfactors", "qbacktest", "qregime", "qportfolio", "qpead", "qalt", "graduated", "optbt", "valuation"];
+  const NX_VIEWS = ["holdings", "watchlist", "options", "spy", "books", "gate", "market", "performance", "investors", "packrecord", "sectors", "table", "mywatch", "xsources", "distance", "catalysts", "screens", "rotation", "signals", "optgrades", "qfactors", "qbacktest", "qregime", "qportfolio", "qpead", "qalt", "graduated", "optbt", "valuation", "beat", "mlens", "earnfc", "tone", "supply", "score", "scout"];
   function setView(view, fromRouter) {
     if (!NX_VIEWS.includes(view)) view = "holdings";
     const changed = state.view !== view;
@@ -2117,6 +2117,7 @@ window.OPT_RULES = {"built": "2026-11-13", "options": [{"id": "A1", "sec": "(a) 
     try { if (window.R6UI) window.R6UI.renderView(view); } catch (err) { console.warn("R6 render", err); }
     try { if (window.QUANTUI) window.QUANTUI.renderView(view); } catch (err) { console.warn("Quant render", err); }
     try { if (window.PLANUI) window.PLANUI.renderView(view); } catch (err) { console.warn("Plan render", err); }
+    try { if (window.EDGEUI) window.EDGEUI.renderView(view); } catch (err) { console.warn("Edge render", err); }
   }
 
   function jumpToTicker(ticker) {

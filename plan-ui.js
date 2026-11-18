@@ -44,6 +44,7 @@
       + '<p class="r6-note">' + esc(rg.text) + " " + esc(P.backtestBasis) + "</p>"
       + "<h4>Holdings: gate, add zones, earnings, valuation</h4><div class=r6-tbl-wrap><table class=gp-tbl><thead><tr><th>Holding</th><th>Price</th><th>Full gate</th><th>Add zone</th><th>Next earnings</th><th>Valuation vs peers</th></tr></thead><tbody>" + hold + "</tbody></table></div>"
       + "<h4>Earnings within 10 trading days</h4><div>" + soon + "</div>"
+      + (window.EDGEUI && window.EDGEUI.gameplanExtra ? window.EDGEUI.gameplanExtra() : "")
       + "<h4>Today's top 3 setups (prioritized by S3 RS leaders and 12-1 momentum, the rules that backtested best)</h4><div class=gp-grid>" + (top || '<p class="r6-dim">No names meet the S3 / momentum criteria today.</p>') + "</div>"
       + '<p class="r6-note">Tier A = S3 leader and momentum ≥ 80th percentile; tier B = S3 leader or momentum ≥ 90th. Names reporting within 5 trading days sort last. "Low trust now" = that rule did not beat the equal-weight universe in the current regime historically. Not a recommendation or an order.</p>'
       + '<p class="gp-links r6-note"><a href="#/graduated">Graduated list (' + P.graduation.graduated + " graduated, " + P.graduation.building + ' building)</a><a href="#/optbt">Options backtest</a><a href="#/valuation">Valuation check</a><a href="#/qregime">Regime</a><a href="#/distance">Distance to pass</a></p><p class="r6-note">' + esc(P.optLine) + "</p></details>";
