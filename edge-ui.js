@@ -12,6 +12,8 @@
   var pp = function (x, d) { return x == null ? ID : (x * 100).toFixed(d == null ? 0 : d) + "%"; };
   var cls = function (x) { return x == null ? "" : x >= 0 ? "r6-pass" : "r6-fail"; };
   var st = { bq: "", bs: "focus", sq: "", sf: "all" };
+  var EXT = {}, EXTORDER = [];
+  function register(view, title, fn, need) { EXT[view] = { fn: fn, need: need }; TITLES[view] = title; if (EXTORDER.indexOf(view) < 0) EXTORDER.push(view); }
   function css() {
     if (document.getElementById("e-css")) return;
     var s = document.createElement("style"); s.id = "e-css";
@@ -20,7 +22,7 @@
   }
   function tk(t) { return '<a href="#/stock/' + encodeURIComponent(t) + '"><b>' + esc(t) + "</b></a>"; }
   function chip(t, k, title) { return '<span class="r6-chip ' + (k || "") + '"' + (title ? ' title="' + esc(title) + '"' : "") + ">" + esc(t) + "</span>"; }
-  function nav(view) { return '<nav class="r6-nav">' + VIEWS.map(function (v) { return '<a href="#/' + v + '" class="' + (v === view ? "on" : "") + '">' + TITLES[v] + "</a>"; }).join("") + "</nav>"; }
+  function nav(view) { return '<nav class="r6-nav">' + VIEWS.concat(EXTORDER).map(function (v) { return '<a href="#/' + v + '" class="' + (v === view ? "on" : "") + '">' + TITLES[v] + "</a>"; }).join("") + "</nav>"; }
   function asof(v) { return (window[v] && window[v].dataAsOf) || (window[v] && window[v].generatedAt && window[v].generatedAt.slice(0, 10)) || ""; }
   function head(view, lead, d) {
     var g = (d && d.generatedAt) || "";
@@ -284,14 +286,16 @@
         + concLine() + (er ? "<li><b>Earnings, holdings:</b> " + er + "</li>" : "") + (kn ? "<li><b>Knock-on:</b> " + kn + "</li>" : "<li><b>Knock-on:</b> no mapped source reports near today.</li>")
         + "<li><b>Beat-SPY, 3 months</b> " + chip("model estimate", "warn") + " (no demonstrated skill out-of-sample): " + bp + "</li>"
         + "<li><b>ML ensemble:</b> " + (E.ml.survived ? "kept" : "retired") + " (" + E.ml.variantsTried + " variants tried). <b>Scoreboard:</b> " + (sbd ? (sbd.downweighted.length ? sbd.downweighted.length + " family(ies) downweighted" : "no family downweighted yet") + ", " + sbd.insufficient + " of " + sbd.families + " still " + ID : ID) + ".</li></ul>";
+      if (window.EDGE2UI && window.EDGE2UI.gameplanExtra) out += window.EDGE2UI.gameplanExtra();
       return out;
     } catch (e) { return ""; }
   }
   /* ---------- router ---------- */
   function renderView(view) {
     var panel = document.getElementById("view-edge"); if (!panel) return;
-    var on = VIEWS.indexOf(view) >= 0; panel.hidden = !on; if (!on) return;
+    var on = VIEWS.indexOf(view) >= 0 || !!EXT[view]; panel.hidden = !on; if (!on) return;
     var root = document.getElementById("edge-root"); css(); if (window.R6UI && window.R6UI.css) window.R6UI.css();
+    if (EXT[view]) { var xn = EXT[view].need ? EXT[view].need() : true; root.innerHTML = '<div class="r6-wrap">' + (xn ? EXT[view].fn() : "<p>Data for this tab has not been published yet.</p>") + "</div>"; if (xn && EXT[view].after) EXT[view].after(); return; }
     var need = { beat: E, mlens: E, earnfc: EV, tone: SE, supply: EV, score: SB && E && EV && SE, scout: SO }[view];
     if (!need) { root.innerHTML = '<div class="r6-wrap"><p>Data for this tab has not been published yet.</p></div>'; return; }
     var html = view === "beat" ? beat() : view === "mlens" ? mlens() : view === "earnfc" ? earnfc() : view === "tone" ? tone() : view === "supply" ? supply() : view === "score" ? score() : scout();
@@ -301,5 +305,6 @@
     var sq = document.getElementById("e-sq"), sf = document.getElementById("e-sf");
     if (sq) { sf.value = st.sf; sq.addEventListener("input", function () { st.sq = sq.value; var p = sq.selectionStart; renderView("supply"); var n = document.getElementById("e-sq"); n.focus(); n.setSelectionRange(p, p); }); sf.addEventListener("change", function () { st.sf = sf.value; renderView("supply"); }); }
   }
-  window.EDGEUI = { renderView: renderView, pitSection: pitSection, gameplanExtra: gameplanExtra, VIEWS: VIEWS };
+  window.EDGEUI = { renderView: renderView, pitSection: pitSection, gameplanExtra: gameplanExtra, VIEWS: VIEWS, register: register, ext: EXT, h: { esc: esc, nn: nn, pc: pc, pp: pp, cls: cls, tk: tk, chip: chip, tbl: tbl, lims: lims, head: head, css: css, ID: ID, line: line, sd: sd } };
+  if (window.EDGE2UI_INIT) window.EDGE2UI_INIT();
 })();
