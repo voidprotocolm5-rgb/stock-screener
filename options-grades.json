@@ -36,9 +36,9 @@
    "status": "open",
    "final": null,
    "last": {
-    "date": "2026-11-18",
+    "date": "2026-11-19",
     "retPct": null,
-    "underlying": 76.75,
+    "underlying": 74.68,
     "trigger": null
    }
   },
@@ -82,9 +82,9 @@
    "status": "open",
    "final": null,
    "last": {
-    "date": "2026-11-18",
+    "date": "2026-11-19",
     "retPct": null,
-    "underlying": 152.17,
+    "underlying": 149.49,
     "trigger": null
    }
   },
@@ -128,9 +128,9 @@
    "status": "open",
    "final": null,
    "last": {
-    "date": "2026-11-18",
+    "date": "2026-11-19",
     "retPct": null,
-    "underlying": 65.07,
+    "underlying": 60.44,
     "trigger": null
    }
   },
@@ -167,9 +167,9 @@
    "status": "open",
    "final": null,
    "last": {
-    "date": "2026-11-18",
+    "date": "2026-11-19",
     "retPct": null,
-    "underlying": 45.72,
+    "underlying": 44.62,
     "trigger": null
    }
   },
@@ -213,9 +213,9 @@
    "status": "open",
    "final": null,
    "last": {
-    "date": "2026-11-18",
+    "date": "2026-11-19",
     "retPct": null,
-    "underlying": 208.42,
+    "underlying": null,
     "trigger": null
    }
   },
@@ -252,7 +252,7 @@
    "status": "open",
    "final": null,
    "last": {
-    "date": "2026-11-18",
+    "date": "2026-11-19",
     "retPct": null,
     "underlying": null,
     "trigger": null
@@ -298,9 +298,9 @@
    "status": "open",
    "final": null,
    "last": {
-    "date": "2026-11-18",
+    "date": "2026-11-19",
     "retPct": null,
-    "underlying": 180.69,
+    "underlying": 172.79,
     "trigger": null
    }
   },
@@ -344,9 +344,9 @@
    "status": "open",
    "final": null,
    "last": {
-    "date": "2026-11-18",
+    "date": "2026-11-19",
     "retPct": null,
-    "underlying": 136.88,
+    "underlying": 134.99,
     "trigger": null
    }
   },
@@ -390,9 +390,9 @@
    "status": "open",
    "final": null,
    "last": {
-    "date": "2026-11-18",
+    "date": "2026-11-19",
     "retPct": null,
-    "underlying": 353.3,
+    "underlying": 349.21,
     "trigger": null
    }
   },
@@ -436,9 +436,9 @@
    "status": "open",
    "final": null,
    "last": {
-    "date": "2026-11-18",
+    "date": "2026-11-19",
     "retPct": null,
-    "underlying": 107.27,
+    "underlying": 105.25,
     "trigger": null
    }
   },
@@ -482,9 +482,9 @@
    "status": "open",
    "final": null,
    "last": {
-    "date": "2026-11-18",
+    "date": "2026-11-19",
     "retPct": null,
-    "underlying": 414.58,
+    "underlying": 402.25,
     "trigger": null
    }
   },
@@ -528,9 +528,9 @@
    "status": "open",
    "final": null,
    "last": {
-    "date": "2026-11-18",
+    "date": "2026-11-19",
     "retPct": null,
-    "underlying": 264.24,
+    "underlying": 257.37,
     "trigger": null
    }
   },
@@ -574,10 +574,13 @@
    "status": "open",
    "final": null,
    "last": {
-    "date": "2026-11-18",
+    "date": "2026-11-19",
     "retPct": null,
-    "underlying": 106.33,
-    "trigger": null
+    "underlying": 96.92,
+    "trigger": {
+     "kind": "target",
+     "date": "2026-11-19"
+    }
    }
   },
   {
@@ -620,9 +623,9 @@
    "status": "open",
    "final": null,
    "last": {
-    "date": "2026-11-18",
+    "date": "2026-11-19",
     "retPct": null,
-    "underlying": 54.25,
+    "underlying": 55.72,
     "trigger": null
    }
   },
@@ -666,9 +669,9 @@
    "status": "open",
    "final": null,
    "last": {
-    "date": "2026-11-18",
+    "date": "2026-11-19",
     "retPct": null,
-    "underlying": 24.41,
+    "underlying": 23.84,
     "trigger": null
    }
   },
@@ -712,9 +715,9 @@
    "status": "open",
    "final": null,
    "last": {
-    "date": "2026-11-18",
+    "date": "2026-11-19",
     "retPct": null,
-    "underlying": 68.32,
+    "underlying": 68.65,
     "trigger": null
    }
   },
@@ -758,9 +761,9 @@
    "status": "open",
    "final": null,
    "last": {
-    "date": "2026-11-18",
+    "date": "2026-11-19",
     "retPct": null,
-    "underlying": 92.7,
+    "underlying": 86.13,
     "trigger": {
      "kind": "target",
      "date": "2026-11-18"
@@ -807,9 +810,9 @@
    "status": "open",
    "final": null,
    "last": {
-    "date": "2026-11-18",
+    "date": "2026-11-19",
     "retPct": null,
-    "underlying": 111.82,
+    "underlying": 108.87,
     "trigger": {
      "kind": "target",
      "date": "2026-11-18"
@@ -856,9 +859,9 @@
    "status": "open",
    "final": null,
    "last": {
-    "date": "2026-11-18",
+    "date": "2026-11-19",
     "retPct": null,
-    "underlying": 95.9,
+    "underlying": 89.88,
     "trigger": null
    }
   },
@@ -902,9 +905,9 @@
    "status": "open",
    "final": null,
    "last": {
-    "date": "2026-11-18",
+    "date": "2026-11-19",
     "retPct": null,
-    "underlying": 123.46,
+    "underlying": 117.76,
     "trigger": null
    }
   },
@@ -948,9 +951,9 @@
    "status": "open",
    "final": null,
    "last": {
-    "date": "2026-11-18",
+    "date": "2026-11-19",
     "retPct": null,
-    "underlying": 90.79,
+    "underlying": 88.87,
     "trigger": {
      "kind": "target",
      "date": "2026-11-18"
@@ -997,10 +1000,13 @@
    "status": "open",
    "final": null,
    "last": {
-    "date": "2026-11-18",
+    "date": "2026-11-19",
     "retPct": null,
-    "underlying": 153.24,
-    "trigger": null
+    "underlying": 145.98,
+    "trigger": {
+     "kind": "target",
+     "date": "2026-11-19"
+    }
    }
   },
   {
@@ -1036,9 +1042,9 @@
    "status": "open",
    "final": null,
    "last": {
-    "date": "2026-11-18",
+    "date": "2026-11-19",
     "retPct": null,
-    "underlying": 32.89,
+    "underlying": 31.09,
     "trigger": null
    }
   },
@@ -1075,9 +1081,9 @@
    "status": "open",
    "final": null,
    "last": {
-    "date": "2026-11-18",
+    "date": "2026-11-19",
     "retPct": null,
-    "underlying": 45.72,
+    "underlying": 44.62,
     "trigger": null
    }
   },
@@ -1121,9 +1127,9 @@
    "status": "open",
    "final": null,
    "last": {
-    "date": "2026-11-18",
+    "date": "2026-11-19",
     "retPct": null,
-    "underlying": 180.69,
+    "underlying": 172.79,
     "trigger": null
    }
   },
@@ -1167,9 +1173,9 @@
    "status": "open",
    "final": null,
    "last": {
-    "date": "2026-11-18",
+    "date": "2026-11-19",
     "retPct": null,
-    "underlying": 136.88,
+    "underlying": 134.99,
     "trigger": null
    }
   },
@@ -1213,9 +1219,9 @@
    "status": "open",
    "final": null,
    "last": {
-    "date": "2026-11-18",
+    "date": "2026-11-19",
     "retPct": null,
-    "underlying": 414.58,
+    "underlying": 402.25,
     "trigger": null
    }
   },
@@ -1259,9 +1265,9 @@
    "status": "open",
    "final": null,
    "last": {
-    "date": "2026-11-18",
+    "date": "2026-11-19",
     "retPct": null,
-    "underlying": 264.24,
+    "underlying": 257.37,
     "trigger": null
    }
   },
@@ -1298,9 +1304,9 @@
    "status": "open",
    "final": null,
    "last": {
-    "date": "2026-11-18",
+    "date": "2026-11-19",
     "retPct": null,
-    "underlying": 47.11,
+    "underlying": 45.61,
     "trigger": null
    }
   },
@@ -1344,9 +1350,9 @@
    "status": "open",
    "final": null,
    "last": {
-    "date": "2026-11-18",
+    "date": "2026-11-19",
     "retPct": null,
-    "underlying": 54.25,
+    "underlying": 55.72,
     "trigger": null
    }
   },
@@ -1390,9 +1396,9 @@
    "status": "open",
    "final": null,
    "last": {
-    "date": "2026-11-18",
+    "date": "2026-11-19",
     "retPct": null,
-    "underlying": 24.41,
+    "underlying": 23.84,
     "trigger": null
    }
   },
@@ -1436,9 +1442,9 @@
    "status": "open",
    "final": null,
    "last": {
-    "date": "2026-11-18",
+    "date": "2026-11-19",
     "retPct": null,
-    "underlying": 92.7,
+    "underlying": 86.13,
     "trigger": {
      "kind": "target",
      "date": "2026-11-18"
@@ -1485,9 +1491,9 @@
    "status": "open",
    "final": null,
    "last": {
-    "date": "2026-11-18",
+    "date": "2026-11-19",
     "retPct": null,
-    "underlying": 68.32,
+    "underlying": 68.65,
     "trigger": null
    }
   },
@@ -1531,9 +1537,9 @@
    "status": "open",
    "final": null,
    "last": {
-    "date": "2026-11-18",
+    "date": "2026-11-19",
     "retPct": null,
-    "underlying": 111.82,
+    "underlying": 108.87,
     "trigger": {
      "kind": "target",
      "date": "2026-11-18"
@@ -1580,10 +1586,13 @@
    "status": "open",
    "final": null,
    "last": {
-    "date": "2026-11-18",
+    "date": "2026-11-19",
     "retPct": null,
-    "underlying": 153.24,
-    "trigger": null
+    "underlying": 145.98,
+    "trigger": {
+     "kind": "target",
+     "date": "2026-11-19"
+    }
    }
   },
   {
@@ -1626,9 +1635,9 @@
    "status": "open",
    "final": null,
    "last": {
-    "date": "2026-11-18",
+    "date": "2026-11-19",
     "retPct": null,
-    "underlying": 186.97,
+    "underlying": 177.17,
     "trigger": null
    }
   },
@@ -1672,9 +1681,9 @@
    "status": "open",
    "final": null,
    "last": {
-    "date": "2026-11-18",
+    "date": "2026-11-19",
     "retPct": null,
-    "underlying": 111.82,
+    "underlying": 108.87,
     "trigger": {
      "kind": "target",
      "date": "2026-11-18"
@@ -1714,9 +1723,9 @@
    "status": "open",
    "final": null,
    "last": {
-    "date": "2026-11-18",
+    "date": "2026-11-19",
     "retPct": null,
-    "underlying": 107.27,
+    "underlying": 105.25,
     "trigger": null
    }
   },
@@ -1753,9 +1762,9 @@
    "status": "open",
    "final": null,
    "last": {
-    "date": "2026-11-18",
+    "date": "2026-11-19",
     "retPct": null,
-    "underlying": 32.89,
+    "underlying": 31.09,
     "trigger": null
    }
   },
@@ -1792,9 +1801,9 @@
    "status": "open",
    "final": null,
    "last": {
-    "date": "2026-11-18",
+    "date": "2026-11-19",
     "retPct": null,
-    "underlying": 76.75,
+    "underlying": 74.68,
     "trigger": null
    }
   },
@@ -1838,9 +1847,9 @@
    "status": "open",
    "final": null,
    "last": {
-    "date": "2026-11-18",
+    "date": "2026-11-19",
     "retPct": null,
-    "underlying": 353.3,
+    "underlying": 349.21,
     "trigger": null
    }
   },
@@ -1884,9 +1893,9 @@
    "status": "open",
    "final": null,
    "last": {
-    "date": "2026-11-18",
+    "date": "2026-11-19",
     "retPct": null,
-    "underlying": 264.24,
+    "underlying": 257.37,
     "trigger": null
    }
   },
@@ -1930,9 +1939,9 @@
    "status": "open",
    "final": null,
    "last": {
-    "date": "2026-11-18",
+    "date": "2026-11-19",
     "retPct": null,
-    "underlying": 106.33,
+    "underlying": 96.92,
     "trigger": null
    }
   },
@@ -1976,9 +1985,9 @@
    "status": "open",
    "final": null,
    "last": {
-    "date": "2026-11-18",
+    "date": "2026-11-19",
     "retPct": null,
-    "underlying": 54.25,
+    "underlying": 55.72,
     "trigger": null
    }
   },
@@ -2022,9 +2031,9 @@
    "status": "open",
    "final": null,
    "last": {
-    "date": "2026-11-18",
+    "date": "2026-11-19",
     "retPct": null,
-    "underlying": 24.41,
+    "underlying": 23.84,
     "trigger": null
    }
   },
@@ -2068,10 +2077,13 @@
    "status": "open",
    "final": null,
    "last": {
-    "date": "2026-11-18",
+    "date": "2026-11-19",
     "retPct": null,
-    "underlying": 92.7,
-    "trigger": null
+    "underlying": 86.13,
+    "trigger": {
+     "kind": "target",
+     "date": "2026-11-19"
+    }
    }
   },
   {
@@ -2114,10 +2126,13 @@
    "status": "open",
    "final": null,
    "last": {
-    "date": "2026-11-18",
+    "date": "2026-11-19",
     "retPct": null,
-    "underlying": 111.82,
-    "trigger": null
+    "underlying": 108.87,
+    "trigger": {
+     "kind": "target",
+     "date": "2026-11-19"
+    }
    }
   },
   {
@@ -2160,10 +2175,13 @@
    "status": "open",
    "final": null,
    "last": {
-    "date": "2026-11-18",
+    "date": "2026-11-19",
     "retPct": null,
-    "underlying": 90.79,
-    "trigger": null
+    "underlying": 88.87,
+    "trigger": {
+     "kind": "target",
+     "date": "2026-11-19"
+    }
    }
   },
   {
@@ -2206,10 +2224,13 @@
    "status": "open",
    "final": null,
    "last": {
-    "date": "2026-11-18",
+    "date": "2026-11-19",
     "retPct": null,
-    "underlying": 153.24,
-    "trigger": null
+    "underlying": 145.98,
+    "trigger": {
+     "kind": "target",
+     "date": "2026-11-19"
+    }
    }
   },
   {
@@ -2252,9 +2273,9 @@
    "status": "open",
    "final": null,
    "last": {
-    "date": "2026-11-18",
+    "date": "2026-11-19",
     "retPct": null,
-    "underlying": 186.97,
+    "underlying": 177.17,
     "trigger": null
    }
   },
@@ -2298,10 +2319,13 @@
    "status": "open",
    "final": null,
    "last": {
-    "date": "2026-11-18",
+    "date": "2026-11-19",
     "retPct": null,
-    "underlying": 188.29,
-    "trigger": null
+    "underlying": 183.31,
+    "trigger": {
+     "kind": "target",
+     "date": "2026-11-19"
+    }
    }
   },
   {
@@ -2344,9 +2368,9 @@
    "status": "open",
    "final": null,
    "last": {
-    "date": "2026-11-18",
+    "date": "2026-11-19",
     "retPct": null,
-    "underlying": 180.69,
+    "underlying": 172.79,
     "trigger": null
    }
   },
@@ -2390,9 +2414,9 @@
    "status": "open",
    "final": null,
    "last": {
-    "date": "2026-11-18",
+    "date": "2026-11-19",
     "retPct": null,
-    "underlying": 353.3,
+    "underlying": 349.21,
     "trigger": null
    }
   },
@@ -2436,9 +2460,9 @@
    "status": "open",
    "final": null,
    "last": {
-    "date": "2026-11-18",
+    "date": "2026-11-19",
     "retPct": null,
-    "underlying": 414.58,
+    "underlying": 402.25,
     "trigger": null
    }
   },
@@ -2475,9 +2499,9 @@
    "status": "open",
    "final": null,
    "last": {
-    "date": "2026-11-18",
+    "date": "2026-11-19",
     "retPct": null,
-    "underlying": 24.45,
+    "underlying": 23.53,
     "trigger": null
    }
   },
@@ -2521,9 +2545,9 @@
    "status": "open",
    "final": null,
    "last": {
-    "date": "2026-11-18",
+    "date": "2026-11-19",
     "retPct": null,
-    "underlying": 264.24,
+    "underlying": 257.37,
     "trigger": null
    }
   },
@@ -2567,9 +2591,9 @@
    "status": "open",
    "final": null,
    "last": {
-    "date": "2026-11-18",
+    "date": "2026-11-19",
     "retPct": null,
-    "underlying": 54.25,
+    "underlying": 55.72,
     "trigger": null
    }
   },
@@ -2613,10 +2637,13 @@
    "status": "open",
    "final": null,
    "last": {
-    "date": "2026-11-18",
+    "date": "2026-11-19",
     "retPct": null,
-    "underlying": 92.7,
-    "trigger": null
+    "underlying": 86.13,
+    "trigger": {
+     "kind": "target",
+     "date": "2026-11-19"
+    }
    }
   },
   {
@@ -2659,9 +2686,9 @@
    "status": "open",
    "final": null,
    "last": {
-    "date": "2026-11-18",
+    "date": "2026-11-19",
     "retPct": null,
-    "underlying": 68.32,
+    "underlying": 68.65,
     "trigger": null
    }
   },
@@ -2705,9 +2732,9 @@
    "status": "open",
    "final": null,
    "last": {
-    "date": "2026-11-18",
+    "date": "2026-11-19",
     "retPct": null,
-    "underlying": 24.41,
+    "underlying": 23.84,
     "trigger": null
    }
   },
@@ -2751,10 +2778,13 @@
    "status": "open",
    "final": null,
    "last": {
-    "date": "2026-11-18",
+    "date": "2026-11-19",
     "retPct": null,
-    "underlying": 90.79,
-    "trigger": null
+    "underlying": 88.87,
+    "trigger": {
+     "kind": "target",
+     "date": "2026-11-19"
+    }
    }
   },
   {
@@ -2797,9 +2827,9 @@
    "status": "open",
    "final": null,
    "last": {
-    "date": "2026-11-18",
+    "date": "2026-11-19",
     "retPct": null,
-    "underlying": 95.9,
+    "underlying": 89.88,
     "trigger": null
    }
   },
@@ -2843,9 +2873,9 @@
    "status": "open",
    "final": null,
    "last": {
-    "date": "2026-11-18",
+    "date": "2026-11-19",
     "retPct": null,
-    "underlying": 153.24,
+    "underlying": 145.98,
     "trigger": null
    }
   },
@@ -2889,13 +2919,16 @@
    "status": "open",
    "final": null,
    "last": {
-    "date": "2026-11-18",
+    "date": "2026-11-19",
     "retPct": null,
-    "underlying": 63.55,
-    "trigger": null
+    "underlying": 61.42,
+    "trigger": {
+     "kind": "target",
+     "date": "2026-11-19"
+    }
    }
   }
  ],
- "updatedAt": "2026-11-18T09:19:46-06:00",
- "dataAsOf": "2026-11-18"
+ "updatedAt": "2026-11-19T16:00:58-06:00",
+ "dataAsOf": "2026-11-19"
 }
