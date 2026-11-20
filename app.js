@@ -2341,7 +2341,26 @@ window.OPT_RULES = {"built": "2026-11-13", "options": [{"id": "A1", "sec": "(a) 
 
     $("#market-angle").textContent = market.angle || "Lynch/GARP · TTF · TSM";
     $("#market-disclaimer").textContent = market.disclaimer || "";
-    $("#market-updated-at").textContent = fmtTime(market.updatedAt) + " · briefing text from pre-open (~8:04 AM CT)" + (market.stale ? ` · STALE: content from ${market.contentDate}` : "");
+    {
+      const kind = market.briefingWindow || (function (iso) {
+        if (!iso) return "pre-open";
+        const d = new Date(iso);
+        if (Number.isNaN(+d)) return "pre-open";
+        const parts = new Intl.DateTimeFormat("en-US", { timeZone: "America/Chicago", weekday: "short", hour: "2-digit", minute: "2-digit", hourCycle: "h23" }).formatToParts(d);
+        const get = (t) => (parts.find((p) => p.type === t) || {}).value;
+        const wd = get("weekday");
+        const mins = Number(get("hour")) * 60 + Number(get("minute"));
+        if (["Sat", "Sun"].includes(wd)) return "weekend";
+        if (mins < 8 * 60 + 30) return "pre-open";
+        if (mins < 15 * 60) return "intraday";
+        return "close";
+      })(market.updatedAt);
+      const briefLabel = kind === "intraday" ? "intraday briefing (session still open)"
+        : kind === "close" ? "after-close briefing"
+        : kind === "weekend" ? "weekend briefing"
+        : "briefing text from pre-open (~8:04 AM CT)";
+      $("#market-updated-at").textContent = fmtTime(market.updatedAt) + " · " + briefLabel + (market.stale ? ` · STALE: content from ${market.contentDate}` : "");
+    }
     const itemCount = market.itemCount ?? market.sections.reduce((n, s) => n + (s.items || []).length, 0);
     const matchCount =
       market.matchedTickerCount ??
