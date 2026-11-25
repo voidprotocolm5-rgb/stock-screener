@@ -1,11 +1,11 @@
 {
- "updatedAt": "2026-11-20T13:45:33-0600",
- "tickers": 275,
- "files": 1650,
- "good": 1644,
- "coveragePct": 99.6,
- "tickersFull": 274,
- "tickersWithAnyChart": 274,
+ "updatedAt": "2026-11-25T14:47:33-0600",
+ "tickers": 288,
+ "files": 1728,
+ "good": 1722,
+ "coveragePct": 99.7,
+ "tickersFull": 287,
+ "tickersWithAnyChart": 287,
  "misses": [
   {
    "ticker": "MPW",
